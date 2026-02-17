@@ -1,4 +1,4 @@
-import { Instagram, Linkedin } from 'lucide-react'; // Khassk t-installi lucide-react
+import { Instagram, Linkedin } from 'lucide-react'; 
 
 function Support() {
     return (
@@ -20,7 +20,7 @@ function Support() {
                 </p>
             </div>
 
-            <div className="max-w-6xl mx-auto grid md:grid-cols-2  items-center">
+            <div className="max-w-6xl mx-auto grid md:grid-cols-2  items-center ">
 
                 {/* Left Side: Contact Info & Abstract Image */}
                 <div className="space-y-12 order-2 md:order-1">
