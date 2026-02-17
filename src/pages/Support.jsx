@@ -1,4 +1,3 @@
-import React from 'react';
 import { Instagram, Linkedin } from 'lucide-react'; // Khassk t-installi lucide-react
 
 function Support() {
