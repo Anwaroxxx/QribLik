@@ -4,7 +4,7 @@ import PostCard from './PostCards'
 import ProfilePage from './ProfilePage'
 import CreatePostModal from './Createpostmodal'
 import NotificationsPanel from './Notificationspanel'
-import NeighborMap from './NeighborMap'
+import { NeighborMap } from './NeighborMap'
 
 const currentUser = {
   name: 'Alex Neighbor',
