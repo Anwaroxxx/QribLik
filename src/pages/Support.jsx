@@ -21,7 +21,8 @@ function Support() {
                 </p>
             </div>
 
-            <div className="max-w-6xl mx-auto grid md:grid-cols-2  items-center">
+            <di
+            v className="max-w-6xl mx-auto grid md:grid-cols-2  items-center">
 
                 {/* Left Side: Contact Info & Abstract Image */}
                 <div className="space-y-12 order-2 md:order-1">
@@ -92,7 +93,7 @@ function Support() {
                     </form>
                 </div>
 
-            </div>
+            </di>
         </div>
     );
 }
