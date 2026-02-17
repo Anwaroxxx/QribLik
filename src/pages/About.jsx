@@ -21,7 +21,7 @@ const About = () => {
 
             {/* Our Story Section */}
             <div className="text-center space-y-6 max-w-4xl mx-auto">
-                <h1 className='font-extrabold text-5xl bg-gradient-to-r from-[#8B3FDE] via-[#C837AB] to-[#FF6B35] bg-clip-text text-transparent'>Our Story</h1>
+                <h1 className='font-extrabold text-5xl bg-linear-to-r from-[#8B3FDE] via-[#C837AB] to-[#FF6B35] bg-clip-text text-transparent'>Our Story</h1>
                 <p className='text-lg text-gray-700 leading-relaxed'>
                     We started Connect because we believed in something simple: neighbors helping
                     neighbors creates stronger, happier communities. In a world where we're more connected
