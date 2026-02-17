@@ -13,7 +13,7 @@ function Sidebar() {
   const [activeHome, setActiveHome] = useState(false);
 
   return (
-    <div className="w-[20vw] h-[100vh] bg- flex flex-col justify-between">
+    <div className="w-[20vw] h-[100vh] bg-white flex flex-col justify-between">
       {/* Logo + Home */}
       <div className="h-[20%]  text-gray-500 w-full px-10 flex flex-col justify-start gap-4">
         {/* logo */}
@@ -32,7 +32,7 @@ function Sidebar() {
           </Link>
         </div>
         <div className="flex  items-center justify-center gap-5">
-          <Link>
+          <Link to={"/about"}>
             <div className="hover:border-b w-fit">About</div>
 
           </Link>
