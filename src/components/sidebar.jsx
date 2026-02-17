@@ -8,18 +8,16 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
 function Sidebar() {
-  // State لكل قسم
   const [activeCategory, setActiveCategory] = useState(null);
   const [activeComm, setActiveComm] = useState(null);
   const [activeHome, setActiveHome] = useState(false);
 
   return (
-    <div className="w-[20vw] h-[100vh] flex flex-col justify-between">
+    <div className="w-[20vw] h-[100vh] bg- flex flex-col justify-between">
       {/* Logo + Home */}
-      <div className="h-[20%] text-gray-500 w-full px-10 flex flex-col justify-start gap-4">
+      <div className="h-[20%]  text-gray-500 w-full px-10 flex flex-col justify-start gap-4">
         {/* logo */}
         <div>
-          {/* هنا تقدري تزيدي logo ديالك */}
         </div>
 
         {/* Home */}
@@ -32,10 +30,14 @@ function Sidebar() {
           <TbHome />
           <h1>Home Feed</h1>
         </div>
+        <div className="flex  items-center justify-center gap-5">
+          <div className="hover:border-b w-fit">About</div>
+          <div className="hover:border-b w-fit">Contact</div>
+        </div>
       </div>
 
       {/* Categories */}
-      <div className="h-[60%] text-gray-500 w-full flex flex-col justify-around px-10">
+      <div className="  h-[60%] text-gray-500 w-full flex flex-col justify-around px-10">
         <div className="flex flex-col gap-5 justify-evenly h-[60%]">
           <h1 className="border-b w-fit">CATEGORIES</h1>
 
