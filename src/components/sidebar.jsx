@@ -13,7 +13,7 @@ function Sidebar() {
   const [activeHome, setActiveHome] = useState(false);
 
   return (
-    <div className="w-[20vw] h-[100vh] bg- flex flex-col justify-between">
+    <div className="w-[20vw] h-[100vh] bg-white flex flex-col justify-between">
       {/* Logo + Home */}
       <div className="h-[20%]  text-gray-500 w-full px-10 flex flex-col justify-start gap-4">
         {/* logo */}
@@ -22,17 +22,22 @@ function Sidebar() {
 
         {/* Home */}
         <div
-          className={`flex items-center gap-2 rounded-3xl h-8 px-4 cursor-pointer hover:bg-[#e0e7ef] ${
-            activeHome ? "bg-[#FDF2F8] text-[#EC4899]" : "bg-white text-gray-500"
-          }`}
+          className={`flex items-center gap-2 rounded-3xl h-8 px-4 cursor-pointer hover:bg-[#e0e7ef] ${activeHome ? "bg-[#FDF2F8] text-[#EC4899]" : "bg-white text-gray-500"
+            }`}
           onClick={() => setActiveHome(!activeHome)}
         >
           <TbHome />
-          <h1>Home Feed</h1>
+          <Link>
+            <h1>Home Feed</h1>
+          </Link>
         </div>
         <div className="flex  items-center justify-center gap-5">
-          <div className="hover:border-b w-fit">About</div>
-          <div className="hover:border-b w-fit">Contact</div>
+          <Link to={"/about"}>
+            <div className="hover:border-b w-fit">About</div>
+
+          </Link>
+          <Link>          <div className="hover:border-b w-fit">Contact</div>
+          </Link>
         </div>
       </div>
 
@@ -42,9 +47,8 @@ function Sidebar() {
           <h1 className="border-b w-fit">CATEGORIES</h1>
 
           <div
-            className={`flex items-center gap-2 rounded-3xl h-8 px-4 cursor-pointer hover:bg-[#e0e7ef] ${
-              activeCategory === 0 ? "bg-[#FDF2F8] text-[#EC4899]" : "bg-white text-gray-500"
-            }`}
+            className={`flex items-center gap-2 rounded-3xl h-8 px-4 cursor-pointer hover:bg-[#e0e7ef] ${activeCategory === 0 ? "bg-[#FDF2F8] text-[#EC4899]" : "bg-white text-gray-500"
+              }`}
             onClick={() => setActiveCategory(0)}
           >
             <LuMedal className="text-2xl" />
@@ -52,9 +56,8 @@ function Sidebar() {
           </div>
 
           <div
-            className={`flex items-center gap-2 rounded-3xl h-8 px-4 cursor-pointer hover:bg-[#e0e7ef] ${
-              activeCategory === 1 ? "bg-[#FDF2F8] text-[#EC4899]" : "bg-white text-gray-500"
-            }`}
+            className={`flex items-center gap-2 rounded-3xl h-8 px-4 cursor-pointer hover:bg-[#e0e7ef] ${activeCategory === 1 ? "bg-[#FDF2F8] text-[#EC4899]" : "bg-white text-gray-500"
+              }`}
             onClick={() => setActiveCategory(1)}
           >
             <MdOutlineShoppingBag className="text-2xl" />
@@ -62,9 +65,8 @@ function Sidebar() {
           </div>
 
           <div
-            className={`flex items-center gap-2 rounded-3xl h-8 px-4 cursor-pointer hover:bg-[#e0e7ef] ${
-              activeCategory === 2 ? "bg-[#FDF2F8] text-[#EC4899]" : "bg-white text-gray-500"
-            }`}
+            className={`flex items-center gap-2 rounded-3xl h-8 px-4 cursor-pointer hover:bg-[#e0e7ef] ${activeCategory === 2 ? "bg-[#FDF2F8] text-[#EC4899]" : "bg-white text-gray-500"
+              }`}
             onClick={() => setActiveCategory(2)}
           >
             <FaMagnifyingGlass className="text-2xl" />
@@ -72,9 +74,8 @@ function Sidebar() {
           </div>
 
           <div
-            className={`flex items-center gap-2 rounded-3xl h-8 px-4 cursor-pointer hover:bg-[#e0e7ef] ${
-              activeCategory === 3 ? "bg-[#FDF2F8] text-[#EC4899]" : "bg-white text-gray-500"
-            }`}
+            className={`flex items-center gap-2 rounded-3xl h-8 px-4 cursor-pointer hover:bg-[#e0e7ef] ${activeCategory === 3 ? "bg-[#FDF2F8] text-[#EC4899]" : "bg-white text-gray-500"
+              }`}
             onClick={() => setActiveCategory(3)}
           >
             <BsStars className="text-2xl" />
@@ -82,9 +83,8 @@ function Sidebar() {
           </div>
 
           <div
-            className={`flex items-center gap-2 rounded-3xl h-8 px-4 cursor-pointer hover:bg-[#e0e7ef] ${
-              activeCategory === 4 ? "bg-[#FDF2F8] text-[#EC4899]" : "bg-white text-gray-500"
-            }`}
+            className={`flex items-center gap-2 rounded-3xl h-8 px-4 cursor-pointer hover:bg-[#e0e7ef] ${activeCategory === 4 ? "bg-[#FDF2F8] text-[#EC4899]" : "bg-white text-gray-500"
+              }`}
             onClick={() => setActiveCategory(4)}
           >
             <MdEvent className="text-2xl" />
@@ -96,28 +96,31 @@ function Sidebar() {
         <div className="h-[30%] flex flex-col gap-5">
           <h1 className="border-b w-fit">COMMUNICATION</h1>
 
-          <div
-            className={`flex items-center gap-2 rounded-3xl h-8 px-4 cursor-pointer hover:bg-[#e0e7ef] ${
-              activeComm === 0 ? "bg-[#FDF2F8] text-[#EC4899]" : "bg-white text-gray-500"
-            }`}
+          <Link> <div
+            className={`flex items-center gap-2 rounded-3xl h-8 px-4 cursor-pointer hover:bg-[#e0e7ef] ${activeComm === 0 ? "bg-[#FDF2F8] text-[#EC4899]" : "bg-white text-gray-500"
+              }`}
             onClick={() => setActiveComm(0)}
           >
             <FaRegMessage className="text-2xl" />
             <h1>Inbox</h1>
           </div>
+          </Link>
         </div>
       </div>
 
       {/* Profile */}
       <div className="h-[20%] w-full text-gray-500 border-t p-10 flex flex-col gap-5">
-        <div className="flex items-center gap-3 rounded-3xl h-10 px-4 hover:bg-[#e0e7ef] cursor-pointer">
+        <Link><div className="flex items-center gap-3 rounded-3xl h-10 px-4 hover:bg-[#e0e7ef] cursor-pointer">
           <FaRegUser className="text-xl" />
           <h1>My Profile</h1>
         </div>
-        <div className="flex items-center gap-2 rounded-3xl h-10 px-4 hover:bg-[#e0e7ef] cursor-pointer">
-          <IoSettingsOutline className="text-2xl" />
-          <h1>Settings</h1>
-        </div>
+        </Link>
+        <Link>
+          <div className="flex items-center gap-2 rounded-3xl h-10 px-4 hover:bg-[#e0e7ef] cursor-pointer">
+            <IoSettingsOutline className="text-2xl" />
+            <h1>Settings</h1>
+          </div>
+        </Link>
       </div>
     </div>
   );
