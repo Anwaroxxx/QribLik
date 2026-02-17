@@ -1,3 +1,4 @@
+import { Routes  , <Route path="path" element={<Component />} /> } from 'react-router-dom'
 
 import './index.css'
 
