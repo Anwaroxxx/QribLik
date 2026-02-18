@@ -1,18 +1,19 @@
+import React from 'react';
 import { Instagram, Linkedin } from 'lucide-react'; // Khassk t-installi lucide-react
 
 function Support() {
     return (
-        <div className="min-h-screen bg-[#050515] text-white font-sans p-8 md:p-16 relative overflow-hidden">
+        <div className="min-h-screen bg-fuchsia-50 text-black font-sans  md:p-5 relative overflow-hidden">
             {/* Background Gradient Effect */}
             <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-purple-900/20 blur-[120px] rounded-full"></div>
 
             {/* Header Section */}
             <div className="text-center mb-16 relative z-10">
-                <div className="flex justify-center items-center gap-2 mb-4">
+                <div className="flex justify-center items-center gap-2 ">
                     {/* <div className="w-3 h-3 bg-yellow-400 rotate-45"></div> */}
                     <span className="text-gray-400 text-sm tracking-widest uppercase">Our Users</span>
                 </div>
-                <h1 className="text-5xl md:text-[64px] font-bold tracking-tighter leading-tight text-white italic">
+                <h1 className="text-5xl md:text-[64px] font-bold tracking-tighter p-3 leading-tight text italic">
                     We're Here to Help
                 </h1>
                 <p className="text-gray-400 text-lg">
@@ -20,7 +21,7 @@ function Support() {
                 </p>
             </div>
 
-            <div className="max-w-6xl mx-auto grid md:grid-cols-2  items-center">
+            <div className="max-w-7xl mx-auto grid md:grid-cols-2  items-center gap-x-70">
 
                 {/* Left Side: Contact Info & Abstract Image */}
                 <div className="space-y-12 order-2 md:order-1">
@@ -47,10 +48,10 @@ function Support() {
                     </div> 
                     
                     {/* Abstract 3D Image Placeholder */}
-                    {/* <div className="relative flex justify-center">
+                    <div className="relative flex justify-center">
                         <div className="w-80 h-80 bg-gradient-to-br from-purple-600 to-blue-900 rounded-full mix-blend-screen filter blur-xl opacity-30 absolute animate-pulse"></div>
                         
-                    </div> */}
+                    </div>
                 </div>
 
                 {/* Right Side: Contact Form (Glassmorphism) */}
@@ -85,7 +86,7 @@ function Support() {
                                 className="w-full bg-transparent border-b border-gray-700 py-3 focus:border-purple-500 outline-none transition-colors resize-none"
                             ></textarea>
                         </div>
-                        <button className="w-full bg-white text-black font-bold py-4 rounded-lg hover:bg-gray-200 transition-all mt-4">
+                        <button className="w-full bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-black font-bold py-4 rounded-lg hover:bg-gray-200 transition-all mt-4">
                             Submit
                         </button>
                     </form>
