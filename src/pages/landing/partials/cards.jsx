@@ -187,8 +187,8 @@ export default function Cards() {
         :root {
           --gradient-qriblik: linear-gradient(135deg, #8B3FDE 0%, #C837AB 50%, #FF6B35 100%);
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background: #f8f6ff; font-family: 'DM Sans', sans-serif; }
+        
+        
       `}</style>
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-purple-50/40 to-orange-50/30 overflow-x-hidden">
@@ -284,7 +284,7 @@ export default function Cards() {
           {/* Cards grid: 3 + 2 */}
          
           <div className="flex justify-center items-center">
-               <div className="grid grid-cols-1 padding padding w-screen sm:grid-cols-2 gap-6 max-w-2xl mx-auto lg:max-w-none lg:grid-cols-2 lg:mx-0 lg:w-2/3 lg:ml-auto lg:mr-auto">
+               <div className="grid grid-cols-1 padding  w-screen sm:grid-cols-2 gap-6 max-w-2xl mx-auto lg:max-w-none lg:grid-cols-2 lg:mx-0 lg:w-2/3 lg:ml-auto lg:mr-auto">
             {cards.map((card, i) => (
               <Card key={card.id} card={card} index={i + 3} />
             ))}

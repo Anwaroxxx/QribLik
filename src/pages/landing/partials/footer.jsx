@@ -5,7 +5,7 @@ import { Image } from "../../../constant/images/images-activité";
 
 export default function Footer() {
     return (
-        <div className="bg-gray-900 text-white font-sans">
+        <div className="bg-gray-900 text-white padding font-sans">
 
  
             <div className="px-6 md:px-20 py-16 grid md:grid-cols-4 gap-12 border-t border-white/10">
