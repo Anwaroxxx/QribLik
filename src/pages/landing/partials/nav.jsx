@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { logo } from '../../../constant/images/images';
+import { Image } from "../../../constant/images/images-activité";
 
 const Nav = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -34,7 +34,7 @@ const Nav = () => {
                     
                     <Link to="/" className="flex-shrink-0">
                         <img
-                            src={logo}
+                            src={Image.logo}
                             className="h-13 w-auto cursor-pointer hover:scale-105 transition-transform duration-300"
                             alt="Qriblik Logo"
                         />
@@ -63,7 +63,7 @@ const Nav = () => {
 
                     <div className="flex items-center gap-3">
                         <Link
-                            to="/signup"
+                            to="/SignUp"
                             className="hidden sm:inline-block px-5 py-2 text-sm font-semibold rounded-full 
                                 border-2 border-[#8B3FDE] text-[#8B3FDE] 
                                 hover:bg-[#8B3FDE] hover:text-white hover:shadow-lg hover:shadow-[#8B3FDE]/30 
@@ -73,7 +73,7 @@ const Nav = () => {
                         </Link>
 
                         <Link
-                            to="/login"
+                            to="/SignIn"
                             className="px-5 py-2 text-sm font-semibold text-white rounded-full 
                                 bg-gradient-to-r from-[#8B3FDE] via-[#C837AB] to-[#FF6B35] 
                                 shadow-md hover:shadow-xl hover:shadow-[#C837AB]/40 
