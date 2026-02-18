@@ -1,0 +1,752 @@
+[
+  {
+    "id": 1,
+    "name": "Ana Martínez",
+    "username": "ana_martinez",
+    "email": "ana.martinez@example.com",
+    "password": "hashed_password_001",
+    "avatar": "user1",
+    "neighborhood": "Maarif",
+    "city": "Casablanca",
+    "bio": "Graphic designer with a passion for urban art and language exchange. Love helping people learn Spanish!",
+    "lat": 33.5892,
+    "lng": -7.6328,
+    "verified": true,
+    "joinedAt": "2023-02-14T10:30:00Z",
+    "languages": ["Spanish", "French", "English"],
+    "offeredSkills": ["Graphic Design", "Spanish Tutoring", "Illustration"],
+    "wantedSkills": ["Arabic", "Cooking", "Photography"],
+    "favoriteCategories": ["Arts & Crafts", "Languages", "Technology"],
+    "stats": {
+      "helpGiven": 42,
+      "helpReceived": 18,
+      "rating": 4.9,
+      "reviewCount": 35
+    },
+    "helpSystem": {
+      "points": 520,
+      "level": "Expert Helper",
+      "badges": ["Top Rated", "Language Pro", "Community Star"]
+    }
+  },
+  {
+    "id": 2,
+    "name": "Hussein El Amrani",
+    "username": "hussein_elamrani",
+    "email": "hussein.elamrani@example.com",
+    "password": "hashed_password_002",
+    "avatar": "user2",
+    "neighborhood": "Anfa",
+    "city": "Casablanca",
+    "bio": "Software engineer and open-source enthusiast. Offering coding mentorship and web development help.",
+    "lat": 33.5978,
+    "lng": -7.6614,
+    "verified": true,
+    "joinedAt": "2023-01-05T08:00:00Z",
+    "languages": ["Arabic", "French", "English"],
+    "offeredSkills": ["Web Development", "JavaScript", "Python", "Code Review"],
+    "wantedSkills": ["Spanish", "Music Production", "3D Modeling"],
+    "favoriteCategories": ["Technology", "Education", "Music"],
+    "stats": {
+      "helpGiven": 87,
+      "helpReceived": 22,
+      "rating": 4.8,
+      "reviewCount": 61
+    },
+    "helpSystem": {
+      "points": 1040,
+      "level": "Master Helper",
+      "badges": ["Code Wizard", "Top Rated", "Mentor"]
+    }
+  },
+  {
+    "id": 3,
+    "name": "Fatima Zahra Benali",
+    "username": "fatima_benali",
+    "email": "fatima.benali@example.com",
+    "password": "hashed_password_003",
+    "avatar": "user3",
+    "neighborhood": "Hay Hassani",
+    "city": "Casablanca",
+    "bio": "Primary school teacher who loves baking and crafts. Happy to help with tutoring kids or Moroccan recipes!",
+    "lat": 33.5601,
+    "lng": -7.6672,
+    "verified": true,
+    "joinedAt": "2023-04-20T09:15:00Z",
+    "languages": ["Arabic", "French", "Darija"],
+    "offeredSkills": ["Teaching", "Baking", "Childcare", "Knitting"],
+    "wantedSkills": ["English", "Computer Skills", "Yoga"],
+    "favoriteCategories": ["Education", "Food & Cooking", "Arts & Crafts"],
+    "stats": {
+      "helpGiven": 55,
+      "helpReceived": 30,
+      "rating": 4.7,
+      "reviewCount": 43
+    },
+    "helpSystem": {
+      "points": 680,
+      "level": "Expert Helper",
+      "badges": ["Community Star", "Teacher's Heart", "Baker's Badge"]
+    }
+  },
+  {
+    "id": 4,
+    "name": "Youssef Tazi",
+    "username": "youssef_tazi",
+    "email": "youssef.tazi@example.com",
+    "password": "hashed_password_004",
+    "avatar": "user4",
+    "neighborhood": "Ain Diab",
+    "city": "Casablanca",
+    "bio": "Fitness coach and nutrition enthusiast near the corniche. Let's train together or swap skills!",
+    "lat": 33.5945,
+    "lng": -7.6901,
+    "verified": true,
+    "joinedAt": "2022-11-11T07:00:00Z",
+    "languages": ["Arabic", "French", "English"],
+    "offeredSkills": ["Personal Training", "Nutrition Planning", "Running Coaching"],
+    "wantedSkills": ["Photography", "Web Design", "Guitar"],
+    "favoriteCategories": ["Sports & Fitness", "Health & Wellness", "Outdoors"],
+    "stats": {
+      "helpGiven": 63,
+      "helpReceived": 15,
+      "rating": 4.9,
+      "reviewCount": 50
+    },
+    "helpSystem": {
+      "points": 780,
+      "level": "Expert Helper",
+      "badges": ["Fitness Guru", "Top Rated", "Early Bird"]
+    }
+  },
+  {
+    "id": 5,
+    "name": "Khadija Moussaoui",
+    "username": "khadija_moussaoui",
+    "email": "khadija.moussaoui@example.com",
+    "password": "hashed_password_005",
+    "avatar": "user5",
+    "neighborhood": "Bourgogne",
+    "city": "Casablanca",
+    "bio": "Accountant by day, amateur photographer on weekends. Offering finance help and photo walks around the city.",
+    "lat": 33.5848,
+    "lng": -7.6201,
+    "verified": false,
+    "joinedAt": "2023-06-01T11:00:00Z",
+    "languages": ["Arabic", "French"],
+    "offeredSkills": ["Accounting", "Tax Advice", "Photography", "Lightroom Editing"],
+    "wantedSkills": ["Yoga", "Cooking", "English"],
+    "favoriteCategories": ["Finance", "Photography", "Lifestyle"],
+    "stats": {
+      "helpGiven": 28,
+      "helpReceived": 12,
+      "rating": 4.6,
+      "reviewCount": 20
+    },
+    "helpSystem": {
+      "points": 310,
+      "level": "Active Helper",
+      "badges": ["Lens Master", "Finance Friend"]
+    }
+  },
+  {
+    "id": 6,
+    "name": "Omar Berrada",
+    "username": "omar_berrada",
+    "email": "omar.berrada@example.com",
+    "password": "hashed_password_006",
+    "avatar": "user6",
+    "neighborhood": "Gauthier",
+    "city": "Casablanca",
+    "bio": "Architect and urban planning nerd. I sketch buildings and love discussing city design over coffee.",
+    "lat": 33.5912,
+    "lng": -7.6275,
+    "verified": true,
+    "joinedAt": "2022-08-30T14:00:00Z",
+    "languages": ["Arabic", "French", "English"],
+    "offeredSkills": ["Architecture", "AutoCAD", "Urban Design", "Sketching"],
+    "wantedSkills": ["Italian", "Music Theory", "Cycling Repair"],
+    "favoriteCategories": ["Design", "Arts & Crafts", "Technology"],
+    "stats": {
+      "helpGiven": 39,
+      "helpReceived": 21,
+      "rating": 4.7,
+      "reviewCount": 30
+    },
+    "helpSystem": {
+      "points": 470,
+      "level": "Expert Helper",
+      "badges": ["Blueprint Pro", "Design Thinker"]
+    }
+  },
+  {
+    "id": 7,
+    "name": "Nadia Senhaji",
+    "username": "nadia_senhaji",
+    "email": "nadia.senhaji@example.com",
+    "password": "hashed_password_007",
+    "avatar": "user7",
+    "neighborhood": "Racine",
+    "city": "Casablanca",
+    "bio": "Freelance translator (FR/EN/AR) and book lover. I also teach calligraphy on weekends.",
+    "lat": 33.5868,
+    "lng": -7.6410,
+    "verified": true,
+    "joinedAt": "2023-03-08T10:00:00Z",
+    "languages": ["Arabic", "French", "English", "Darija"],
+    "offeredSkills": ["Translation", "Calligraphy", "Proofreading", "French Tutoring"],
+    "wantedSkills": ["Coding", "Pilates", "Pottery"],
+    "favoriteCategories": ["Languages", "Arts & Crafts", "Education"],
+    "stats": {
+      "helpGiven": 47,
+      "helpReceived": 25,
+      "rating": 5.0,
+      "reviewCount": 38
+    },
+    "helpSystem": {
+      "points": 590,
+      "level": "Expert Helper",
+      "badges": ["Word Wizard", "5-Star Helper", "Polyglot"]
+    }
+  },
+  {
+    "id": 8,
+    "name": "Tariq El Fassi",
+    "username": "tariq_elfassi",
+    "email": "tariq.elfassi@example.com",
+    "password": "hashed_password_008",
+    "avatar": "user8",
+    "neighborhood": "Sidi Belyout",
+    "city": "Casablanca",
+    "bio": "Electrician with 10 years of experience. I also teach basic home repairs to those who want to learn.",
+    "lat": 33.5980,
+    "lng": -7.6152,
+    "verified": true,
+    "joinedAt": "2022-05-17T08:30:00Z",
+    "languages": ["Arabic", "Darija", "French"],
+    "offeredSkills": ["Electrical Work", "Home Repair", "Plumbing Basics", "Safety Inspections"],
+    "wantedSkills": ["Computer Skills", "English", "Accounting"],
+    "favoriteCategories": ["Home & Garden", "DIY", "Education"],
+    "stats": {
+      "helpGiven": 71,
+      "helpReceived": 8,
+      "rating": 4.8,
+      "reviewCount": 55
+    },
+    "helpSystem": {
+      "points": 890,
+      "level": "Master Helper",
+      "badges": ["Handyman Hero", "Safety First", "Top Rated"]
+    }
+  },
+  {
+    "id": 9,
+    "name": "Samira Idrissi",
+    "username": "samira_idrissi",
+    "email": "samira.idrissi@example.com",
+    "password": "hashed_password_009",
+    "avatar": "user9",
+    "neighborhood": "Hay Mohammadi",
+    "city": "Casablanca",
+    "bio": "Social worker and community organizer. Passionate about connecting people and sharing traditional crafts.",
+    "lat": 33.5755,
+    "lng": -7.5982,
+    "verified": true,
+    "joinedAt": "2023-01-22T09:45:00Z",
+    "languages": ["Arabic", "Darija", "French"],
+    "offeredSkills": ["Community Organizing", "Embroidery", "Counseling", "Event Planning"],
+    "wantedSkills": ["English", "Photography", "Web Design"],
+    "favoriteCategories": ["Community", "Arts & Crafts", "Social Services"],
+    "stats": {
+      "helpGiven": 60,
+      "helpReceived": 35,
+      "rating": 4.9,
+      "reviewCount": 48
+    },
+    "helpSystem": {
+      "points": 740,
+      "level": "Expert Helper",
+      "badges": ["Community Pillar", "Heart of Gold", "Craft Master"]
+    }
+  },
+  {
+    "id": 10,
+    "name": "Mehdi Chaoui",
+    "username": "mehdi_chaoui",
+    "email": "mehdi.chaoui@example.com",
+    "password": "hashed_password_010",
+    "avatar": "user10",
+    "neighborhood": "Derb Sultan",
+    "city": "Casablanca",
+    "bio": "Music producer and guitar teacher. I give lessons from home and produce beats in my spare time.",
+    "lat": 33.5812,
+    "lng": -7.6088,
+    "verified": false,
+    "joinedAt": "2023-07-10T15:00:00Z",
+    "languages": ["Arabic", "French", "Darija"],
+    "offeredSkills": ["Guitar Lessons", "Music Production", "Beat Making", "Singing Coaching"],
+    "wantedSkills": ["Video Editing", "Marketing", "English"],
+    "favoriteCategories": ["Music", "Arts & Crafts", "Entertainment"],
+    "stats": {
+      "helpGiven": 22,
+      "helpReceived": 9,
+      "rating": 4.5,
+      "reviewCount": 17
+    },
+    "helpSystem": {
+      "points": 260,
+      "level": "Active Helper",
+      "badges": ["Music Maker", "Rhythm Master"]
+    }
+  },
+  {
+    "id": 11,
+    "name": "Layla Benjelloun",
+    "username": "layla_benjelloun",
+    "email": "layla.benjelloun@example.com",
+    "password": "hashed_password_011",
+    "avatar": "user12",
+    "neighborhood": "California",
+    "city": "Casablanca",
+    "bio": "Marketing consultant and yoga instructor. I love helping small businesses grow and keeping my mind zen.",
+    "lat": 33.5650,
+    "lng": -7.6540,
+    "verified": true,
+    "joinedAt": "2022-10-05T12:00:00Z",
+    "languages": ["Arabic", "French", "English"],
+    "offeredSkills": ["Marketing Strategy", "Social Media", "Yoga", "Brand Design"],
+    "wantedSkills": ["Cooking", "Coding", "Portuguese"],
+    "favoriteCategories": ["Business", "Health & Wellness", "Technology"],
+    "stats": {
+      "helpGiven": 48,
+      "helpReceived": 27,
+      "rating": 4.8,
+      "reviewCount": 39
+    },
+    "helpSystem": {
+      "points": 600,
+      "level": "Expert Helper",
+      "badges": ["Brand Builder", "Zen Master", "Top Rated"]
+    }
+  },
+  {
+    "id": 12,
+    "name": "Rachid Ouali",
+    "username": "rachid_ouali",
+    "email": "rachid.ouali@example.com",
+    "password": "hashed_password_012",
+    "avatar": "user13",
+    "neighborhood": "Ben M'Sick",
+    "city": "Casablanca",
+    "bio": "Car mechanic and weekend chef. I fix cars and cook amazing tagines. Swap skills anytime!",
+    "lat": 33.5700,
+    "lng": -7.5880,
+    "verified": true,
+    "joinedAt": "2022-12-01T07:30:00Z",
+    "languages": ["Arabic", "Darija", "French"],
+    "offeredSkills": ["Car Repair", "Cooking", "Motorcycle Maintenance", "Tagine Recipes"],
+    "wantedSkills": ["English", "Computer Skills", "Accounting"],
+    "favoriteCategories": ["Automotive", "Food & Cooking", "DIY"],
+    "stats": {
+      "helpGiven": 53,
+      "helpReceived": 19,
+      "rating": 4.7,
+      "reviewCount": 41
+    },
+    "helpSystem": {
+      "points": 660,
+      "level": "Expert Helper",
+      "badges": ["Grease Monkey", "Chef's Kiss", "Reliable Helper"]
+    }
+  },
+  {
+    "id": 13,
+    "name": "Imane Tlemcani",
+    "username": "imane_tlemcani",
+    "email": "imane.tlemcani@example.com",
+    "password": "hashed_password_013",
+    "avatar": "user14",
+    "neighborhood": "Oasis",
+    "city": "Casablanca",
+    "bio": "Pediatric nurse and first-aid trainer. I offer health education sessions and love gardening in my free time.",
+    "lat": 33.5620,
+    "lng": -7.6380,
+    "verified": true,
+    "joinedAt": "2023-05-15T08:00:00Z",
+    "languages": ["Arabic", "French", "English"],
+    "offeredSkills": ["First Aid Training", "Health Education", "Gardening", "Childcare"],
+    "wantedSkills": ["Photography", "Spanish", "Sewing"],
+    "favoriteCategories": ["Health & Wellness", "Education", "Home & Garden"],
+    "stats": {
+      "helpGiven": 36,
+      "helpReceived": 14,
+      "rating": 4.9,
+      "reviewCount": 29
+    },
+    "helpSystem": {
+      "points": 450,
+      "level": "Expert Helper",
+      "badges": ["Health Hero", "Green Thumb", "Lifesaver"]
+    }
+  },
+  {
+    "id": 14,
+    "name": "Karim Ziani",
+    "username": "karim_ziani",
+    "email": "karim.ziani@example.com",
+    "password": "hashed_password_014",
+    "avatar": "user15",
+    "neighborhood": "Hay El Farah",
+    "city": "Casablanca",
+    "bio": "Math teacher at a local lycée. Offering tutoring for bac students and interested in learning music.",
+    "lat": 33.5530,
+    "lng": -7.6200,
+    "verified": false,
+    "joinedAt": "2023-08-20T10:00:00Z",
+    "languages": ["Arabic", "French", "Darija"],
+    "offeredSkills": ["Math Tutoring", "Physics", "Exam Prep", "Algebra"],
+    "wantedSkills": ["Piano", "Cooking", "Coding"],
+    "favoriteCategories": ["Education", "Science", "Music"],
+    "stats": {
+      "helpGiven": 19,
+      "helpReceived": 7,
+      "rating": 4.6,
+      "reviewCount": 14
+    },
+    "helpSystem": {
+      "points": 230,
+      "level": "Rising Helper",
+      "badges": ["Math Whiz", "Study Buddy"]
+    }
+  },
+  {
+    "id": 15,
+    "name": "Zineb El Harti",
+    "username": "zineb_elharti",
+    "email": "zineb.elharti@example.com",
+    "password": "hashed_password_015",
+    "avatar": "user16",
+    "neighborhood": "Salmia",
+    "city": "Casablanca",
+    "bio": "Fashion designer and seamstress. I create traditional and modern pieces and teach sewing from my atelier.",
+    "lat": 33.5780,
+    "lng": -7.6750,
+    "verified": true,
+    "joinedAt": "2022-09-12T13:00:00Z",
+    "languages": ["Arabic", "French", "English"],
+    "offeredSkills": ["Sewing", "Fashion Design", "Pattern Making", "Alterations"],
+    "wantedSkills": ["Marketing", "Photography", "Coding"],
+    "favoriteCategories": ["Fashion", "Arts & Crafts", "Business"],
+    "stats": {
+      "helpGiven": 44,
+      "helpReceived": 20,
+      "rating": 4.8,
+      "reviewCount": 35
+    },
+    "helpSystem": {
+      "points": 550,
+      "level": "Expert Helper",
+      "badges": ["Thread Master", "Style Icon", "Top Rated"]
+    }
+  },
+  {
+    "id": 16,
+    "name": "Amine Bensouda",
+    "username": "amine_bensouda",
+    "email": "amine.bensouda@example.com",
+    "password": "hashed_password_016",
+    "avatar": "user17",
+    "neighborhood": "Belvedere",
+    "city": "Casablanca",
+    "bio": "Data analyst who loves cycling. I help with Excel, Power BI, and organize weekend group rides.",
+    "lat": 33.5940,
+    "lng": -7.6050,
+    "verified": true,
+    "joinedAt": "2023-02-28T09:00:00Z",
+    "languages": ["Arabic", "French", "English"],
+    "offeredSkills": ["Data Analysis", "Excel", "Power BI", "Cycling Coaching"],
+    "wantedSkills": ["Cooking", "Meditation", "Spanish"],
+    "favoriteCategories": ["Technology", "Sports & Fitness", "Education"],
+    "stats": {
+      "helpGiven": 33,
+      "helpReceived": 16,
+      "rating": 4.7,
+      "reviewCount": 26
+    },
+    "helpSystem": {
+      "points": 400,
+      "level": "Active Helper",
+      "badges": ["Data Guru", "Cycle King", "Analyst Badge"]
+    }
+  },
+  {
+    "id": 17,
+    "name": "Houda Sqalli",
+    "username": "houda_sqalli",
+    "email": "houda.sqalli@example.com",
+    "password": "hashed_password_017",
+    "avatar": "user18",
+    "neighborhood": "Palmier",
+    "city": "Casablanca",
+    "bio": "Chef and culinary arts instructor. Moroccan cuisine is my specialty, but I love fusion experiments!",
+    "lat": 33.5830,
+    "lng": -7.6480,
+    "verified": true,
+    "joinedAt": "2022-07-04T11:30:00Z",
+    "languages": ["Arabic", "French", "Darija"],
+    "offeredSkills": ["Moroccan Cooking", "Pastry Making", "Culinary Classes", "Meal Planning"],
+    "wantedSkills": ["English", "Yoga", "Painting"],
+    "favoriteCategories": ["Food & Cooking", "Health & Wellness", "Arts & Crafts"],
+    "stats": {
+      "helpGiven": 68,
+      "helpReceived": 29,
+      "rating": 4.9,
+      "reviewCount": 54
+    },
+    "helpSystem": {
+      "points": 840,
+      "level": "Master Helper",
+      "badges": ["Top Chef", "Community Star", "Flavor Expert"]
+    }
+  },
+  {
+    "id": 18,
+    "name": "Saad Kettani",
+    "username": "saad_kettani",
+    "email": "saad.kettani@example.com",
+    "password": "hashed_password_018",
+    "avatar": "user19",
+    "neighborhood": "Ain Sebaa",
+    "city": "Casablanca",
+    "bio": "Civil engineer and chess enthusiast. I help with structural questions and run a weekly chess club.",
+    "lat": 33.6060,
+    "lng": -7.5810,
+    "verified": true,
+    "joinedAt": "2022-03-19T08:00:00Z",
+    "languages": ["Arabic", "French", "English"],
+    "offeredSkills": ["Civil Engineering", "Chess Coaching", "Math Tutoring", "Project Management"],
+    "wantedSkills": ["Guitar", "Cooking", "Photography"],
+    "favoriteCategories": ["Technology", "Education", "Games"],
+    "stats": {
+      "helpGiven": 50,
+      "helpReceived": 11,
+      "rating": 4.8,
+      "reviewCount": 40
+    },
+    "helpSystem": {
+      "points": 620,
+      "level": "Expert Helper",
+      "badges": ["Chess King", "Engineer Badge", "Top Rated"]
+    }
+  },
+  {
+    "id": 19,
+    "name": "Dounia Alaoui",
+    "username": "dounia_alaoui",
+    "email": "dounia.alaoui@example.com",
+    "password": "hashed_password_019",
+    "avatar": "user20",
+    "neighborhood": "Hay Riad",
+    "city": "Casablanca",
+    "bio": "Interior designer and plant mom. I redesign small spaces on a budget and teach basic DIY home décor.",
+    "lat": 33.5690,
+    "lng": -7.6730,
+    "verified": false,
+    "joinedAt": "2023-09-01T10:00:00Z",
+    "languages": ["Arabic", "French", "English"],
+    "offeredSkills": ["Interior Design", "Home Décor", "Plant Care", "DIY Crafts"],
+    "wantedSkills": ["Cooking", "Yoga", "Coding"],
+    "favoriteCategories": ["Design", "Home & Garden", "Arts & Crafts"],
+    "stats": {
+      "helpGiven": 15,
+      "helpReceived": 6,
+      "rating": 4.5,
+      "reviewCount": 10
+    },
+    "helpSystem": {
+      "points": 175,
+      "level": "New Helper",
+      "badges": ["Design Spark", "Plant Lover"]
+    }
+  },
+  {
+    "id": 20,
+    "name": "Reda Hajjami",
+    "username": "reda_hajjami",
+    "email": "reda.hajjami@example.com",
+    "password": "hashed_password_020",
+    "avatar": "user21",
+    "neighborhood": "Sbata",
+    "city": "Casablanca",
+    "bio": "Barber and hairstylist for 8 years. I also do wedding grooming and teach basic barbering techniques.",
+    "lat": 33.5660,
+    "lng": -7.5970,
+    "verified": true,
+    "joinedAt": "2022-06-15T09:00:00Z",
+    "languages": ["Arabic", "Darija", "French"],
+    "offeredSkills": ["Haircutting", "Beard Styling", "Wedding Grooming", "Barbering Tips"],
+    "wantedSkills": ["English", "Photography", "Cooking"],
+    "favoriteCategories": ["Lifestyle", "Fashion", "Community"],
+    "stats": {
+      "helpGiven": 58,
+      "helpReceived": 13,
+      "rating": 4.8,
+      "reviewCount": 46
+    },
+    "helpSystem": {
+      "points": 710,
+      "level": "Expert Helper",
+      "badges": ["Sharp Blades", "Style King", "Community Star"]
+    }
+  },
+  {
+    "id": 21,
+    "name": "Yasmine Cherkaoui",
+    "username": "yasmine_cherkaoui",
+    "email": "yasmine.cherkaoui@example.com",
+    "password": "hashed_password_021",
+    "avatar": "user22",
+    "neighborhood": "Bernoussi",
+    "city": "Casablanca",
+    "bio": "Journalist and creative writing coach. I help people tell their stories and run a local writing circle.",
+    "lat": 33.6015,
+    "lng": -7.5620,
+    "verified": true,
+    "joinedAt": "2023-03-25T14:00:00Z",
+    "languages": ["Arabic", "French", "English"],
+    "offeredSkills": ["Writing Coaching", "Journalism", "Storytelling", "Editing"],
+    "wantedSkills": ["Coding", "Photography", "Cooking"],
+    "favoriteCategories": ["Writing", "Arts & Crafts", "Education"],
+    "stats": {
+      "helpGiven": 38,
+      "helpReceived": 17,
+      "rating": 4.9,
+      "reviewCount": 30
+    },
+    "helpSystem": {
+      "points": 470,
+      "level": "Expert Helper",
+      "badges": ["Wordsmith", "Story Circle", "Top Rated"]
+    }
+  },
+  {
+    "id": 22,
+    "name": "Khalid Bennani",
+    "username": "khalid_bennani",
+    "email": "khalid.bennani@example.com",
+    "password": "hashed_password_022",
+    "avatar": "user23",
+    "neighborhood": "Roches Noires",
+    "city": "Casablanca",
+    "bio": "Marine biologist and scuba diving instructor. Passionate about ocean conservation and water sports.",
+    "lat": 33.6050,
+    "lng": -7.5730,
+    "verified": true,
+    "joinedAt": "2022-04-10T10:00:00Z",
+    "languages": ["Arabic", "French", "English"],
+    "offeredSkills": ["Scuba Diving", "Marine Biology Lessons", "Snorkeling", "Ocean Conservation"],
+    "wantedSkills": ["Photography", "Spanish", "Coding"],
+    "favoriteCategories": ["Sports & Fitness", "Science", "Environment"],
+    "stats": {
+      "helpGiven": 45,
+      "helpReceived": 20,
+      "rating": 4.8,
+      "reviewCount": 36
+    },
+    "helpSystem": {
+      "points": 560,
+      "level": "Expert Helper",
+      "badges": ["Ocean Guardian", "Dive Master", "Eco Warrior"]
+    }
+  },
+  {
+    "id": 23,
+    "name": "Meriem Bakkali",
+    "username": "meriem_bakkali",
+    "email": "meriem.bakkali@example.com",
+    "password": "hashed_password_023",
+    "avatar": "user24",
+    "neighborhood": "Sidi Moumen",
+    "city": "Casablanca",
+    "bio": "Ceramics artist and art therapist. My workshop is open on weekends for anyone who wants to try pottery.",
+    "lat": 33.5820,
+    "lng": -7.5540,
+    "verified": false,
+    "joinedAt": "2023-07-30T11:00:00Z",
+    "languages": ["Arabic", "Darija", "French"],
+    "offeredSkills": ["Pottery", "Ceramics", "Art Therapy", "Painting"],
+    "wantedSkills": ["English", "Marketing", "Yoga"],
+    "favoriteCategories": ["Arts & Crafts", "Health & Wellness", "Community"],
+    "stats": {
+      "helpGiven": 18,
+      "helpReceived": 8,
+      "rating": 4.6,
+      "reviewCount": 13
+    },
+    "helpSystem": {
+      "points": 210,
+      "level": "Rising Helper",
+      "badges": ["Clay Artist", "Healing Hands"]
+    }
+  },
+  {
+    "id": 24,
+    "name": "Adil Rouchdi",
+    "username": "adil_rouchdi",
+    "email": "adil.rouchdi@example.com",
+    "password": "hashed_password_024",
+    "avatar": "user25",
+    "neighborhood": "Lissasfa",
+    "city": "Casablanca",
+    "bio": "Solar energy technician and sustainability advocate. I install panels and teach about renewable energy.",
+    "lat": 33.5490,
+    "lng": -7.6810,
+    "verified": true,
+    "joinedAt": "2022-10-22T08:30:00Z",
+    "languages": ["Arabic", "French", "English"],
+    "offeredSkills": ["Solar Installation", "Energy Consulting", "DIY Electrical", "Sustainability Workshops"],
+    "wantedSkills": ["Coding", "Marketing", "English"],
+    "favoriteCategories": ["Environment", "Technology", "DIY"],
+    "stats": {
+      "helpGiven": 40,
+      "helpReceived": 10,
+      "rating": 4.9,
+      "reviewCount": 32
+    },
+    "helpSystem": {
+      "points": 500,
+      "level": "Expert Helper",
+      "badges": ["Solar Star", "Green Hero", "Top Rated"]
+    }
+  },
+  {
+    "id": 25,
+    "name": "Sara El Ouazzani",
+    "username": "sara_elouazzani",
+    "email": "sara.elouazzani@example.com",
+    "password": "hashed_password_025",
+    "avatar": "user26",
+    "neighborhood": "Maarif Extension",
+    "city": "Casablanca",
+    "bio": "Pediatrician and mindful parenting coach. I offer health consultations and parenting workshops for new parents.",
+    "lat": 33.5750,
+    "lng": -7.6410,
+    "verified": true,
+    "joinedAt": "2023-04-05T09:00:00Z",
+    "languages": ["Arabic", "French", "English"],
+    "offeredSkills": ["Pediatric Health", "Parenting Workshops", "Nutrition for Kids", "First Aid"],
+    "wantedSkills": ["Yoga", "Photography", "Gardening"],
+    "favoriteCategories": ["Health & Wellness", "Education", "Community"],
+    "stats": {
+      "helpGiven": 55,
+      "helpReceived": 22,
+      "rating": 5.0,
+      "reviewCount": 44
+    },
+    "helpSystem": {
+      "points": 690,
+      "level": "Expert Helper",
+      "badges": ["Dr. Helper", "5-Star Helper", "Parent Pro", "Community Star"]
+    }
+  }
+]
