@@ -4,7 +4,7 @@ import About from './pages/About'
 import Home from './pages/Home' 
 import SignUp from './components/SignUp'
 import SignIn from './components/SignIn'
-import Support from './pages/support'
+import Support from './pages/Support'
 
 
 
