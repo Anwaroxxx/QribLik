@@ -21,8 +21,8 @@ function Support() {
                 </p>
             </div>
 
-            <div className="max-w-7xl mx-auto grid md:grid-cols-2  items-center gap-x-70">
-
+            <div className="max-w-7xl mx-auto grid md:grid-cols-2  items-center gap-x-80">
+            
                 {/* Left Side: Contact Info & Abstract Image */}
                 <div className="space-y-12 order-2 md:order-1">
                     <div className="space-y-8">
@@ -45,52 +45,78 @@ function Support() {
                                 </a>
                             </div>
                         </div>
-                    </div> 
-                    
+                    </div>
+
                     {/* Abstract 3D Image Placeholder */}
                     <div className="relative flex justify-center">
                         <div className="w-80 h-80 bg-gradient-to-br from-purple-600 to-blue-900 rounded-full mix-blend-screen filter blur-xl opacity-30 absolute animate-pulse"></div>
-                        
+
                     </div>
                 </div>
 
                 {/* Right Side: Contact Form (Glassmorphism) */}
-                <div className="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-8 md:p-12 order-1 md:order-2">
+                
 
-                    <form className="space-y-6">
-                        <div className="relative">
-                            <input
-                                type="text"
-                                placeholder="Full name"
-                                className="w-full bg-transparent border-b border-gray-700 py-3 focus:border-purple-500 outline-none transition-colors"
-                            />
+                    {/* Container dyal l-form m3a Background Image */}
+                    <div className="relative w-full max-w-xl overflow-hidden rounded-2xl border-2 border-gray-400 shadow-2xl">
+
+                        {/* L-image li f-l-khalfiya dyal l-form */}
+                        <div
+                            className="absolute inset-0 z-0 bg-cover bg-center"
+                            style={{
+                                backgroundImage: "url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964&auto=format&fit=crop')", // tqder tbdal had l-url b-tswira dyalk
+                            }}
+                        >
+                            {/* Overlay bach t-ghmeq tswira chwiya w t-ban l-ketba */}
+                            <div className="absolute inset-0 bg-black/40"></div>
                         </div>
-                        <div className="relative">
-                            <input
-                                type="email"
-                                placeholder="Email"
-                                className="w-full bg-transparent border-b border-gray-700 py-3 focus:border-purple-500 outline-none transition-colors"
-                            />
+
+                        {/* L-content dyal l-form (Transparent & Blur) */}
+                        <div className="relative z-10 bg-white/5 backdrop-blur-md p-8 md:p-12">
+                            <form className="space-y-6">
+                                <div className="relative">
+                                    <input
+                                        type="text"
+                                        placeholder="Full name"
+                                        className="w-full bg-transparent border-b border-gray-400 py-3 text-white focus:border-purple-500 outline-none transition-colors placeholder:text-gray-300"
+                                    />
+                                </div>
+
+                                <div className="relative">
+                                    <input
+                                        type="email"
+                                        placeholder="Email"
+                                        className="w-full bg-transparent border-b border-gray-400 py-3 text-white focus:border-purple-500 outline-none transition-colors placeholder:text-gray-300"
+                                    />
+                                </div>
+
+                                <div className="relative">
+                                    <input
+                                        type="text"
+                                        placeholder="Company"
+                                        className="w-full bg-transparent border-b border-gray-400 py-3 text-white focus:border-purple-500 outline-none transition-colors placeholder:text-gray-300"
+                                    />
+                                </div>
+
+                                <div className="relative">
+                                    <textarea
+                                        placeholder="Message or Inquiry"
+                                        rows="4"
+                                        className="w-full bg-transparent border-b border-gray-400 py-3 text-white focus:border-purple-500 outline-none transition-colors resize-none placeholder:text-gray-300"
+                                    ></textarea>
+                                </div>
+
+                                <button
+                                    type="submit"
+                                    className="w-full bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-white font-bold py-4 rounded-lg hover:opacity-90 transition-all mt-4"
+                                >
+                                    Submit
+                                </button>
+                            </form>
                         </div>
-                        <div className="relative">
-                            <input
-                                type="text"
-                                placeholder="Company"
-                                className="w-full bg-transparent border-b border-gray-700 py-3 focus:border-purple-500 outline-none transition-colors"
-                            />
-                        </div>
-                        <div className="relative">
-                            <textarea
-                                placeholder="Message or Inquiry"
-                                rows="4"
-                                className="w-full bg-transparent border-b border-gray-700 py-3 focus:border-purple-500 outline-none transition-colors resize-none"
-                            ></textarea>
-                        </div>
-                        <button className="w-full bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-black font-bold py-4 rounded-lg hover:bg-gray-200 transition-all mt-4">
-                            Submit
-                        </button>
-                    </form>
-                </div>
+                    </div>
+
+                
 
             </div>
         </div>

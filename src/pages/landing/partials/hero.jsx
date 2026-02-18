@@ -1,128 +1,3 @@
-// import { useState, useEffect } from "react";
-// import { Image } from "../../../constant/images/images-activité";
-// import { FaPlay } from "react-icons/fa";
-// import { Link } from "react-router-dom";
-
-// const images = [
-//     Image.activite3,
-//     Image.activite4,
-//     Image.activiteReading,
-//     Image.activiteTrip,
-// ];
-
-// const cardClasses = [
-//     "w-[72%] h-[85%] top-0 right-0 z-40 shadow-2xl",
-//     "w-[48%] h-[55%] bottom-0 left-0 z-30 shadow-xl",
-//     "w-[36%] h-[38%] top-[28%] left-[4%] z-20 shadow-lg",
-//     "w-[30%] h-[32%] bottom-[16%] right-[4%] z-10 shadow-md opacity-50",
-// ];
-
-// export default function HeroSection() {
-//     const [current, setCurrent] = useState(0);
-//     const [animating, setAnimating] = useState(false);
-
-//     useEffect(() => {
-//         const interval = setInterval(() => {
-//             setAnimating(true);
-//             setTimeout(() => {
-//                 setCurrent((prev) => (prev + 1) % images.length);
-//                 setAnimating(false);
-//             }, 400);
-//         }, 3000);
-//         return () => clearInterval(interval);
-//     }, []);
-
-//     return (
-//         <section className="relative min-h-screen flex items-center overflow-hidden font-sans bg-[linear-gradient(160deg,_#ffffff_0%,_#f7f0ff_50%,_#fff5f0_100%)]">
-
-//             <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_80%_60%_at_20%_50%,rgba(139,63,222,0.08)_0%,transparent_70%)]" />
-
-//             <div className="relative z-10 w-full max-w-6xl mx-auto px-12 py-20 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-
-//                 <div>
-//                     <div className="inline-flex items-center gap-2 bg-white border border-[#e8ddd4] rounded-full px-4 py-1.5 mb-7 w-fit">
-//                         <span className="w-2 h-2 rounded-full bg-[#8B3FDE] shrink-0" />
-//                         <span className="text-xs font-medium tracking-wide text-[#8B3FDE]">
-//                             Connecting 5,000+ Neighbors
-//                         </span>
-//                     </div>
-
-//                     <h1 className="text-5xl xl:text-[68px] font-bold leading-[1.08] tracking-tight text-[#1a1410] mb-6">
-//                         Help is{" "}
-//                         <span className="bg-gradient-to-r from-[#8B3FDE] via-[#C837AB] to-[#FF6B35] bg-clip-text text-transparent">
-//                             closer
-//                         </span>
-//                         <br />
-//                         than you think
-//                     </h1>
-
-//                     <p className="text-base leading-7 text-[#6b5f56] max-w-sm mb-10">
-//                         Join QribLik to connect with people just blocks away. Whether
-//                         you're offering your skills or need a helping hand, we're building a
-//                         stronger, kinder neighborhood together.
-//                     </p>
-//                     <div className="flex items-center gap-6">
-
-//                         <Link
-//                             to="/get-started"
-//                             className="inline-flex items-center gap-2 text-white text-sm font-semibold px-8 py-3.5 rounded-full cursor-pointer border-0 bg-gradient-to-r from-[#8B3FDE] via-[#C837AB] to-[#FF6B35] shadow-[0_4px_20px_rgba(139,63,222,0.4)] hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(139,63,222,0.55)] transition-all duration-200"
-//                         >
-//                             Get Started →
-//                         </Link>
-
-
-//                         <Link
-//                             to="/how-it-works"
-//                             className="group inline-flex items-center gap-2 text-[#1a1410] text-sm font-medium bg-transparent border-0 cursor-pointer"
-//                         >
-//                             <span className="w-9 h-9 rounded-full border-2 border-[#d4c9c0] group-hover:border-[#8B3FDE] flex items-center justify-center text-[10px] transition-colors duration-200">
-//                                 <FaPlay className="" />
-//                             </span>
-//                             <span>How it works</span>
-//                         </Link>
-
-//                     </div>
-//                 </div>
-
-//                 <div className="relative h-[480px]">
-
-//                     <div className="relative w-full h-full">
-//                         {cardClasses.map((cls, slot) => {
-//                             const imgIndex = (current + slot) % images.length;
-//                             return (
-//                                 <div
-//                                     key={slot}
-//                                     className={`absolute rounded-2xl overflow-hidden transition-all duration-500 ${cls}`}
-//                                 >
-//                                     <img
-//                                         src={images[imgIndex]}
-//                                         alt={`Community ${imgIndex + 1}`}
-//                                         className={`w-full h-full object-cover block transition-opacity duration-[400ms] ${animating ? "opacity-0" : "opacity-100"
-//                                             }`}
-//                                     />
-//                                 </div>
-//                             );
-//                         })}
-//                     </div>
-
-//                     <div className="absolute -bottom-7 left-1/2 -translate-x-1/2 flex items-center gap-2">
-//                         {images.map((_, i) => (
-//                             <button
-//                                 key={i}
-//                                 onClick={() => setCurrent(i)}
-//                                 className={`h-1.5 rounded-full border-0 cursor-pointer p-0 transition-all duration-300 ${i === current
-//                                     ? "w-5 bg-gradient-to-r from-[#8B3FDE] via-[#C837AB] to-[#FF6B35]"
-//                                     : "w-1.5 bg-[#d4c9c0]"
-//                                     }`}
-//                             />
-//                         ))}
-//                     </div>
-
-//                 </div>
-//             </div>
-//         </section>
-//     );
-// }
 import { useState, useEffect, useRef } from "react";
 import { Image } from "../../../constant/images/images-activité";
 
@@ -137,20 +12,16 @@ const labels = ["Neighbors", "Skills", "Learning", "Trips"];
 const emojis = ["🏘️", "🤝", "📚", "✈️"];
 
 const fanConfig = [
-    // active / front card — center, upright, big
     { x: "18%", y: "-4%", rot: 0, scale: 1, z: 50, opacity: 1 },
-    // right card — peeking out right, tilted
     { x: "52%", y: "8%", rot: 12, scale: 0.82, z: 30, opacity: 0.85 },
-    // left card — peeking left, counter-tilt
     { x: "-14%", y: "12%", rot: -14, scale: 0.78, z: 20, opacity: 0.7 },
-    // back card — slightly behind center
     { x: "20%", y: "18%", rot: 6, scale: 0.68, z: 10, opacity: 0.45 },
 ];
 
 export default function HeroSection() {
     const [current, setCurrent] = useState(0);
     const [prev, setPrev] = useState(null);
-    const [dir, setDir] = useState(1); // 1 = forward, -1 = backward
+    const [dir, setDir] = useState(1);
     const [transitioning, setTransitioning] = useState(false);
 
     const advance = (next) => {
@@ -172,13 +43,13 @@ export default function HeroSection() {
         return () => clearInterval(id);
     }, [current, transitioning]);
 
-    // Which image sits at which fan slot
+
     const getSlotImage = (slot) => images[(current + slot) % images.length];
     const getSlotLabel = (slot) => labels[(current + slot) % images.length];
     const getSlotEmoji = (slot) => emojis[(current + slot) % images.length];
 
     return (
-        <section className="relative min-h-screen flex items-center  overflow-hidden font-sans bg-[linear-gradient(160deg,_#ffffff_0%,_#f7f0ff_60%,_#fff5f0_100%)]">
+        <section className="relative min-h-screen flex items-center overflow-visible font-sans bg-[linear-gradient(160deg,_#ffffff_0%,_#f7f0ff_60%,_#fff5f0_100%)]">
 
             <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_70%_50%_at_15%_50%,rgba(139,63,222,0.07)_0%,transparent_70%)]" />
             <div className="absolute top-0 right-0 w-[55%] h-full pointer-events-none bg-[radial-gradient(ellipse_80%_80%_at_80%_40%,rgba(200,55,171,0.06)_0%,transparent_70%)]" />
@@ -198,7 +69,6 @@ export default function HeroSection() {
 
                 <div className="flex flex-col">
 
-                    {/* Live badge */}
                     <div className="inline-flex items-center gap-2 bg-white border border-[#ede6ff] rounded-full px-4 py-1.5 mb-8 w-fit shadow-sm shadow-[#8B3FDE]/10">
                         <span className="relative flex w-2 h-2">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#8B3FDE] opacity-60" />
@@ -209,14 +79,14 @@ export default function HeroSection() {
                         </span>
                     </div>
 
-                    {/* Heading */}
+
                     <h1 className="text-5xl xl:text-[66px] font-black leading-[1.06] tracking-tight text-[#1a1410] mb-6">
                         Help is{" "}
                         <span className="relative inline-block">
                             <span className="bg-gradient-to-r from-[#8B3FDE] via-[#C837AB] to-[#FF6B35] bg-clip-text text-transparent">
                                 closer
                             </span>
-                            {/* Underline squiggle */}
+
                             <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" fill="none">
                                 <path
                                     d="M2 8 Q50 2 100 8 Q150 14 198 8"
@@ -244,24 +114,15 @@ export default function HeroSection() {
                         stronger, kinder neighborhood together.
                     </p>
 
-                    {/* CTAs */}
                     <div className="flex items-center gap-5 mb-12">
-                        <button className="group relative inline-flex items-center gap-2 text-white text-sm font-bold px-8 py-4 rounded-2xl cursor-pointer border-0 bg-gradient-to-r from-[#8B3FDE] via-[#C837AB] to-[#FF6B35] shadow-[0_6px_24px_rgba(139,63,222,0.45)] hover:shadow-[0_10px_36px_rgba(139,63,222,0.6)] hover:-translate-y-1 transition-all duration-300 overflow-hidden">
-                            {/* Shine sweep */}
-                            <span className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent)]" />
+                        <button className="group relative inline-flex items-center gap-2 text-white text-sm font-bold px-8 py-4 rounded-4xl cursor-pointer border-0 bg-gradient-to-r from-[#8B3FDE] via-[#C837AB] to-[#FF6B35] shadow-[0_6px_24px_rgba(139,63,222,0.45)] hover:shadow-[0_10px_36px_rgba(139,63,222,0.6)] hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+
+                            <span className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform rounded-2xl duration-700 bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent)]" />
                             Get Started
                             <span className="group-hover:translate-x-1 transition-transform duration-200">→</span>
                         </button>
-
-                        <button className="group inline-flex items-center gap-3 text-[#1a1410] text-sm font-semibold bg-transparent border-0 cursor-pointer">
-                            <span className="relative w-10 h-10 rounded-2xl bg-white border border-[#ede6ff] flex items-center justify-center shadow-sm group-hover:bg-[#8B3FDE] group-hover:border-[#8B3FDE] transition-all duration-300">
-                                <span className="text-[10px] text-[#8B3FDE] group-hover:text-white transition-colors duration-300">▶</span>
-                            </span>
-                            How it works
-                        </button>
                     </div>
 
-                    {/* Stats row */}
                     <div className="flex items-center gap-6">
                         {[
                             { val: "5K+", label: "Neighbors" },
