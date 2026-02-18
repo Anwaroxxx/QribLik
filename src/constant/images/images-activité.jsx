@@ -6,7 +6,7 @@ import activite7 from "../../assets/images/activité/activité-7.jpg";
 import activite8 from "../../assets/images/activité/activité-8.jpg";
 import activiteReading from "../../assets/images/activité/activite-reading.jpg";
 import activiteTrip from "../../assets/images/activité/activite-trip.jpg";
-import logo from "../../assets/main-logo.webp"
+import logo from "../../assets/images/main-logo.webp"
 
 
 export const Image = {

@@ -12,7 +12,6 @@ import user7 from "../../assets/images/users/user-7.jpg";
 import user8 from "../../assets/images/users/user-8.jpg";
 import user9 from "../../assets/images/users/user-9.jpg";
 import user10 from "../../assets/images/users/user-10.jpg";
-import user11 from "../../assets/images/users/user-11.jpg";
 import user12 from "../../assets/images/users/user-12.jpg";
 import user13 from "../../assets/images/users/user-13.jpg";
 import user14 from "../../assets/images/users/user-14.jpg";
@@ -46,7 +45,7 @@ export const usersImages = {
  user8,
   user9,
   user10,
-  user11,
+ 
   user12,
   user13,
   user14,
