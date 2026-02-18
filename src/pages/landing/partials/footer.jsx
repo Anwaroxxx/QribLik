@@ -1,49 +1,13 @@
 import React from "react";
 import { FaTwitter, FaLinkedinIn, FaFacebookF, FaInstagram } from "react-icons/fa";
 import { logo } from "../../../constant/images/images";
-import { logo } from "../../../constant/images/images-activité/main-logo.webp"
 
 
 export default function Footer() {
     return (
         <div className="bg-gray-900 text-white font-sans">
 
-            <div className="px-6 md:px-20 py-16 grid md:grid-cols-2 gap-10 items-center">
-                <div>
-
-                    <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full border border-purple-300 bg-purple-900/20 mb-3">
-                        <span className="w-1.5 h-1.5 rounded-full bg-purple-600 animate-pulse"></span>
-                        <span className="text-xs font-bold uppercase tracking-wide text-white/90">
-                            Stay Connected
-                        </span>
-                    </div>
-
-                    <h2 className="text-3xl md:text-4xl font-extrabold mb-3 leading-tight">
-                        Join the <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500">movement</span>
-                    </h2>
-
-                    <p className="text-white/60 text-base md:text-lg leading-relaxed font-light mb-6">
-                        Get weekly updates on community events, new features, and local success stories.
-                    </p>
-
-                    <div className="flex flex-col sm:flex-row gap-3">
-                        <input
-                            type="email"
-                            placeholder="Enter your email"
-                            className="flex-1 px-5 py-3 rounded-xl border border-white/20 bg-white/5 text-white placeholder-white/50 text-sm outline-none transition-all duration-200 focus:border-purple-400 focus:bg-white/8"
-                        />
-                        <button className="px-7 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 font-bold text-sm shadow-lg hover:-translate-y-1 hover:shadow-2xl transition-all duration-200">
-                            Subscribe
-                        </button>
-                    </div>
-                </div>
-
-                <div className="hidden md:flex justify-center">
-
-                </div>
-            </div>
-
-
+ 
             <div className="px-6 md:px-20 py-16 grid md:grid-cols-4 gap-12 border-t border-white/10">
 
                 <div>

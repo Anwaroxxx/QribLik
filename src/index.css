@@ -1,7 +1,15 @@
 @import 'tailwindcss';
+
 :root {
     --color-violet: #8B3FDE;
     --color-magenta: #C837AB;
     --color-orange: #FF6B35;
     --gradient-qriblik: linear-gradient(135deg, #8B3FDE 0%, #C837AB 50%, #FF6B35 100%);
+}
+
+* {
+    font-family: "DM Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+
 }
