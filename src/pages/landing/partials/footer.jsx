@@ -1,6 +1,7 @@
 import React from "react";
 import { FaTwitter, FaLinkedinIn, FaFacebookF, FaInstagram } from "react-icons/fa";
 import { logo } from "../../../constant/images/images";
+import { logo } from "../../../constant/images/images-activité/main-logo.webp"
 
 
 export default function Footer() {
@@ -48,7 +49,7 @@ export default function Footer() {
                 <div>
                     <div>
                         <img src={logo} className="h-30" alt="" />
-                        
+
                     </div>
 
                     <p className="text-white/50 text-base leading-relaxed font-light mb-6 max-w-xs">
