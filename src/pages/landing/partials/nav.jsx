@@ -61,7 +61,7 @@ const Nav = () => {
                         ))}
                     </ul>
 
-                    <div className="flex items-center gap-3">
+                    <div className="flex p-4 items-center gap-3">
                         <Link
                             to="/SignUp"
                             className="hidden sm:inline-block px-5 py-2 text-sm font-semibold rounded-full 
@@ -74,7 +74,7 @@ const Nav = () => {
 
                         <Link
                             to="/SignIn"
-                            className="px-5 py-2 text-sm font-semibold text-white rounded-full 
+                            className="px-5 py-2 p-4 text-sm font-semibold text-white rounded-full 
                                 bg-gradient-to-r from-[#8B3FDE] via-[#C837AB] to-[#FF6B35] 
                                 shadow-md hover:shadow-xl hover:shadow-[#C837AB]/40 
                                 hover:-translate-y-0.5 hover:scale-105 

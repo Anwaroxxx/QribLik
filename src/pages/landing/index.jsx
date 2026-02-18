@@ -9,11 +9,11 @@ import Cards from './partials/cards';
 const Landing = () => {
     return (
         <div>
-            <Nav></Nav>
-            <HeroSection></HeroSection>
+            <Nav/>
+            <HeroSection/>
              <WhoWeAre/>
              <Cards/>
-            <Footer></Footer>
+            <Footer/>
         </div>
     );
 };
