@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Support from './pages/Support'
 import SignUp from './components/SignUp'
 import SignIn from './components/SignIn'
+import Errors from './pages/errors/errors'
 
 
 

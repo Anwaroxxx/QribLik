@@ -1,11 +1,13 @@
-import { CiUser } from "react-icons/ci";
+import { FaRegUser } from "react-icons/fa";
 import { MdOutlineMail } from "react-icons/md";
 import { TbLockPassword } from "react-icons/tb";
 import { IoEnterOutline } from "react-icons/io5";
-import { Link , useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Sidecarou from "./sidecarou";
 
 import { useState } from "react";
 import zxcvbn from "zxcvbn";
+
 
 function SignUp() {
     const navigate = useNavigate();
@@ -71,35 +73,37 @@ function SignUp() {
 
     return (
         <div className="w-screen min-h-screen flex md:grid md:grid-cols-2">
-            <div className="hidden md:block bg-purple-800 w-full h-full"></div>
+            <div className="hidden md:block bg-purple-800 w-full h-full">
+                <Sidecarou/>
+            </div>
             <div className="w-full min-h-screen flex flex-col items-center justify-center gap-10 px-4 md:px-0">
 
 
 
-                <div>
-                    <h1 className="text-2xl md:text-3xl font-bold">Sign up for free </h1>
+                <div className="flex flex-col gap-3 items-center">
+                    <h1 className="  p-5 text-4xl md:text-6xl font-bold bg-gradient-to-r from-[#8B3FDE] via-[#C837AB] to-[#FF6B35] bg-clip-text text-transparent">Sign up for free</h1> 
                     <p>let's sign up quickly to get started </p>
                 </div>
                 <div className="flex flex-col gap-5">
-                    <div className="flex flex-col  ">
-                        <label htmlFor="">UserName</label>
+                    <div className="flex flex-col gap-2  ">
+                        <label htmlFor="">UserName :</label>
                         <div className="relative">
-                            <CiUser className="absolute text-2xl top-2 left-2 " />
-                            <input value={name} onChange={inpname} type="text" placeholder="Your Name" className="border pl-8 w-full md:w-90  h-10 rounded-full " />
+                            <FaRegUser className="absolute text-2xl top-2 left-2 text-gray-400 " />
+                            <input value={name} onChange={inpname} type="text" placeholder="Your Name" className=" pl-8 w-full md:w-90 border-2 border-gray-400 outline-0  h-10 rounded-full " />
                         </div>
                     </div>
-                    <div className="flex flex-col ">
-                        <label htmlFor="">Email Address</label>
+                    <div className="flex flex-col gap-2  ">
+                        <label htmlFor="">Email Address :</label>
                         <div className="relative">
-                            <MdOutlineMail className="absolute text-2xl top-2 left-2 " />
-                            <input value={email} onChange={inpemail} type="email" placeholder="Your Email" className="border pl-8 w-full md:w-90 h-10 rounded-full" />
+                            <MdOutlineMail className="text-2xl absolute  top-2 left-2 text-gray-400 " />
+                            <input value={email} onChange={inpemail} type="email" placeholder="Your Email" className="border-2 border-gray-400 outline-0 pl-8 w-full md:w-90 h-10 rounded-full" />
                         </div>
                     </div>
-                    <div className="flex flex-col">
-                        <label htmlFor="">Password</label>
+                    <div className="flex flex-col gap-2">
+                        <label htmlFor="">Password :</label>
                         <div className="relative flex flex-col gap-5">
-                            <TbLockPassword className="absolute text-2xl top-2 left-2 " />
-                            <input value={password} onChange={inppassword} type="password" placeholder="Password" className="border pl-8 w-full md:w-90 h-10 rounded-full" />
+                            <TbLockPassword className="text-2xl absolute  top-2 left-2 text-gray-400 " />
+                            <input value={password} onChange={inppassword} type="password" placeholder="Password" className="border-2 border-gray-400 outline-0 pl-8 w-full md:w-90 h-10 rounded-full" />
                             <div className="w-full md:w-90 h-2 bg-gray-200 rounded-full overflow-hidden">
                                 <div
                                     className="h-full rounded-full transition-all duration-300"
@@ -113,8 +117,8 @@ function SignUp() {
                         </div>
                     </div>
 
-                    <div onClick={sign} className="flex justify-center items-center gap-2 w-full md:w-90 h-13 bg-pink-600 text-white rounded-full ">
-                        <button >Sign Up </button>
+                    <div onClick={sign} className="  flex justify-center items-center gap-2 w-full md:w-[360px] h-[52px]  text-white rounded-full cursor-pointer " style={{ background: "var(--gradient-qriblik)" }}  >
+                        <button  >Sign Up </button>
                         <IoEnterOutline />
                     </div>
 
@@ -122,13 +126,15 @@ function SignUp() {
                 <div>
                     <div className="flex items-center gap-2 ">
                         <p>Already Have Account?</p>
-                        <Link className="text-blue-800">Sign in</Link>
+                        <Link to={"/SignIn"} className="text-blue-800">Sign in</Link>
                     </div>
                 </div>
 
             </div>
         </div>
     );
+
+
 }
 
 export default SignUp;
