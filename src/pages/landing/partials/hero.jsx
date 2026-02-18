@@ -137,20 +137,16 @@ const labels = ["Neighbors", "Skills", "Learning", "Trips"];
 const emojis = ["🏘️", "🤝", "📚", "✈️"];
 
 const fanConfig = [
-    // active / front card — center, upright, big
     { x: "18%", y: "-4%", rot: 0, scale: 1, z: 50, opacity: 1 },
-    // right card — peeking out right, tilted
     { x: "52%", y: "8%", rot: 12, scale: 0.82, z: 30, opacity: 0.85 },
-    // left card — peeking left, counter-tilt
     { x: "-14%", y: "12%", rot: -14, scale: 0.78, z: 20, opacity: 0.7 },
-    // back card — slightly behind center
     { x: "20%", y: "18%", rot: 6, scale: 0.68, z: 10, opacity: 0.45 },
 ];
 
 export default function HeroSection() {
     const [current, setCurrent] = useState(0);
     const [prev, setPrev] = useState(null);
-    const [dir, setDir] = useState(1); // 1 = forward, -1 = backward
+    const [dir, setDir] = useState(1);
     const [transitioning, setTransitioning] = useState(false);
 
     const advance = (next) => {
@@ -172,7 +168,7 @@ export default function HeroSection() {
         return () => clearInterval(id);
     }, [current, transitioning]);
 
-    // Which image sits at which fan slot
+
     const getSlotImage = (slot) => images[(current + slot) % images.length];
     const getSlotLabel = (slot) => labels[(current + slot) % images.length];
     const getSlotEmoji = (slot) => emojis[(current + slot) % images.length];
@@ -198,7 +194,6 @@ export default function HeroSection() {
 
                 <div className="flex flex-col">
 
-                    {/* Live badge */}
                     <div className="inline-flex items-center gap-2 bg-white border border-[#ede6ff] rounded-full px-4 py-1.5 mb-8 w-fit shadow-sm shadow-[#8B3FDE]/10">
                         <span className="relative flex w-2 h-2">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#8B3FDE] opacity-60" />
@@ -209,14 +204,14 @@ export default function HeroSection() {
                         </span>
                     </div>
 
-                    {/* Heading */}
+
                     <h1 className="text-5xl xl:text-[66px] font-black leading-[1.06] tracking-tight text-[#1a1410] mb-6">
                         Help is{" "}
                         <span className="relative inline-block">
                             <span className="bg-gradient-to-r from-[#8B3FDE] via-[#C837AB] to-[#FF6B35] bg-clip-text text-transparent">
                                 closer
                             </span>
-                            {/* Underline squiggle */}
+
                             <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" fill="none">
                                 <path
                                     d="M2 8 Q50 2 100 8 Q150 14 198 8"
@@ -244,24 +239,15 @@ export default function HeroSection() {
                         stronger, kinder neighborhood together.
                     </p>
 
-                    {/* CTAs */}
                     <div className="flex items-center gap-5 mb-12">
-                        <button className="group relative inline-flex items-center gap-2 text-white text-sm font-bold px-8 py-4 rounded-2xl cursor-pointer border-0 bg-gradient-to-r from-[#8B3FDE] via-[#C837AB] to-[#FF6B35] shadow-[0_6px_24px_rgba(139,63,222,0.45)] hover:shadow-[0_10px_36px_rgba(139,63,222,0.6)] hover:-translate-y-1 transition-all duration-300 overflow-hidden">
-                            {/* Shine sweep */}
-                            <span className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent)]" />
+                        <button className="group relative inline-flex items-center gap-2 text-white text-sm font-bold px-8 py-4 rounded-4xl cursor-pointer border-0 bg-gradient-to-r from-[#8B3FDE] via-[#C837AB] to-[#FF6B35] shadow-[0_6px_24px_rgba(139,63,222,0.45)] hover:shadow-[0_10px_36px_rgba(139,63,222,0.6)] hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+
+                            <span className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform rounded-2xl duration-700 bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent)]" />
                             Get Started
                             <span className="group-hover:translate-x-1 transition-transform duration-200">→</span>
                         </button>
-
-                        <button className="group inline-flex items-center gap-3 text-[#1a1410] text-sm font-semibold bg-transparent border-0 cursor-pointer">
-                            <span className="relative w-10 h-10 rounded-2xl bg-white border border-[#ede6ff] flex items-center justify-center shadow-sm group-hover:bg-[#8B3FDE] group-hover:border-[#8B3FDE] transition-all duration-300">
-                                <span className="text-[10px] text-[#8B3FDE] group-hover:text-white transition-colors duration-300">▶</span>
-                            </span>
-                            How it works
-                        </button>
                     </div>
 
-                    {/* Stats row */}
                     <div className="flex items-center gap-6">
                         {[
                             { val: "5K+", label: "Neighbors" },
