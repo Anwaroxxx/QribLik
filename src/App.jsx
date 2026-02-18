@@ -1,13 +1,12 @@
 import { Routes , Route } from 'react-router-dom'
 import './index.css'
-import About from './pages/About'
-
-import Home from './pages/Home'
-import Support from './pages/Support'
+import About from './pages/About' 
+import Home from './pages/Home' 
 import SignUp from './components/SignUp'
 import SignIn from './components/SignIn'
 import Landing from './pages/landing'
 import Errors from './pages/errors/errors'
+import Support from './pages/support'
 
 
 
