@@ -7,6 +7,7 @@ import Support from './pages/Support'
 import SignUp from './components/SignUp'
 import SignIn from './components/SignIn'
 import Landing from './pages/landing'
+import Errors from './pages/errors/errors'
 
 
 
@@ -14,15 +15,14 @@ function App() {
 
   return (
     <>
-    <Landing></Landing>
-      {/* <Routes>
+      <Routes>
         <Route path='*' element={<Errors/>} />
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About/>} />
         <Route path="/Support" element={<Support/>}/>
         <Route path="/Signup" element={<SignUp />}/>
         <Route path="/SignIn" element={<SignIn />} />
-      </Routes> */}
+      </Routes>
     </>
   )
 }
