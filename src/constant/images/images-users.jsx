@@ -1,7 +1,3 @@
-
-
-
-
 import user1 from "../../assets/images/users/user-1.jpg";
 import user2 from "../../assets/images/users/user-2.jpg";
 import user3 from "../../assets/images/users/user-3.jpg";
@@ -12,7 +8,6 @@ import user7 from "../../assets/images/users/user-7.jpg";
 import user8 from "../../assets/images/users/user-8.jpg";
 import user9 from "../../assets/images/users/user-9.jpg";
 import user10 from "../../assets/images/users/user-10.jpg";
-import user11 from "../../assets/images/users/user-11.jpg";
 import user12 from "../../assets/images/users/user-12.jpg";
 import user13 from "../../assets/images/users/user-13.jpg";
 import user14 from "../../assets/images/users/user-14.jpg";
@@ -38,37 +33,10 @@ import user33 from "../../assets/images/users/user-33.jpg";
 import user34 from "../../assets/images/users/user-34.jpg";
 import user35 from "../../assets/images/users/user-35.jpg";
 
-
-
-
 export const usersImages = {
- user1,user2,user3,user4,user5,user6,user7,
- user8,
-  user9,
-  user10,
-  user11,
-  user12,
-  user13,
-  user14,
-  user15,
-  user16,
-  user17,
-  user18,
-  user19,
-  user20,
-  user21,
-  user22,
-  user23,
-  user24,
-  user25,
-  user26,
-  user27,
-  user28,
-  user29,
-  user30,
-  user31,
-  user32,
-  user33,
-  user34,
-  user35,
+  user1, user2, user3, user4, user5, user6, user7,
+  user8, user9, user10, user12, user13, user14, user15,
+  user16, user17, user18, user19, user20, user21, user22,
+  user23, user24, user25, user26, user27, user28, user29,
+  user30, user31, user32, user33, user34, user35,
 };
