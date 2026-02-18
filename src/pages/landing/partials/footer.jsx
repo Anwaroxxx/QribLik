@@ -1,6 +1,6 @@
 import React from "react";
 import { FaTwitter, FaLinkedinIn, FaFacebookF, FaInstagram } from "react-icons/fa";
-import { logo } from "../../../constant/images/images";
+import { Image } from "../../../constant/images/images-activité";
 
 
 export default function Footer() {
@@ -12,7 +12,7 @@ export default function Footer() {
 
                 <div>
                     <div>
-                        <img src={logo} className="h-30" alt="" />
+                        <img src={Image.logo} className="h-30" alt="" />
 
                     </div>
 
