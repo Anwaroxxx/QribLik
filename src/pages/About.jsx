@@ -3,7 +3,7 @@ import { GiCardExchange } from 'react-icons/gi';
 import { IoMdSwap } from 'react-icons/io';
 import { MdOutlineEventNote, MdOutlineSportsHandball } from 'react-icons/md';
 import { TbReportSearch } from 'react-icons/tb';
-
+import ImageAbout from '../assets/aboutimg.png'
 const About = () => {
     const features = [
         { icon : <IoMdSwap/> , title : "Trading Hub" , description : "what you don't need or find your next treasure. Whether it's tech, books, or furniture, our Trading Hub lets you swap items directly with people in your neighborhood. It's sustainable, local, and built on trust."} , 
@@ -15,8 +15,8 @@ const About = () => {
     return (
         <div className='px-10 py-16 space-y-16 bg-linear-to-br from-purple-50 via-pink-50 to-orange-50'>
             {/* Hero Image */}
-            <div className="w-full flex justify-center">
-                <img className='w-full max-w-5xl rounded-3xl shadow-2xl' src="https://i.pinimg.com/1200x/21/a5/19/21a519be42e3e0c78875b24c8655cc3c.jpg" alt="Community" />
+            <div className="w-full  flex justify-center">
+                <img className='w-full max-w-5xl rounded-3xl shadow-2xl' src={ImageAbout} alt="Community" />
             </div>
 
             {/* Our Story Section */}
@@ -78,6 +78,7 @@ const About = () => {
                     </div>
                 </div>
             </div>
+            
         </div>
     );
 };

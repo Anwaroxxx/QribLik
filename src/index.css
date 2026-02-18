@@ -1,13 +1,4 @@
 @import 'tailwindcss';
-<<<<<<< HEAD
-=======
-
-*{
-    margin: 0;
-    box-sizing: border-box;
-}
-
->>>>>>> b61eb10c0bb9a291a3c5bcfc14e0e18d3964f52d
 :root {
     --color-violet: #8B3FDE;
     --color-magenta: #C837AB;

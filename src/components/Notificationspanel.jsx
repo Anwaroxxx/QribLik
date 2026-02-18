@@ -82,15 +82,13 @@ export default function NotificationsPanel({ onClose }) {
   const unreadCount = notifications.filter(n => !n.read).length
 
   return (
-    /* Backdrop */
     <div className="fixed inset-0 z-50" onClick={onClose}>
-      {/* Panel — stop click from bubbling to backdrop */}
+      
       <div
         className="absolute right-4 top-16 w-96 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden"
         style={{ boxShadow: '0 20px 60px rgba(139,63,222,0.12)' }}
         onClick={e => e.stopPropagation()}
       >
-        {/* Header */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
           <div className="flex items-center gap-2">
             <h2 className="font-bold text-gray-900 text-base">Notifications</h2>
@@ -111,7 +109,6 @@ export default function NotificationsPanel({ onClose }) {
           </button>
         </div>
 
-        {/* Notification list */}
         <div className="overflow-y-auto max-h-[480px]">
           {notifications.map((notif) => {
             const { icon: Icon, color, bg } = iconMap[notif.type]
@@ -122,7 +119,6 @@ export default function NotificationsPanel({ onClose }) {
                   !notif.read ? 'bg-purple-50/40' : ''
                 }`}
               >
-                {/* Avatar + type icon */}
                 <div className="relative shrink-0">
                   <img
                     src={notif.avatar}
@@ -137,7 +133,6 @@ export default function NotificationsPanel({ onClose }) {
                   </div>
                 </div>
 
-                {/* Text */}
                 <div className="flex-1 min-w-0">
                   <p className="text-sm text-gray-700 leading-snug">
                     <span className="font-semibold text-gray-900">{notif.user}</span>
@@ -155,7 +150,6 @@ export default function NotificationsPanel({ onClose }) {
                   </div>
                 </div>
 
-                {/* Unread dot */}
                 {!notif.read && (
                   <div className="shrink-0 mt-1.5 w-2 h-2 rounded-full" style={{ background: '#8B3FDE' }} />
                 )}
@@ -163,8 +157,6 @@ export default function NotificationsPanel({ onClose }) {
             )
           })}
         </div>
-
-        {/* Footer */}
         <div className="px-5 py-3 text-center">
           <button
             className="text-sm font-semibold transition-colors"
