@@ -1,6 +1,6 @@
 import React from 'react';
 import ImageAbout from '../assets/aboutimg.png'    
-import TrueFocus from '../animations/animation';
+import TrueFocus from '../animations/TrueFocus';
 import { FaStar } from 'react-icons/fa6';
 import { usersImages } from '../constant/images/images-users';
 
@@ -8,6 +8,7 @@ import { usersImages } from '../constant/images/images-users';
 
 
 const About = () => {
+    
     const features = [
         { id : 1 , image : usersImages.user2 , title : "Samir ba" , description : "The Trading Hub is a game-changer! I had an old PC gathering dust and managed to swap it for a 27-inch monitor with a neighbor. The whole process was smooth, secure, and local.", rating: 5 } , 
         { id : 2 , image : usersImages.user16 , title : "Hamouda abl" , description : "I recently moved to a new city and felt quite isolated. Thanks to the Events section, I joined a cinema meetup and met some incredible people who are now my closest friends.", rating: 4 } , 
@@ -43,7 +44,9 @@ const About = () => {
             </div>
 
             {/* Features Section */}
+            
             <div className="max-w-7xl mx-auto">
+                
                 <h2 className='text-4xl font-bold text-center mb-12 '>
                     <TrueFocus sentence="What our community says" borderColor="#C837AB"/>
                 </h2>
