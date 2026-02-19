@@ -1,6 +1,10 @@
 [
   {
+<<<<<<< HEAD
     "id": 501,
+=======
+    "id": 17,
+>>>>>>> df77147661d6348b97bbdc9261933163f570e176
     "authorId": 1,
     "category": "Events",
     "title": "International Film Festival",
@@ -11,8 +15,8 @@
     "createdAt": "2026-02-18T19:00:00Z"
   },
   {
-    "id": 502,
-    "authorId": 5,
+    "id": 18,
+    "authorId": 2,
     "category": "Events",
     "title": "Business Networking Dinner",
     "description": "Formal business dinner to connect entrepreneurs and startup founders.",
@@ -22,8 +26,8 @@
     "createdAt": "2026-02-19T20:30:00Z"
   },
   {
-    "id": 503,
-    "authorId": 2,
+    "id": 19,
+    "authorId": 3,
     "category": "Events",
     "title": "Traditional Moroccan Wedding",
     "description": "You are invited to celebrate a traditional Moroccan wedding ceremony this Saturday.",
@@ -33,7 +37,7 @@
     "createdAt": "2026-02-20T18:00:00Z"
   },
     {
-    "id": 504,
+    "id": 20,
     "authorId": 4,
     "category": "Events",
     "title": "Entrepreneurs Dinner Meetup",
@@ -44,7 +48,7 @@
     "createdAt": "2026-02-21T19:30:00Z"
   },
   {
-    "id": 505,
+    "id": 21,
     "authorId": 6,
     "category": "Events",
     "title": "Corporate Networking Dinner",

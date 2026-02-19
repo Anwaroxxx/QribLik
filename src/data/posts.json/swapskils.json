@@ -1,7 +1,7 @@
 [
   {
-    "id": 201,
-    "authorId": 1,
+    "id": 22,
+    "authorId": 29,
     "category": "Swap Skills",
     "title": "Web Design for English Practice",
     "description": "I design websites in exchange for English conversation practice.",
@@ -11,8 +11,8 @@
     "createdAt": "2026-02-01T10:00:00Z"
   },
   {
-    "id": 202,
-    "authorId": 2,
+    "id": 23,
+    "authorId": 40,
     "category": "Swap Skills",
     "title": "Lessons preparation ",
     "description": "I teach guitar, looking to learn graphic design.",
@@ -22,19 +22,19 @@
     "createdAt": "2026-02-02T16:00:00Z"
   },
   {
-    "id": 203,
-    "authorId": 3,
+    "id": 24,
+    "authorId": 41,
     "category": "Swap Skills",
     "title": "Math Tutoring",
     "description": "I help with math in exchange for coding lessons.",
-    "image": " studie3",
+    "image": "studie3",
     "likes": 9,
     "comments": 3,
     "createdAt": "2026-02-03T11:00:00Z"
   },
   {
-    "id": 204,
-    "authorId": 4,
+    "id": 25,
+    "authorId": 13,
     "category": "Swap Skills",
     "title": "coding Exchange",
     "description": " I want to get some information ",
@@ -45,8 +45,8 @@
   },
  
   {
-    "id": 401,
-    "authorId": 2,
+    "id": 26,
+    "authorId": 11,
     "category": "Swap Skills",
     "title": "Quran Tajweed Lessons",
     "description": "I can teach Quran Tajweed and correct recitation in exchange for English speaking practice.",
@@ -56,8 +56,8 @@
     "createdAt": "2026-02-18T18:00:00Z"
   },
   {
-    "id": 402,
-    "authorId": 4,
+    "id": 27,
+    "authorId": 5,
     "category": "Swap Skills",
     "title": "Quran Memorization Support",
     "description": "Helping with Quran memorization (Hifz) in exchange for help learning web development.",
@@ -67,8 +67,8 @@
     "createdAt": "2026-02-17T20:30:00Z"
   },
   {
-    "id": 403,
-    "authorId": 1,
+    "id": 28,
+    "authorId": 39,
     "category": "Swap Skills",
     "title": "Prayer & Islamic Basics",
     "description": "Teaching basics of Salat and Islamic knowledge for French conversation practice.",
