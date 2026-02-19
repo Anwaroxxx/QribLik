@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Image } from "../../../constant/images/images-activité";
+import { h1 } from "framer-motion/client";
 
 const images = [
     Image.activite3,
@@ -243,9 +244,8 @@ export default function HeroSection() {
                         </div>
                         <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse ml-1" />
                     </div>
-
                 </div>
             </div>
         </section>
-    );
+  );
 }
