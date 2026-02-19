@@ -8,7 +8,7 @@ export default function Footer() {
     const handleItemClick = () => setModalOpen(true);
 
     return (
-        <div className="bg-gray-900 text-white">
+        <div className="bg-gray-900 text-white  font-sans">
 
             <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
 

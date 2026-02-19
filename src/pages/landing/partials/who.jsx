@@ -223,6 +223,7 @@ export default function WhoWeAre() {
                 Join your neighborhood →
               </motion.button>
             </Link>
+          
           </div>
 
           {/* Right: stats */}

@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
+import { useContext } from "react";
+import { ModalContext } from "../../../contexts/Context-moda";
+import QribLikModal from "./modal";
 const cards = [
   {
     id: 1,
@@ -88,6 +90,7 @@ function Orb({ style, delay = 0 }) {
 
 function Card({ card, index }) {
   const [hovered, setHovered] = useState(false);
+  const {setOpen} = useContext (ModalContext)
 
   return (
     <motion.div
@@ -158,7 +161,8 @@ function Card({ card, index }) {
       {/* CTA */}
       <motion.button
         whileTap={{ scale: 0.96 }}
-        className="mt-1 w-full py-3 rounded-2xl text-white text-sm font-bold tracking-wide"
+        onClick={() => setOpen(true)}
+        className="mt-1 w-full py-3 rounded-2xl cursor-pointer text-white text-sm font-bold tracking-wide"
         style={{ background: `linear-gradient(135deg, ${card.accent}, ${card.accent}aa)` }}
         animate={{ boxShadow: hovered ? `0 8px 24px ${card.accent}55` : `0 2px 8px ${card.accent}22` }}
         transition={{ duration: 0.3 }}
@@ -285,16 +289,18 @@ export default function Cards() {
           {/* Cards grid: 3 + 2 */}
 
           <div className="flex justify-center items-center">
-            <div className="grid px-6 py-1 grid-cols-1 padding  w-screen sm:grid-cols-2 gap-6 max-w-2xl mx-auto lg:max-w-none lg:grid-cols-2 lg:mx-0 lg:w-2/3 lg:ml-auto lg:mr-auto">
-              {cards.map((card, i) => (
-                <Card key={card.id} card={card} index={i + 3} />
-              ))}
-            </div>
+               <div className="grid grid-cols-1 padding  w-screen sm:grid-cols-2 lg:place-items-center gap-6 max-w-2xl mx-auto lg:max-w-none lg:grid-cols-3 lg:mx-0 lg:w-2/3 lg:ml-auto lg:mr-auto">
+            {cards.map((card, i) => (
+              <Card key={card.id} card={card} index={i + 3} />
+            ))}
           </div>
+          </div>
+          
         </section>
 
         {/* Footer accent */}
         <div className="h-1 w-full" style={{ background: "var(--gradient-qriblik)" }} />
+        <QribLikModal></QribLikModal>
       </div>
     </>
   );
