@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Image } from "../../../constant/images/images-activité";
+import { h1 } from "framer-motion/client";
 
 const images = [
     Image.activite3,
@@ -49,7 +50,7 @@ export default function HeroSection() {
     const getSlotEmoji = (slot) => emojis[(current + slot) % images.length];
 
     return (
-        <section className="relative min-h-screen flex items-center  font-sans bg-[linear-gradient(160deg,_#ffffff_0%,_#f7f0ff_60%,_#fff5f0_100%)]">
+        <section className="relative min-h-screen flex items-center overflow-visible font-sans bg-[linear-gradient(160deg,_#ffffff_0%,_#f7f0ff_60%,_#fff5f0_100%)]">
 
             <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_70%_50%_at_15%_50%,rgba(139,63,222,0.07)_0%,transparent_70%)]" />
             <div className="absolute top-0 right-0 w-[55%] h-full pointer-events-none bg-[radial-gradient(ellipse_80%_80%_at_80%_40%,rgba(200,55,171,0.06)_0%,transparent_70%)]" />
@@ -243,9 +244,8 @@ export default function HeroSection() {
                         </div>
                         <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse ml-1" />
                     </div>
-
                 </div>
             </div>
         </section>
-    );
+  );
 }

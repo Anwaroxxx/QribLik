@@ -101,7 +101,8 @@ function Card({ card, index }) {
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
       whileHover={{ y: -12, scale: 1.03 }}
-      className={`relative rounded-3xl border padding ${card.border} bg-gradient-to-br ${card.bg} p-7 flex flex-col gap-5 cursor-pointer overflow-hidden shadow-sm`}
+      // & hnaaaaaaaa
+      className={`relative  rounded-3xl border padding ${card.border} bg-gradient-to-br ${card.bg} p-7 flex flex-col gap-5 cursor-pointer overflow-hidden  shadow-sm`}
       style={{ transition: "box-shadow 0.3s" }}
     >
       {/* Glow on hover */}
@@ -187,74 +188,74 @@ export default function Cards() {
         :root {
           --gradient-qriblik: linear-gradient(135deg, #8B3FDE 0%, #C837AB 50%, #FF6B35 100%);
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background: #f8f6ff; font-family: 'DM Sans', sans-serif; }
+        
+        
       `}</style>
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-purple-50/40 to-orange-50/30 overflow-x-hidden">
-        
+
         {/* ── HEADER ── */}
         <header className="relative overflow-hidden ">
-         
+
           <Orb style={{ width: 500, height: 500, background: "#8B3FDE", top: -180, left: -120 }} delay={0} />
           <Orb style={{ width: 400, height: 400, background: "#C837AB", top: -100, right: -80 }} delay={1.2} />
           <Orb style={{ width: 300, height: 300, background: "#FF6B35", bottom: -60, left: "40%" }} delay={0.6} />
 
-         
 
-          <div className="relative flex-col flex gap-10 z-10 bg-[#FAF7FE]  padding justify-between items-center  text-center" >
-            
-           
+
+          <div className="relative flex-col flex gap-10 z-10 bg-[#FAF7FE]  padding py-16 px-6 justify-between items-center  text-center" >
+
+
             {/* Main title */}
-             <div className="flex justify-center flex-col items-center">
-                 <motion.h1
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-              className="text-6xl md:text-5xl lg:text-6xl font-black leading-none text-gray-900 mb-4"
-              style={{ fontFamily: "'Syne', sans-serif" }}
-            >
-              What We Offer
-            </motion.h1>
+            <div className="flex justify-center flex-col items-center">
+              <motion.h1
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+                className="text-6xl md:text-5xl lg:text-6xl font-black leading-none text-gray-900 mb-4"
+                style={{ fontFamily: "'Syne', sans-serif" }}
+              >
+                What We Offer
+              </motion.h1>
 
-            
 
-            {/* Animated word */}
-            <div className="h-14 flex items-center justify-center mb-4">
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={wordIndex}
-                  initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                  exit={{ opacity: 0, y: -20, filter: "blur(8px)" }}
-                  transition={{ duration: 0.45, ease: "easeOut" }}
-                  className="text-4xl md:text-5xl font-black"
-                  style={{
-                    fontFamily: "'Syne', sans-serif",
-                    background: "var(--gradient-qriblik)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                  }}
+
+              {/* Animated word */}
+              <div className="h-14 flex items-center justify-center mb-4">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={wordIndex}
+                    initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                    exit={{ opacity: 0, y: -20, filter: "blur(8px)" }}
+                    transition={{ duration: 0.45, ease: "easeOut" }}
+                    className="text-4xl md:text-5xl font-black"
+                    style={{
+                      fontFamily: "'Syne', sans-serif",
+                      background: "var(--gradient-qriblik)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                    }}
+                  >
+                    {words[wordIndex]}
+                  </motion.span>
+                </AnimatePresence>
+              </div>
+
+              <div className="flex items-center justify-center w-full">
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.55 }}
+                  className="text-gray-500 text-lg max-w-xl mx-auto text-center mb-10 leading-relaxed"
                 >
-                  {words[wordIndex]}
-                </motion.span>
-              </AnimatePresence>
+                  Five ways to engage with the people around you — events, sports, trading, lost & found, and skill swaps.
+                </motion.p>
+              </div>
             </div>
 
-             <div className="flex items-center justify-center w-full"> 
-                 <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.55 }}
-              className="text-gray-500 text-lg max-w-xl mx-auto text-center mb-10 leading-relaxed"
-            >
-              Five ways to engage with the people around you — events, sports, trading, lost & found, and skill swaps.
-            </motion.p>
-             </div>
-             </div>
 
 
-           
 
             {/* Floating pills */}
             {["🎉 Events", "⚽ Sports", "📦 Trading", "🔍 Lost & Found", "🤝 Swap Skills"].map((p, i) => (
@@ -278,17 +279,17 @@ export default function Cards() {
         </header>
 
         {/* ── CARDS SECTION ── */}
-        <section className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-6 " >
-          
+        <section className="grid pb-20 grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-2 " >
+
 
           {/* Cards grid: 3 + 2 */}
-         
+
           <div className="flex justify-center items-center">
-               <div className="grid grid-cols-1 padding padding w-screen sm:grid-cols-2 gap-6 max-w-2xl mx-auto lg:max-w-none lg:grid-cols-2 lg:mx-0 lg:w-2/3 lg:ml-auto lg:mr-auto">
-            {cards.map((card, i) => (
-              <Card key={card.id} card={card} index={i + 3} />
-            ))}
-          </div>
+            <div className="grid px-6 py-1 grid-cols-1 padding  w-screen sm:grid-cols-2 gap-6 max-w-2xl mx-auto lg:max-w-none lg:grid-cols-2 lg:mx-0 lg:w-2/3 lg:ml-auto lg:mr-auto">
+              {cards.map((card, i) => (
+                <Card key={card.id} card={card} index={i + 3} />
+              ))}
+            </div>
           </div>
         </section>
 
