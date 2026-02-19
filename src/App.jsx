@@ -1,12 +1,13 @@
 import { Routes, Route } from "react-router-dom";
 import "./index.css"; 
-import Landing from "./pages/landing";
+import Landing from "./pages/landing/index";
 import Home from "./pages/Home";
 import About from "./pages/About"; 
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 import Errors from "./pages/errors/errors";
-import Support from "./pages/support";
+import Support from "./pages/Support";
+import MapPage from "./pages/maps/index";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path="/home" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/support" element={<Support/>} />
+      <Route path="/map" element={<MapPage />} />
       <Route path="*" element={<Errors />} />
     </Routes>
   );
