@@ -196,30 +196,7 @@ export default function WhoWeAre() {
               </motion.div>
             ))}
 
-            {/* CTA pill */}
-            <motion.button
-              initial={{ opacity: 0, y: 16 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.65, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
-              style={{
-                marginTop: 40,
-                padding: "14px 32px",
-                background: gradient,
-                border: "none",
-                borderRadius: 100,
-                color: "white",
-                fontFamily: "'DM Sans', sans-serif",
-                fontSize: 15,
-                fontWeight: 600,
-                letterSpacing: "0.02em",
-                cursor: "pointer",
-                boxShadow: "0 12px 40px rgba(200, 55, 171, 0.28)",
-              }}
-            >
-              Join your neighborhood →
-            </motion.button>
+          
           </div>
 
           {/* Right: stats */}
