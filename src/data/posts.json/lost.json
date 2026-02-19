@@ -1,0 +1,68 @@
+[
+  {
+    "id": 11,
+    "authorId": 3,
+    "category": "Lost and Found",
+    "title": "Lost My Cat",
+    "description": "I lost my small grey cat near the park. If anyone sees it, please contact me.",
+    "image": "chat-3.jpg",
+    "likes": 6,
+    "comments": 2,
+    "createdAt": "2026-02-19T09:10:00Z"
+  },
+  {
+    "id": 12,
+    "authorId": 2,
+    "category": "Lost and Found",
+    "title": "Passport Found",
+    "description": "Found a passport near the train station. Contact me with your name to verify.",
+    "image": "passport-1.jpg",
+    "likes": 15,
+    "comments": 5,
+    "createdAt": "2026-02-18T13:20:00Z"
+  },
+  {
+    "id": 13,
+    "authorId": 4,
+    "category": "Lost and Found",
+    "title": "Keys Found",
+    "description": "Set of keys found in the city center. Tell me the keychain detail to claim it.",
+    "image": "clé3-2.jpg",
+    "likes": 8,
+    "comments": 1,
+    "createdAt": "2026-02-17T17:45:00Z"
+  },
+  {
+    "id": 14,
+    "authorId": 5,
+    "category": "Lost and Found",
+    "title": "Lost Dog",
+    "description": "Friendly brown dog missing since yesterday evening. Please help us find him.",
+    "image": "dogs-3.jpg",
+    "likes": 21,
+    "comments": 7,
+    "createdAt": "2026-02-16T20:15:00Z"
+  },
+  {
+    "id": 15,
+    "authorId": 1,
+    "category": "Lost and Found",
+    "title": "School Backpack Found",
+    "description": "Found a school backpack near the bus stop. Contact me if it's yours.",
+    "image": "cartable-2.jpg",
+    "likes": 10,
+    "comments": 3,
+    "createdAt": "2026-02-15T08:40:00Z"
+  },
+  {
+    "id": 16,
+    "authorId": 2,
+    "category": "Lost and Found",
+    "title": "National ID Card Found",
+    "description": "Found a national ID card in the downtown area. Please reach out to recover it.",
+    "image": "carte-2.jpg",
+    "likes": 19,
+    "comments": 4,
+    "createdAt": "2026-02-14T11:55:00Z"
+  }
+]
