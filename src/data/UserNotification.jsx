@@ -9,7 +9,15 @@
         preview: "Hussein liked your post",
         time: new Date().toISOString()
     },
-    { id: 2, type: "comment", read: true, fromUserId: 3, toUserId: 1, action: "commented", target: "post", preview: "Youssef commented on your post", time: new Date().toISOString() },
+    {
+        id: 2, type: "comment",
+        read: true, fromUserId: 3,
+        toUserId: 1,
+        action: "commented",
+        target: "post",
+        preview: "Youssef commented on your post",
+        time: new Date().toISOString()
+    },
     { id: 3, type: "post", read: false, fromUserId: 4, toUserId: 2, action: "shared", target: "post", preview: "Karim shared a new post", time: new Date().toISOString() },
     { id: 4, type: "swap", read: false, fromUserId: 5, toUserId: 6, action: "requested", target: "skill_swap", preview: "Mehdi requested a skill swap", time: new Date().toISOString() },
     { id: 5, type: "event", read: true, fromUserId: 6, toUserId: 3, action: "invited", target: "event", preview: "Omar invited you to an event", time: new Date().toISOString() },
@@ -49,3 +57,24 @@
 
 
 // and her 16 data of woman 
+
+[
+    { id: 35, type: "like", read: false, fromUserId: 2, toUserId: 1, action: "liked", target: "post", preview: "Nadia liked your post", time: new Date().toISOString() },
+    { id: 36, type: "comment", read: true, fromUserId: 3, toUserId: 4, action: "commented", target: "post", preview: "Sara commented on your post", time: new Date().toISOString() },
+    { id: 37, type: "event", read: false, fromUserId: 4, toUserId: 2, action: "invited", target: "event", preview: "Layla invited you to an event", time: new Date().toISOString() },
+    { id: 38, type: "swap", read: true, fromUserId: 5, toUserId: 6, action: "accepted", target: "skill_swap", preview: "Khadija accepted your swap request", time: new Date().toISOString() },
+    { id: 39, type: "lostfound", read: false, fromUserId: 6, toUserId: 3, action: "responded", target: "lost_item", preview: "Samira responded to your post", time: new Date().toISOString() },
+
+    { id: 40, type: "post", read: true, fromUserId: 7, toUserId: 5, action: "shared", target: "post", preview: "Yasmine shared a new post", time: new Date().toISOString() },
+    { id: 41, type: "like", read: false, fromUserId: 8, toUserId: 7, action: "liked", target: "post", preview: "Imane liked your post", time: new Date().toISOString() },
+    { id: 42, type: "comment", read: true, fromUserId: 9, toUserId: 8, action: "commented", target: "post", preview: "Zineb commented on your post", time: new Date().toISOString() },
+    { id: 43, type: "event", read: false, fromUserId: 10, toUserId: 9, action: "invited", target: "event", preview: "Houda invited you to an event", time: new Date().toISOString() },
+    { id: 44, type: "swap", read: false, fromUserId: 11, toUserId: 10, action: "requested", target: "skill_swap", preview: "Amal requested a skill swap", time: new Date().toISOString() },
+
+    { id: 45, type: "lostfound", read: true, fromUserId: 12, toUserId: 11, action: "responded", target: "lost_item", preview: "Rania responded to your post", time: new Date().toISOString() },
+    { id: 46, type: "post", read: false, fromUserId: 13, toUserId: 12, action: "shared", target: "post", preview: "Salma shared a new post", time: new Date().toISOString() },
+    { id: 47, type: "like", read: true, fromUserId: 14, toUserId: 13, action: "liked", target: "post", preview: "Meryem liked your post", time: new Date().toISOString() },
+    { id: 48, type: "comment", read: false, fromUserId: 15, toUserId: 14, action: "commented", target: "post", preview: "Asma commented on your post", time: new Date().toISOString() },
+    { id: 49, type: "event", read: true, fromUserId: 16, toUserId: 15, action: "invited", target: "event", preview: "Hajar invited you to an event", time: new Date().toISOString() },
+    { id: 50, type: "like", read: false, fromUserId: 17, toUserId: 16, action: "liked", target: "post", preview: "Malak liked your post", time: new Date().toISOString() }
+]
