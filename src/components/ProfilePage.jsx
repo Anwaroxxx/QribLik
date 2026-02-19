@@ -172,7 +172,7 @@ export default function ProfilePage({ onBack }) {
   const displayUser = editing ? draft : user
 
   return (
-    <div className="flex-1 bg-gray-50 min-h-screen">
+    <div className="flex-1 bg-gray-50 min-h-screen   overflow-y-auto ">
 
       {/* TOP BAR */}
       <div className="sticky top-0 z-40 bg-white border-b border-gray-100 px-6 py-3 flex items-center justify-between">

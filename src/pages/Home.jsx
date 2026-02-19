@@ -1,20 +1,20 @@
-import { useState } from 'react';
+import { useState } from "react";
 import Sidebar from "../components/sidebar";
-import MainFeed from '../components/Feed';
+import MainFeed from "../components/Feed";
 
 function Home() {
-  const [activeView, setActiveView] = useState('feed');
+  const [activeView, setActiveView] = useState("feed");
   const [activeCategory, setActiveCategory] = useState(null);
 
   return (
     <div className="flex h-screen overflow-hidden bg-gray-50">
-      <Sidebar 
+      <Sidebar
         activeView={activeView}
         onViewChange={setActiveView}
         activeCategory={activeCategory}
         onCategoryChange={setActiveCategory}
       />
-      <MainFeed 
+      <MainFeed
         activeView={activeView}
         onViewChange={setActiveView}
         activeCategory={activeCategory}
