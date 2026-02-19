@@ -1,6 +1,5 @@
 import { Routes, Route } from "react-router-dom";
 import "./index.css";
-
 import Landing from "./pages/landing";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -8,7 +7,6 @@ import Support from "./pages/Support";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 import Errors from "./pages/errors/errors";
-
 function App() {
   return (
     <Routes>
@@ -21,6 +19,7 @@ function App() {
       <Route path="*" element={<Errors />} />
     </Routes>
   );
+  
 }
 
 export default App;
