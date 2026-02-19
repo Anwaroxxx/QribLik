@@ -13,10 +13,26 @@
     "lng": -7.6328,
     "verified": true,
     "joinedAt": "2023-02-14T10:30:00Z",
-    "languages": ["Spanish", "French", "English"],
-    "offeredSkills": ["Graphic Design", "Spanish Tutoring", "Illustration"],
-    "wantedSkills": ["Arabic", "Cooking", "Photography"],
-    "favoriteCategories": ["Arts & Crafts", "Languages", "Technology"],
+    "languages": [
+      "Spanish",
+      "French",
+      "English"
+    ],
+    "offeredSkills": [
+      "Graphic Design",
+      "Spanish Tutoring",
+      "Illustration"
+    ],
+    "wantedSkills": [
+      "Arabic",
+      "Cooking",
+      "Photography"
+    ],
+    "favoriteCategories": [
+      "Arts & Crafts",
+      "Languages",
+      "Technology"
+    ],
     "stats": {
       "helpGiven": 42,
       "helpReceived": 18,
@@ -26,7 +42,11 @@
     "helpSystem": {
       "points": 520,
       "level": "Expert Helper",
-      "badges": ["Top Rated", "Language Pro", "Community Star"]
+      "badges": [
+        "Top Rated",
+        "Language Pro",
+        "Community Star"
+      ]
     }
   },
   {
@@ -43,10 +63,27 @@
     "lng": -7.6614,
     "verified": true,
     "joinedAt": "2023-01-05T08:00:00Z",
-    "languages": ["Arabic", "French", "English"],
-    "offeredSkills": ["Web Development", "JavaScript", "Python", "Code Review"],
-    "wantedSkills": ["Spanish", "Music Production", "3D Modeling"],
-    "favoriteCategories": ["Technology", "Education", "Music"],
+    "languages": [
+      "Arabic",
+      "French",
+      "English"
+    ],
+    "offeredSkills": [
+      "Web Development",
+      "JavaScript",
+      "Python",
+      "Code Review"
+    ],
+    "wantedSkills": [
+      "Spanish",
+      "Music Production",
+      "3D Modeling"
+    ],
+    "favoriteCategories": [
+      "Technology",
+      "Education",
+      "Music"
+    ],
     "stats": {
       "helpGiven": 87,
       "helpReceived": 22,
@@ -56,7 +93,11 @@
     "helpSystem": {
       "points": 1040,
       "level": "Master Helper",
-      "badges": ["Code Wizard", "Top Rated", "Mentor"]
+      "badges": [
+        "Code Wizard",
+        "Top Rated",
+        "Mentor"
+      ]
     }
   },
   {
@@ -73,10 +114,27 @@
     "lng": -7.6672,
     "verified": true,
     "joinedAt": "2023-04-20T09:15:00Z",
-    "languages": ["Arabic", "French", "Darija"],
-    "offeredSkills": ["Teaching", "Baking", "Childcare", "Knitting"],
-    "wantedSkills": ["English", "Computer Skills", "Yoga"],
-    "favoriteCategories": ["Education", "Food & Cooking", "Arts & Crafts"],
+    "languages": [
+      "Arabic",
+      "French",
+      "Darija"
+    ],
+    "offeredSkills": [
+      "Teaching",
+      "Baking",
+      "Childcare",
+      "Knitting"
+    ],
+    "wantedSkills": [
+      "English",
+      "Computer Skills",
+      "Yoga"
+    ],
+    "favoriteCategories": [
+      "Education",
+      "Food & Cooking",
+      "Arts & Crafts"
+    ],
     "stats": {
       "helpGiven": 55,
       "helpReceived": 30,
@@ -86,7 +144,11 @@
     "helpSystem": {
       "points": 680,
       "level": "Expert Helper",
-      "badges": ["Community Star", "Teacher's Heart", "Baker's Badge"]
+      "badges": [
+        "Community Star",
+        "Teacher's Heart",
+        "Baker's Badge"
+      ]
     }
   },
   {
@@ -103,10 +165,26 @@
     "lng": -7.6901,
     "verified": true,
     "joinedAt": "2022-11-11T07:00:00Z",
-    "languages": ["Arabic", "French", "English"],
-    "offeredSkills": ["Personal Training", "Nutrition Planning", "Running Coaching"],
-    "wantedSkills": ["Photography", "Web Design", "Guitar"],
-    "favoriteCategories": ["Sports & Fitness", "Health & Wellness", "Outdoors"],
+    "languages": [
+      "Arabic",
+      "French",
+      "English"
+    ],
+    "offeredSkills": [
+      "Personal Training",
+      "Nutrition Planning",
+      "Running Coaching"
+    ],
+    "wantedSkills": [
+      "Photography",
+      "Web Design",
+      "Guitar"
+    ],
+    "favoriteCategories": [
+      "Sports & Fitness",
+      "Health & Wellness",
+      "Outdoors"
+    ],
     "stats": {
       "helpGiven": 63,
       "helpReceived": 15,
@@ -116,7 +194,11 @@
     "helpSystem": {
       "points": 780,
       "level": "Expert Helper",
-      "badges": ["Fitness Guru", "Top Rated", "Early Bird"]
+      "badges": [
+        "Fitness Guru",
+        "Top Rated",
+        "Early Bird"
+      ]
     }
   },
   {
@@ -133,10 +215,26 @@
     "lng": -7.6201,
     "verified": false,
     "joinedAt": "2023-06-01T11:00:00Z",
-    "languages": ["Arabic", "French"],
-    "offeredSkills": ["Accounting", "Tax Advice", "Photography", "Lightroom Editing"],
-    "wantedSkills": ["Yoga", "Cooking", "English"],
-    "favoriteCategories": ["Finance", "Photography", "Lifestyle"],
+    "languages": [
+      "Arabic",
+      "French"
+    ],
+    "offeredSkills": [
+      "Accounting",
+      "Tax Advice",
+      "Photography",
+      "Lightroom Editing"
+    ],
+    "wantedSkills": [
+      "Yoga",
+      "Cooking",
+      "English"
+    ],
+    "favoriteCategories": [
+      "Finance",
+      "Photography",
+      "Lifestyle"
+    ],
     "stats": {
       "helpGiven": 28,
       "helpReceived": 12,
@@ -146,7 +244,10 @@
     "helpSystem": {
       "points": 310,
       "level": "Active Helper",
-      "badges": ["Lens Master", "Finance Friend"]
+      "badges": [
+        "Lens Master",
+        "Finance Friend"
+      ]
     }
   },
   {
@@ -163,10 +264,27 @@
     "lng": -7.6275,
     "verified": true,
     "joinedAt": "2022-08-30T14:00:00Z",
-    "languages": ["Arabic", "French", "English"],
-    "offeredSkills": ["Architecture", "AutoCAD", "Urban Design", "Sketching"],
-    "wantedSkills": ["Italian", "Music Theory", "Cycling Repair"],
-    "favoriteCategories": ["Design", "Arts & Crafts", "Technology"],
+    "languages": [
+      "Arabic",
+      "French",
+      "English"
+    ],
+    "offeredSkills": [
+      "Architecture",
+      "AutoCAD",
+      "Urban Design",
+      "Sketching"
+    ],
+    "wantedSkills": [
+      "Italian",
+      "Music Theory",
+      "Cycling Repair"
+    ],
+    "favoriteCategories": [
+      "Design",
+      "Arts & Crafts",
+      "Technology"
+    ],
     "stats": {
       "helpGiven": 39,
       "helpReceived": 21,
@@ -176,7 +294,10 @@
     "helpSystem": {
       "points": 470,
       "level": "Expert Helper",
-      "badges": ["Blueprint Pro", "Design Thinker"]
+      "badges": [
+        "Blueprint Pro",
+        "Design Thinker"
+      ]
     }
   },
   {
@@ -190,13 +311,31 @@
     "city": "Casablanca",
     "bio": "Freelance translator (FR/EN/AR) and book lover. I also teach calligraphy on weekends.",
     "lat": 33.5868,
-    "lng": -7.6410,
+    "lng": -7.641,
     "verified": true,
     "joinedAt": "2023-03-08T10:00:00Z",
-    "languages": ["Arabic", "French", "English", "Darija"],
-    "offeredSkills": ["Translation", "Calligraphy", "Proofreading", "French Tutoring"],
-    "wantedSkills": ["Coding", "Pilates", "Pottery"],
-    "favoriteCategories": ["Languages", "Arts & Crafts", "Education"],
+    "languages": [
+      "Arabic",
+      "French",
+      "English",
+      "Darija"
+    ],
+    "offeredSkills": [
+      "Translation",
+      "Calligraphy",
+      "Proofreading",
+      "French Tutoring"
+    ],
+    "wantedSkills": [
+      "Coding",
+      "Pilates",
+      "Pottery"
+    ],
+    "favoriteCategories": [
+      "Languages",
+      "Arts & Crafts",
+      "Education"
+    ],
     "stats": {
       "helpGiven": 47,
       "helpReceived": 25,
@@ -206,7 +345,11 @@
     "helpSystem": {
       "points": 590,
       "level": "Expert Helper",
-      "badges": ["Word Wizard", "5-Star Helper", "Polyglot"]
+      "badges": [
+        "Word Wizard",
+        "5-Star Helper",
+        "Polyglot"
+      ]
     }
   },
   {
@@ -219,14 +362,31 @@
     "neighborhood": "Sidi Belyout",
     "city": "Casablanca",
     "bio": "Electrician with 10 years of experience. I also teach basic home repairs to those who want to learn.",
-    "lat": 33.5980,
+    "lat": 33.598,
     "lng": -7.6152,
     "verified": true,
     "joinedAt": "2022-05-17T08:30:00Z",
-    "languages": ["Arabic", "Darija", "French"],
-    "offeredSkills": ["Electrical Work", "Home Repair", "Plumbing Basics", "Safety Inspections"],
-    "wantedSkills": ["Computer Skills", "English", "Accounting"],
-    "favoriteCategories": ["Home & Garden", "DIY", "Education"],
+    "languages": [
+      "Arabic",
+      "Darija",
+      "French"
+    ],
+    "offeredSkills": [
+      "Electrical Work",
+      "Home Repair",
+      "Plumbing Basics",
+      "Safety Inspections"
+    ],
+    "wantedSkills": [
+      "Computer Skills",
+      "English",
+      "Accounting"
+    ],
+    "favoriteCategories": [
+      "Home & Garden",
+      "DIY",
+      "Education"
+    ],
     "stats": {
       "helpGiven": 71,
       "helpReceived": 8,
@@ -236,7 +396,11 @@
     "helpSystem": {
       "points": 890,
       "level": "Master Helper",
-      "badges": ["Handyman Hero", "Safety First", "Top Rated"]
+      "badges": [
+        "Handyman Hero",
+        "Safety First",
+        "Top Rated"
+      ]
     }
   },
   {
@@ -253,10 +417,27 @@
     "lng": -7.5982,
     "verified": true,
     "joinedAt": "2023-01-22T09:45:00Z",
-    "languages": ["Arabic", "Darija", "French"],
-    "offeredSkills": ["Community Organizing", "Embroidery", "Counseling", "Event Planning"],
-    "wantedSkills": ["English", "Photography", "Web Design"],
-    "favoriteCategories": ["Community", "Arts & Crafts", "Social Services"],
+    "languages": [
+      "Arabic",
+      "Darija",
+      "French"
+    ],
+    "offeredSkills": [
+      "Community Organizing",
+      "Embroidery",
+      "Counseling",
+      "Event Planning"
+    ],
+    "wantedSkills": [
+      "English",
+      "Photography",
+      "Web Design"
+    ],
+    "favoriteCategories": [
+      "Community",
+      "Arts & Crafts",
+      "Social Services"
+    ],
     "stats": {
       "helpGiven": 60,
       "helpReceived": 35,
@@ -266,7 +447,11 @@
     "helpSystem": {
       "points": 740,
       "level": "Expert Helper",
-      "badges": ["Community Pillar", "Heart of Gold", "Craft Master"]
+      "badges": [
+        "Community Pillar",
+        "Heart of Gold",
+        "Craft Master"
+      ]
     }
   },
   {
@@ -283,10 +468,27 @@
     "lng": -7.6088,
     "verified": false,
     "joinedAt": "2023-07-10T15:00:00Z",
-    "languages": ["Arabic", "French", "Darija"],
-    "offeredSkills": ["Guitar Lessons", "Music Production", "Beat Making", "Singing Coaching"],
-    "wantedSkills": ["Video Editing", "Marketing", "English"],
-    "favoriteCategories": ["Music", "Arts & Crafts", "Entertainment"],
+    "languages": [
+      "Arabic",
+      "French",
+      "Darija"
+    ],
+    "offeredSkills": [
+      "Guitar Lessons",
+      "Music Production",
+      "Beat Making",
+      "Singing Coaching"
+    ],
+    "wantedSkills": [
+      "Video Editing",
+      "Marketing",
+      "English"
+    ],
+    "favoriteCategories": [
+      "Music",
+      "Arts & Crafts",
+      "Entertainment"
+    ],
     "stats": {
       "helpGiven": 22,
       "helpReceived": 9,
@@ -296,7 +498,10 @@
     "helpSystem": {
       "points": 260,
       "level": "Active Helper",
-      "badges": ["Music Maker", "Rhythm Master"]
+      "badges": [
+        "Music Maker",
+        "Rhythm Master"
+      ]
     }
   },
   {
@@ -309,14 +514,31 @@
     "neighborhood": "California",
     "city": "Casablanca",
     "bio": "Marketing consultant and yoga instructor. I love helping small businesses grow and keeping my mind zen.",
-    "lat": 33.5650,
-    "lng": -7.6540,
+    "lat": 33.565,
+    "lng": -7.654,
     "verified": true,
     "joinedAt": "2022-10-05T12:00:00Z",
-    "languages": ["Arabic", "French", "English"],
-    "offeredSkills": ["Marketing Strategy", "Social Media", "Yoga", "Brand Design"],
-    "wantedSkills": ["Cooking", "Coding", "Portuguese"],
-    "favoriteCategories": ["Business", "Health & Wellness", "Technology"],
+    "languages": [
+      "Arabic",
+      "French",
+      "English"
+    ],
+    "offeredSkills": [
+      "Marketing Strategy",
+      "Social Media",
+      "Yoga",
+      "Brand Design"
+    ],
+    "wantedSkills": [
+      "Cooking",
+      "Coding",
+      "Portuguese"
+    ],
+    "favoriteCategories": [
+      "Business",
+      "Health & Wellness",
+      "Technology"
+    ],
     "stats": {
       "helpGiven": 48,
       "helpReceived": 27,
@@ -326,7 +548,11 @@
     "helpSystem": {
       "points": 600,
       "level": "Expert Helper",
-      "badges": ["Brand Builder", "Zen Master", "Top Rated"]
+      "badges": [
+        "Brand Builder",
+        "Zen Master",
+        "Top Rated"
+      ]
     }
   },
   {
@@ -339,14 +565,31 @@
     "neighborhood": "Ben M'Sick",
     "city": "Casablanca",
     "bio": "Car mechanic and weekend chef. I fix cars and cook amazing tagines. Swap skills anytime!",
-    "lat": 33.5700,
-    "lng": -7.5880,
+    "lat": 33.57,
+    "lng": -7.588,
     "verified": true,
     "joinedAt": "2022-12-01T07:30:00Z",
-    "languages": ["Arabic", "Darija", "French"],
-    "offeredSkills": ["Car Repair", "Cooking", "Motorcycle Maintenance", "Tagine Recipes"],
-    "wantedSkills": ["English", "Computer Skills", "Accounting"],
-    "favoriteCategories": ["Automotive", "Food & Cooking", "DIY"],
+    "languages": [
+      "Arabic",
+      "Darija",
+      "French"
+    ],
+    "offeredSkills": [
+      "Car Repair",
+      "Cooking",
+      "Motorcycle Maintenance",
+      "Tagine Recipes"
+    ],
+    "wantedSkills": [
+      "English",
+      "Computer Skills",
+      "Accounting"
+    ],
+    "favoriteCategories": [
+      "Automotive",
+      "Food & Cooking",
+      "DIY"
+    ],
     "stats": {
       "helpGiven": 53,
       "helpReceived": 19,
@@ -356,7 +599,11 @@
     "helpSystem": {
       "points": 660,
       "level": "Expert Helper",
-      "badges": ["Grease Monkey", "Chef's Kiss", "Reliable Helper"]
+      "badges": [
+        "Grease Monkey",
+        "Chef's Kiss",
+        "Reliable Helper"
+      ]
     }
   },
   {
@@ -369,14 +616,31 @@
     "neighborhood": "Oasis",
     "city": "Casablanca",
     "bio": "Pediatric nurse and first-aid trainer. I offer health education sessions and love gardening in my free time.",
-    "lat": 33.5620,
-    "lng": -7.6380,
+    "lat": 33.562,
+    "lng": -7.638,
     "verified": true,
     "joinedAt": "2023-05-15T08:00:00Z",
-    "languages": ["Arabic", "French", "English"],
-    "offeredSkills": ["First Aid Training", "Health Education", "Gardening", "Childcare"],
-    "wantedSkills": ["Photography", "Spanish", "Sewing"],
-    "favoriteCategories": ["Health & Wellness", "Education", "Home & Garden"],
+    "languages": [
+      "Arabic",
+      "French",
+      "English"
+    ],
+    "offeredSkills": [
+      "First Aid Training",
+      "Health Education",
+      "Gardening",
+      "Childcare"
+    ],
+    "wantedSkills": [
+      "Photography",
+      "Spanish",
+      "Sewing"
+    ],
+    "favoriteCategories": [
+      "Health & Wellness",
+      "Education",
+      "Home & Garden"
+    ],
     "stats": {
       "helpGiven": 36,
       "helpReceived": 14,
@@ -386,7 +650,11 @@
     "helpSystem": {
       "points": 450,
       "level": "Expert Helper",
-      "badges": ["Health Hero", "Green Thumb", "Lifesaver"]
+      "badges": [
+        "Health Hero",
+        "Green Thumb",
+        "Lifesaver"
+      ]
     }
   },
   {
@@ -399,14 +667,31 @@
     "neighborhood": "Hay El Farah",
     "city": "Casablanca",
     "bio": "Math teacher at a local lycée. Offering tutoring for bac students and interested in learning music.",
-    "lat": 33.5530,
-    "lng": -7.6200,
+    "lat": 33.553,
+    "lng": -7.62,
     "verified": false,
     "joinedAt": "2023-08-20T10:00:00Z",
-    "languages": ["Arabic", "French", "Darija"],
-    "offeredSkills": ["Math Tutoring", "Physics", "Exam Prep", "Algebra"],
-    "wantedSkills": ["Piano", "Cooking", "Coding"],
-    "favoriteCategories": ["Education", "Science", "Music"],
+    "languages": [
+      "Arabic",
+      "French",
+      "Darija"
+    ],
+    "offeredSkills": [
+      "Math Tutoring",
+      "Physics",
+      "Exam Prep",
+      "Algebra"
+    ],
+    "wantedSkills": [
+      "Piano",
+      "Cooking",
+      "Coding"
+    ],
+    "favoriteCategories": [
+      "Education",
+      "Science",
+      "Music"
+    ],
     "stats": {
       "helpGiven": 19,
       "helpReceived": 7,
@@ -416,7 +701,10 @@
     "helpSystem": {
       "points": 230,
       "level": "Rising Helper",
-      "badges": ["Math Whiz", "Study Buddy"]
+      "badges": [
+        "Math Whiz",
+        "Study Buddy"
+      ]
     }
   },
   {
@@ -429,14 +717,31 @@
     "neighborhood": "Salmia",
     "city": "Casablanca",
     "bio": "Fashion designer and seamstress. I create traditional and modern pieces and teach sewing from my atelier.",
-    "lat": 33.5780,
-    "lng": -7.6750,
+    "lat": 33.578,
+    "lng": -7.675,
     "verified": true,
     "joinedAt": "2022-09-12T13:00:00Z",
-    "languages": ["Arabic", "French", "English"],
-    "offeredSkills": ["Sewing", "Fashion Design", "Pattern Making", "Alterations"],
-    "wantedSkills": ["Marketing", "Photography", "Coding"],
-    "favoriteCategories": ["Fashion", "Arts & Crafts", "Business"],
+    "languages": [
+      "Arabic",
+      "French",
+      "English"
+    ],
+    "offeredSkills": [
+      "Sewing",
+      "Fashion Design",
+      "Pattern Making",
+      "Alterations"
+    ],
+    "wantedSkills": [
+      "Marketing",
+      "Photography",
+      "Coding"
+    ],
+    "favoriteCategories": [
+      "Fashion",
+      "Arts & Crafts",
+      "Business"
+    ],
     "stats": {
       "helpGiven": 44,
       "helpReceived": 20,
@@ -446,7 +751,11 @@
     "helpSystem": {
       "points": 550,
       "level": "Expert Helper",
-      "badges": ["Thread Master", "Style Icon", "Top Rated"]
+      "badges": [
+        "Thread Master",
+        "Style Icon",
+        "Top Rated"
+      ]
     }
   },
   {
@@ -459,14 +768,31 @@
     "neighborhood": "Belvedere",
     "city": "Casablanca",
     "bio": "Data analyst who loves cycling. I help with Excel, Power BI, and organize weekend group rides.",
-    "lat": 33.5940,
-    "lng": -7.6050,
+    "lat": 33.594,
+    "lng": -7.605,
     "verified": true,
     "joinedAt": "2023-02-28T09:00:00Z",
-    "languages": ["Arabic", "French", "English"],
-    "offeredSkills": ["Data Analysis", "Excel", "Power BI", "Cycling Coaching"],
-    "wantedSkills": ["Cooking", "Meditation", "Spanish"],
-    "favoriteCategories": ["Technology", "Sports & Fitness", "Education"],
+    "languages": [
+      "Arabic",
+      "French",
+      "English"
+    ],
+    "offeredSkills": [
+      "Data Analysis",
+      "Excel",
+      "Power BI",
+      "Cycling Coaching"
+    ],
+    "wantedSkills": [
+      "Cooking",
+      "Meditation",
+      "Spanish"
+    ],
+    "favoriteCategories": [
+      "Technology",
+      "Sports & Fitness",
+      "Education"
+    ],
     "stats": {
       "helpGiven": 33,
       "helpReceived": 16,
@@ -476,7 +802,11 @@
     "helpSystem": {
       "points": 400,
       "level": "Active Helper",
-      "badges": ["Data Guru", "Cycle King", "Analyst Badge"]
+      "badges": [
+        "Data Guru",
+        "Cycle King",
+        "Analyst Badge"
+      ]
     }
   },
   {
@@ -489,14 +819,31 @@
     "neighborhood": "Palmier",
     "city": "Casablanca",
     "bio": "Chef and culinary arts instructor. Moroccan cuisine is my specialty, but I love fusion experiments!",
-    "lat": 33.5830,
-    "lng": -7.6480,
+    "lat": 33.583,
+    "lng": -7.648,
     "verified": true,
     "joinedAt": "2022-07-04T11:30:00Z",
-    "languages": ["Arabic", "French", "Darija"],
-    "offeredSkills": ["Moroccan Cooking", "Pastry Making", "Culinary Classes", "Meal Planning"],
-    "wantedSkills": ["English", "Yoga", "Painting"],
-    "favoriteCategories": ["Food & Cooking", "Health & Wellness", "Arts & Crafts"],
+    "languages": [
+      "Arabic",
+      "French",
+      "Darija"
+    ],
+    "offeredSkills": [
+      "Moroccan Cooking",
+      "Pastry Making",
+      "Culinary Classes",
+      "Meal Planning"
+    ],
+    "wantedSkills": [
+      "English",
+      "Yoga",
+      "Painting"
+    ],
+    "favoriteCategories": [
+      "Food & Cooking",
+      "Health & Wellness",
+      "Arts & Crafts"
+    ],
     "stats": {
       "helpGiven": 68,
       "helpReceived": 29,
@@ -506,7 +853,11 @@
     "helpSystem": {
       "points": 840,
       "level": "Master Helper",
-      "badges": ["Top Chef", "Community Star", "Flavor Expert"]
+      "badges": [
+        "Top Chef",
+        "Community Star",
+        "Flavor Expert"
+      ]
     }
   },
   {
@@ -519,14 +870,31 @@
     "neighborhood": "Ain Sebaa",
     "city": "Casablanca",
     "bio": "Civil engineer and chess enthusiast. I help with structural questions and run a weekly chess club.",
-    "lat": 33.6060,
-    "lng": -7.5810,
+    "lat": 33.606,
+    "lng": -7.581,
     "verified": true,
     "joinedAt": "2022-03-19T08:00:00Z",
-    "languages": ["Arabic", "French", "English"],
-    "offeredSkills": ["Civil Engineering", "Chess Coaching", "Math Tutoring", "Project Management"],
-    "wantedSkills": ["Guitar", "Cooking", "Photography"],
-    "favoriteCategories": ["Technology", "Education", "Games"],
+    "languages": [
+      "Arabic",
+      "French",
+      "English"
+    ],
+    "offeredSkills": [
+      "Civil Engineering",
+      "Chess Coaching",
+      "Math Tutoring",
+      "Project Management"
+    ],
+    "wantedSkills": [
+      "Guitar",
+      "Cooking",
+      "Photography"
+    ],
+    "favoriteCategories": [
+      "Technology",
+      "Education",
+      "Games"
+    ],
     "stats": {
       "helpGiven": 50,
       "helpReceived": 11,
@@ -536,7 +904,11 @@
     "helpSystem": {
       "points": 620,
       "level": "Expert Helper",
-      "badges": ["Chess King", "Engineer Badge", "Top Rated"]
+      "badges": [
+        "Chess King",
+        "Engineer Badge",
+        "Top Rated"
+      ]
     }
   },
   {
@@ -549,14 +921,31 @@
     "neighborhood": "Hay Riad",
     "city": "Casablanca",
     "bio": "Interior designer and plant mom. I redesign small spaces on a budget and teach basic DIY home décor.",
-    "lat": 33.5690,
-    "lng": -7.6730,
+    "lat": 33.569,
+    "lng": -7.673,
     "verified": false,
     "joinedAt": "2023-09-01T10:00:00Z",
-    "languages": ["Arabic", "French", "English"],
-    "offeredSkills": ["Interior Design", "Home Décor", "Plant Care", "DIY Crafts"],
-    "wantedSkills": ["Cooking", "Yoga", "Coding"],
-    "favoriteCategories": ["Design", "Home & Garden", "Arts & Crafts"],
+    "languages": [
+      "Arabic",
+      "French",
+      "English"
+    ],
+    "offeredSkills": [
+      "Interior Design",
+      "Home Décor",
+      "Plant Care",
+      "DIY Crafts"
+    ],
+    "wantedSkills": [
+      "Cooking",
+      "Yoga",
+      "Coding"
+    ],
+    "favoriteCategories": [
+      "Design",
+      "Home & Garden",
+      "Arts & Crafts"
+    ],
     "stats": {
       "helpGiven": 15,
       "helpReceived": 6,
@@ -566,7 +955,10 @@
     "helpSystem": {
       "points": 175,
       "level": "New Helper",
-      "badges": ["Design Spark", "Plant Lover"]
+      "badges": [
+        "Design Spark",
+        "Plant Lover"
+      ]
     }
   },
   {
@@ -579,14 +971,31 @@
     "neighborhood": "Sbata",
     "city": "Casablanca",
     "bio": "Barber and hairstylist for 8 years. I also do wedding grooming and teach basic barbering techniques.",
-    "lat": 33.5660,
-    "lng": -7.5970,
+    "lat": 33.566,
+    "lng": -7.597,
     "verified": true,
     "joinedAt": "2022-06-15T09:00:00Z",
-    "languages": ["Arabic", "Darija", "French"],
-    "offeredSkills": ["Haircutting", "Beard Styling", "Wedding Grooming", "Barbering Tips"],
-    "wantedSkills": ["English", "Photography", "Cooking"],
-    "favoriteCategories": ["Lifestyle", "Fashion", "Community"],
+    "languages": [
+      "Arabic",
+      "Darija",
+      "French"
+    ],
+    "offeredSkills": [
+      "Haircutting",
+      "Beard Styling",
+      "Wedding Grooming",
+      "Barbering Tips"
+    ],
+    "wantedSkills": [
+      "English",
+      "Photography",
+      "Cooking"
+    ],
+    "favoriteCategories": [
+      "Lifestyle",
+      "Fashion",
+      "Community"
+    ],
     "stats": {
       "helpGiven": 58,
       "helpReceived": 13,
@@ -596,7 +1005,11 @@
     "helpSystem": {
       "points": 710,
       "level": "Expert Helper",
-      "badges": ["Sharp Blades", "Style King", "Community Star"]
+      "badges": [
+        "Sharp Blades",
+        "Style King",
+        "Community Star"
+      ]
     }
   },
   {
@@ -610,13 +1023,30 @@
     "city": "Casablanca",
     "bio": "Journalist and creative writing coach. I help people tell their stories and run a local writing circle.",
     "lat": 33.6015,
-    "lng": -7.5620,
+    "lng": -7.562,
     "verified": true,
     "joinedAt": "2023-03-25T14:00:00Z",
-    "languages": ["Arabic", "French", "English"],
-    "offeredSkills": ["Writing Coaching", "Journalism", "Storytelling", "Editing"],
-    "wantedSkills": ["Coding", "Photography", "Cooking"],
-    "favoriteCategories": ["Writing", "Arts & Crafts", "Education"],
+    "languages": [
+      "Arabic",
+      "French",
+      "English"
+    ],
+    "offeredSkills": [
+      "Writing Coaching",
+      "Journalism",
+      "Storytelling",
+      "Editing"
+    ],
+    "wantedSkills": [
+      "Coding",
+      "Photography",
+      "Cooking"
+    ],
+    "favoriteCategories": [
+      "Writing",
+      "Arts & Crafts",
+      "Education"
+    ],
     "stats": {
       "helpGiven": 38,
       "helpReceived": 17,
@@ -626,7 +1056,11 @@
     "helpSystem": {
       "points": 470,
       "level": "Expert Helper",
-      "badges": ["Wordsmith", "Story Circle", "Top Rated"]
+      "badges": [
+        "Wordsmith",
+        "Story Circle",
+        "Top Rated"
+      ]
     }
   },
   {
@@ -639,14 +1073,31 @@
     "neighborhood": "Roches Noires",
     "city": "Casablanca",
     "bio": "Marine biologist and scuba diving instructor. Passionate about ocean conservation and water sports.",
-    "lat": 33.6050,
-    "lng": -7.5730,
+    "lat": 33.605,
+    "lng": -7.573,
     "verified": true,
     "joinedAt": "2022-04-10T10:00:00Z",
-    "languages": ["Arabic", "French", "English"],
-    "offeredSkills": ["Scuba Diving", "Marine Biology Lessons", "Snorkeling", "Ocean Conservation"],
-    "wantedSkills": ["Photography", "Spanish", "Coding"],
-    "favoriteCategories": ["Sports & Fitness", "Science", "Environment"],
+    "languages": [
+      "Arabic",
+      "French",
+      "English"
+    ],
+    "offeredSkills": [
+      "Scuba Diving",
+      "Marine Biology Lessons",
+      "Snorkeling",
+      "Ocean Conservation"
+    ],
+    "wantedSkills": [
+      "Photography",
+      "Spanish",
+      "Coding"
+    ],
+    "favoriteCategories": [
+      "Sports & Fitness",
+      "Science",
+      "Environment"
+    ],
     "stats": {
       "helpGiven": 45,
       "helpReceived": 20,
@@ -656,7 +1107,11 @@
     "helpSystem": {
       "points": 560,
       "level": "Expert Helper",
-      "badges": ["Ocean Guardian", "Dive Master", "Eco Warrior"]
+      "badges": [
+        "Ocean Guardian",
+        "Dive Master",
+        "Eco Warrior"
+      ]
     }
   },
   {
@@ -669,14 +1124,31 @@
     "neighborhood": "Sidi Moumen",
     "city": "Casablanca",
     "bio": "Ceramics artist and art therapist. My workshop is open on weekends for anyone who wants to try pottery.",
-    "lat": 33.5820,
-    "lng": -7.5540,
+    "lat": 33.582,
+    "lng": -7.554,
     "verified": false,
     "joinedAt": "2023-07-30T11:00:00Z",
-    "languages": ["Arabic", "Darija", "French"],
-    "offeredSkills": ["Pottery", "Ceramics", "Art Therapy", "Painting"],
-    "wantedSkills": ["English", "Marketing", "Yoga"],
-    "favoriteCategories": ["Arts & Crafts", "Health & Wellness", "Community"],
+    "languages": [
+      "Arabic",
+      "Darija",
+      "French"
+    ],
+    "offeredSkills": [
+      "Pottery",
+      "Ceramics",
+      "Art Therapy",
+      "Painting"
+    ],
+    "wantedSkills": [
+      "English",
+      "Marketing",
+      "Yoga"
+    ],
+    "favoriteCategories": [
+      "Arts & Crafts",
+      "Health & Wellness",
+      "Community"
+    ],
     "stats": {
       "helpGiven": 18,
       "helpReceived": 8,
@@ -686,7 +1158,10 @@
     "helpSystem": {
       "points": 210,
       "level": "Rising Helper",
-      "badges": ["Clay Artist", "Healing Hands"]
+      "badges": [
+        "Clay Artist",
+        "Healing Hands"
+      ]
     }
   },
   {
@@ -699,14 +1174,31 @@
     "neighborhood": "Lissasfa",
     "city": "Casablanca",
     "bio": "Solar energy technician and sustainability advocate. I install panels and teach about renewable energy.",
-    "lat": 33.5490,
-    "lng": -7.6810,
+    "lat": 33.549,
+    "lng": -7.681,
     "verified": true,
     "joinedAt": "2022-10-22T08:30:00Z",
-    "languages": ["Arabic", "French", "English"],
-    "offeredSkills": ["Solar Installation", "Energy Consulting", "DIY Electrical", "Sustainability Workshops"],
-    "wantedSkills": ["Coding", "Marketing", "English"],
-    "favoriteCategories": ["Environment", "Technology", "DIY"],
+    "languages": [
+      "Arabic",
+      "French",
+      "English"
+    ],
+    "offeredSkills": [
+      "Solar Installation",
+      "Energy Consulting",
+      "DIY Electrical",
+      "Sustainability Workshops"
+    ],
+    "wantedSkills": [
+      "Coding",
+      "Marketing",
+      "English"
+    ],
+    "favoriteCategories": [
+      "Environment",
+      "Technology",
+      "DIY"
+    ],
     "stats": {
       "helpGiven": 40,
       "helpReceived": 10,
@@ -716,7 +1208,11 @@
     "helpSystem": {
       "points": 500,
       "level": "Expert Helper",
-      "badges": ["Solar Star", "Green Hero", "Top Rated"]
+      "badges": [
+        "Solar Star",
+        "Green Hero",
+        "Top Rated"
+      ]
     }
   },
   {
@@ -729,14 +1225,31 @@
     "neighborhood": "Maarif Extension",
     "city": "Casablanca",
     "bio": "Pediatrician and mindful parenting coach. I offer health consultations and parenting workshops for new parents.",
-    "lat": 33.5750,
-    "lng": -7.6410,
+    "lat": 33.575,
+    "lng": -7.641,
     "verified": true,
     "joinedAt": "2023-04-05T09:00:00Z",
-    "languages": ["Arabic", "French", "English"],
-    "offeredSkills": ["Pediatric Health", "Parenting Workshops", "Nutrition for Kids", "First Aid"],
-    "wantedSkills": ["Yoga", "Photography", "Gardening"],
-    "favoriteCategories": ["Health & Wellness", "Education", "Community"],
+    "languages": [
+      "Arabic",
+      "French",
+      "English"
+    ],
+    "offeredSkills": [
+      "Pediatric Health",
+      "Parenting Workshops",
+      "Nutrition for Kids",
+      "First Aid"
+    ],
+    "wantedSkills": [
+      "Yoga",
+      "Photography",
+      "Gardening"
+    ],
+    "favoriteCategories": [
+      "Health & Wellness",
+      "Education",
+      "Community"
+    ],
     "stats": {
       "helpGiven": 55,
       "helpReceived": 22,
@@ -746,7 +1259,12 @@
     "helpSystem": {
       "points": 690,
       "level": "Expert Helper",
-      "badges": ["Dr. Helper", "5-Star Helper", "Parent Pro", "Community Star"]
+      "badges": [
+        "Dr. Helper",
+        "5-Star Helper",
+        "Parent Pro",
+        "Community Star"
+      ]
     }
   },
   {
@@ -763,10 +1281,21 @@
     "lng": -7.6333,
     "verified": true,
     "joinedAt": "2024-01-10T09:00:00Z",
-    "languages": ["Arabic", "French"],
-    "offeredSkills": ["Photography", "Photo Editing"],
-    "wantedSkills": ["Spanish"],
-    "favoriteCategories": ["Arts & Crafts", "Photography"],
+    "languages": [
+      "Arabic",
+      "French"
+    ],
+    "offeredSkills": [
+      "Photography",
+      "Photo Editing"
+    ],
+    "wantedSkills": [
+      "Spanish"
+    ],
+    "favoriteCategories": [
+      "Arts & Crafts",
+      "Photography"
+    ],
     "stats": {
       "helpGiven": 14,
       "helpReceived": 5,
@@ -776,7 +1305,9 @@
     "helpSystem": {
       "points": 160,
       "level": "New Helper",
-      "badges": ["Lens Eye"]
+      "badges": [
+        "Lens Eye"
+      ]
     }
   },
   {
@@ -793,10 +1324,20 @@
     "lng": -7.6511,
     "verified": true,
     "joinedAt": "2023-11-05T10:00:00Z",
-    "languages": ["Arabic", "English"],
-    "offeredSkills": ["Yoga", "Meditation"],
-    "wantedSkills": ["Nutrition"],
-    "favoriteCategories": ["Health & Wellness"],
+    "languages": [
+      "Arabic",
+      "English"
+    ],
+    "offeredSkills": [
+      "Yoga",
+      "Meditation"
+    ],
+    "wantedSkills": [
+      "Nutrition"
+    ],
+    "favoriteCategories": [
+      "Health & Wellness"
+    ],
     "stats": {
       "helpGiven": 24,
       "helpReceived": 10,
@@ -806,7 +1347,9 @@
     "helpSystem": {
       "points": 280,
       "level": "Active Helper",
-      "badges": ["Zen Guide"]
+      "badges": [
+        "Zen Guide"
+      ]
     }
   },
   {
@@ -823,10 +1366,20 @@
     "lng": -7.6587,
     "verified": false,
     "joinedAt": "2024-02-14T08:00:00Z",
-    "languages": ["Arabic"],
-    "offeredSkills": ["Plumbing", "Electrical Repair"],
-    "wantedSkills": ["Business Management"],
-    "favoriteCategories": ["Home & Garden", "DIY"],
+    "languages": [
+      "Arabic"
+    ],
+    "offeredSkills": [
+      "Plumbing",
+      "Electrical Repair"
+    ],
+    "wantedSkills": [
+      "Business Management"
+    ],
+    "favoriteCategories": [
+      "Home & Garden",
+      "DIY"
+    ],
     "stats": {
       "helpGiven": 10,
       "helpReceived": 4,
@@ -836,7 +1389,9 @@
     "helpSystem": {
       "points": 120,
       "level": "New Helper",
-      "badges": ["Fixer"]
+      "badges": [
+        "Fixer"
+      ]
     }
   },
   {
@@ -853,10 +1408,21 @@
     "lng": -7.6391,
     "verified": true,
     "joinedAt": "2024-03-01T10:00:00Z",
-    "languages": ["Arabic", "French"],
-    "offeredSkills": ["Makeup", "Skincare Advice"],
-    "wantedSkills": ["Public Speaking"],
-    "favoriteCategories": ["Beauty", "Lifestyle"],
+    "languages": [
+      "Arabic",
+      "French"
+    ],
+    "offeredSkills": [
+      "Makeup",
+      "Skincare Advice"
+    ],
+    "wantedSkills": [
+      "Public Speaking"
+    ],
+    "favoriteCategories": [
+      "Beauty",
+      "Lifestyle"
+    ],
     "stats": {
       "helpGiven": 18,
       "helpReceived": 7,
@@ -866,7 +1432,9 @@
     "helpSystem": {
       "points": 200,
       "level": "Rising Helper",
-      "badges": ["Glam Artist"]
+      "badges": [
+        "Glam Artist"
+      ]
     }
   },
   {
@@ -883,10 +1451,21 @@
     "lng": -7.7034,
     "verified": true,
     "joinedAt": "2023-09-18T08:00:00Z",
-    "languages": ["Arabic", "French"],
-    "offeredSkills": ["Surfing Lessons", "Swimming"],
-    "wantedSkills": ["Guitar"],
-    "favoriteCategories": ["Sports & Fitness", "Outdoors"],
+    "languages": [
+      "Arabic",
+      "French"
+    ],
+    "offeredSkills": [
+      "Surfing Lessons",
+      "Swimming"
+    ],
+    "wantedSkills": [
+      "Guitar"
+    ],
+    "favoriteCategories": [
+      "Sports & Fitness",
+      "Outdoors"
+    ],
     "stats": {
       "helpGiven": 35,
       "helpReceived": 12,
@@ -896,7 +1475,9 @@
     "helpSystem": {
       "points": 420,
       "level": "Active Helper",
-      "badges": ["Wave Rider"]
+      "badges": [
+        "Wave Rider"
+      ]
     }
   },
   {
@@ -913,10 +1494,20 @@
     "lng": -7.6625,
     "verified": false,
     "joinedAt": "2024-04-12T11:00:00Z",
-    "languages": ["Arabic", "French"],
-    "offeredSkills": ["Moroccan Cooking", "Pastry"],
-    "wantedSkills": ["English"],
-    "favoriteCategories": ["Food & Cooking"],
+    "languages": [
+      "Arabic",
+      "French"
+    ],
+    "offeredSkills": [
+      "Moroccan Cooking",
+      "Pastry"
+    ],
+    "wantedSkills": [
+      "English"
+    ],
+    "favoriteCategories": [
+      "Food & Cooking"
+    ],
     "stats": {
       "helpGiven": 8,
       "helpReceived": 3,
@@ -926,7 +1517,9 @@
     "helpSystem": {
       "points": 90,
       "level": "New Helper",
-      "badges": ["Home Cook"]
+      "badges": [
+        "Home Cook"
+      ]
     }
   },
   {
@@ -943,10 +1536,20 @@
     "lng": -7.6078,
     "verified": false,
     "joinedAt": "2023-12-01T09:00:00Z",
-    "languages": ["Arabic"],
-    "offeredSkills": ["Wood Carving", "Handmade Decor"],
-    "wantedSkills": ["Marketing"],
-    "favoriteCategories": ["Arts & Crafts", "DIY"],
+    "languages": [
+      "Arabic"
+    ],
+    "offeredSkills": [
+      "Wood Carving",
+      "Handmade Decor"
+    ],
+    "wantedSkills": [
+      "Marketing"
+    ],
+    "favoriteCategories": [
+      "Arts & Crafts",
+      "DIY"
+    ],
     "stats": {
       "helpGiven": 6,
       "helpReceived": 2,
@@ -956,27 +1559,41 @@
     "helpSystem": {
       "points": 70,
       "level": "New Helper",
-      "badges": ["Craft Maker"]
+      "badges": [
+        "Craft Maker"
+      ]
     }
   },
   {
     "id": 33,
-    "name": "Sara Lahlou",
-    "username": "sara_lahlou",
-    "email": "sara.lahlou@example.com",
+    "name": "Bilal Tahiri",
+    "username": "bilal_tahiri",
+    "email": "bilal.tahiri@example.com",
     "password": "hashed_password_033",
     "avatar": "user33",
     "neighborhood": "Racine",
     "city": "Casablanca",
-    "bio": "Dance teacher offering ballet and contemporary dance classes for all ages.",
+    "bio": "Martial arts instructor teaching karate and judo to kids and adults.",
     "lat": 33.5907,
     "lng": -7.6399,
     "verified": true,
     "joinedAt": "2024-02-22T10:00:00Z",
-    "languages": ["Arabic", "French"],
-    "offeredSkills": ["Ballet", "Contemporary Dance"],
-    "wantedSkills": ["Fitness Coaching"],
-    "favoriteCategories": ["Arts & Crafts", "Health & Wellness"],
+    "languages": [
+      "Arabic",
+      "French"
+    ],
+    "offeredSkills": [
+      "Karate",
+      "Judo",
+      "Self Defense"
+    ],
+    "wantedSkills": [
+      "Fitness Coaching"
+    ],
+    "favoriteCategories": [
+      "Sports & Fitness",
+      "Health & Wellness"
+    ],
     "stats": {
       "helpGiven": 20,
       "helpReceived": 8,
@@ -986,7 +1603,9 @@
     "helpSystem": {
       "points": 235,
       "level": "Rising Helper",
-      "badges": ["Dance Star"]
+      "badges": [
+        "Black Belt"
+      ]
     }
   },
   {
@@ -1003,10 +1622,20 @@
     "lng": -7.5834,
     "verified": false,
     "joinedAt": "2023-10-10T08:00:00Z",
-    "languages": ["Arabic"],
-    "offeredSkills": ["Car Repair", "Engine Diagnostics"],
-    "wantedSkills": ["French"],
-    "favoriteCategories": ["Automotive", "DIY"],
+    "languages": [
+      "Arabic"
+    ],
+    "offeredSkills": [
+      "Car Repair",
+      "Engine Diagnostics"
+    ],
+    "wantedSkills": [
+      "French"
+    ],
+    "favoriteCategories": [
+      "Automotive",
+      "DIY"
+    ],
     "stats": {
       "helpGiven": 13,
       "helpReceived": 5,
@@ -1016,27 +1645,41 @@
     "helpSystem": {
       "points": 150,
       "level": "New Helper",
-      "badges": ["Wrench Pro"]
+      "badges": [
+        "Wrench Pro"
+      ]
     }
   },
   {
     "id": 35,
-    "name": "Meryem Tazi",
-    "username": "meryem_tazi",
-    "email": "meryem.tazi@example.com",
+    "name": "Yacine Benmoussa",
+    "username": "yacine_benmoussa",
+    "email": "yacine.benmoussa@example.com",
     "password": "hashed_password_035",
     "avatar": "user35",
     "neighborhood": "Belvedere",
     "city": "Casablanca",
-    "bio": "Piano teacher and music theory enthusiast. Teaching from beginner to advanced levels.",
+    "bio": "Jazz musician and piano teacher. Performing locally and offering lessons for all levels.",
     "lat": 33.5934,
     "lng": -7.6032,
     "verified": true,
     "joinedAt": "2024-01-15T10:00:00Z",
-    "languages": ["Arabic", "French"],
-    "offeredSkills": ["Piano", "Music Theory"],
-    "wantedSkills": ["Photography"],
-    "favoriteCategories": ["Music", "Education"],
+    "languages": [
+      "Arabic",
+      "French"
+    ],
+    "offeredSkills": [
+      "Piano",
+      "Music Theory",
+      "Jazz"
+    ],
+    "wantedSkills": [
+      "Photography"
+    ],
+    "favoriteCategories": [
+      "Music",
+      "Education"
+    ],
     "stats": {
       "helpGiven": 28,
       "helpReceived": 10,
@@ -1046,7 +1689,9 @@
     "helpSystem": {
       "points": 330,
       "level": "Active Helper",
-      "badges": ["Piano Master"]
+      "badges": [
+        "Piano Master"
+      ]
     }
   },
   {
@@ -1063,10 +1708,20 @@
     "lng": -7.5704,
     "verified": true,
     "joinedAt": "2023-08-14T07:00:00Z",
-    "languages": ["Arabic"],
-    "offeredSkills": ["Boxing", "Self Defense"],
-    "wantedSkills": ["Nutrition"],
-    "favoriteCategories": ["Sports & Fitness", "Health & Wellness"],
+    "languages": [
+      "Arabic"
+    ],
+    "offeredSkills": [
+      "Boxing",
+      "Self Defense"
+    ],
+    "wantedSkills": [
+      "Nutrition"
+    ],
+    "favoriteCategories": [
+      "Sports & Fitness",
+      "Health & Wellness"
+    ],
     "stats": {
       "helpGiven": 16,
       "helpReceived": 6,
@@ -1076,27 +1731,42 @@
     "helpSystem": {
       "points": 190,
       "level": "Rising Helper",
-      "badges": ["Iron Fist"]
+      "badges": [
+        "Iron Fist"
+      ]
     }
   },
   {
     "id": 37,
-    "name": "Lina Cherkaoui",
-    "username": "lina_cherkaoui",
-    "email": "lina.cherkaoui@example.com",
+    "name": "Fares Moukrim",
+    "username": "fares_moukrim",
+    "email": "fares.moukrim@example.com",
     "password": "hashed_password_037",
     "avatar": "user37",
     "neighborhood": "Gauthier",
     "city": "Casablanca",
-    "bio": "Fashion stylist helping clients build their dream wardrobe with personalized consulting.",
+    "bio": "Fashion photographer and visual storyteller. Helping brands and individuals build their image.",
     "lat": 33.5948,
     "lng": -7.6285,
     "verified": true,
     "joinedAt": "2024-02-01T10:00:00Z",
-    "languages": ["Arabic", "French"],
-    "offeredSkills": ["Styling", "Wardrobe Consulting"],
-    "wantedSkills": ["Makeup"],
-    "favoriteCategories": ["Fashion", "Lifestyle"],
+    "languages": [
+      "Arabic",
+      "French"
+    ],
+    "offeredSkills": [
+      "Fashion Photography",
+      "Portrait Photography",
+      "Photo Editing"
+    ],
+    "wantedSkills": [
+      "Video Editing"
+    ],
+    "favoriteCategories": [
+      "Photography",
+      "Fashion",
+      "Arts & Crafts"
+    ],
     "stats": {
       "helpGiven": 18,
       "helpReceived": 7,
@@ -1106,7 +1776,9 @@
     "helpSystem": {
       "points": 210,
       "level": "Rising Helper",
-      "badges": ["Style Scout"]
+      "badges": [
+        "Visual Eye"
+      ]
     }
   },
   {
@@ -1123,10 +1795,20 @@
     "lng": -7.6021,
     "verified": false,
     "joinedAt": "2023-12-18T08:00:00Z",
-    "languages": ["Arabic"],
-    "offeredSkills": ["Furniture Making", "Wood Repair"],
-    "wantedSkills": ["French"],
-    "favoriteCategories": ["DIY", "Arts & Crafts"],
+    "languages": [
+      "Arabic"
+    ],
+    "offeredSkills": [
+      "Furniture Making",
+      "Wood Repair"
+    ],
+    "wantedSkills": [
+      "French"
+    ],
+    "favoriteCategories": [
+      "DIY",
+      "Arts & Crafts"
+    ],
     "stats": {
       "helpGiven": 7,
       "helpReceived": 3,
@@ -1136,14 +1818,16 @@
     "helpSystem": {
       "points": 80,
       "level": "New Helper",
-      "badges": ["Wood Crafter"]
+      "badges": [
+        "Wood Crafter"
+      ]
     }
   },
   {
     "id": 39,
-    "name": "Houda Mansouri",
-    "username": "houda_mansouri",
-    "email": "houda.mansouri@example.com",
+    "name": "Nassim Bouhout",
+    "username": "nassim_bouhout",
+    "email": "nassim.bouhout@example.com",
     "password": "hashed_password_039",
     "avatar": "user39",
     "neighborhood": "Californie",
@@ -1153,10 +1837,20 @@
     "lng": -7.6237,
     "verified": true,
     "joinedAt": "2024-01-25T09:00:00Z",
-    "languages": ["Arabic", "French"],
-    "offeredSkills": ["Tennis", "Fitness"],
-    "wantedSkills": ["English"],
-    "favoriteCategories": ["Sports & Fitness"],
+    "languages": [
+      "Arabic",
+      "French"
+    ],
+    "offeredSkills": [
+      "Tennis",
+      "Fitness"
+    ],
+    "wantedSkills": [
+      "English"
+    ],
+    "favoriteCategories": [
+      "Sports & Fitness"
+    ],
     "stats": {
       "helpGiven": 22,
       "helpReceived": 8,
@@ -1166,7 +1860,9 @@
     "helpSystem": {
       "points": 260,
       "level": "Active Helper",
-      "badges": ["Ace Player"]
+      "badges": [
+        "Ace Player"
+      ]
     }
   },
   {
@@ -1183,10 +1879,21 @@
     "lng": -7.6214,
     "verified": false,
     "joinedAt": "2023-09-30T14:00:00Z",
-    "languages": ["Arabic", "French"],
-    "offeredSkills": ["Guitar", "Music Composition"],
-    "wantedSkills": ["Singing"],
-    "favoriteCategories": ["Music", "Arts & Crafts"],
+    "languages": [
+      "Arabic",
+      "French"
+    ],
+    "offeredSkills": [
+      "Guitar",
+      "Music Composition"
+    ],
+    "wantedSkills": [
+      "Singing"
+    ],
+    "favoriteCategories": [
+      "Music",
+      "Arts & Crafts"
+    ],
     "stats": {
       "helpGiven": 12,
       "helpReceived": 4,
@@ -1196,27 +1903,41 @@
     "helpSystem": {
       "points": 135,
       "level": "New Helper",
-      "badges": ["String Player"]
+      "badges": [
+        "String Player"
+      ]
     }
   },
   {
     "id": 41,
-    "name": "Ikram Driouich",
-    "username": "ikram_driouich",
-    "email": "ikram.driouich@example.com",
+    "name": "Hamza Bertal",
+    "username": "hamza_bertal",
+    "email": "hamza.bertal@example.com",
     "password": "hashed_password_041",
     "avatar": "user41",
     "neighborhood": "Palmier",
     "city": "Casablanca",
-    "bio": "Henna artist and traditional art enthusiast. Creating beautiful designs for weddings and events.",
+    "bio": "Graphic illustrator and street artist. Creating murals and digital art across the city.",
     "lat": 33.5849,
     "lng": -7.6197,
     "verified": true,
     "joinedAt": "2024-02-08T10:00:00Z",
-    "languages": ["Arabic", "French"],
-    "offeredSkills": ["Henna", "Traditional Art"],
-    "wantedSkills": ["Photography"],
-    "favoriteCategories": ["Arts & Crafts", "Lifestyle"],
+    "languages": [
+      "Arabic",
+      "French"
+    ],
+    "offeredSkills": [
+      "Illustration",
+      "Street Art",
+      "Digital Design"
+    ],
+    "wantedSkills": [
+      "Photography"
+    ],
+    "favoriteCategories": [
+      "Arts & Crafts",
+      "Design"
+    ],
     "stats": {
       "helpGiven": 25,
       "helpReceived": 9,
@@ -1226,27 +1947,41 @@
     "helpSystem": {
       "points": 295,
       "level": "Active Helper",
-      "badges": ["Henna Queen"]
+      "badges": [
+        "Urban Artist"
+      ]
     }
   },
   {
     "id": 42,
-    "name": "Asmae Fikri",
-    "username": "asmae_fikri",
-    "email": "asmae.fikri@example.com",
+    "name": "Soufiane Berrada",
+    "username": "soufiane_berrada",
+    "email": "soufiane.berrada@example.com",
     "password": "hashed_password_042",
     "avatar": "user42",
     "neighborhood": "Lissasfa",
     "city": "Casablanca",
-    "bio": "Pastry chef creating custom cakes and desserts. Baking is my love language!",
+    "bio": "Baker and pastry chef. Specializing in custom cakes, croissants, and Moroccan sweets.",
     "lat": 33.5332,
     "lng": -7.6579,
     "verified": true,
     "joinedAt": "2024-01-05T09:00:00Z",
-    "languages": ["Arabic", "French"],
-    "offeredSkills": ["Cakes", "Desserts"],
-    "wantedSkills": ["Business Planning"],
-    "favoriteCategories": ["Food & Cooking", "Business"],
+    "languages": [
+      "Arabic",
+      "French"
+    ],
+    "offeredSkills": [
+      "Baking",
+      "Pastry Making",
+      "Cake Decorating"
+    ],
+    "wantedSkills": [
+      "Business Planning"
+    ],
+    "favoriteCategories": [
+      "Food & Cooking",
+      "Business"
+    ],
     "stats": {
       "helpGiven": 20,
       "helpReceived": 8,
@@ -1256,14 +1991,16 @@
     "helpSystem": {
       "points": 235,
       "level": "Rising Helper",
-      "badges": ["Sweet Maker"]
+      "badges": [
+        "Sweet Maker"
+      ]
     }
   },
   {
     "id": 43,
-    "name": "Fatima Zahra Kettani",
-    "username": "fz_kettani",
-    "email": "fz.kettani@example.com",
+    "name": "Ziad Alami",
+    "username": "ziad_alami",
+    "email": "ziad.alami@example.com",
     "password": "hashed_password_043",
     "avatar": "user43",
     "neighborhood": "Derb Omar",
@@ -1273,10 +2010,23 @@
     "lng": -7.6123,
     "verified": true,
     "joinedAt": "2024-02-03T09:00:00Z",
-    "languages": ["Arabic", "French"],
-    "offeredSkills": ["Business Advice", "Sales Strategy"],
-    "wantedSkills": ["Public Speaking"],
-    "favoriteCategories": ["Business", "Education"],
+    "languages": [
+      "Arabic",
+      "French",
+      "English"
+    ],
+    "offeredSkills": [
+      "Business Advice",
+      "Sales Strategy",
+      "Market Research"
+    ],
+    "wantedSkills": [
+      "Public Speaking"
+    ],
+    "favoriteCategories": [
+      "Business",
+      "Education"
+    ],
     "stats": {
       "helpGiven": 16,
       "helpReceived": 6,
@@ -1286,7 +2036,9 @@
     "helpSystem": {
       "points": 190,
       "level": "Rising Helper",
-      "badges": ["Biz Coach"]
+      "badges": [
+        "Biz Coach"
+      ]
     }
   },
   {
@@ -1303,10 +2055,21 @@
     "lng": -7.6115,
     "verified": true,
     "joinedAt": "2023-08-17T14:00:00Z",
-    "languages": ["Arabic", "French"],
-    "offeredSkills": ["Drums", "Rhythm Training"],
-    "wantedSkills": ["Guitar"],
-    "favoriteCategories": ["Music", "Arts & Crafts"],
+    "languages": [
+      "Arabic",
+      "French"
+    ],
+    "offeredSkills": [
+      "Drums",
+      "Rhythm Training"
+    ],
+    "wantedSkills": [
+      "Guitar"
+    ],
+    "favoriteCategories": [
+      "Music",
+      "Arts & Crafts"
+    ],
     "stats": {
       "helpGiven": 20,
       "helpReceived": 8,
@@ -1316,27 +2079,41 @@
     "helpSystem": {
       "points": 235,
       "level": "Rising Helper",
-      "badges": ["Beat Keeper"]
+      "badges": [
+        "Beat Keeper"
+      ]
     }
   },
   {
     "id": 45,
-    "name": "Souad Amghar",
-    "username": "souad_amghar",
-    "email": "souad.amghar@example.com",
+    "name": "Ismail Ghazi",
+    "username": "ismail_ghazi",
+    "email": "ismail.ghazi@example.com",
     "password": "hashed_password_045",
     "avatar": "user45",
     "neighborhood": "Hay Al Amal",
     "city": "Casablanca",
-    "bio": "Childcare specialist and early education expert. Passionate about nurturing children's development.",
+    "bio": "Youth sports coach specializing in basketball and athletics for kids aged 8-16.",
     "lat": 33.5738,
     "lng": -7.5902,
     "verified": true,
     "joinedAt": "2024-01-11T08:00:00Z",
-    "languages": ["Arabic", "French"],
-    "offeredSkills": ["Babysitting", "Early Education"],
-    "wantedSkills": ["English"],
-    "favoriteCategories": ["Education", "Community"],
+    "languages": [
+      "Arabic",
+      "French"
+    ],
+    "offeredSkills": [
+      "Basketball Coaching",
+      "Athletics",
+      "Team Sports"
+    ],
+    "wantedSkills": [
+      "English"
+    ],
+    "favoriteCategories": [
+      "Sports & Fitness",
+      "Education"
+    ],
     "stats": {
       "helpGiven": 24,
       "helpReceived": 10,
@@ -1346,27 +2123,42 @@
     "helpSystem": {
       "points": 280,
       "level": "Active Helper",
-      "badges": ["Child Whisperer"]
+      "badges": [
+        "Youth Coach"
+      ]
     }
   },
   {
     "id": 46,
-    "name": "Chaimae Laaroussi",
-    "username": "chaimae_laaroussi",
-    "email": "chaimae.laaroussi@example.com",
+    "name": "Othmane Rifai",
+    "username": "othmane_rifai",
+    "email": "othmane.rifai@example.com",
     "password": "hashed_password_046",
     "avatar": "user46",
     "neighborhood": "Val Fleuri",
     "city": "Casablanca",
-    "bio": "French tutor offering grammar lessons and conversation practice for all levels.",
+    "bio": "Language teacher fluent in French and Arabic. Offering private lessons and group sessions.",
     "lat": 33.5756,
     "lng": -7.6203,
     "verified": true,
     "joinedAt": "2024-01-28T09:00:00Z",
-    "languages": ["Arabic", "French"],
-    "offeredSkills": ["French Tutoring", "Grammar Lessons"],
-    "wantedSkills": ["Spanish"],
-    "favoriteCategories": ["Languages", "Education"],
+    "languages": [
+      "Arabic",
+      "French",
+      "English"
+    ],
+    "offeredSkills": [
+      "French Tutoring",
+      "Arabic Tutoring",
+      "Grammar Lessons"
+    ],
+    "wantedSkills": [
+      "Spanish"
+    ],
+    "favoriteCategories": [
+      "Languages",
+      "Education"
+    ],
     "stats": {
       "helpGiven": 26,
       "helpReceived": 10,
@@ -1376,14 +2168,16 @@
     "helpSystem": {
       "points": 310,
       "level": "Active Helper",
-      "badges": ["French Pro"]
+      "badges": [
+        "Language Pro"
+      ]
     }
   },
   {
     "id": 47,
-    "name": "Maha El Idrissi",
-    "username": "maha_elidrissi",
-    "email": "maha.elidrissi@example.com",
+    "name": "Anas Guessous",
+    "username": "anas_guessous",
+    "email": "anas.guessous@example.com",
     "password": "hashed_password_047",
     "avatar": "user47",
     "neighborhood": "Hay Al Qods",
@@ -1393,10 +2187,22 @@
     "lng": -7.5945,
     "verified": true,
     "joinedAt": "2024-01-16T09:00:00Z",
-    "languages": ["Arabic", "English"],
-    "offeredSkills": ["English Tutoring", "Conversation Practice"],
-    "wantedSkills": ["French"],
-    "favoriteCategories": ["Languages", "Education"],
+    "languages": [
+      "Arabic",
+      "English"
+    ],
+    "offeredSkills": [
+      "English Tutoring",
+      "Conversation Practice",
+      "IELTS Prep"
+    ],
+    "wantedSkills": [
+      "French"
+    ],
+    "favoriteCategories": [
+      "Languages",
+      "Education"
+    ],
     "stats": {
       "helpGiven": 23,
       "helpReceived": 9,
@@ -1406,27 +2212,40 @@
     "helpSystem": {
       "points": 270,
       "level": "Active Helper",
-      "badges": ["English Pro"]
+      "badges": [
+        "English Pro"
+      ]
     }
   },
   {
     "id": 48,
-    "name": "Rania Bouzid",
-    "username": "rania_bouzid",
-    "email": "rania.bouzid@example.com",
+    "name": "Badr Filali",
+    "username": "badr_filali",
+    "email": "badr.filali@example.com",
     "password": "hashed_password_048",
     "avatar": "user48",
     "neighborhood": "2 Mars",
     "city": "Casablanca",
-    "bio": "Calligraphy artist and painter. Offering Arabic calligraphy workshops and custom pieces.",
+    "bio": "Calligrapher and Arabic typography artist. Offering workshops and custom commissions.",
     "lat": 33.5841,
     "lng": -7.6158,
     "verified": true,
     "joinedAt": "2024-03-03T10:00:00Z",
-    "languages": ["Arabic"],
-    "offeredSkills": ["Arabic Calligraphy", "Painting"],
-    "wantedSkills": ["Photography"],
-    "favoriteCategories": ["Arts & Crafts", "Languages"],
+    "languages": [
+      "Arabic"
+    ],
+    "offeredSkills": [
+      "Arabic Calligraphy",
+      "Typography",
+      "Painting"
+    ],
+    "wantedSkills": [
+      "Photography"
+    ],
+    "favoriteCategories": [
+      "Arts & Crafts",
+      "Languages"
+    ],
     "stats": {
       "helpGiven": 20,
       "helpReceived": 8,
@@ -1436,14 +2255,16 @@
     "helpSystem": {
       "points": 235,
       "level": "Rising Helper",
-      "badges": ["Ink Master"]
+      "badges": [
+        "Ink Master"
+      ]
     }
   },
   {
     "id": 49,
-    "name": "Khadija Ziani",
-    "username": "khadija_ziani",
-    "email": "khadija.ziani@example.com",
+    "name": "Mouad Chraibi",
+    "username": "mouad_chraibi",
+    "email": "mouad.chraibi@example.com",
     "password": "hashed_password_049",
     "avatar": "user49",
     "neighborhood": "Hay El Farah",
@@ -1453,10 +2274,22 @@
     "lng": -7.5662,
     "verified": true,
     "joinedAt": "2024-02-09T09:00:00Z",
-    "languages": ["Arabic"],
-    "offeredSkills": ["Couscous", "Tagine"],
-    "wantedSkills": ["Pastry"],
-    "favoriteCategories": ["Food & Cooking", "Community"],
+    "languages": [
+      "Arabic",
+      "Darija"
+    ],
+    "offeredSkills": [
+      "Couscous",
+      "Tagine",
+      "Moroccan Recipes"
+    ],
+    "wantedSkills": [
+      "Pastry"
+    ],
+    "favoriteCategories": [
+      "Food & Cooking",
+      "Community"
+    ],
     "stats": {
       "helpGiven": 14,
       "helpReceived": 5,
@@ -1466,7 +2299,9 @@
     "helpSystem": {
       "points": 165,
       "level": "New Helper",
-      "badges": ["Tagine Master"]
+      "badges": [
+        "Tagine Master"
+      ]
     }
   },
   {
@@ -1483,10 +2318,23 @@
     "lng": -7.8164,
     "verified": true,
     "joinedAt": "2024-03-05T09:00:00Z",
-    "languages": ["Arabic", "French", "English"],
-    "offeredSkills": ["Photography", "Drone Shooting"],
-    "wantedSkills": ["Video Editing"],
-    "favoriteCategories": ["Photography", "Arts & Crafts", "Outdoors"],
+    "languages": [
+      "Arabic",
+      "French",
+      "English"
+    ],
+    "offeredSkills": [
+      "Photography",
+      "Drone Shooting"
+    ],
+    "wantedSkills": [
+      "Video Editing"
+    ],
+    "favoriteCategories": [
+      "Photography",
+      "Arts & Crafts",
+      "Outdoors"
+    ],
     "stats": {
       "helpGiven": 27,
       "helpReceived": 10,
@@ -1496,7 +2344,10 @@
     "helpSystem": {
       "points": 320,
       "level": "Active Helper",
-      "badges": ["Sky Shooter", "Coastal Eye"]
+      "badges": [
+        "Sky Shooter",
+        "Coastal Eye"
+      ]
     }
   }
 ]
