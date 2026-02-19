@@ -8,7 +8,6 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
 function Sidebar() {
-  // State لكل قسم
   const [activeCategory, setActiveCategory] = useState(null);
   const [activeComm, setActiveComm] = useState(null);
   const [activeHome, setActiveHome] = useState(false);
@@ -19,7 +18,6 @@ function Sidebar() {
       <div className="h-[20%] text-gray-500 w-full px-10 flex flex-col justify-start gap-4">
         {/* logo */}
         <div>
-          {/* هنا تقدري تزيدي logo ديالك */}
         </div>
 
         {/* Home */}
