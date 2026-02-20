@@ -5,6 +5,7 @@ import MainFeed from "../components/Feed";
 function Home() {
   const [activeView, setActiveView] = useState("feed");
   const [activeCategory, setActiveCategory] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState("ALL");
 
   return (
     <div className="flex h-screen overflow-hidden bg-gray-50">
@@ -13,11 +14,13 @@ function Home() {
         onViewChange={setActiveView}
         activeCategory={activeCategory}
         onCategoryChange={setActiveCategory}
+        selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
       />
       <MainFeed
         activeView={activeView}
         onViewChange={setActiveView}
-        activeCategory={activeCategory}
+        activeCategory={selectedCategory} 
       />
     </div>
   );

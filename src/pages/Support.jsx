@@ -2,7 +2,7 @@ import React ,{ useState } from 'react';
 import { Instagram, Linkedin, Mail, MapPin, Send } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 function Support() {
-     const [name, setName] = useState("");
+    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [company, setCompany] = useState("");
     const [message, setMessage] = useState("");

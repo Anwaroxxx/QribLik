@@ -34,7 +34,7 @@ export default function PostCard({ post, onEdit, onDelete }) {
   }
 
   return (
-    <div className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-200 p-6 flex flex-col gap-4 relative">
+    <div className=" bg-white w-full h-[310px] rounded-2xl  border border-gray-100 shadow-sm hover:shadow-md transition-all duration-200 p-6 flex flex-col gap-4 relative">
 
       {/* Top Row */}
       <div className="flex items-center justify-between">
