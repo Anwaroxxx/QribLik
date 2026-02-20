@@ -41,19 +41,9 @@ const DashboardMap = () => {
           transparent
         />
       </div>
-      <div className="px-5 mb-12 flex items-center gap-3.5 group cursor-pointer relative z-10">
-            <div className="w-11 h-11 bg-gradient-to-tr from-fuchsia-600 to-rose-500 rounded-[16px] flex items-center justify-center shadow-lg shadow-fuchsia-200 transition-transform group-hover:rotate-6 duration-300">
-              <TbHome className="text-white w-6 h-6" />
-            </div>
-            <div className="flex flex-col">
-              <span className="font-black text-2xl tracking-tighter text-slate-900 leading-none">
-                Qriblik
-              </span>
-              <span className="text-[10px] font-bold text-fuchsia-500 uppercase tracking-[0.2em] mt-1.5">
-                Community Hub
-              </span>
-            </div>
-          </div>
+
+     
+          
       <section className="flex flex-col gap-8 relative z-10">
         <h3 className="px-5 text-[11px] font-black text-slate-300 uppercase tracking-[0.25em] mb-2 flex items-center">
           <span>Discover</span>

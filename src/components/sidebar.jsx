@@ -8,6 +8,7 @@ import { IoSettingsOutline } from "react-icons/io5";
 
 function Sidebar({ selectedCategory, setSelectedCategory }) {
   const [active, setActive] = useState("Home");
+  const [notification, setNotification] = useState(null); 
   const categories = [
     { id: "ALL", icon: <TbHome />, label: "Home Feed" },
     { id: "SPORT", icon: <MdOutlineSportsSoccer />, label: "Sport" },
