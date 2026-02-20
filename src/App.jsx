@@ -7,6 +7,7 @@ import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 import Errors from "./pages/errors/errors";
 import Support from "./pages/support";
+import Maps from "./pages/maps";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path="/home" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/support" element={<Support/>} />
+      <Route path="/maps" element={<Maps/>} />
       <Route path="*" element={<Errors />} />
     </Routes>
   );
