@@ -4,33 +4,35 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import users from "../../../data/UserData.json";
 
-// ── Eagerly import all user images from assets/images/users ───────────────
-// Vite's import.meta.glob gives us a map of { "./path": url }
 const USER_IMGS = import.meta.glob(
-  "../../../assets/images/users/*.{png,jpg,jpeg,webp,PNG,JPG}",
+  "../../../assets/images/users/*",
   { eager: true, import: "default" }
 );
 
-// Build a lookup: filename-without-ext → resolved URL
-// e.g. "1" → "/assets/images/users/1.jpg"
 const IMG_MAP = {};
 Object.entries(USER_IMGS).forEach(([path, url]) => {
-  const name = path.split("/").pop().replace(/\.[^.]+$/, ""); // "1", "sara", etc.
-  IMG_MAP[name] = url;
+  if (!url) return;
+  const filename = path.split("/").pop();
+  const noExt    = filename.replace(/\.[^.]+$/, "");
+  IMG_MAP[noExt.toLowerCase()] = url;
+  IMG_MAP[noExt]               = url;
 });
 
-// Resolve image for a user — tries id, name, index, falls back to null
+// Resolve: id → 1-based index → name variants → null
 function resolveImg(user, index) {
+  const id   = String(user.id ?? "");
+  const idx  = String(index + 1);
+  const name = (user.name || "").toLowerCase();
   return (
-    IMG_MAP[String(user.id)]    ||
-    IMG_MAP[String(index + 1)]  ||
-    IMG_MAP[(user.name || "").toLowerCase().replace(/\s+/g, "_")] ||
-    IMG_MAP[(user.name || "").toLowerCase().replace(/\s+/g, "-")] ||
+    IMG_MAP[id]                        ||
+    IMG_MAP[idx]                       ||
+    IMG_MAP[name.replace(/\s+/g, "_")] ||
+    IMG_MAP[name.replace(/\s+/g, "-")] ||
+    IMG_MAP[name.replace(/\s+/g, "")]  ||
     null
   );
 }
 
-// ── Tiles ─────────────────────────────────────────────────────────────────
 const TILE = {
   light: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
   dark:  "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
