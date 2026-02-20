@@ -14,6 +14,14 @@ const NAV_ITEMS = [
   { id: "event",       icon: <MdEvent />,               label: "Events"       },
 ];
 
+const CATEGORIES = [
+  { id: "sport",       label: "Sport",        icon: "⚽", color: "#22C55E" },
+  { id: "trade",       label: "Trade",        icon: "💼", color: "#F59E0B" },
+  { id: "event",       label: "Event",        icon: "🎉", color: "#EC4899" },
+  { id: "lost_found",  label: "Lost & Found", icon: "🔍", color: "#06B6D4" },
+  { id: "swap_skills", label: "Swap Skills",  icon: "🔄", color: "#F97316" },
+];
+
 export default function DashboardMap({ category, setCategory, dark }) {
   const bg     = dark ? "#0e0720" : "#ffffff";
   const border = dark ? "rgba(139,92,246,0.2)" : "#e6dfd7";
@@ -78,7 +86,7 @@ export default function DashboardMap({ category, setCategory, dark }) {
       </div>
 
       {/* Nav items */}
-      <div style={{ position:"relative", zIndex:1, display:"flex", flexDirection:"column", gap:25, padding:"0 10px",  }}>
+      <div style={{ position:"relative", zIndex:1, display:"flex", flexDirection:"column", gap:25, padding:"0 10px" }}>
         {NAV_ITEMS.map((el) => {
           const isActive = category === el.id;
           return (
@@ -119,6 +127,19 @@ export default function DashboardMap({ category, setCategory, dark }) {
             </button>
           );
         })}
+      </div>
+
+      {/* Category Legend */}
+      <div style={{ position:"relative", zIndex:1, margin:"25px 20px 0", padding:"14px", borderRadius:14, background: dark ? "rgba(139,92,246,0.08)" : "rgba(139,92,246,0.05)", border: `1px solid ${dark ? "rgba(139,92,246,0.18)" : "rgba(139,92,246,0.12)"}` }}>
+        <p style={{ margin:"0 0 10px", fontSize:9, color:mute, textTransform:"uppercase", letterSpacing:"1px", fontWeight:700 }}>Categories</p>
+        {CATEGORIES.map(cat => (
+          <div key={cat.id} style={{ display:"flex", alignItems:"center", gap:8, marginBottom:6 }}>
+            <div style={{ width:8, height:8, borderRadius:"50%", background:cat.color, boxShadow:`0 0 6px ${cat.color}`, flexShrink:0 }} />
+            <span style={{ fontSize:11, color: dark?"#CBD5E1":"#64748b", fontFamily:"Sora,sans-serif", fontWeight: category===cat.id ? 700 : 400 }}>
+              {cat.icon} {cat.label}
+            </span>
+          </div>
+        ))}
       </div>
     </aside>
   );

@@ -308,24 +308,7 @@ export default function SectionMap({ category = "all", dark = false }) {
         <ZoomControls dark={dark} />
 
         {/* Legend */}
-        <div style={{
-          position:"absolute", bottom:32, right:16, zIndex:999,
-          background: dark?"rgba(12,6,28,0.92)":"rgba(255,255,255,0.92)",
-          backdropFilter:"blur(24px)",
-          border:`1px solid ${dark?"rgba(139,92,246,0.22)":"rgba(139,92,246,0.14)"}`,
-          borderRadius:16, padding:"12px 16px",
-          boxShadow:"0 8px 32px rgba(139,92,246,0.12)",
-        }}>
-          <p style={{ margin:"0 0 8px", fontSize:9, color:"#9CA3AF", textTransform:"uppercase", letterSpacing:"1px", fontFamily:"Sora,sans-serif", fontWeight:700 }}>Category</p>
-          {CATEGORIES.filter(c => c.id !== "all").map(cat => (
-            <div key={cat.id} style={{ display:"flex", alignItems:"center", gap:7, marginBottom:5 }}>
-              <div style={{ width:9, height:9, borderRadius:"50%", background:cat.color, boxShadow:`0 0 6px ${cat.color}` }} />
-              <span style={{ fontSize:11, color: dark?"#CBD5E1":"#374151", fontFamily:"Sora,sans-serif", fontWeight: category===cat.id?700:400 }}>
-                {cat.icon} {cat.label}
-              </span>
-            </div>
-          ))}
-        </div>
+        {/* Removed - now in dashboard sidebar */}
 
         {/* Markers */}
         {filtered.filter(u => !skipped.has(u.id)).map((user, index) => {

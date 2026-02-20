@@ -120,8 +120,9 @@ function Navbar({ dark, onToggleDark, onToggleSidebar }) {
       </div>
 
       {/* Right - Dark Mode & Profile */}
+
       <div style={{ display:"flex", alignItems:"center", gap:12, position:"relative", zIndex:1 }}>
-        <button onClick={onToggleDark} style={{
+        {/* <button onClick={onToggleDark} style={{
           display:"flex", alignItems:"center", gap:6,
           padding:"6px 14px", borderRadius:20, cursor:"pointer",
           background: dark ? "rgba(139,92,246,0.15)" : "rgba(139,92,246,0.07)",
@@ -130,6 +131,42 @@ function Navbar({ dark, onToggleDark, onToggleSidebar }) {
           fontSize:12, fontWeight:600, fontFamily:"Sora,sans-serif",
         }}>
           {dark ? "🌙 Dark" : "☀️ Light"}
+        </button> */}
+
+         <button
+            onClick={onToggleDark}
+            aria-label="Toggle dark mode"
+            style={{
+                position: "relative",
+                width: "3.2rem",
+                height: "1.8rem",
+                borderRadius: "9999px",
+                border: "none",
+                cursor: "pointer",
+                padding: 0,
+                background: dark ? "linear-gradient(135deg, #8B3FDE, #C837AB)" : "#e2e8f0",
+                transition: "background 0.35s ease",
+                boxShadow: dark ? "0 0 12px rgba(139,63,222,0.5)" : "0 1px 4px rgba(0,0,0,0.15)",
+            }}
+        >
+            <span
+                style={{
+                    position: "absolute",
+                    top: "0.25rem",
+                    left: dark ? "calc(100% - 1.55rem)" : "0.25rem",
+                    width: "1.3rem",
+                    height: "1.3rem",
+                    borderRadius: "50%",
+                    background: "#fff",
+                    transition: "left 0.3s cubic-bezier(0.34,1.56,0.64,1)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: "0.65rem",
+                }}
+            >
+                {dark ? "🌙" : "☀️"}
+            </span>
         </button>
 
         {/* Profile */}
