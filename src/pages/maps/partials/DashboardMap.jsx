@@ -122,4 +122,6 @@ export default function DashboardMap({ category, setCategory, dark }) {
       </div>
     </aside>
   );
-}
+};
+
+

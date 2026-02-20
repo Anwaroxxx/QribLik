@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { TbHome } from "react-icons/tb";
 import { MdEvent, MdOutlineSportsSoccer, MdSupportAgent } from "react-icons/md";
-import { FaMagnifyingGlass, FaRegMessage, FaRegUser, FaArrowRightArrowLeft, FaCircleInfo } from "react-icons/fa6";
+import { FaMagnifyingGlass,  FaRegUser, FaArrowRightArrowLeft, FaCircleInfo } from "react-icons/fa6";
 import { BsStars } from "react-icons/bs";
 import { IoSettingsOutline } from "react-icons/io5";
 import users from "../data/UserData.json";
@@ -87,36 +87,8 @@ function Sidebar({ selectedCategory, setSelectedCategory }) {
           </Link>
         </div>
 
-        {/* DISCOVER */}
-        <section className="flex flex-col gap-1.5 mt-6">
-          <h3 className="px-5 text-[11px] font-black text-slate-300 uppercase tracking-[0.25em] mb-2 flex items-center">
-            <span>Discover</span>
-            <div className="h-px bg-slate-100 flex-1 ml-4"></div>
-          </h3>
-
-          {[
-            { id: "Sport",  icon: <MdOutlineSportsSoccer />, label: "Sport"          },
-            { id: "Trading",icon: <FaArrowRightArrowLeft />, label: "Trading"        },
-            { id: "Lost",   icon: <FaMagnifyingGlass />,     label: "Lost and Found" },
-            { id: "Swap",   icon: <BsStars />,               label: "Swap Skills"    },
-            { id: "Events", icon: <MdEvent />,               label: "Events"         },
-          ].map((el) => (
-            <div
-              key={el.id}
-              onClick={() => {
-                setActive(el.id);
-                handleClick(el.id);
-              }}
-              className={`${itemStyle} ${active === el.id ? activeStyle : inactiveStyle}`}
-            >
-              {el.icon}
-              {el.label}
-              {active === el.id && (
-                <span className="absolute right-5 w-2 h-2 bg-fuchsia-500 rounded-full" />
-              )}
-            </div>
-          ))}
-        </section>
+        
+       
 
         {/* SOCIAL */}
         <section className="flex flex-col gap-1.5 mt-6">
