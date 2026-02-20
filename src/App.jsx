@@ -7,6 +7,8 @@ import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 import Errors from "./pages/errors/errors";
 import Support from "./pages/support";
+{/* test modal */}
+import ModalProfile from "./components/ModalProfile";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
       <Route path="/home" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/support" element={<Support/>} />
+      {/* test modal */}
+      <Route path="/ModalProfile" element={<ModalProfile/>} />
       <Route path="*" element={<Errors />} />
     </Routes>
   );

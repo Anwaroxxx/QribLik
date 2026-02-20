@@ -49,7 +49,7 @@ function Support() {
 
                 <h1 className="text-5xl md:text-[64px] font-bold tracking-tighter p-3 leading-tight italic">
                     We're Here to
-                    
+
                     <span className="bg-gradient-to-r from-[#8B3FDE] via-[#C837AB] to-[#FF6B35] bg-clip-text">
                                 Help
                             </span>
