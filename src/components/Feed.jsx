@@ -4,6 +4,7 @@ import PostCard from './PostCards'
 import ProfilePage from './ProfilePage'
 import CreatePostModal from './Createpostmodal'
 import NotificationsPanel from './Notificationspanel'
+import OverviewCard from './OverView'
 //import NeighborMap from './NeighborMap'
 
 const currentUser = {
@@ -22,11 +23,13 @@ const initialPosts = [
 ]
 
 const CATEGORY_MAP = {
-  'sport': 'SPORT',
-  'trading': 'TRADING',
-  'lostfound': 'LOST AND FOUND',
-  'swapskills': 'SWAP SKILLS',
-  'events': 'EVENTS',
+  'ALL': 'Home Feed',
+  'SPORT': 'Sport',
+  'TRADING': 'Trading',
+  'LOST AND FOUND': 'Lost and Found',
+  'SWAP SKILLS': 'Swap Skills',
+  'EVENTS': 'Events',
+  'TECH HELP': 'Tech Help',
 }
 
 export default function MainFeed({ activeView, onViewChange, activeCategory }) {
@@ -54,10 +57,9 @@ export default function MainFeed({ activeView, onViewChange, activeCategory }) {
   }
 
   // Filter posts by active category
-  const filteredPosts = activeCategory
-    ? posts.filter(p => p.category === CATEGORY_MAP[activeCategory])
-    : posts
-
+ const filteredPosts = !activeCategory || activeCategory === "ALL"
+  ? posts
+  : posts.filter(post => post.category === activeCategory)
   // ── VIEWS ──────────────────────────────────────────────────────────────────
 
   if (activeView === 'map') {
@@ -147,14 +149,14 @@ export default function MainFeed({ activeView, onViewChange, activeCategory }) {
       </header>
 
       {/* FEED */}
-      <main className="flex-1 p-8 w-full">
+      <main className="flex-1 p-8 w-full ">
         <div className="flex items-center justify-between mb-6">
           <div>
             <h1 className="text-2xl font-bold" style={{
               background: 'var(--gradient-qriblik)',
               WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
             }}>
-              {activeCategory ? CATEGORY_MAP[activeCategory] : 'Home Feed'}
+              {CATEGORY_MAP[activeCategory] || 'Home Feed'}
             </h1>
             <p className="text-sm text-gray-400 mt-0.5">
               {filteredPosts.length} {activeCategory ? 'posts in this category' : 'posts matching your interest'}
@@ -170,7 +172,7 @@ export default function MainFeed({ activeView, onViewChange, activeCategory }) {
           </div>
         </div>
 
-        <div className="h-[2px] rounded-full mb-6" style={{ background: 'var(--gradient-qriblik)', opacity: 0.3 }} />
+        <div className="h-[2px]  rounded-full "  style={{ background: 'var(--gradient-qriblik)', opacity: 0.3 }} />
 
         {filteredPosts.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-20">
@@ -188,7 +190,8 @@ export default function MainFeed({ activeView, onViewChange, activeCategory }) {
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div className="grid grid-cols-[1fr_30%] gap-4 ">
+             <div className="grid  grid-cols-1 gap-5  justify-center items-center ">
             {filteredPosts.map(post => (
               <PostCard
                 key={post.id}
@@ -197,6 +200,12 @@ export default function MainFeed({ activeView, onViewChange, activeCategory }) {
                 onDelete={() => handleDelete(post.id)}
               />
             ))}
+
+            
+          </div>
+          <div>
+                <OverviewCard/>
+            </div>
           </div>
         )}
       </main>
