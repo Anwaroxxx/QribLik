@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Image } from "../../../constant/images/images-activité";
 import { h1 } from "framer-motion/client";
+import { Link } from "react-router-dom";
 
 const images = [
     Image.activite3,
@@ -116,13 +117,17 @@ export default function HeroSection() {
                     </p>
 
                     <div className="flex items-center gap-5 mb-12">
-                        <button className="group relative inline-flex items-center gap-2 text-white text-sm font-bold px-8 py-4 rounded-4xl cursor-pointer border-0 bg-gradient-to-r from-[#8B3FDE] via-[#C837AB] to-[#FF6B35] shadow-[0_6px_24px_rgba(139,63,222,0.45)] hover:shadow-[0_10px_36px_rgba(139,63,222,0.6)] hover:-translate-y-1 transition-all duration-300 overflow-hidden">
-
+                        
+                        <Link
+                            to="/SignIn"
+                            className="group relative inline-flex items-center gap-2 text-white text-sm font-bold px-8 py-4 rounded-4xl cursor-pointer border-0 bg-gradient-to-r from-[#8B3FDE] via-[#C837AB] to-[#FF6B35] shadow-[0_6px_24px_rgba(139,63,222,0.45)] hover:shadow-[0_10px_36px_rgba(139,63,222,0.6)] hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+                        >
                             <span className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform rounded-2xl duration-700 bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent)]" />
                             Get Started
                             <span className="group-hover:translate-x-1 transition-transform duration-200">→</span>
-                        </button>
+                        </Link>
                     </div>
+
 
                     <div className="flex items-center gap-6">
                         {[
@@ -247,5 +252,5 @@ export default function HeroSection() {
                 </div>
             </div>
         </section>
-  );
+    );
 }
