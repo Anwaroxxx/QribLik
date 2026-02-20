@@ -7,6 +7,27 @@
     --gradient-qriblik: linear-gradient(135deg, #8B3FDE 0%, #C837AB 50%, #FF6B35 100%);
 }
 
+
+/* & dark mood */
+[data-theme="dark"] {
+    --bg-primary: #0d0a12;
+    --bg-secondary: #130d1f;
+    --bg-tertiary: #1a1020;
+    --bg-gradient: linear-gradient(160deg, #0d0a12 0%, #130d1f 60%, #1a1020 100%);
+
+    --card-bg: #1a1228;
+    --card-border: #2e1f4a;
+
+    --text-primary: #f0eaff;
+    --text-secondary: #c4aee8;
+    --text-muted: #7a6899;
+
+    --input-bg: #1f1530;
+    --input-border: #3d2860;
+
+}
+
+
 * {
     font-family: "DM Sans", sans-serif;
     font-optical-sizing: auto;
@@ -14,6 +35,14 @@
 
 }
 
-.padding{
+.padding {
     padding: 20px;
+}
+@keyframes slide-in {
+  0% { transform: translateX(100%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.3s ease-out forwards;
 }

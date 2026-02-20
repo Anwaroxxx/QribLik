@@ -1,18 +1,19 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { useContext } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ModalContext } from "../../../contexts/Context-moda";
+import { useTheme } from "../../../contexts/ThemeContext";
 import { Link } from "react-router-dom";
+
 const gradientStyle =
   "linear-gradient(135deg, #8B3FDE 0%, #C837AB 50%, #FF6B35 100%)";
 
 export default function QribLikModal() {
   const { open, setOpen } = useContext(ModalContext);
+  const { dark } = useTheme();
 
   return (
     <>
       <style>{`
-        
         .gradient-text {
           background: linear-gradient(135deg, #8B3FDE 0%, #C837AB 50%, #FF6B35 100%);
           -webkit-background-clip: text;
@@ -39,36 +40,11 @@ export default function QribLikModal() {
           -webkit-backdrop-filter: blur(10px);
         }
 
-        .modal-card {
-          background: rgba(255, 255, 255, 0.92);
-          backdrop-filter: blur(24px);
-          -webkit-backdrop-filter: blur(24px);
-        }
-
         .close-btn:hover {
-          background: rgba(139, 63, 222, 0.08);
-        }
-
-        .outline-gradient-btn {
-          position: relative;
-          background: white;
-          z-index: 0;
-        }
-
-        .outline-gradient-btn::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          border-radius: 100px;
-          padding: 1.5px;
-          background: linear-gradient(135deg, #8B3FDE 0%, #C837AB 50%, #FF6B35 100%);
-          -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-          -webkit-mask-composite: xor;
-          mask-composite: exclude;
-          z-index: -1;
+          background: rgba(139, 63, 222, 0.1);
         }
       `}</style>
-      {/* Modal */}
+
       <AnimatePresence>
         {open && (
           <>
@@ -81,27 +57,41 @@ export default function QribLikModal() {
               transition={{ duration: 0.3, ease: "easeOut" }}
               onClick={() => setOpen(false)}
               className="modal-backdrop fixed inset-0 z-40"
-              style={{ background: "rgba(20, 4, 46, 0.25)" }}
+              style={{
+                background: dark
+                  ? "rgba(5, 0, 20, 0.6)"
+                  : "rgba(20, 4, 46, 0.25)",
+              }}
             />
 
             {/* Centering wrapper */}
             <div className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none">
+
               {/* Modal card */}
               <motion.div
                 key="modal"
                 initial={{ opacity: 0, scale: 0.88, y: 24 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.92, y: 16 }}
-                transition={{
-                  duration: 0.45,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                className="modal-card rounded-[32px] shadow-[0_32px_80px_rgba(139,63,222,0.18),0_2px_8px_rgba(139,63,222,0.08)]"
+                transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                className="rounded-[32px] relative"
                 style={{
                   width: "min(480px, 92vw)",
                   padding: "48px 44px 40px",
-                  border: "1px solid rgba(139,63,222,0.10)",
                   pointerEvents: "auto",
+                  // ── card background switches ──
+                  background: dark
+                    ? "rgba(20, 8, 40, 0.95)"
+                    : "rgba(255, 255, 255, 0.92)",
+                  backdropFilter: "blur(24px)",
+                  WebkitBackdropFilter: "blur(24px)",
+                  border: dark
+                    ? "1px solid rgba(139,63,222,0.25)"
+                    : "1px solid rgba(139,63,222,0.10)",
+                  boxShadow: dark
+                    ? "0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(139,63,222,0.15)"
+                    : "0 32px 80px rgba(139,63,222,0.18), 0 2px 8px rgba(139,63,222,0.08)",
+                  transition: "background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease",
                 }}
               >
                 {/* Close button */}
@@ -109,7 +99,7 @@ export default function QribLikModal() {
                   whileTap={{ scale: 0.9 }}
                   onClick={() => setOpen(false)}
                   className="close-btn absolute top-5 right-5 w-9 h-9 flex items-center justify-center rounded-full transition-colors duration-150"
-                  style={{ color: "#9b72cf" }}
+                  style={{ color: dark ? "#c084fc" : "#9b72cf" }}
                 >
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <path
@@ -125,11 +115,7 @@ export default function QribLikModal() {
                 <motion.div
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
-                  transition={{
-                    duration: 0.6,
-                    delay: 0.15,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
+                  transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
                   style={{
                     height: 3,
                     background: gradientStyle,
@@ -143,11 +129,7 @@ export default function QribLikModal() {
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    delay: 0.2,
-                    duration: 0.45,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
+                  transition={{ delay: 0.2, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                   style={{
                     width: 52,
                     height: 52,
@@ -160,20 +142,6 @@ export default function QribLikModal() {
                     boxShadow: "0 8px 24px rgba(200,55,171,0.28)",
                   }}
                 >
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"
-                      fill="white"
-                      opacity="0"
-                    />
-                    <path
-                      d="M17 12l-5-5-5 5M12 7v10"
-                      stroke="white"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
                   <span style={{ color: "white", fontSize: 22 }}>✦</span>
                 </motion.div>
 
@@ -181,11 +149,7 @@ export default function QribLikModal() {
                 <motion.h2
                   initial={{ opacity: 0, y: 14 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    delay: 0.25,
-                    duration: 0.5,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
+                  transition={{ delay: 0.25, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                   style={{
                     fontFamily: "'Fraunces', serif",
                     fontSize: 34,
@@ -193,10 +157,12 @@ export default function QribLikModal() {
                     letterSpacing: "-0.03em",
                     lineHeight: 1.1,
                     marginBottom: 14,
-                    color: "#1a0a2e",
+                    // ── heading color switches ──
+                    color: dark ? "#f5f0ff" : "#1a0a2e",
+                    transition: "color 0.5s ease",
                   }}
                 >
-                  Welcome to
+                  Welcome to{" "}
                   <span className="gradient-text">QribLik</span>
                 </motion.h2>
 
@@ -204,21 +170,19 @@ export default function QribLikModal() {
                 <motion.p
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    delay: 0.32,
-                    duration: 0.5,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
+                  transition={{ delay: 0.32, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                   style={{
                     fontSize: 15,
                     lineHeight: 1.7,
-                    color: "#7a5fa0",
                     marginBottom: 36,
                     fontWeight: 400,
+                    // ── subtext color switches ──
+                    color: dark ? "rgba(196,168,240,0.7)" : "#7a5fa0",
+                    transition: "color 0.5s ease",
                   }}
                 >
                   You should register with us to see the best and most diverse
-                  communities. Let's go!{" "}
+                  communities. Let's go!
                 </motion.p>
 
                 {/* Divider */}
@@ -228,27 +192,25 @@ export default function QribLikModal() {
                   transition={{ delay: 0.38, duration: 0.4 }}
                   style={{
                     height: 1,
-                    background:
-                      "linear-gradient(90deg, rgba(139,63,222,0.12) 0%, rgba(255,107,53,0.06) 100%)",
+                    background: dark
+                      ? "linear-gradient(90deg, rgba(139,63,222,0.25) 0%, rgba(255,107,53,0.12) 100%)"
+                      : "linear-gradient(90deg, rgba(139,63,222,0.12) 0%, rgba(255,107,53,0.06) 100%)",
                     marginBottom: 28,
+                    transition: "background 0.5s ease",
                   }}
                 />
 
-                {/* Actions */}
+                {/* CTA button */}
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    delay: 0.42,
-                    duration: 0.45,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
+                  transition={{ delay: 0.42, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                   style={{ display: "flex", gap: 12 }}
                 >
-                  <Link to="/SignUp" className=" w-full">
+                  <Link to="/SignUp" className="w-full">
                     <button
                       onClick={() => setOpen(false)}
-                      className="gradient-btn flex-1 py-3 rounded-full text-white w-full font-semibold text-[14px] shadow-[0_8px_24px_rgba(200,55,171,0.24)]"
+                      className="gradient-btn w-full py-3 rounded-full text-white font-semibold text-[14px] shadow-[0_8px_24px_rgba(200,55,171,0.24)]"
                       style={{ letterSpacing: "0.02em" }}
                     >
                       Get started
