@@ -2,7 +2,7 @@ import React ,{ useState } from 'react';
 import { Instagram, Linkedin, Mail, MapPin, Send } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 function Support() {
-     const [name, setName] = useState("");
+    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [company, setCompany] = useState("");
     const [message, setMessage] = useState("");
@@ -47,10 +47,9 @@ function Support() {
             <div className="text-center mb-16 relative z-10">
                 <span className="text-gray-400 text-sm tracking-widest uppercase">Our Users</span>
 
-                <h1 className="text-5xl md:text-[64px] font-bold tracking-tighter p-3 leading-tight italic">
-                    We're Here to
-
-                    <span className="bg-gradient-to-r from-[#8B3FDE] via-[#C837AB] to-[#FF6B35] bg-clip-text">
+                <h1 className="text-5xl md:text-[64px] font-bold tracking-tighter p-3 leading-tight italic tracking-wide">
+                    We're  Here to {" "}
+                     <span className="bg-gradient-to-r  from-[#8B3FDE] via-[#C837AB] to-[#FF6B35] bg-clip-text text-transparent">
                                 Help
                             </span>
                 </h1>

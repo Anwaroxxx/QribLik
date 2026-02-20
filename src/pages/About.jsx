@@ -6,7 +6,7 @@ import { usersImages } from '../constant/images/images-users';
 import MagicBento from '../components/MagicBento';
 import UserData from "../data/UserData.json";
 import SwapGalleryCarousel from '../components/SwapGalleryCarousel';
-
+ 
 
 
 const About = () => { 
