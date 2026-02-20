@@ -1,12 +1,13 @@
+
 import { Routes, Route, useLocation } from "react-router-dom";
 import "./index.css";
 import Landing from "./pages/landing";
 import Home from "./pages/Home";
-import About from "./pages/About"; 
+import About from "./pages/About";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 import Errors from "./pages/errors/errors";
-import Support from "./pages/support";
+import Support from "./pages/Support";
 import Maps from "./pages/maps";
 import MapPage from "./pages/maps";
 import Footer from "./components/footer";
@@ -14,7 +15,7 @@ import Footer from "./components/footer";
 function App() {
   const location = useLocation()
 
-  const showFooterOn = ["/home" , "/about" , "/support"]
+  const showFooterOn = ["/about" , "/support"]
   const shouldShowFotter = showFooterOn.includes(location.pathname)
 
   return (
@@ -40,7 +41,6 @@ function App() {
 </>
 
   );
-  
 }
 
 export default App;
