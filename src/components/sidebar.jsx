@@ -6,18 +6,16 @@ import { FaMagnifyingGlass, FaRegMessage, FaRegUser, FaArrowRightArrowLeft, FaCi
 import { BsStars } from "react-icons/bs";
 import { IoSettingsOutline } from "react-icons/io5";
 
-// Example users
-const users = [
-  { name: "Ali", img: "https://i.pravatar.cc/150?img=1", category: "Sport" },
-  { name: "Sara", img: "https://i.pravatar.cc/150?img=2", category: "Trading" },
-  { name: "Youssef", img: "https://i.pravatar.cc/150?img=3", category: "Events" },
-  { name: "Khadija", img: "https://i.pravatar.cc/150?img=4", category: "Swap" },
-  { name: "Amine", img: "https://i.pravatar.cc/150?img=5", category: "Lost" }
-];
-
-function Sidebar() {
+function Sidebar({ selectedCategory, setSelectedCategory }) {
   const [active, setActive] = useState("Home");
-  const [notification, setNotification] = useState(null);
+  const categories = [
+    { id: "ALL", icon: <TbHome />, label: "Home Feed" },
+    { id: "SPORT", icon: <MdOutlineSportsSoccer />, label: "Sport" },
+    { id: "TRADING", icon: <FaArrowRightArrowLeft />, label: "Trading" },
+    { id: "LOST AND FOUND", icon: <FaMagnifyingGlass />, label: "Lost and Found" },
+    { id: "SWAP SKILLS", icon: <BsStars />, label: "Swap Skills" },
+    { id: "EVENTS", icon: <MdEvent />, label: "Events" },
+  ];
 
   const itemStyle =
     "flex items-center gap-3 px-5 py-2.5 rounded-2xl cursor-pointer transition-all duration-300 text-[15px] relative";
@@ -103,6 +101,13 @@ function Sidebar() {
             <div className="h-px bg-slate-100 flex-1 ml-4"></div>
           </h3>
 
+        {/* {[
+          { id: "Sport", icon: <MdOutlineSportsSoccer />, label: "Sport" },
+          { id: "Trading", icon: <FaArrowRightArrowLeft />, label: "Trading" },
+          { id: "Lost", icon: <FaMagnifyingGlass />, label: "Lost and Found" },
+          { id: "Swap", icon: <BsStars />, label: "Swap Skills" },
+          { id: "Events", icon: <MdEvent />, label: "Events" },
+        ].map((el) => (
           <div
             onClick={() => setActive("Messages")}
             className={`flex items-center justify-between px-5 py-3 rounded-2xl cursor-pointer transition-all duration-500
@@ -117,7 +122,26 @@ function Sidebar() {
             </div>
             <span className="bg-fuchsia-600 text-white text-xs px-2 py-0.5 rounded-full">3</span>
           </div>
-        </section>
+        ))} */}
+
+          <div className="flex flex-col gap-2 px-2">
+        {categories.map((el) => (
+          <div
+            key={el.id}
+            onClick={() => setSelectedCategory(el.id)}
+            className={`${itemStyle} ${
+              selectedCategory === el.id ? activeStyle : inactiveStyle
+            }`}
+          >
+            {el.icon}
+            {el.label}
+            {selectedCategory === el.id && (
+              <span className="absolute right-5 w-2 h-2 bg-fuchsia-500 rounded-full"></span>
+            )}
+          </div>
+        ))}
+      </div>
+      </section>
 
         {/* PROFILE / SETTINGS */}
         <section className="mt-auto flex flex-col gap-1.5 pt-6 px-2">
