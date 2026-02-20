@@ -3,6 +3,7 @@ import { FaArrowRightArrowLeft, FaMagnifyingGlass } from "react-icons/fa6";
 import { MdEvent, MdOutlineSportsSoccer } from "react-icons/md";
 import { TbClearAll, TbHome } from "react-icons/tb";
 import PixelBlast from "../../../animations/Pixel";
+import { Image } from "../../../constant/images/images-activité";
 
 const NAV_ITEMS = [
   { id: "all",         icon: <TbClearAll />,            label: "All"          },
@@ -13,6 +14,14 @@ const NAV_ITEMS = [
   { id: "event",       icon: <MdEvent />,               label: "Events"       },
 ];
 
+const CATEGORIES = [
+  { id: "sport",       label: "Sport",        icon: "⚽", color: "#22C55E" },
+  { id: "trade",       label: "Trade",        icon: "💼", color: "#F59E0B" },
+  { id: "event",       label: "Event",        icon: "🎉", color: "#EC4899" },
+  { id: "lost_found",  label: "Lost & Found", icon: "🔍", color: "#06B6D4" },
+  { id: "swap_skills", label: "Swap Skills",  icon: "🔄", color: "#F97316" },
+];
+
 export default function DashboardMap({ category, setCategory, dark }) {
   const bg     = dark ? "#0e0720" : "#ffffff";
   const border = dark ? "rgba(139,92,246,0.2)" : "#e6dfd7";
@@ -21,15 +30,18 @@ export default function DashboardMap({ category, setCategory, dark }) {
 
   return (
     <aside style={{
-      width: 260,
-      height: "100%",
+      width: 280,
+      height: "100vh",
       background: bg,
       borderRight: `1px solid ${border}`,
       display: "flex",
       flexDirection: "column",
       padding: "16px 0",
       overflowY: "auto",
-      position: "relative",
+      position: "fixed",
+      top: 0,
+      left: 0,
+      zIndex: 3000,
       flexShrink: 0,
       transition: "background .3s",
     }}>
@@ -45,29 +57,36 @@ export default function DashboardMap({ category, setCategory, dark }) {
       </div>
 
       {/* Logo */}
-      <div style={{ position:"relative", zIndex:1, padding:"0 20px 28px", display:"flex", alignItems:"center", gap:12, cursor:"pointer" }}>
-        <div style={{
-          width:42, height:42, borderRadius:14, flexShrink:0,
-          background:"linear-gradient(135deg,#8B5CF6,#D946EF,#F97316)",
-          display:"flex", alignItems:"center", justifyContent:"center",
-          boxShadow:"0 6px 20px rgba(139,92,246,0.4)",
-        }}>
-          <TbHome style={{ color:"#fff", width:22, height:22 }} />
-        </div>
-        <div>
-          <div style={{ fontFamily:"Georgia,serif", fontWeight:900, fontSize:20, color:txt, lineHeight:1 }}>Qriblik</div>
-          <div style={{ fontSize:9, fontWeight:700, color:"#D946EF", textTransform:"uppercase", letterSpacing:"0.2em", marginTop:4 }}>Community Hub</div>
-        </div>
+      <div style={{ 
+        position: "relative", 
+        zIndex: 1, 
+        padding: "0 20px 20px", 
+        display: "flex", 
+        alignItems: "center",
+        justifyContent: "start"
+      }}>
+        <img 
+          src={Image.logo} 
+          alt="Qriblik Logo" 
+          style={{
+            width: "120px",
+            height: "auto",
+            cursor: "pointer",
+            transition: "transform 0.3s ease",
+          }}
+          onMouseEnter={e => e.currentTarget.style.transform = "scale(1.05)"}
+          onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
+        />
       </div>
 
       {/* Section label */}
       <div style={{ position:"relative", zIndex:1, padding:"0 20px 10px", display:"flex", alignItems:"center", gap:12 }}>
-        <span style={{ fontSize:10, fontWeight:800, color:mute, textTransform:"uppercase", letterSpacing:"0.2em", whiteSpace:"nowrap" }}>Discover</span>
+        <span style={{ fontSize:10, fontWeight:800, color:mute, textTransform:"uppercase", letterSpacing:"0.2em", whiteSpace:"nowrap" }}>Social</span>
         <div style={{ flex:1, height:1, background: dark ? "rgba(255,255,255,0.07)" : "#f1f5f9" }} />
       </div>
 
       {/* Nav items */}
-      <div style={{ position:"relative", zIndex:1, display:"flex", flexDirection:"column", gap:2, padding:"0 10px" }}>
+      <div style={{ position:"relative", zIndex:1, display:"flex", flexDirection:"column", gap:25, padding:"0 10px" }}>
         {NAV_ITEMS.map((el) => {
           const isActive = category === el.id;
           return (
@@ -109,6 +128,21 @@ export default function DashboardMap({ category, setCategory, dark }) {
           );
         })}
       </div>
+
+      {/* Category Legend */}
+      <div style={{ position:"relative", zIndex:1, margin:"25px 20px 0", padding:"14px", borderRadius:14, background: dark ? "rgba(139,92,246,0.08)" : "rgba(139,92,246,0.05)", border: `1px solid ${dark ? "rgba(139,92,246,0.18)" : "rgba(139,92,246,0.12)"}` }}>
+        <p style={{ margin:"0 0 10px", fontSize:9, color:mute, textTransform:"uppercase", letterSpacing:"1px", fontWeight:700 }}>Categories</p>
+        {CATEGORIES.map(cat => (
+          <div key={cat.id} style={{ display:"flex", alignItems:"center", gap:8, marginBottom:6 }}>
+            <div style={{ width:8, height:8, borderRadius:"50%", background:cat.color, boxShadow:`0 0 6px ${cat.color}`, flexShrink:0 }} />
+            <span style={{ fontSize:11, color: dark?"#CBD5E1":"#64748b", fontFamily:"Sora,sans-serif", fontWeight: category===cat.id ? 700 : 400 }}>
+              {cat.icon} {cat.label}
+            </span>
+          </div>
+        ))}
+      </div>
     </aside>
   );
-}
+};
+
+
