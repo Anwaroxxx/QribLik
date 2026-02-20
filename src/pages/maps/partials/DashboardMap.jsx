@@ -1,90 +1,116 @@
-import React, { useState } from "react";
 import { BsStars } from "react-icons/bs";
 import { FaArrowRightArrowLeft, FaMagnifyingGlass } from "react-icons/fa6";
 import { MdEvent, MdOutlineSportsSoccer } from "react-icons/md";
 import { TbClearAll, TbHome } from "react-icons/tb";
 import PixelBlast from "../../../animations/Pixel";
 
-const DashboardMap = () => {
-    const [active, setActive] = useState("All");
+const NAV_ITEMS = [
+  { id: "all",         icon: <TbClearAll />,            label: "All"          },
+  { id: "sport",       icon: <MdOutlineSportsSoccer />, label: "Sport"        },
+  { id: "trade",       icon: <FaArrowRightArrowLeft />, label: "Trading"      },
+  { id: "lost_found",  icon: <FaMagnifyingGlass />,     label: "Lost & Found" },
+  { id: "swap_skills", icon: <BsStars />,               label: "Swap Skills"  },
+  { id: "event",       icon: <MdEvent />,               label: "Events"       },
+];
 
-    const itemStyle =
-    "flex items-center gap-3 px-5 py-2.5 rounded-2xl cursor-pointer transition-all duration-300 text-[15px] relative";
+export default function DashboardMap({ category, setCategory, dark }) {
+  const bg     = dark ? "#0e0720" : "#ffffff";
+  const border = dark ? "rgba(139,92,246,0.2)" : "#e6dfd7";
+  const txt    = dark ? "#f1f5f9" : "#0f172a";
+  const mute   = dark ? "#94a3b8" : "#94a3b8";
 
-  const activeStyle =
-    "bg-gradient-to-r from-fuchsia-50 to-rose-50 text-fuchsia-600 shadow-sm";
-
-  const inactiveStyle =
-    "text-slate-500 hover:bg-slate-100";
   return (
-    <>
-    {/* logo */}
-    <div className="w-[280px] h-screen bg-white sticky top-0 flex flex-col py-4 pr-6 border-r border-[#e6dfd7] overflow-y-auto relative">
-      <div className="absolute inset-0 z-0 opacity-30">
+    <aside style={{
+      width: 260,
+      height: "100%",
+      background: bg,
+      borderRight: `1px solid ${border}`,
+      display: "flex",
+      flexDirection: "column",
+      padding: "16px 0",
+      overflowY: "auto",
+      position: "relative",
+      flexShrink: 0,
+      transition: "background .3s",
+    }}>
+
+      {/* Pixel background */}
+      <div style={{ position:"absolute", inset:0, zIndex:0, opacity:0.15, pointerEvents:"none" }}>
         <PixelBlast
-          variant="square"
-          pixelSize={4}
-          color="#d946ef"
-          patternScale={2}
-          patternDensity={1}
-          pixelSizeJitter={0}
-          enableRipples
-          rippleSpeed={0.4}
-          rippleThickness={0.12}
-          rippleIntensityScale={1.5}
-          liquid={false}
-          liquidStrength={0.12}
-          liquidRadius={1.2}
-          liquidWobbleSpeed={5}
-          speed={0.5}
-          edgeFade={0.25}
-          transparent
+          variant="square" pixelSize={4} color="#d946ef"
+          patternScale={2} patternDensity={1} pixelSizeJitter={0}
+          enableRipples rippleSpeed={0.4} rippleThickness={0.12}
+          rippleIntensityScale={1.5} speed={0.5} edgeFade={0.25} transparent
         />
       </div>
-      <div className="px-5 mb-12 flex items-center gap-3.5 group cursor-pointer relative z-10">
-            <div className="w-11 h-11 bg-gradient-to-tr from-fuchsia-600 to-rose-500 rounded-[16px] flex items-center justify-center shadow-lg shadow-fuchsia-200 transition-transform group-hover:rotate-6 duration-300">
-              <TbHome className="text-white w-6 h-6" />
-            </div>
-            <div className="flex flex-col">
-              <span className="font-black text-2xl tracking-tighter text-slate-900 leading-none">
-                Qriblik
-              </span>
-              <span className="text-[10px] font-bold text-fuchsia-500 uppercase tracking-[0.2em] mt-1.5">
-                Community Hub
-              </span>
-            </div>
-          </div>
-      <section className="flex flex-col gap-8 relative z-10">
-        <h3 className="px-5 text-[11px] font-black text-slate-300 uppercase tracking-[0.25em] mb-2 flex items-center">
-          <span>Discover</span>
-          <div className="h-px bg-slate-100 flex-1 ml-4"></div>
-        </h3>
 
-        {[
-          { id: "All" , icon : <TbClearAll/> , label: "All"},
-          { id: "Sport", icon: <MdOutlineSportsSoccer />, label: "Sport" },
-          { id: "Trading", icon: <FaArrowRightArrowLeft />, label: "Trading" },
-          { id: "Lost", icon: <FaMagnifyingGlass />, label: "Lost and Found" },
-          { id: "Swap", icon: <BsStars />, label: "Swap Skills" },
-          { id: "Events", icon: <MdEvent />, label: "Events" },
-        ].map((el) => (
-            <div
-            key={el.id}
-            onClick={() => setActive(el.id)}
-            className={`${itemStyle} ${active === el.id ? activeStyle : inactiveStyle}`}
-          >
-            {el.icon}
-            {el.label}
-            {active === el.id && (
-                <span className="absolute right-5 w-2 h-2 bg-fuchsia-500 rounded-full"></span>
-            )}
-          </div>
-        ))}
-      </section>
-      
-    </div>
-    </>
+      {/* Logo */}
+      <div style={{ position:"relative", zIndex:1, padding:"0 20px 28px", display:"flex", alignItems:"center", gap:12, cursor:"pointer" }}>
+        <div style={{
+          width:42, height:42, borderRadius:14, flexShrink:0,
+          background:"linear-gradient(135deg,#8B5CF6,#D946EF,#F97316)",
+          display:"flex", alignItems:"center", justifyContent:"center",
+          boxShadow:"0 6px 20px rgba(139,92,246,0.4)",
+        }}>
+          <TbHome style={{ color:"#fff", width:22, height:22 }} />
+        </div>
+        <div>
+          <div style={{ fontFamily:"Georgia,serif", fontWeight:900, fontSize:20, color:txt, lineHeight:1 }}>Qriblik</div>
+          <div style={{ fontSize:9, fontWeight:700, color:"#D946EF", textTransform:"uppercase", letterSpacing:"0.2em", marginTop:4 }}>Community Hub</div>
+        </div>
+      </div>
+
+      {/* Section label */}
+      <div style={{ position:"relative", zIndex:1, padding:"0 20px 10px", display:"flex", alignItems:"center", gap:12 }}>
+        <span style={{ fontSize:10, fontWeight:800, color:mute, textTransform:"uppercase", letterSpacing:"0.2em", whiteSpace:"nowrap" }}>Discover</span>
+        <div style={{ flex:1, height:1, background: dark ? "rgba(255,255,255,0.07)" : "#f1f5f9" }} />
+      </div>
+
+      {/* Nav items */}
+      <div style={{ position:"relative", zIndex:1, display:"flex", flexDirection:"column", gap:2, padding:"0 10px" }}>
+        {NAV_ITEMS.map((el) => {
+          const isActive = category === el.id;
+          return (
+            <button
+              key={el.id}
+              onClick={() => setCategory(el.id)}
+              style={{
+                display:"flex", alignItems:"center", gap:12,
+                padding:"10px 14px", borderRadius:14, cursor:"pointer",
+                border:"none", width:"100%", textAlign:"left",
+                position:"relative", transition:"all .2s",
+                fontSize:14, fontWeight: isActive ? 700 : 500,
+                background: isActive
+                  ? dark ? "rgba(139,92,246,0.2)" : "linear-gradient(135deg,rgba(232,219,255,0.8),rgba(255,220,230,0.8))"
+                  : "transparent",
+                color: isActive
+                  ? dark ? "#C084FC" : "#9333EA"
+                  : dark ? "#94a3b8" : "#64748b",
+                boxShadow: isActive ? "0 2px 12px rgba(139,92,246,0.12)" : "none",
+                fontFamily:"Sora,sans-serif",
+              }}
+              onMouseEnter={e => {
+                if (!isActive) e.currentTarget.style.background = dark ? "rgba(139,92,246,0.1)" : "rgba(139,92,246,0.06)";
+              }}
+              onMouseLeave={e => {
+                if (!isActive) e.currentTarget.style.background = "transparent";
+              }}
+            >
+              <span style={{ fontSize:17, flexShrink:0 }}>{el.icon}</span>
+              {el.label}
+              {isActive && (
+                <span style={{
+                  position:"absolute", right:14, width:7, height:7,
+                  borderRadius:"50%", background:"#D946EF",
+                  boxShadow:"0 0 8px #D946EF",
+                }} />
+              )}
+            </button>
+          );
+        })}
+      </div>
+    </aside>
   );
 };
 
-export default DashboardMap;
+
