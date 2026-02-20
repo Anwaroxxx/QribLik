@@ -6,21 +6,19 @@ import { useLocation } from "react-router-dom";
 import Landing from "./pages/landing";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import SignUp from "./components/SignUp";
-import SignIn from "./components/SignIn";
+import Auth from "./components/Auth";
 import Errors from "./pages/errors/errors";
-import Support from "./pages/support";
+import Support from "./pages/Support";
 import Maps from "./pages/maps";
 import MapPage from "./pages/maps/index";
-
 import Footer from "./pages/landing/partials/footer";
 
 function App() {
   const { dark } = useTheme();
-  const location = useLocation()
+  const location = useLocation();
 
-  const showFooterOn = ["/about" , "/support"]
-  const shouldShowFotter = showFooterOn.includes(location.pathname)
+  const showFooterOn = ["/about", "/support"];
+  const shouldShowFotter = showFooterOn.includes(location.pathname);
 
   return (
     <>
@@ -32,25 +30,21 @@ function App() {
           transition: "background 0.5s ease, color 0.5s ease",
         }}
       >
+        <Routes>
+          <Route path="/"        element={<Landing />} />
+          <Route path="/signup"  element={<Auth />} /> 
+          <Route path="/signin"  element={<Auth />} />
+          <Route path="/home"    element={<Home />} />
+          <Route path="/about"   element={<About />} />
+          <Route path="/support" element={<Support />} />
+          <Route path="/maps"    element={<Maps />} />
+          <Route path="/map"     element={<MapPage />} />
+          <Route path="*"        element={<Errors />} />
+        </Routes>
 
-      
-
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/support" element={<Support />} />
-        <Route path="/maps" element={<Maps />} />
-        <Route path="/map" element={<MapPage />} />
-        <Route path="*" element={<Errors />} />
-      </Routes>
-
-      {shouldShowFotter && <Footer />}
+        {shouldShowFotter && <Footer />}
       </div>
     </>
-
   );
 }
 
