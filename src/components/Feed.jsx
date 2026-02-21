@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react'
-import { FiSearch, FiBell, FiPlus, FiMapPin } from 'react-icons/fi'
+import { FiSearch, FiBell, FiPlus, FiMapPin  } from 'react-icons/fi'
 import PostCard from './PostCards'
 import ProfilePage from './ProfilePage'
 import CreatePostModal from './Createpostmodal'
 import NotificationsPanel from './Notificationspanel'
 import OverviewCard from './OverView'
 import initialPosts from '../data/posts.json/Posts'
-import { LuMessageSquareText } from 'react-icons/lu'
 
 const currentUser = {
   name: 'Alex Neighbor',
