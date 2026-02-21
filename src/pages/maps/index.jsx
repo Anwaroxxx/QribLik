@@ -122,18 +122,7 @@ function Navbar({ dark, onToggleDark, onToggleSidebar }) {
       {/* Right - Dark Mode & Profile */}
 
       <div style={{ display:"flex", alignItems:"center", gap:12, position:"relative", zIndex:1 }}>
-        {/* <button onClick={onToggleDark} style={{
-          display:"flex", alignItems:"center", gap:6,
-          padding:"6px 14px", borderRadius:20, cursor:"pointer",
-          background: dark ? "rgba(139,92,246,0.15)" : "rgba(139,92,246,0.07)",
-          border:`1.5px solid ${dark?"rgba(139,92,246,0.38)":"rgba(139,92,246,0.18)"}`,
-          color: dark?"#A78BFA":"#7C3AED",
-          fontSize:12, fontWeight:600, fontFamily:"Sora,sans-serif",
-        }}>
-          {dark ? "🌙 Dark" : "☀️ Light"}
-        </button> */}
-
-         <button
+        <button
             onClick={onToggleDark}
             aria-label="Toggle dark mode"
             style={{
