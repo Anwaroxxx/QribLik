@@ -43,12 +43,7 @@ export default function PostCard({ post, onEdit, onDelete }) {
   }
 
   return (
-    <div
-      className={`w-full rounded-2xl border shadow-sm hover:shadow-md transition-all duration-200 p-6 flex flex-col gap-4 relative ${dark
-          ? "bg-[#150d27] border-white/6 hover:shadow-[0_4px_24px_rgba(139,63,222,0.1)]"
-          : "bg-white border-gray-100"
-        }`}
-    >
+    <div className="bg-white w-full rounded-2xl border border-gray-100  shadow-sm hover:shadow-md transition-all duration-200 p-6 flex flex-col gap-4 relative">
       {/* Top Row */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
