@@ -3,26 +3,38 @@ import {
   FiArrowLeft, FiEdit2, FiCheck, FiMapPin, FiStar,
   FiHeart, FiMessageCircle, FiAward, FiUsers, FiGrid,
   FiSearch, FiRepeat, FiCalendar, FiMusic, FiMonitor,
-  FiX, FiPlus, FiCamera, FiTrendingUp, FiShield, FiZap,
+  FiX, FiPlus, FiCamera, FiTrendingUp, FiShield, FiZap, FiGift
 } from 'react-icons/fi'
 import { MdSportsSoccer, MdOutlineFoodBank, MdOutlineNaturePeople, MdChildCare } from 'react-icons/md'
 import { RiHandHeartLine } from 'react-icons/ri'
+import { FaCoins, FaSpotify, FaAmazon, FaPaypal } from "react-icons/fa";
+import { SiNetflix } from "react-icons/si";
+
 
 
 const ALL_CATEGORIES = [
-  { label: 'Sport',          icon: MdSportsSoccer,       color: '#8B3FDE' },
-  { label: 'Trading',        icon: FiRepeat,              color: '#C837AB' },
-  { label: 'Lost and Found', icon: FiSearch,              color: '#FF6B35' },
-  { label: 'Swap Skills',    icon: RiHandHeartLine,       color: '#8B3FDE' },
-  { label: 'Events',         icon: FiCalendar,            color: '#C837AB' },
+  { label: 'Sport', icon: MdSportsSoccer, color: '#8B3FDE' },
+  { label: 'Trading', icon: FiRepeat, color: '#C837AB' },
+  { label: 'Lost and Found', icon: FiSearch, color: '#FF6B35' },
+  { label: 'Swap Skills', icon: RiHandHeartLine, color: '#8B3FDE' },
+  { label: 'Events', icon: FiCalendar, color: '#C837AB' },
+]
+
+// redeem option 
+
+const REDEEM_OPTIONS = [
+  { id: 'spotify_1', label: 'Spotify Premium', period: '1 month', cost: 200, icon: FaSpotify, color: '#1DB954', bg: '#1DB95415' },
+  { id: 'netflix_1', label: 'Netflix', period: '1 month', cost: 350, icon: SiNetflix, color: '#E50914', bg: '#E5091415' },
+  { id: 'amazon_5', label: 'Amazon Gift Card', period: '$5', cost: 150, icon: FaAmazon, color: '#FF9900', bg: '#FF990015' },
+  { id: 'paypal_5', label: 'PayPal Cash', period: '$5', cost: 180, icon: FaPaypal, color: '#003087', bg: '#00308715' },
 ]
 
 const BADGE_META = {
-  'Newcomer':         { icon: FiZap,    color: '#9ca3af' },
-  'Helper':           { icon: FiHeart,  color: '#FF6B35' },
+  'Newcomer': { icon: FiZap, color: '#9ca3af' },
+  'Helper': { icon: FiHeart, color: '#FF6B35' },
   'Trusted Neighbor': { icon: FiShield, color: '#8B3FDE' },
-  'Community Star':   { icon: FiStar,   color: '#C837AB' },
-  'Legend':           { icon: FiAward,  color: '#FF6B35' },
+  'Community Star': { icon: FiStar, color: '#C837AB' },
+  'Legend': { icon: FiAward, color: '#FF6B35' },
 }
 
 const initialUser = {
@@ -163,16 +175,267 @@ export default function ProfilePage({ onBack }) {
     setDraft(d => ({ ...d, [key]: d[key].filter(s => s !== label) }))
   }
 
+
+  // modal redeem
+
+
+
+  function RedeemModal({ xp, onClose, onRedeem, redeemedIds }) {
+    const [confirming, setConfirming] = useState(null)
+    const [success, setSuccess] = useState(null)
+
+    function handleConfirm(option) {
+      if (xp < option.cost) return
+      setConfirming(option)
+    }
+
+    function handleFinalRedeem() {
+      onRedeem(confirming)
+      setSuccess(confirming)
+      setConfirming(null)
+      setTimeout(() => setSuccess(null), 3000)
+    }
+
+    return (
+      <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-4"
+        style={{ backgroundColor: 'rgba(0,0,0,0.45)', backdropFilter: 'blur(4px)' }}
+        onClick={e => e.target === e.currentTarget && onClose()}>
+        <div className="bg-white rounded-3xl w-full max-w-md shadow-2xl overflow-hidden" style={{ maxHeight: '85vh' }}>
+
+          <div className="px-6 pt-6 pb-4 flex items-center justify-between border-b border-gray-100">
+            <div>
+              <h2 className="text-base font-black text-gray-900 flex items-center gap-2">
+                <FiGift size={16} style={{ color: '#C837AB' }} /> Spend your XP
+              </h2>
+              <p className="text-xs text-gray-400 mt-0.5">
+                You have <span className="font-black" style={{ color: '#C837AB' }}>{xp} XP</span> available
+              </p>
+            </div>
+            <button onClick={onClose} className="w-8 h-8 rounded-xl flex items-center justify-center bg-gray-100 hover:bg-gray-200 transition-colors">
+              <FiX size={15} className="text-gray-500" />
+            </button>
+          </div>
+
+          {success && (
+            <div className="mx-4 mt-4 px-4 py-3 rounded-2xl text-sm font-semibold flex items-center gap-2"
+              style={{ backgroundColor: '#1DB95415', color: '#1DB954', border: '1px solid #1DB95430' }}>
+              <FiCheck size={15} />
+              <span><strong>{success.label} ({success.period})</strong> code sent to your email!</span>
+            </div>
+          )}
+
+          {confirming && (
+            <div className="mx-4 mt-4 p-4 rounded-2xl border-2 flex flex-col gap-3"
+              style={{ borderColor: `${confirming.color}40`, backgroundColor: `${confirming.color}08` }}>
+              <div className="flex items-center gap-3">
+                <confirming.icon size={24} style={{ color: confirming.color }} />
+                <div>
+                  <p className="font-black text-sm text-gray-900">{confirming.label} — {confirming.period}</p>
+                  <p className="text-xs text-gray-500">Deducts <strong style={{ color: confirming.color }}>{confirming.cost} XP</strong> from your balance</p>
+                </div>
+              </div>
+              <div className="flex gap-2">
+                <button onClick={() => setConfirming(null)}
+                  className="flex-1 py-2 rounded-xl border border-gray-200 text-sm font-semibold text-gray-500 hover:bg-gray-50 transition-colors">
+                  Cancel
+                </button>
+                <button onClick={handleFinalRedeem}
+                  className="flex-1 py-2 rounded-xl text-white text-sm font-black hover:opacity-90 active:scale-95 transition-all"
+                  style={{ backgroundColor: confirming.color }}>
+                  Confirm Redeem
+                </button>
+              </div>
+            </div>
+          )}
+
+          <div className="overflow-y-auto px-4 py-4 flex flex-col gap-3" style={{ maxHeight: '55vh' }}>
+            {REDEEM_OPTIONS.map(option => {
+              const canAfford = xp >= option.cost
+              const alreadyRedeemed = redeemedIds.has(option.id)
+              return (
+                <div key={option.id}
+                  className="flex items-center gap-4 p-4 rounded-2xl border transition-all duration-150"
+                  style={{
+                    borderColor: alreadyRedeemed ? '#e5e7eb' : canAfford ? `${option.color}30` : '#f3f4f6',
+                    backgroundColor: alreadyRedeemed ? '#f9fafb' : option.bg,
+                    opacity: alreadyRedeemed ? 0.55 : 1,
+                  }}>
+                  <div className="w-11 h-11 rounded-2xl flex items-center justify-center shrink-0"
+                    style={{ backgroundColor: `${option.color}20` }}>
+                    <option.icon size={22} style={{ color: option.color }} />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="font-black text-sm text-gray-900">{option.label}</p>
+                    <p className="text-xs text-gray-400">{option.period}</p>
+                    <div className="flex items-center gap-1.5 mt-0.5">
+                      <FaCoins size={10} style={{ color: option.color }} />
+                      <span className="text-xs font-black" style={{ color: option.color }}>{option.cost} XP</span>
+                      {!canAfford && !alreadyRedeemed && (
+                        <span className="text-[10px] text-gray-400">· need {option.cost - xp} more</span>
+                      )}
+                    </div>
+                  </div>
+                  {alreadyRedeemed ? (
+                    <div className="w-8 h-8 rounded-xl bg-gray-100 flex items-center justify-center">
+                      <FiCheck size={13} className="text-gray-400" />
+                    </div>
+                  ) : (
+                    <button onClick={() => handleConfirm(option)} disabled={!canAfford}
+                      className="px-3 py-1.5 rounded-xl text-xs font-black transition-all active:scale-95"
+                      style={{ backgroundColor: canAfford ? option.color : '#f3f4f6', color: canAfford ? 'white' : '#9ca3af', cursor: canAfford ? 'pointer' : 'not-allowed' }}>
+                      Redeem
+                    </button>
+                  )}
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+
+
+
+
+
+
+  // -reword function---------------------------------------------------------------------------- 
+
+  const [xp, setXp] = useState(0)
+  const [claimedRewards, setClaimedRewards] = useState(new Set())
+  const [redeemedIds, setRedeemedIds] = useState(new Set())
+  const [showRedeemModal, setShowRedeemModal] = useState(false)
+
+
+
+  function handleRedeem(option) {
+    setXp(prev => prev - option.cost)
+    setRedeemedIds(prev => new Set([...prev, option.id]))
+  }
+
+
+
+
+
+
+
+
+  function CircularProgress({ current, max, color, size = 80, strokeWidth = 7 }) {
+    const radius = (size - strokeWidth * 2) / 2
+    const circumference = 2 * Math.PI * radius
+    const pct = Math.min(current / max, 1)
+    const [animated, setAnimated] = useState(0)
+    useEffect(() => {
+      const t = setTimeout(() => setAnimated(pct), 80)
+      return () => clearTimeout(t)
+    }, [pct])
+    return (
+      <svg width={size} height={size} style={{ transform: 'rotate(-90deg)' }}>
+        <circle cx={size / 2} cy={size / 2} r={radius} fill="none" stroke="#f3f4f6" strokeWidth={strokeWidth} />
+        <circle cx={size / 2} cy={size / 2} r={radius} fill="none" stroke={color} strokeWidth={strokeWidth}
+          strokeLinecap="round" strokeDasharray={circumference}
+          strokeDashoffset={circumference * (1 - animated)}
+          style={{ transition: 'stroke-dashoffset 0.9s cubic-bezier(0.4,0,0.2,1)' }} />
+      </svg>
+    )
+  }
+
+  function RewardCard({ reward, user, claimed, onClaim }) {
+    const { current, max } = reward.getProgress(user)
+    const complete = current >= max
+    const pct = Math.round((current / max) * 100)
+    return (
+      <div className="bg-white rounded-3xl border shadow-sm p-5 flex items-center gap-5 transition-all duration-200"
+        style={{ borderColor: complete && !claimed ? `${reward.color}40` : '#f3f4f6' }}>
+        <div className="relative shrink-0 flex items-center justify-center" style={{ width: 80, height: 80 }}>
+          <CircularProgress current={current} max={max} color={reward.color} size={80} />
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-0.5">
+            <reward.icon size={16} style={{ color: claimed ? '#9ca3af' : reward.color }} />
+            <span className="text-[11px] font-black" style={{ color: claimed ? '#9ca3af' : reward.color }}>
+              {claimed ? '✓' : `${pct}%`}
+            </span>
+          </div>
+        </div>
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-2 mb-0.5">
+            <p className="font-black text-sm text-gray-900">{reward.label}</p>
+            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full"
+              style={{ backgroundColor: `${reward.color}15`, color: reward.color }}>
+              +{reward.xpReward} XP
+            </span>
+          </div>
+          <p className="text-xs text-gray-400 mb-3">{reward.description}</p>
+          <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+            <div className="h-full rounded-full" style={{ width: `${pct}%`, backgroundColor: claimed ? '#9ca3af' : reward.color, transition: 'width 0.9s' }} />
+          </div>
+          <p className="text-[10px] text-gray-400 mt-1">{current}/{max} completed</p>
+        </div>
+        <div className="shrink-0">
+          {claimed ? (
+            <div className="w-9 h-9 rounded-xl flex items-center justify-center bg-gray-100">
+              <FiCheck size={15} className="text-gray-400" />
+            </div>
+          ) : complete ? (
+            <button onClick={() => onClaim(reward)}
+              className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-white text-xs font-black hover:opacity-90 active:scale-95 transition-all"
+              style={{ background: `linear-gradient(135deg, ${reward.color}, ${reward.color}cc)` }}>
+              <FaCoins size={11} /> Claim
+            </button>
+          ) : (
+            <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ backgroundColor: `${reward.color}10` }}>
+              <FiZap size={14} style={{ color: `${reward.color}60` }} />
+            </div>
+          )}
+        </div>
+      </div>
+    )
+  }
+
+
+
+
+  const REWARD_DEFINITIONS = [
+    { id: 'trades', label: 'First Trades', description: 'Complete 5 trades', xpReward: 100, icon: FiRepeat, color: '#C837AB', getProgress: u => ({ current: Math.min(u.helpSystem.trading.successfulTrades, 5), max: 5 }) },
+    { id: 'helper', label: 'Helper Badge', description: 'Resolve 5 lost & found', xpReward: 150, icon: FiSearch, color: '#FF6B35', getProgress: u => ({ current: Math.min(u.helpSystem.lostAndFound.resolved, 5), max: 5 }) },
+    { id: 'swaps', label: 'Skill Sharer', description: 'Complete 3 skill swaps', xpReward: 120, icon: RiHandHeartLine, color: '#8B3FDE', getProgress: u => ({ current: Math.min(u.helpSystem.swapSkills.completedSwaps, 3), max: 3 }) },
+    { id: 'social', label: 'Social Butterfly', description: 'Reach 80 followers', xpReward: 80, icon: FiUsers, color: '#C837AB', getProgress: u => ({ current: Math.min(u.stats.followers, 80), max: 80 }) },
+    { id: 'comments', label: 'Community Voice', description: 'Leave 100 comments', xpReward: 90, icon: FiMessageCircle, color: '#8B3FDE', getProgress: u => ({ current: Math.min(u.stats.totalComments, 100), max: 100 }) },
+    { id: 'posts', label: 'Content Creator', description: 'Create 30 posts', xpReward: 110, icon: FiGrid, color: '#FF6B35', getProgress: u => ({ current: Math.min(u.stats.totalPostsCreated, 30), max: 30 }) },
+  ]
+
+
+
   const tabs = [
     { id: 'overview', label: 'Overview', icon: FiGrid },
-    { id: 'stats',    label: 'Stats',    icon: FiTrendingUp },
-    { id: 'skills',   label: 'Skills',   icon: RiHandHeartLine },
+    { id: 'stats', label: 'Stats', icon: FiTrendingUp },
+    { id: 'skills', label: 'Skills', icon: RiHandHeartLine },
+    { id: 'reword', label: 'Reward', icon: FaCoins },
   ]
+
+
+
+  function handleClaim(reward) {
+    if (claimedRewards.has(reward.id)) return
+    setClaimedRewards(prev => new Set([...prev, reward.id]))
+    setXp(prev => prev + reward.xpReward)
+  }
+
+
+
 
   const displayUser = editing ? draft : user
 
   return (
-    <div className="flex-1 bg-gray-50 min-h-screen">
+    <div className="flex-1 bg-gray-50 min-h-screen   overflow-y-auto ">
+
+      {/* her modal where its pops up  */}
+
+      {showRedeemModal && (
+        < RedeemModal xp={xp} onClose={() => setShowRedeemModal(false)} onRedeem={handleRedeem} redeemedIds={redeemedIds} />
+  )}
+
 
       {/* TOP BAR */}
       <div className="sticky top-0 z-40 bg-white border-b border-gray-100 px-6 py-3 flex items-center justify-between">
@@ -181,6 +444,10 @@ export default function ProfilePage({ onBack }) {
           <FiArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform duration-150" />
           Back to Feed
         </button>
+        <div className="flex items-center gap-2 px-4 h-10 rounded-2xl border font-black text-sm"
+          style={{ borderColor: xp > 0 ? '#C837AB40' : '#e5e7eb', color: xp > 0 ? '#C837AB' : '#9ca3af', backgroundColor: xp > 0 ? '#C837AB08' : '#f9fafb' }}>
+          <FaCoins size={13} /> {xp} XP
+        </div>
         {editing ? (
           <div className="flex items-center gap-2">
             <button onClick={handleCancel}
@@ -287,9 +554,9 @@ export default function ProfilePage({ onBack }) {
                 {/* Follower pills */}
                 <div className="flex items-center gap-3 mt-4">
                   {[
-                    { label: 'Followers', val: user.stats.followers,          color: '#8B3FDE' },
-                    { label: 'Following', val: user.stats.following,           color: '#C837AB' },
-                    { label: 'Posts',     val: user.stats.totalPostsCreated,   color: '#FF6B35' },
+                    { label: 'Followers', val: user.stats.followers, color: '#8B3FDE' },
+                    { label: 'Following', val: user.stats.following, color: '#C837AB' },
+                    { label: 'Posts', val: user.stats.totalPostsCreated, color: '#FF6B35' },
                   ].map(item => (
                     <button key={item.label}
                       className="flex flex-col items-center px-4 py-2 rounded-2xl transition-all duration-150 hover:scale-105 cursor-pointer"
@@ -323,10 +590,50 @@ export default function ProfilePage({ onBack }) {
           })}
         </div>
 
+        {/* tab overview reword */}
+
+        {activeTab === 'reword' && (
+          <div className="flex flex-col gap-4">
+            <div className="bg-white rounded-3xl border border-gray-100 shadow-sm p-5 flex items-center justify-between">
+              <div>
+                <h2 className="text-sm font-black text-gray-900">Your XP Balance</h2>
+                <p className="text-xs text-gray-400 mt-0.5">{claimedRewards.size} of {REWARD_DEFINITIONS.length} rewards claimed</p>
+              </div>
+              <div className="flex items-center gap-2 px-4 py-2 rounded-2xl text-white font-black" style={{ background: 'var(--gradient-qriblik)' }}>
+                <FaCoins size={14} /> {xp} XP
+              </div>
+            </div>
+            {/* her the button  */}
+
+            <button
+              onClick={() => setShowRedeemModal(true)}
+              disabled={xp === 0}
+              className="w-full flex items-center justify-center gap-2 py-3 rounded-2xl text-sm font-black transition-all active:scale-[0.98]"
+              style={{
+                background: xp > 0 ? 'var(--gradient-qriblik)' : undefined,
+                backgroundColor: xp === 0 ? '#f3f4f6' : undefined,
+                color: xp > 0 ? 'white' : '#9ca3af',
+                cursor: xp === 0 ? 'not-allowed' : 'pointer',
+              }}>
+              <FiGift size={15} />
+              {xp === 0 ? 'Earn XP to unlock rewards' : `Spend ${xp} XP on rewards`}
+            </button>
+            <div className="flex flex-col gap-3">
+              {REWARD_DEFINITIONS.map(reward => (
+                <RewardCard key={reward.id} reward={reward} user={user} claimed={claimedRewards.has(reward.id)} onClaim={handleClaim} />
+              ))}
+            </div>
+          </div>
+
+
+        )}
+
         {/* ── TAB: OVERVIEW ── */}
+
+
         {activeTab === 'overview' && (
           <>
-            {/* Badge + Level */}
+            <p> Badge + Level</p>
             <div className="bg-white rounded-3xl border border-gray-100 shadow-sm p-6">
               <div className="flex items-center justify-between mb-5">
                 <div className="flex items-center gap-3">
@@ -360,9 +667,9 @@ export default function ProfilePage({ onBack }) {
               {/* Mini help stats */}
               <div className="grid grid-cols-3 gap-3 mt-5">
                 {[
-                  { label: 'Cases Resolved', value: user.helpSystem.lostAndFound.resolved,     color: '#FF6B35', icon: FiSearch },
-                  { label: 'Skill Swaps',    value: user.helpSystem.swapSkills.completedSwaps, color: '#8B3FDE', icon: RiHandHeartLine },
-                  { label: 'Trades Done',    value: user.helpSystem.trading.successfulTrades,  color: '#C837AB', icon: FiRepeat },
+                  { label: 'Cases Resolved', value: user.helpSystem.lostAndFound.resolved, color: '#FF6B35', icon: FiSearch },
+                  { label: 'Skill Swaps', value: user.helpSystem.swapSkills.completedSwaps, color: '#8B3FDE', icon: RiHandHeartLine },
+                  { label: 'Trades Done', value: user.helpSystem.trading.successfulTrades, color: '#C837AB', icon: FiRepeat },
                 ].map(item => (
                   <div key={item.label}
                     className="text-center rounded-2xl py-3 px-2 transition-all duration-150 hover:scale-105 cursor-default"
@@ -445,19 +752,19 @@ export default function ProfilePage({ onBack }) {
         {activeTab === 'stats' && (
           <div className="flex flex-col gap-4">
             <div className="grid grid-cols-2 gap-3">
-              <StatCard icon={FiGrid}           label="Posts Created"  value={user.stats.totalPostsCreated}  color="#8B3FDE" />
-              <StatCard icon={FiHeart}          label="Likes Received" value={user.stats.totalLikesReceived} color="#C837AB" />
-              <StatCard icon={FiMessageCircle}  label="Comments"       value={user.stats.totalComments}      color="#FF6B35" />
-              <StatCard icon={FiUsers}          label="Profile Views"  value={user.stats.profileViews}       color="#8B3FDE" />
+              <StatCard icon={FiGrid} label="Posts Created" value={user.stats.totalPostsCreated} color="#8B3FDE" />
+              <StatCard icon={FiHeart} label="Likes Received" value={user.stats.totalLikesReceived} color="#C837AB" />
+              <StatCard icon={FiMessageCircle} label="Comments" value={user.stats.totalComments} color="#FF6B35" />
+              <StatCard icon={FiUsers} label="Profile Views" value={user.stats.profileViews} color="#8B3FDE" />
             </div>
 
             {/* Points breakdown bars */}
             <div className="bg-white rounded-3xl border border-gray-100 shadow-sm p-6">
               <h2 className="text-sm font-black text-gray-900 mb-5">Points Breakdown</h2>
               {[
-                { label: 'Lost & Found Help', pts: user.helpSystem.lostAndFound.pointsEarned,          max: 250, color: '#FF6B35' },
-                { label: 'Skill Swaps',       pts: user.helpSystem.swapSkills.completedSwaps * 30,     max: 200, color: '#8B3FDE' },
-                { label: 'Trading',           pts: user.helpSystem.trading.successfulTrades * 15,      max: 200, color: '#C837AB' },
+                { label: 'Lost & Found Help', pts: user.helpSystem.lostAndFound.pointsEarned, max: 250, color: '#FF6B35' },
+                { label: 'Skill Swaps', pts: user.helpSystem.swapSkills.completedSwaps * 30, max: 200, color: '#8B3FDE' },
+                { label: 'Trading', pts: user.helpSystem.trading.successfulTrades * 15, max: 200, color: '#C837AB' },
               ].map(row => (
                 <div key={row.label} className="mb-4 last:mb-0">
                   <div className="flex justify-between text-xs mb-1.5">
@@ -479,7 +786,7 @@ export default function ProfilePage({ onBack }) {
           <div className="flex flex-col gap-4">
             {[
               { key: 'offered', label: 'Skills I Offer', color: '#8B3FDE', placeholder: 'e.g. React, Cooking…' },
-              { key: 'wanted',  label: 'Skills I Want',  color: '#C837AB', placeholder: 'e.g. Guitar, Spanish…' },
+              { key: 'wanted', label: 'Skills I Want', color: '#C837AB', placeholder: 'e.g. Guitar, Spanish…' },
             ].map(section => (
               <div key={section.key} className="bg-white rounded-3xl border border-gray-100 shadow-sm p-6">
                 <h2 className="text-sm font-black text-gray-900 mb-4 flex items-center gap-2">

@@ -16,7 +16,8 @@ export const eventsImage = {
   event4,
   event5,
   event6
-}
-
+ 
+ }
+ 
 
 

@@ -1,25 +1,40 @@
 import React from 'react';
 import ImageAbout from '../assets/aboutimg.png'    
-import TrueFocus from '../animations/animation';
-import { FaStar } from 'react-icons/fa6';
+import TrueFocus from '../animations/TrueFocus';
 import { usersImages } from '../constant/images/images-users';
+// import { ImagesCommunity } from '../constant/images/images-community';
+import MagicBento from '../components/MagicBento';
+import UserData from "../data/UserData.json";
+import SwapGalleryCarousel from '../components/SwapGalleryCarousel';
+ 
 
 
-
-
-const About = () => {
+const About = () => { 
+    
     const features = [
-        { id : 1 , image : usersImages.user2 , title : "Samir ba" , description : "The Trading Hub is a game-changer! I had an old PC gathering dust and managed to swap it for a 27-inch monitor with a neighbor. The whole process was smooth, secure, and local.", rating: 5 } , 
-        { id : 2 , image : usersImages.user16 , title : "Hamouda abl" , description : "I recently moved to a new city and felt quite isolated. Thanks to the Events section, I joined a cinema meetup and met some incredible people who are now my closest friends.", rating: 4 } , 
-        { id : 3 , image : usersImages.user13 , title : "Oussama belle" , description : "I lost my car keys in the park and was panicking. I posted on 'Lost & Found,' and within 20 minutes, a neighbor reached out saying they found them. This community is amazing!", rating: 3 } ,
-        { id : 4 , image : usersImages.user31 , title : "Siven rose" , description : "I love the idea of a knowledge-sharing economy. I taught a neighbor Photoshop, and in return, they helped me understand the basics of React. It's such a rewarding way to learn!", rating: 4 } ,
-        { id : 5 , image : usersImages.user13 , title : "Ibra ls" , description : "Finding a workout partner used to be a struggle, but now I have a running buddy living just two blocks away. My motivation has skyrocketed since I joined the MarocConnect community!", rating: 5 } ,
+        { id : 1 , image : usersImages.user2 , title : UserData[1].name , description : "The Trading Hub is a game-changer! I had an old PC gathering dust and managed to swap it for a 27-inch monitor with a neighbor. The whole process was smooth, secure, and local.", rating: 5 } , 
+        { id : 2 , image : usersImages.user16 , title : UserData[15].name , description : "I recently moved to a new city and felt quite isolated. Thanks to the Events section, I joined a cinema meetup and met some incredible people who are now my closest friends.", rating: 4 } , 
+        { id : 3 , image : usersImages.user29 , title : UserData[28].name , description : "I lost my car keys in the park and was panicking. I posted on 'Lost & Found,' and within 20 minutes, a neighbor reached out saying they found them. This community is amazing!", rating: 3 } ,
+        { id : 4 , image : usersImages.user31 , title : UserData[30].name , description : "I love the idea of a knowledge-sharing economy. I taught a neighbor Photoshop, and in return, they helped me understand the basics of React. It's such a rewarding way to learn!", rating: 4 } ,
+        { id : 5 , image : usersImages.user13 , title : UserData[12].name , description : "Finding a workout partner used to be a struggle, but now I have a running buddy living just two blocks away. My motivation has skyrocketed since I joined the MarocConnect community!", rating: 5 } ,
     ]
+    // const carouselCardSwap = [
+    //     {id : 1 , image : ImagesCommunity.imgAbout1 ,  alt : "Community Activity 1" } , 
+    //     {id : 2 , image : ImagesCommunity.imgAbout2 ,  alt : "Community Activity 2" },
+    //     {id : 3 , image : ImagesCommunity.imgAbout3 ,  alt : "Community Activity 3" },
+    //     {id : 4 , image : ImagesCommunity.imgAbout4 ,  alt : "Community Activity 4" },
+    //     {id : 5 , image : ImagesCommunity.imgAbout5 ,  alt : "Community Activity 5" }
+    // ]
     return (
         <div className='px-10 py-16 space-y-16 bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50'>
-            {/* Hero Image */}
-            <div className="w-full  flex justify-center">
-                <img className='w-full max-w-5xl rounded-3xl shadow-2xl' src="https://i.pinimg.com/1200x/21/a5/19/21a519be42e3e0c78875b24c8655cc3c.jpg" alt="Community" />
+            
+               {/* Carousel Card Swap Section */}
+            <div className="max-w-6xl mx-auto">
+                <h2 className='text-4xl font-bold text-center mb-12'>
+                    <TrueFocus sentence="Swap Gallery" borderColor="#C837AB"/>
+                    <SwapGalleryCarousel />
+                </h2>
+                
             </div>
 
             {/* Our Story Section */}
@@ -44,29 +59,13 @@ const About = () => {
 
             {/* Features Section */}
             <div className="max-w-7xl mx-auto">
-                <h2 className='text-4xl font-bold text-center mb-12 '>
+                <h2 className='text-4xl font-bold text-center mb-12'>
                     <TrueFocus sentence="What our community says" borderColor="#C837AB"/>
                 </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {features.map((feature, index) => (
-                        <div 
-                            key={index} 
-                            className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100"
-                        >
-                            <div className="w-16 h-16 rounded-full flex items-center justify-center  mb-4">
-                                <img className='w-16 h-16 object-cover  rounded-full' src={feature.image} alt="" />
-                            </div>
-                            <h3 className="text-2xl font-bold mb-3 text-gray-800">{feature.title}</h3>
-                            <p className="text-gray-600 leading-relaxed">" {feature.description} "</p>
-                            <div className="mt-3 flex gap-0.5 text-amber-300">
-                                {[...Array(feature.rating)].map((_, i) => (
-                                    <FaStar key={i} />
-                                ))}
-                            </div>
-                        </div>
-                    ))}
-                </div>
+                <MagicBento features={features} />
             </div>
+
+         
 
             {/* Community Impact Section */}
             <div className="max-w-6xl mx-auto bg-white rounded-3xl shadow-2xl p-12">
