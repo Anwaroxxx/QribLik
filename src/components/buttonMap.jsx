@@ -146,7 +146,7 @@ export default function MapsButton() {
           />
         ))}
 
-        <div className="btn-content">
+        <div className="btn-content flex justify-center items-center">
           <MapPinIcon />
           <span>Maps</span>
         </div>

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { TbHome } from "react-icons/tb";
 import { MdEvent, MdOutlineSportsSoccer, MdSupportAgent } from "react-icons/md";
-import { FaMagnifyingGlass,  FaRegUser, FaArrowRightArrowLeft, FaCircleInfo } from "react-icons/fa6";
+import { FaMagnifyingGlass, FaRegUser, FaArrowRightArrowLeft, FaCircleInfo } from "react-icons/fa6";
 import { BsStars } from "react-icons/bs";
 import { IoSettingsOutline } from "react-icons/io5";
 import users from "../data/UserData.json";
@@ -10,14 +10,15 @@ import MapsButton from "./buttonMap";
 
 function Sidebar({ selectedCategory, setSelectedCategory }) {
   const [active, setActive] = useState("Home");
-  const [notification, setNotification] = useState(null); 
+  const [notification, setNotification] = useState(null);
+
   const categories = [
-    { id: "ALL",          icon: <TbHome />,                  label: "Home Feed"     },
-    { id: "SPORT",        icon: <MdOutlineSportsSoccer />,   label: "Sport"         },
-    { id: "TRADING",      icon: <FaArrowRightArrowLeft />,   label: "Trading"       },
-    { id: "LOST AND FOUND", icon: <FaMagnifyingGlass />,     label: "Lost and Found"},
-    { id: "SWAP SKILLS",  icon: <BsStars />,                 label: "Swap Skills"   },
-    { id: "EVENTS",       icon: <MdEvent />,                 label: "Events"        },
+    { id: "ALL",            icon: <TbHome />,                label: "Home Feed"      },
+    { id: "SPORT",          icon: <MdOutlineSportsSoccer />, label: "Sport"          },
+    { id: "TRADING",        icon: <FaArrowRightArrowLeft />, label: "Trading"        },
+    { id: "LOST AND FOUND", icon: <FaMagnifyingGlass />,     label: "Lost and Found" },
+    { id: "SWAP SKILLS",    icon: <BsStars />,               label: "Swap Skills"    },
+    { id: "EVENTS",         icon: <MdEvent />,               label: "Events"         },
   ];
 
   const itemStyle =
@@ -26,32 +27,67 @@ function Sidebar({ selectedCategory, setSelectedCategory }) {
   const inactiveStyle = "text-slate-500 hover:bg-slate-100";
 
   const handleClick = (category) => {
-    const validUsers = users.filter(
-      (u) => u && typeof u.name === "string"
-    );
+    const validUsers = users.filter((u) => u && typeof u.name === "string");
     const categoryUsers = validUsers.filter(
       (u) => u.category?.toLowerCase() === category.toLowerCase()
     );
-
-    // Fall back to any valid user if no category match
     const pool = categoryUsers.length ? categoryUsers : validUsers;
     if (!pool.length) return;
-
     const randomUser = pool[Math.floor(Math.random() * pool.length)];
-
-    setNotification({
-      user: randomUser,
-      category,
-      message: `New activity in ${category}`,
-    });
-
+    setNotification({ user: randomUser, category, message: `New activity in ${category}` });
     setTimeout(() => setNotification(null), 5000);
   };
 
+  // ── MOBILE BOTTOM NAV (visible on md and below) ──────────────────────────
+  const MobileBottomNav = () => (
+    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-[#e6dfd7] flex md:hidden">
+      {/* Show 5 most important categories in the bottom bar */}
+      {categories.slice(0, 5).map((el) => (
+        <button
+          key={el.id}
+          onClick={() => setSelectedCategory(el.id)}
+          className={`flex-1 flex flex-col items-center justify-center py-2 gap-0.5 transition-all duration-200 text-[10px] font-semibold
+            ${selectedCategory === el.id
+              ? "text-fuchsia-600"
+              : "text-slate-400 hover:text-slate-600"
+            }`}
+        >
+          <span className={`text-xl transition-all duration-200 ${selectedCategory === el.id ? "scale-110" : ""}`}>
+            {el.icon}
+          </span>
+          <span className="truncate max-w-[60px] text-center leading-tight">
+            {el.label.split(" ")[0]}
+          </span>
+          {selectedCategory === el.id && (
+            <span className="w-1 h-1 bg-fuchsia-500 rounded-full mt-0.5" />
+          )}
+        </button>
+      ))}
+
+      {/* 6th slot: "More" or Events */}
+      <button
+        onClick={() => setSelectedCategory("EVENTS")}
+        className={`flex-1 flex flex-col items-center justify-center py-2 gap-0.5 transition-all duration-200 text-[10px] font-semibold
+          ${selectedCategory === "EVENTS"
+            ? "text-fuchsia-600"
+            : "text-slate-400 hover:text-slate-600"
+          }`}
+      >
+        <span className={`text-xl transition-all duration-200 ${selectedCategory === "EVENTS" ? "scale-110" : ""}`}>
+          <MdEvent />
+        </span>
+        <span className="leading-tight">Events</span>
+        {selectedCategory === "EVENTS" && (
+          <span className="w-1 h-1 bg-fuchsia-500 rounded-full mt-0.5" />
+        )}
+      </button>
+    </nav>
+  );
+
   return (
     <>
-      {/* Sidebar */}
-      <section className="w-[280px] h-screen bg-white bottom-20 flex flex-col py-4 pr-6 border-r border-[#e6dfd7] overflow-y-auto">
+      {/* ── DESKTOP SIDEBAR (hidden on mobile) ─────────────────────────────── */}
+      <section className="hidden md:flex w-[280px] h-screen bg-white bottom-20 flex-col py-4 pr-6 border-r border-[#e6dfd7] overflow-y-auto">
 
         {/* LOGO */}
         <div className="px-5 mb-12 flex items-center gap-3.5 group cursor-pointer">
@@ -59,7 +95,7 @@ function Sidebar({ selectedCategory, setSelectedCategory }) {
             <TbHome className="text-white w-6 h-6" />
           </div>
           <div className="flex flex-col">
-            <span className="font-black text-2xl tracking-tighter text-slate-900 leading-none">Qriblik</span>
+            <span className="font-black text-2xl tracking-tighter text-slate-900 leading-none">QribLik</span>
             <span className="text-[10px] font-bold text-fuchsia-500 uppercase tracking-[0.2em] mt-1.5">Community Hub</span>
           </div>
         </div>
@@ -88,9 +124,6 @@ function Sidebar({ selectedCategory, setSelectedCategory }) {
           </Link>
         </div>
 
-        
-       
-
         {/* SOCIAL */}
         <section className="flex flex-col gap-1.5 mt-6">
           <h3 className="px-5 text-[11px] font-black text-slate-300 uppercase tracking-[0.25em] mb-2 flex items-center">
@@ -117,19 +150,19 @@ function Sidebar({ selectedCategory, setSelectedCategory }) {
 
         {/* PROFILE / SETTINGS */}
         <section className="mt-auto flex flex-col gap-1.5 pt-6 px-2">
-         
           <div
             onClick={() => setActive("Settings")}
             className={`${itemStyle} ${active === "Settings" ? activeStyle : inactiveStyle}`}
           >
-             {/* The Button */}
-             <Link to='/maps'>
-               <MapsButton/>
-             </Link>
-            
+            <Link to='/maps'>
+              <MapsButton />
+            </Link>
           </div>
         </section>
       </section>
+
+      {/* ── MOBILE BOTTOM NAV ─────────────────────────────────────────────── */}
+      <MobileBottomNav />
 
       {/* Notification Card */}
       {notification && (
