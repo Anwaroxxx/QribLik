@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react'
-import { FiSearch, FiBell, FiPlus, FiMapPin } from 'react-icons/fi'
+import { FiSearch, FiBell, FiPlus, FiMapPin  } from 'react-icons/fi'
 import PostCard from './PostCards'
 import ProfilePage from './ProfilePage'
 import CreatePostModal from './Createpostmodal'
 import NotificationsPanel from './Notificationspanel'
 import OverviewCard from './OverView'
-//import NeighborMap from './NeighborMap'
+import initialPosts from '../data/posts.json/Posts'
+import { LuMessageSquareText } from 'react-icons/lu'
 
 const currentUser = {
   name: 'Alex Neighbor',
@@ -13,14 +14,7 @@ const currentUser = {
   avatar: 'https://i.pravatar.cc/150?img=5',
 }
 
-const initialPosts = [
-  { id: 1, author: 'Alex Rivera', neighborhood: 'Oakwood Heights', avatar: 'https://i.pravatar.cc/150?img=11', timeAgo: '1 hour ago', category: 'SPORT', title: 'Looking for a tennis partner', description: 'Intermediate player looking for someone to hit some balls at the community courts on Saturday morning.', likes: 8, comments: 2 },
-  { id: 2, author: 'David Chen', neighborhood: 'Park Ridge', avatar: 'https://i.pravatar.cc/150?img=33', timeAgo: '5 hours ago', category: 'TRADING', title: 'Trading vintage camera for a tablet', description: 'I have a well-maintained 35mm film camera. Looking to swap it for a working tablet for my studies.', likes: 8, comments: 2 },
-  { id: 3, author: 'Marta Wilson', neighborhood: 'Central Square', avatar: 'https://i.pravatar.cc/150?img=47', timeAgo: '2 hours ago', category: 'LOST AND FOUND', title: 'Lost: Golden Retriever near Central Park', description: "Please help! Our dog 'Buddy' went missing this morning. He has a blue collar and is very friendly.", likes: 8, comments: 2 },
-  { id: 4, author: 'Emma Wilson', neighborhood: 'Glenview', avatar: 'https://i.pravatar.cc/150?img=23', timeAgo: '3 hours ago', category: 'SWAP SKILLS', title: 'Swap: Coding lessons for Piano lessons', description: "I'm a senior dev who wants to learn piano. I can teach you React, Python, or Go in exchange!", likes: 8, comments: 2 },
-  { id: 5, author: 'Alex Neighbor', neighborhood: 'Sunset District', avatar: 'https://i.pravatar.cc/150?img=5', timeAgo: '30 min ago', category: 'EVENTS', title: 'Neighborhood BBQ this Saturday!', description: 'Join us for a community BBQ at the park. Bring your favorite dish to share!', likes: 15, comments: 7 },
-  { id: 6, author: 'Karim Berrada', neighborhood: 'Park Ridge', avatar: 'https://i.pravatar.cc/150?img=12', timeAgo: '2 hours ago', category: 'TECH HELP', title: 'Need help setting up WiFi router', description: 'Just moved in and struggling with my router setup. Can anyone help?', likes: 3, comments: 5 },
-]
+
 
 const CATEGORY_MAP = {
   'ALL': 'Home Feed',
@@ -32,12 +26,16 @@ const CATEGORY_MAP = {
   'TECH HELP': 'Tech Help',
 }
 
+
+
 export default function MainFeed({ activeView, onViewChange, activeCategory }) {
   const [posts, setPosts] = useState(initialPosts)
   const [showCreatePost, setShowCreatePost] = useState(false)
   const [editPost, setEditPost] = useState(null)
   const [showNotifications, setShowNotifications] = useState(false)
   const [notifCount, setNotifCount] = useState(3)
+  const [openModal, setOpenModal] = useState(false);
+const [active, setActive] = useState("");
 
   function handlePost(post) {
     setPosts(prev => {
@@ -221,6 +219,30 @@ export default function MainFeed({ activeView, onViewChange, activeCategory }) {
           editPost={editPost}
         />
       )}
+
+
+{/* ── BUTTON MESSAGES ── */}
+<div
+  onClick={() => {
+    setActive("Messages");
+    setOpenModal(true);
+  }}
+  className={`fixed bottom-6 right-6 flex items-center justify-between px-5 py-3 rounded-2xl cursor-pointer transition-all duration-300
+    ${active === "Messages"
+      ? "bg-gradient-to-r from-fuchsia-100 to-rose-100 text-fuchsia-600 shadow-md"
+      : "bg-gradient-to-r from-fuchsia-50 to-rose-50 text-fuchsia-600 hover:shadow-md hover:scale-[1.02]"
+    }`}
+>
+  <div className="flex items-center gap-3">
+    <LuMessageSquareText className="text-lg" />
+    <span className="font-semibold">Messages</span>
+  </div>
+  <span className="bg-fuchsia-600 text-white text-xs px-2 py-0.5 rounded-full">3</span>
+</div>
+
+{openModal && <Modale3 onClose={() => setOpenModal(false)} />}
+
     </div>
+    
   )
 }

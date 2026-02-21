@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Auth from "./components/Auth";
 import Errors from "./pages/errors/errors";
+import Modale3 from "./components/Modale3"
 import Support from "./pages/Support";
 import Maps from "./pages/maps";
 import MapPage from "./pages/maps/index";
