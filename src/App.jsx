@@ -8,7 +8,7 @@ import Support from "./pages/Support";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 import Errors from "./pages/errors/errors";
-
+import Modale3 from "./components/Modale3"
 function App() {
   return (
     <Routes>

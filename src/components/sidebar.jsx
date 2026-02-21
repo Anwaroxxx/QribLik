@@ -6,8 +6,9 @@ import { MdOutlineShoppingBag, MdEvent, MdOutlineSportsSoccer, MdSupportAgent } 
 import { FaMagnifyingGlass, FaRegMessage, FaRegUser, FaArrowRightArrowLeft, FaCircleInfo } from "react-icons/fa6";
 import { BsStars } from "react-icons/bs";
 import { IoSettingsOutline } from "react-icons/io5";
-
+import Modale3 from "./Modale3";
 function Sidebar() {
+  const [openModal, setOpenModal] = useState(false);
   const [active, setActive] = useState("Home");
   const [activeHome, setActiveHome] = useState(false);
 
@@ -59,6 +60,7 @@ function Sidebar() {
           <FaCircleInfo />
           About
         </Link>
+        {/* <Modale3 /> */}
 
         {/* Support */}
         <Link
@@ -108,7 +110,11 @@ function Sidebar() {
         </h3>
 
         <div
-          onClick={() => setActive("Messages")}
+          onClick={() => {
+            setActive("Messages");
+            setOpenModal(true);
+          }}
+
           className={`flex items-center justify-between px-5 py-3 rounded-2xl cursor-pointer transition-all duration-300
             ${active === "Messages"
               ? "bg-gradient-to-r from-fuchsia-100 to-rose-100 text-fuchsia-600 shadow-md"
@@ -117,7 +123,9 @@ function Sidebar() {
         >
           <div className="flex items-center gap-3">
             <FaRegMessage className="text-lg" />
-            <span className="font-semibold">Messages</span>
+            <span
+              className="font-semibold">Messages</span>
+
           </div>
           <span className="bg-fuchsia-600 text-white text-xs px-2 py-0.5 rounded-full">3</span>
         </div>
@@ -141,6 +149,9 @@ function Sidebar() {
           Settings
         </div>
       </section>
+{openModal && (
+  <Modale3 onClose={() => setOpenModal(false)} />
+)}
 
     </section>
   );

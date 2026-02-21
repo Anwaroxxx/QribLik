@@ -5,6 +5,11 @@ import ProfilePage from './ProfilePage'
 import CreatePostModal from './Createpostmodal'
 import NotificationsPanel from './Notificationspanel'
 //import NeighborMap from './NeighborMap'
+import { LuMessageSquareText } from "react-icons/lu";
+import Modale3 from "./Modale3";
+
+
+
 
 const currentUser = {
   name: 'Alex Neighbor',
@@ -29,12 +34,16 @@ const CATEGORY_MAP = {
   'events': 'EVENTS',
 }
 
+
+
 export default function MainFeed({ activeView, onViewChange, activeCategory }) {
   const [posts, setPosts] = useState(initialPosts)
   const [showCreatePost, setShowCreatePost] = useState(false)
   const [editPost, setEditPost] = useState(null)
   const [showNotifications, setShowNotifications] = useState(false)
   const [notifCount, setNotifCount] = useState(3)
+  const [openModal, setOpenModal] = useState(false);
+const [active, setActive] = useState("");
 
   function handlePost(post) {
     setPosts(prev => {
@@ -212,6 +221,30 @@ export default function MainFeed({ activeView, onViewChange, activeCategory }) {
           editPost={editPost}
         />
       )}
+
+
+{/* ── BUTTON MESSAGES ── */}
+<div
+  onClick={() => {
+    setActive("Messages");
+    setOpenModal(true);
+  }}
+  className={`fixed bottom-6 right-6 flex items-center justify-between px-5 py-3 rounded-2xl cursor-pointer transition-all duration-300
+    ${active === "Messages"
+      ? "bg-gradient-to-r from-fuchsia-100 to-rose-100 text-fuchsia-600 shadow-md"
+      : "bg-gradient-to-r from-fuchsia-50 to-rose-50 text-fuchsia-600 hover:shadow-md hover:scale-[1.02]"
+    }`}
+>
+  <div className="flex items-center gap-3">
+    <LuMessageSquareText className="text-lg" />
+    <span className="font-semibold">Messages</span>
+  </div>
+  <span className="bg-fuchsia-600 text-white text-xs px-2 py-0.5 rounded-full">3</span>
+</div>
+
+{openModal && <Modale3 onClose={() => setOpenModal(false)} />}
+
     </div>
+    
   )
 }
