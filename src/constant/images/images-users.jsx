@@ -33,10 +33,33 @@ import user33 from "../../assets/images/users/user-33.jpg";
 import user34 from "../../assets/images/users/user-34.jpg";
 import user35 from "../../assets/images/users/user-35.jpg";
 
+import girl1 from "../../assets/images/girl-profile/girl1.jpeg";
+import girl2 from "../../assets/images/girl-profile/girl2.jpeg";
+import girl3 from "../../assets/images/girl-profile/girl3.jpeg";
+import girl4 from "../../assets/images/girl-profile/girl4.jpeg";
+import girl5 from "../../assets/images/girl-profile/girl5.jpeg";
+import girl6 from "../../assets/images/girl-profile/girl6.jpeg";
+import girl7 from "../../assets/images/girl-profile/girl7.jpeg";
+import girl8 from "../../assets/images/girl-profile/girl8.jpeg";
+import girl9 from "../../assets/images/girl-profile/girl9.jpeg";
+import girl10 from "../../assets/images/girl-profile/girl10.jpeg";
+import girl11 from "../../assets/images/girl-profile/girl11.jpeg";
+import girl12 from "../../assets/images/girl-profile/girl12.jpeg";
+import girl13 from "../../assets/images/girl-profile/girl13.jpeg";
+import girl14 from "../../assets/images/girl-profile/girl14.jpeg";
+import girl15 from "../../assets/images/girl-profile/girl15.jpeg";
+import girl16 from "../../assets/images/girl-profile/girl16.jpeg";
+import girl17 from "../../assets/images/girl-profile/girl17.jpeg";
+import girl18 from "../../assets/images/girl-profile/girl18.jpeg";
+import girl19 from "../../assets/images/girl-profile/girl19.jpeg";
+
 export const usersImages = {
   user1, user2, user3, user4, user5, user6, user7,
   user8, user9, user10, user12, user13, user14, user15,
   user16, user17, user18, user19, user20, user21, user22,
   user23, user24, user25, user26, user27, user28, user29,
   user30, user31, user32, user33, user34, user35,
+  girl1, girl2, girl3, girl4, girl5, girl6, girl7,
+  girl8, girl9, girl10, girl11, girl12, girl13, girl14,
+  girl15, girl16, girl17, girl18, girl19,
 };

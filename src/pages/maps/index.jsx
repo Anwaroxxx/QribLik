@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import DashboardMap from "./partials/DashboardMap";
 import SectionMap   from "./partials/SectionMap";
+import PixelBlast from "../../animations/Pixel";
 
 const GLOBAL_CSS = `
   @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap');
@@ -29,7 +30,7 @@ const GLOBAL_CSS = `
   @media (max-width: 767px) {
     .map-sidebar {
       position: fixed !important;
-      top: 60px !important;
+      top: 0 !important;
       left: 0 !important;
       bottom: 0 !important;
       z-index: 3001 !important;
@@ -41,6 +42,9 @@ const GLOBAL_CSS = `
     }
     .map-backdrop {
       display: block !important;
+    }
+    nav {
+      left: 0 !important;
     }
   }
   @media (min-width: 768px) {
@@ -66,13 +70,23 @@ const GLOBAL_CSS = `
 function Navbar({ dark, onToggleDark, onToggleSidebar }) {
   return (
     <nav style={{
-      position: "fixed", top: 0, left: 0, right: 0, zIndex: 4000, height: 60,
-      display: "flex", alignItems: "center", padding: "0 16px", gap: 12,
+      position: "fixed", top: 0, left: 280, right: 0, zIndex: 4000, height: 60,
+      display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 24px",
       background: dark ? "rgba(8,4,20,0.92)" : "rgba(255,255,255,0.92)",
       backdropFilter: "blur(24px)",
       borderBottom: `1px solid ${dark ? "rgba(139,92,246,0.2)" : "rgba(139,92,246,0.1)"}`,
       boxShadow: "0 2px 20px rgba(139,92,246,0.07)",
+      overflow: "hidden",
     }}>
+      {/* Pixel background */}
+      <div style={{ position:"absolute", inset:0, zIndex:0, opacity:0.08, pointerEvents:"none" }}>
+        <PixelBlast
+          variant="square" pixelSize={3} color="#d946ef"
+          patternScale={2} patternDensity={1} pixelSizeJitter={0}
+          enableRipples rippleSpeed={0.5} rippleThickness={0.1}
+          rippleIntensityScale={1.2} speed={0.6} edgeFade={0.3} transparent
+        />
+      </div>
       {/* Hamburger — mobile only */}
       <button onClick={onToggleSidebar} style={{
         width: 36, height: 36, borderRadius: 10, border: "none",
@@ -80,32 +94,18 @@ function Navbar({ dark, onToggleDark, onToggleSidebar }) {
         display: "flex", flexDirection: "column", alignItems: "center",
         justifyContent: "center", gap: 5, padding: 8,
         color: dark ? "#CBD5E1" : "#6B7280",
+        position: "relative",
+        zIndex: 1,
       }} className="sidebar-hamburger">
         <span style={{ display:"block", width:18, height:2, background:"currentColor", borderRadius:2 }}/>
         <span style={{ display:"block", width:18, height:2, background:"currentColor", borderRadius:2 }}/>
         <span style={{ display:"block", width:18, height:2, background:"currentColor", borderRadius:2 }}/>
       </button>
 
-      {/* Logo */}
-      <Link to="/" style={{ textDecoration:"none", display:"flex", alignItems:"center", gap:9, marginRight:"auto" }}>
-        <div style={{
-          width:34, height:34, borderRadius:10,
-          background:"linear-gradient(135deg,#8B5CF6,#D946EF,#F97316)",
-          display:"flex", alignItems:"center", justifyContent:"center",
-          fontSize:17, fontWeight:900, color:"#fff", fontFamily:"Georgia,serif",
-          boxShadow:"0 4px 14px rgba(139,92,246,0.38)",
-        }}>Q</div>
-        <span style={{
-          fontSize:19, fontWeight:800, fontFamily:"Georgia,serif",
-          background:"linear-gradient(135deg,#8B5CF6,#D946EF,#F97316)",
-          WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent",
-        }}>QribLik</span>
-      </Link>
-
-      {/* Right side */}
-      <div style={{ display:"flex", alignItems:"center", gap:8 }}>
-        {["← Home","About","Support"].map((label, i) => (
-          <Link key={label} to={["/","/about","/support"][i]} style={{
+      {/* Center - Navigation Links */}
+      <div style={{ display:"flex", alignItems:"center", gap:8, flex:1, justifyContent:"center", position:"relative", zIndex:1 }}>
+        {["Home","About","Support"].map((label, i) => (
+          <Link key={label} to={["/home","/about","/support"][i]} style={{
             padding:"6px 14px", borderRadius:20, textDecoration:"none",
             fontSize:13, fontWeight:500,
             color: dark ? "#CBD5E1" : "#6B7280",
@@ -117,20 +117,49 @@ function Navbar({ dark, onToggleDark, onToggleSidebar }) {
             {label}
           </Link>
         ))}
+      </div>
 
-        <button onClick={onToggleDark} style={{
-          display:"flex", alignItems:"center", gap:6,
-          padding:"6px 14px", borderRadius:20, cursor:"pointer",
-          background: dark ? "rgba(139,92,246,0.15)" : "rgba(139,92,246,0.07)",
-          border:`1.5px solid ${dark?"rgba(139,92,246,0.38)":"rgba(139,92,246,0.18)"}`,
-          color: dark?"#A78BFA":"#7C3AED",
-          fontSize:12, fontWeight:600, fontFamily:"Sora,sans-serif",
-        }}>
-          {dark ? "🌙 Dark" : "☀️ Light"}
+      {/* Right - Dark Mode & Profile */}
+
+      <div style={{ display:"flex", alignItems:"center", gap:12, position:"relative", zIndex:1 }}>
+        <button
+            onClick={onToggleDark}
+            aria-label="Toggle dark mode"
+            style={{
+                position: "relative",
+                width: "3.2rem",
+                height: "1.8rem",
+                borderRadius: "9999px",
+                border: "none",
+                cursor: "pointer",
+                padding: 0,
+                background: dark ? "linear-gradient(135deg, #8B3FDE, #C837AB)" : "#e2e8f0",
+                transition: "background 0.35s ease",
+                boxShadow: dark ? "0 0 12px rgba(139,63,222,0.5)" : "0 1px 4px rgba(0,0,0,0.15)",
+            }}
+        >
+            <span
+                style={{
+                    position: "absolute",
+                    top: "0.25rem",
+                    left: dark ? "calc(100% - 1.55rem)" : "0.25rem",
+                    width: "1.3rem",
+                    height: "1.3rem",
+                    borderRadius: "50%",
+                    background: "#fff",
+                    transition: "left 0.3s cubic-bezier(0.34,1.56,0.64,1)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: "0.65rem",
+                }}
+            >
+                {dark ? "🌙" : "☀️"}
+            </span>
         </button>
 
         {/* Profile */}
-        <div style={{ display:"flex", alignItems:"center", gap:8, paddingLeft:8, borderLeft:"1px solid rgba(139,92,246,0.18)" }}>
+        <div style={{ display:"flex", alignItems:"center", gap:8, paddingLeft:12, borderLeft:"1px solid rgba(139,92,246,0.18)" }}>
           <div style={{
             width:32, height:32, borderRadius:"50%",
             background:"linear-gradient(135deg,#8B5CF6,#D946EF,#F97316)",
@@ -177,7 +206,7 @@ export default function MapPage() {
       <Navbar dark={dark} onToggleDark={() => setDark(d=>!d)} onToggleSidebar={() => setSidebarOpen(o=>!o)} />
 
       {/* Body */}
-      <div style={{ display:"flex", flex:1, overflow:"hidden", marginTop:60 }}>
+      <div style={{ display:"flex", flex:1, overflow:"hidden", paddingLeft: 280 }}>
 
         {/* Mobile backdrop */}
         <div
@@ -187,13 +216,11 @@ export default function MapPage() {
         />
 
         {/* Sidebar */}
-        <div className={`map-sidebar${sidebarOpen ? " open" : ""}`}>
-          <DashboardMap
-            category={category}
-            setCategory={(cat) => { setCategory(cat); setSidebarOpen(false); }}
-            dark={dark}
-          />
-        </div>
+        <DashboardMap
+          category={category}
+          setCategory={(cat) => { setCategory(cat); setSidebarOpen(false); }}
+          dark={dark}
+        />
 
         {/* Map — fills remaining space */}
         <div style={{ flex:1, position:"relative", minWidth:0, height:"100%" }}>

@@ -14,7 +14,7 @@ import sport11 from "../../assets/images/sport/sport-11.jpg";
 
 
 
-export const sportImages = [
+export const sportImages = {
   sport1,
   sport2,
   sport3,
@@ -26,4 +26,4 @@ export const sportImages = [
   sport9,
   sport10,
   sport11,
-];
+ };
