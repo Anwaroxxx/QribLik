@@ -56,6 +56,7 @@ function Support() {
                 <p className="text-gray-500 text-lg">
                     Questions, ideas, or feedback — let's make progress together.
                 </p>
+                
             </div>
 
             <div className="max-w-6xl mx-auto grid md:grid-cols-2 items-center gap-42">

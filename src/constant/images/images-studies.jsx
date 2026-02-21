@@ -5,15 +5,10 @@ import studie4 from "../../assets/images/studies/studie4.jpg";
 import studie5 from "../../assets/images/studies/studie5.jpg";
 import studie6 from "../../assets/images/studies/studie6.jpg";
 import studie7 from "../../assets/images/studies/studie7.jpg";
-
-
-
-
-
-
-
-
-export const studiesImages = [
+ 
+ 
+ 
+export const studiesImages = {
   studie1,
   studie2,
   studie3,
@@ -21,4 +16,4 @@ export const studiesImages = [
   studie5,
   studie6,
   studie7,
-];
+}
