@@ -5,6 +5,7 @@ import { MdEvent, MdOutlineSportsSoccer, MdSupportAgent } from "react-icons/md";
 import { FaMagnifyingGlass, FaRegUser, FaArrowRightArrowLeft, FaCircleInfo } from "react-icons/fa6";
 import { BsStars } from "react-icons/bs";
 import { IoSettingsOutline } from "react-icons/io5";
+import { FiMap } from "react-icons/fi";
 import users from "../data/UserData.json";
 import MapsButton from "./buttonMap";
 
@@ -41,7 +42,7 @@ function Sidebar({ selectedCategory, setSelectedCategory }) {
   // ── MOBILE BOTTOM NAV (visible on md and below) ──────────────────────────
   const MobileBottomNav = () => (
     <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-[#e6dfd7] flex md:hidden">
-      {/* Show 5 most important categories in the bottom bar */}
+      {/* 5 category tabs */}
       {categories.slice(0, 5).map((el) => (
         <button
           key={el.id}
@@ -64,23 +65,16 @@ function Sidebar({ selectedCategory, setSelectedCategory }) {
         </button>
       ))}
 
-      {/* 6th slot: "More" or Events */}
-      <button
-        onClick={() => setSelectedCategory("EVENTS")}
-        className={`flex-1 flex flex-col items-center justify-center py-2 gap-0.5 transition-all duration-200 text-[10px] font-semibold
-          ${selectedCategory === "EVENTS"
-            ? "text-fuchsia-600"
-            : "text-slate-400 hover:text-slate-600"
-          }`}
+      {/* 6th slot: Maps button — matches the desktop sidebar bottom section */}
+      <Link
+        to="/maps"
+        className="flex-1 flex flex-col items-center justify-center py-2 gap-0.5 transition-all duration-200 text-[10px] font-semibold text-slate-400 hover:text-fuchsia-600"
       >
-        <span className={`text-xl transition-all duration-200 ${selectedCategory === "EVENTS" ? "scale-110" : ""}`}>
-          <MdEvent />
+        <span className="text-xl">
+          <FiMap />
         </span>
-        <span className="leading-tight">Events</span>
-        {selectedCategory === "EVENTS" && (
-          <span className="w-1 h-1 bg-fuchsia-500 rounded-full mt-0.5" />
-        )}
-      </button>
+        <span className="leading-tight">Map</span>
+      </Link>
     </nav>
   );
 
@@ -160,6 +154,17 @@ function Sidebar({ selectedCategory, setSelectedCategory }) {
           </div>
         </section>
       </section>
+
+      {/* ── MOBILE TOP LOGO HEADER (hidden on desktop) ────────────────────── */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-[#e6dfd7] flex md:hidden items-center gap-3 px-4 py-3 shadow-sm">
+        <div className="w-9 h-9 bg-gradient-to-tr from-fuchsia-600 to-rose-500 rounded-[12px] flex items-center justify-center shadow-md shadow-fuchsia-200">
+          <TbHome className="text-white w-5 h-5" />
+        </div>
+        <div className="flex flex-col">
+          <span className="font-black text-xl tracking-tighter text-slate-900 leading-none">Qriblik</span>
+          <span className="text-[9px] font-bold text-fuchsia-500 uppercase tracking-[0.2em]">Community Hub</span>
+        </div>
+      </header>
 
       {/* ── MOBILE BOTTOM NAV ─────────────────────────────────────────────── */}
       <MobileBottomNav />
