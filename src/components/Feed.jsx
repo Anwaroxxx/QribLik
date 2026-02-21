@@ -5,7 +5,7 @@ import ProfilePage from './ProfilePage'
 import CreatePostModal from './Createpostmodal'
 import NotificationsPanel from './Notificationspanel'
 import OverviewCard from './OverView'
-//import NeighborMap from './NeighborMap'
+import initialPosts from '../data/posts.json/Posts'
 
 const currentUser = {
   name: 'Alex Neighbor',
@@ -13,14 +13,7 @@ const currentUser = {
   avatar: 'https://i.pravatar.cc/150?img=5',
 }
 
-const initialPosts = [
-  { id: 1, author: 'Alex Rivera', neighborhood: 'Oakwood Heights', avatar: 'https://i.pravatar.cc/150?img=11', timeAgo: '1 hour ago', category: 'SPORT', title: 'Looking for a tennis partner', description: 'Intermediate player looking for someone to hit some balls at the community courts on Saturday morning.', likes: 8, comments: 2 },
-  { id: 2, author: 'David Chen', neighborhood: 'Park Ridge', avatar: 'https://i.pravatar.cc/150?img=33', timeAgo: '5 hours ago', category: 'TRADING', title: 'Trading vintage camera for a tablet', description: 'I have a well-maintained 35mm film camera. Looking to swap it for a working tablet for my studies.', likes: 8, comments: 2 },
-  { id: 3, author: 'Marta Wilson', neighborhood: 'Central Square', avatar: 'https://i.pravatar.cc/150?img=47', timeAgo: '2 hours ago', category: 'LOST AND FOUND', title: 'Lost: Golden Retriever near Central Park', description: "Please help! Our dog 'Buddy' went missing this morning. He has a blue collar and is very friendly.", likes: 8, comments: 2 },
-  { id: 4, author: 'Emma Wilson', neighborhood: 'Glenview', avatar: 'https://i.pravatar.cc/150?img=23', timeAgo: '3 hours ago', category: 'SWAP SKILLS', title: 'Swap: Coding lessons for Piano lessons', description: "I'm a senior dev who wants to learn piano. I can teach you React, Python, or Go in exchange!", likes: 8, comments: 2 },
-  { id: 5, author: 'Alex Neighbor', neighborhood: 'Sunset District', avatar: 'https://i.pravatar.cc/150?img=5', timeAgo: '30 min ago', category: 'EVENTS', title: 'Neighborhood BBQ this Saturday!', description: 'Join us for a community BBQ at the park. Bring your favorite dish to share!', likes: 15, comments: 7 },
-  { id: 6, author: 'Karim Berrada', neighborhood: 'Park Ridge', avatar: 'https://i.pravatar.cc/150?img=12', timeAgo: '2 hours ago', category: 'TECH HELP', title: 'Need help setting up WiFi router', description: 'Just moved in and struggling with my router setup. Can anyone help?', likes: 3, comments: 5 },
-]
+
 
 const CATEGORY_MAP = {
   'ALL': 'Home Feed',
