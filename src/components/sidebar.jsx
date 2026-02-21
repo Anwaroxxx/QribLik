@@ -22,10 +22,11 @@ function DarkModeToggle() {
     <button
       onClick={toggleDark}
       aria-label="Toggle dark mode"
-      className={`relative w-12 h-7 rounded-full border-0 cursor-pointer p-0 transition-all duration-300 ${dark
+      className={`relative w-12 h-7 rounded-full border-0 cursor-pointer p-0 transition-all duration-300 ${
+        dark
           ? "shadow-[0_0_12px_rgba(139,63,222,0.5)]"
           : "shadow-[0_1px_4px_rgba(0,0,0,0.15)]"
-        }`}
+      }`}
       style={{
         background: dark
           ? "linear-gradient(135deg, #8B3FDE, #C837AB)"
@@ -33,8 +34,9 @@ function DarkModeToggle() {
       }}
     >
       <span
-        className={`absolute top-1 w-5 h-5 rounded-full bg-white flex items-center justify-center text-[11px] transition-all duration-300 ${dark ? "left-[calc(100%-1.4rem)]" : "left-1"
-          }`}
+        className={`absolute top-1 w-5 h-5 rounded-full bg-white flex items-center justify-center text-[11px] transition-all duration-300 ${
+          dark ? "left-[calc(100%-1.4rem)]" : "left-1"
+        }`}
       >
         {dark ? "🌙" : "☀️"}
       </span>
@@ -66,19 +68,64 @@ function Sidebar({ selectedCategory, setSelectedCategory }) {
 
   // ── CATEGORIES ────────────────────────────────────────────────────────────
   const categories = [
-    { id: "SPORT", icon: <MdOutlineSportsSoccer />, label: "Sport", notificationKey: "Sport" },
-    { id: "TRADING", icon: <FaArrowRightArrowLeft />, label: "Trading", notificationKey: "Trading" },
-    { id: "LOST AND FOUND", icon: <FaMagnifyingGlass />, label: "Lost and Found", notificationKey: "Lost" },
-    { id: "SWAP SKILLS", icon: <BsStars />, label: "Swap Skills", notificationKey: "Swap" },
-    { id: "EVENTS", icon: <MdEvent />, label: "Events", notificationKey: "Events" },
+    {
+      id: "SPORT",
+      icon: <MdOutlineSportsSoccer />,
+      label: "Sport",
+      notificationKey: "Sport",
+    },
+    {
+      id: "TRADING",
+      icon: <FaArrowRightArrowLeft />,
+      label: "Trading",
+      notificationKey: "Trading",
+    },
+    {
+      id: "LOST AND FOUND",
+      icon: <FaMagnifyingGlass />,
+      label: "Lost and Found",
+      notificationKey: "Lost",
+    },
+    {
+      id: "SWAP SKILLS",
+      icon: <BsStars />,
+      label: "Swap Skills",
+      notificationKey: "Swap",
+    },
+    {
+      id: "EVENTS",
+      icon: <MdEvent />,
+      label: "Events",
+      notificationKey: "Events",
+    },
   ];
 
   const categoryMessages = {
-    Sport: ["Wach tbghi nmchiw njriw had sbah?", "Match dyal football ghadi ybda f 5 pm", "Yoga session gheda f parc"],
-    Trading: ["3andi sneakers jdad, bgha ndir trading m3a chi jacket", "Je cherche quelqu'un pour trader un vélo contre une trottinette", "Trading a laptop for a gaming console"],
-    Lost: ["Found keys near cafe central", "Found black cat near sidi maarouf", "Lost backpack f metro line 2"],
-    Swap: ["Chkoun li bgha ybdl skills m3aya?", "Swap painting lessons for French tutoring", "Gheda trading skill swap session"],
-    Events: ["Concert f centre ville tonight", "Meetup dyal devs f 7 pm", "Workshop on photography this weekend"],
+    Sport: [
+      "Wach tbghi nmchiw njriw had sbah?",
+      "Match dyal football ghadi ybda f 5 pm",
+      "Yoga session gheda f parc",
+    ],
+    Trading: [
+      "3andi sneakers jdad, bgha ndir trading m3a chi jacket",
+      "Je cherche quelqu'un pour trader un vélo contre une trottinette",
+      "Trading a laptop for a gaming console",
+    ],
+    Lost: [
+      "Found keys near cafe central",
+      "Found black cat near sidi maarouf",
+      "Lost backpack f metro line 2",
+    ],
+    Swap: [
+      "Chkoun li bgha ybdl skills m3aya?",
+      "Swap painting lessons for French tutoring",
+      "Gheda trading skill swap session",
+    ],
+    Events: [
+      "Concert f centre ville tonight",
+      "Meetup dyal devs f 7 pm",
+      "Workshop on photography this weekend",
+    ],
   };
 
   const defaultUser = {
@@ -100,7 +147,10 @@ function Sidebar({ selectedCategory, setSelectedCategory }) {
     if (intervalRef.current) clearInterval(intervalRef.current);
     intervalRef.current = setInterval(() => {
       setProgress((prev) => {
-        if (prev >= 100) { clearInterval(intervalRef.current); return 100; }
+        if (prev >= 100) {
+          clearInterval(intervalRef.current);
+          return 100;
+        }
         return prev + 100 / (6000 / 50);
       });
     }, 50);
@@ -120,7 +170,9 @@ function Sidebar({ selectedCategory, setSelectedCategory }) {
     if (!category.notificationKey) return;
 
     const key = category.notificationKey;
-    const catUsers = users.filter((u) => u.category?.toLowerCase() === key.toLowerCase());
+    const catUsers = users.filter(
+      (u) => u.category?.toLowerCase() === key.toLowerCase(),
+    );
     const messages = categoryMessages[key] || ["New activity"];
 
     queueRef.current = messages.map((msg) => {
@@ -144,7 +196,9 @@ function Sidebar({ selectedCategory, setSelectedCategory }) {
           ${size === "md" ? "w-11 h-11 rounded-[16px] shadow-lg" : "w-9 h-9 rounded-[14px] shadow-md"}
         `}
       >
-        <TbHome className={`text-white ${size === "md" ? "w-6 h-6" : "w-5 h-5"}`} />
+        <TbHome
+          className={`text-white ${size === "md" ? "w-6 h-6" : "w-5 h-5"}`}
+        />
       </div>
       <div className="flex flex-col leading-none">
         <span
@@ -168,21 +222,21 @@ function Sidebar({ selectedCategory, setSelectedCategory }) {
   // ── MOBILE BOTTOM NAV ─────────────────────────────────────────────────────
   const MobileBottomNav = () => (
     <div
-      className={`fixed bottom-0 left-0 right-0 z-50 border-t flex items-center md:hidden shadow-lg transition-colors duration-500 ${dark
-          ? "bg-[#0f0a1e] border-white/8"
-          : "bg-white border-slate-100"
-        }`}
+      className={`fixed bottom-0 left-0 right-0 z-50 border-t flex items-center md:hidden shadow-lg transition-colors duration-500 ${
+        dark ? "bg-[#0f0a1e] border-white/8" : "bg-white border-slate-100"
+      }`}
     >
       {categories.map((el) => (
         <button
           key={el.id}
           onClick={() => handleCategoryClick(el)}
-          className={`flex-1 flex flex-col items-center justify-center py-2 gap-0.5 transition-all duration-200 text-[10px] font-semibold ${selectedCategory === el.id
+          className={`flex-1 flex flex-col items-center justify-center py-2 gap-0.5 transition-all duration-200 text-[10px] font-semibold ${
+            selectedCategory === el.id
               ? "text-fuchsia-500"
               : dark
                 ? "text-purple-300/40 hover:text-purple-300/70"
                 : "text-slate-400 hover:text-slate-600"
-            }`}
+          }`}
         >
           <span className="text-base">{el.icon}</span>
           {el.label.split(" ")[0]}
@@ -191,7 +245,9 @@ function Sidebar({ selectedCategory, setSelectedCategory }) {
           )}
         </button>
       ))}
-      <div className={`flex-1 flex flex-col items-center justify-center py-2 gap-0.5 text-[10px] font-semibold ${dark ? "text-purple-300/40" : "text-slate-400"}`}>
+      <div
+        className={`flex-1 flex flex-col items-center justify-center py-2 gap-0.5 text-[10px] font-semibold ${dark ? "text-purple-300/40" : "text-slate-400"}`}
+      >
         <FiMap className="text-lg" />
         Map
       </div>
@@ -203,16 +259,20 @@ function Sidebar({ selectedCategory, setSelectedCategory }) {
     <>
       {/* ── DESKTOP SIDEBAR ── */}
       <aside
-        className={`hidden md:flex flex-col justify-between w-64 h-screen fixed left-0 top-0 border-r py-6 px-3 overflow-y-auto z-40 transition-colors duration-500 ${dark
-            ? "bg-[#0d0719] border-white/5"
-            : "bg-white border-slate-100"
-          }`}
+        className={`hidden md:flex flex-col justify-between w-64 h-screen fixed left-0 top-0 border-r py-6 px-3 overflow-y-auto z-40 transition-colors duration-500 ${
+          dark ? "bg-[#0d0719] border-white/5" : "bg-white border-slate-100"
+        }`}
       >
         {/* Logo */}
         <div>
-          <div className="px-5 mb-6">
+          <div className="px-5 mb-6 flex flex-col gap-3">
+            <div className="w-8 h-8 bg-gradient-to-tr from-fuchsia-600 to-rose-500 rounded-xl flex items-center justify-center shadow-md shadow-fuchsia-200">
+              <TbHome className="text-white w-4 h-4" />
+            </div>
             <h1 className="text-xl font-bold text-fuchsia-500">QribLik</h1>
-            <p className={`text-xs ${dark ? "text-purple-300/40" : "text-slate-400"}`}>
+            <p
+              className={`text-xs ${dark ? "text-purple-300/40" : "text-slate-400"}`}
+            >
               Community Hub
             </p>
           </div>
@@ -220,7 +280,10 @@ function Sidebar({ selectedCategory, setSelectedCategory }) {
           {/* Static nav links */}
           <nav className="flex flex-col gap-1 mb-4">
             <div
-              onClick={() => { setActive("Home"); setSelectedCategory("ALL"); }}
+              onClick={() => {
+                setActive("Home");
+                setSelectedCategory("ALL");
+              }}
               className={`${itemStyle} ${active === "Home" ? activeStyle : inactiveStyle}`}
             >
               <TbHome className="text-lg" /> Home Feed
@@ -242,7 +305,9 @@ function Sidebar({ selectedCategory, setSelectedCategory }) {
           </nav>
 
           {/* Social categories */}
-          <p className={`px-5 text-xs font-semibold uppercase tracking-wider mb-2 ${dark ? "text-purple-300/30" : "text-slate-400"}`}>
+          <p
+            className={`px-5 text-xs font-semibold uppercase tracking-wider mb-2 ${dark ? "text-purple-300/30" : "text-slate-400"}`}
+          >
             Social
           </p>
           <nav className="flex flex-col gap-1">
@@ -272,8 +337,12 @@ function Sidebar({ selectedCategory, setSelectedCategory }) {
           </div>
 
           {/* Dark Mode Toggle row — replaces Settings */}
-          <div className={`flex items-center justify-between px-5 py-4 rounded-2xl ${dark ? "bg-white/3" : "bg-slate-50"}`}>
-            <span className={`text-[15px] font-medium ${dark ? "text-purple-300/60" : "text-slate-500"}`}>
+          <div
+            className={`flex items-center justify-between px-5 py-4 rounded-2xl ${dark ? "bg-white/3" : "bg-slate-50"}`}
+          >
+            <span
+              className={`text-[15px] font-medium ${dark ? "text-purple-300/60" : "text-slate-500"}`}
+            >
               {dark ? "Dark Mode" : "Light Mode"}
             </span>
             <DarkModeToggle />
@@ -285,10 +354,9 @@ function Sidebar({ selectedCategory, setSelectedCategory }) {
 
       {/* ── MOBILE TOP HEADER ── */}
       <header
-        className={`md:hidden fixed top-0 left-0 right-0 z-50 border-b px-4 py-3 flex items-center justify-between transition-colors duration-500 ${dark
-            ? "bg-[#0d0719] border-white/5"
-            : "bg-white border-slate-100"
-          }`}
+        className={`md:hidden fixed top-0 left-0 right-0 z-50 border-b px-4 py-3 flex items-center justify-between transition-colors duration-500 ${
+          dark ? "bg-[#0d0719] border-white/5" : "bg-white border-slate-100"
+        }`}
       >
         <h1 className="text-lg font-bold text-fuchsia-500">Qriblik</h1>
         <DarkModeToggle />
@@ -300,11 +368,13 @@ function Sidebar({ selectedCategory, setSelectedCategory }) {
       {/* ── NOTIFICATION TOAST ── */}
       {notification && (
         <div
-          className={`fixed bottom-20 right-4 z-50 rounded-2xl shadow-xl p-4 w-72 border transition-all duration-300 ${animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            } ${dark
+          className={`fixed bottom-20 right-4 z-50 rounded-2xl shadow-xl p-4 w-72 border transition-all duration-300 ${
+            animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          } ${
+            dark
               ? "bg-[#1a0a2e] border-purple-800/40 shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
               : "bg-white border-slate-100"
-            }`}
+          }`}
         >
           {/* Progress bar */}
           <div
@@ -319,16 +389,22 @@ function Sidebar({ selectedCategory, setSelectedCategory }) {
               className="w-9 h-9 rounded-full object-cover"
             />
             <div>
-              <p className={`text-sm font-semibold ${dark ? "text-purple-50" : "text-slate-800"}`}>
+              <p
+                className={`text-sm font-semibold ${dark ? "text-purple-50" : "text-slate-800"}`}
+              >
                 {notification.user.name}
               </p>
-              <p className={`text-xs ${dark ? "text-purple-300/50" : "text-slate-400"}`}>
+              <p
+                className={`text-xs ${dark ? "text-purple-300/50" : "text-slate-400"}`}
+              >
                 {notification.user.neighborhood} • {notification.user.city}
               </p>
             </div>
           </div>
 
-          <p className={`text-sm mb-3 ${dark ? "text-purple-200/60" : "text-slate-600"}`}>
+          <p
+            className={`text-sm mb-3 ${dark ? "text-purple-200/60" : "text-slate-600"}`}
+          >
             {notification.message}
           </p>
 
@@ -341,10 +417,11 @@ function Sidebar({ selectedCategory, setSelectedCategory }) {
             </button>
             <button
               onClick={() => setNotification(null)}
-              className={`flex-1 py-1.5 rounded-xl text-xs font-semibold transition ${dark
+              className={`flex-1 py-1.5 rounded-xl text-xs font-semibold transition ${
+                dark
                   ? "bg-white/8 text-purple-300 hover:bg-white/12"
                   : "bg-slate-100 text-slate-500 hover:bg-slate-200"
-                }`}
+              }`}
             >
               Decline
             </button>

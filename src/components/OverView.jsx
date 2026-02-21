@@ -2,6 +2,43 @@ import { useState, useEffect } from "react";
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { useTheme } from "../contexts/ThemeContext";
 
+// ── Shared profile data (single source of truth) ──────────────────────────────
+
+const storedUser = JSON.parse(localStorage.getItem("qriblikUser"));
+
+
+
+export const initialUser = {
+  name: storedUser?.name || 'Alex Neighbor',
+  username: 'alexneighbor_07',
+  neighborhood: 'Sunset District',
+  city: 'Casablanca',
+  avatar: 'https://i.pravatar.cc/150?img=5',
+  bio: "Hi! I'm Alex, living in Sunset District. Love connecting with neighbors and helping out 🤝",
+  languages: ['English', 'French'],
+  favoriteCategories: ['Sport', 'Trading', 'Events'],
+  offeredSkills: ['React', 'Python', 'UI Design'],
+  wantedSkills: ['Guitar', 'Cooking'],
+  verified: true,
+  joinedAt: '2024-03-15',
+  stats: { totalPostsCreated: 34, totalComments: 128, totalLikesReceived: 310, followers: 89, following: 64, profileViews: 1240 },
+  helpSystem: {
+    helpPoints: 420,
+    level: 3,
+    badge: 'Trusted Neighbor',
+    // Stars derived from level (1 star per level, max 5)
+    stars: 3,
+    maxStars: 5,
+    // Level progress: points within current 200-pt band
+    levelProgress: Math.round(((420 % 200) / 200) * 100), // 10%
+    nextLevelPoints: 200 - (420 % 200), // 180 pts away
+    lostAndFound: { resolved: 7, pointsEarned: 175 },
+    swapSkills: { completedSwaps: 5 },
+    trading: { successfulTrades: 8, rating: 4.7, reviews: 12 },
+  },
+};
+
+// ── Animated counter ──────────────────────────────────────────────────────────
 function AnimatedNumber({ value, duration = 1.5, delay = 0 }) {
   const count = useMotionValue(0);
   const rounded = useTransform(count, (v) => Math.round(v).toLocaleString());
@@ -23,6 +60,7 @@ function AnimatedNumber({ value, duration = 1.5, delay = 0 }) {
   return <span>{display}</span>;
 }
 
+// ── Star icon ─────────────────────────────────────────────────────────────────
 function StarIcon({ filled, delay, dark }) {
   return (
     <motion.svg
@@ -48,23 +86,25 @@ function StarIcon({ filled, delay, dark }) {
   );
 }
 
-const userData = {
-  name: "Alex Rivera",
-  points: 24750,
-  level: 42,
-  stars: 4,
-  maxStars: 5,
-  levelProgress: 72,
-  nextLevelPoints: 5250,
-};
-
-export default function OverviewCard() {
+// ── Overview Card ─────────────────────────────────────────────────────────────
+export default function OverviewCard({ user = initialUser }) {
   const { dark } = useTheme();
   const [hovered, setHovered] = useState(false);
 
+  // Derive display values from the real user object
+  const { name, helpSystem } = user;
+  const {
+    helpPoints,
+    level,
+    stars,
+    maxStars,
+    levelProgress,
+    nextLevelPoints,
+  } = helpSystem;
+
   const labelColor = dark ? "rgba(167,139,250,0.45)" : "rgba(0,0,0,0.35)";
-  const subColor = dark ? "rgba(167,139,250,0.35)" : "rgba(0,0,0,0.4)";
-  const cardBg = dark
+  const subColor   = dark ? "rgba(167,139,250,0.35)" : "rgba(0,0,0,0.4)";
+  const cardBg     = dark
     ? "linear-gradient(160deg, #1a0a2e 0%, #150d27 60%, #1c0d30 100%)"
     : "linear-gradient(160deg, #ffffff 0%, #faf8ff 60%, #fdf5ff 100%)";
 
@@ -157,7 +197,7 @@ export default function OverviewCard() {
                     margin: 0, letterSpacing: "-0.5px",
                   }}
                 >
-                  {userData.name}
+                  {name}
                 </motion.h2>
               </div>
 
@@ -176,7 +216,7 @@ export default function OverviewCard() {
               >
                 <p style={{ fontSize: "9px", letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.8)", margin: 0, fontWeight: 600 }}>Level</p>
                 <p style={{ fontFamily: "'Syne', sans-serif", fontSize: "26px", fontWeight: 800, color: "#fff", margin: 0, lineHeight: 1 }}>
-                  <AnimatedNumber value={userData.level} duration={1} delay={0.5} />
+                  <AnimatedNumber value={level} duration={1} delay={0.5} />
                 </p>
               </motion.div>
             </div>
@@ -203,7 +243,7 @@ export default function OverviewCard() {
               style={{ marginBottom: "28px" }}
             >
               <p style={{ fontSize: "11px", letterSpacing: "0.15em", textTransform: "uppercase", color: labelColor, marginBottom: "6px", fontWeight: 600 }}>
-                Total Points
+                Help Points
               </p>
               <div style={{ display: "flex", alignItems: "baseline", gap: "6px" }}>
                 <span style={{
@@ -211,7 +251,7 @@ export default function OverviewCard() {
                   background: "var(--gradient-qriblik)",
                   WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
                 }}>
-                  <AnimatedNumber value={userData.points} duration={1.8} delay={0.6} />
+                  <AnimatedNumber value={helpPoints} duration={1.8} delay={0.6} />
                 </span>
                 <span style={{ fontSize: "14px", color: subColor, fontWeight: 500 }}>pts</span>
               </div>
@@ -226,7 +266,7 @@ export default function OverviewCard() {
             >
               <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px" }}>
                 <span style={{ fontSize: "11px", color: labelColor, letterSpacing: "0.12em", textTransform: "uppercase", fontWeight: 600 }}>Next Level</span>
-                <span style={{ fontSize: "12px", color: subColor, fontWeight: 500 }}>{userData.nextLevelPoints.toLocaleString()} pts away</span>
+                <span style={{ fontSize: "12px", color: subColor, fontWeight: 500 }}>{nextLevelPoints.toLocaleString()} pts away</span>
               </div>
               <div style={{
                 height: "6px", borderRadius: "99px",
@@ -235,7 +275,7 @@ export default function OverviewCard() {
               }}>
                 <motion.div
                   initial={{ width: 0 }}
-                  animate={{ width: `${userData.levelProgress}%` }}
+                  animate={{ width: `${levelProgress}%` }}
                   transition={{ delay: 0.8, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                   style={{
                     height: "100%", borderRadius: "99px",
@@ -256,8 +296,8 @@ export default function OverviewCard() {
                 Stars Earned
               </p>
               <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
-                {Array.from({ length: userData.maxStars }).map((_, i) => (
-                  <StarIcon key={i} filled={i < userData.stars} delay={0.9 + i * 0.08} dark={dark} />
+                {Array.from({ length: maxStars }).map((_, i) => (
+                  <StarIcon key={i} filled={i < stars} delay={0.9 + i * 0.08} dark={dark} />
                 ))}
                 <motion.span
                   initial={{ opacity: 0 }}
@@ -265,7 +305,7 @@ export default function OverviewCard() {
                   transition={{ delay: 1.4 }}
                   style={{ marginLeft: "8px", fontSize: "13px", color: subColor, fontWeight: 500 }}
                 >
-                  {userData.stars}/{userData.maxStars}
+                  {stars}/{maxStars}
                 </motion.span>
               </div>
             </motion.div>
