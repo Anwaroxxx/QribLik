@@ -17,11 +17,13 @@ function Home() {
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
       />
-      <MainFeed
-        activeView={activeView}
-        onViewChange={setActiveView}
-        activeCategory={selectedCategory} 
-      />
+      <div className="flex-1 ml-0 md:ml-64 overflow-hidden">
+        <MainFeed
+          activeView={activeView}
+          onViewChange={setActiveView}
+          activeCategory={selectedCategory}
+        />
+      </div>
     </div>
   );
 }
