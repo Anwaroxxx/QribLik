@@ -1,9 +1,13 @@
 // components/ProfileModal.jsx
 import { useState } from "react";
 import { FiX, FiMapPin } from "react-icons/fi";
-
+import Modale3 from "./Modale3";
 export default function ProfileModal({ post, onClose }) {
   const [isFollowing, setIsFollowing] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [openChat, setOpenChat] = useState(false);
+  const [chatUser, setChatUser] = useState(null);
+
 
   // Close when clicking the backdrop, not the card itself
   function handleBackdropClick(e) {
@@ -71,10 +75,24 @@ export default function ProfileModal({ post, onClose }) {
               {isFollowing ? "Following" : "Follow"}
             </button>
 
-            <button className="flex-1 py-2 rounded-xl text-sm font-semibold border border-gray-200 text-gray-700 hover:bg-gray-50 transition-colors">
+            <button
+              onClick={() => {
+                setChatUser({
+                  id: post.id,
+                  name: post.author,
+                  avatar: post.avatar,
+                });
+                setOpenChat(true);
+              }} className="flex-1 py-2 rounded-xl text-sm font-semibold border border-gray-200 text-gray-700 hover:bg-gray-50 transition-colors">
               Message
             </button>
           </div>
+          {openChat && (
+            <Modale3
+              onClose={() => setOpenChat(false)}
+              initialUser={chatUser}
+            />
+          )}
         </div>
       </div>
 

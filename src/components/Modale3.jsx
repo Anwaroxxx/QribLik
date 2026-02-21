@@ -6,47 +6,48 @@ import { useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 import { sendMessageToAI } from "../services/chatbot";
 
-function Modale3({ onClose }) {
-  const firstFourUsers = UsersData.slice(0, 3);
-  const [selectedUser, setSelectedUser] = useState(null);
+function Modale3({ onClose, initialUser }) {
+  const [selectedUser, setSelectedUser] = useState(initialUser || null);
+  const [messages, setMessages] = useState(() => {
+    const initialMessages = {};
 
-const [messages, setMessages] = useState(() => {
-  const initialMessages = {};
+    UsersData.forEach((user) => {
+      initialMessages[user.id] = [
+        {
+          text: `Hi I'm ${user.name}! 👋`,
+          sender: "them",
+          time: "10:00 AM",
+          timestamp: 1,
+        },
+      ];
+    });
 
-  UsersData.forEach((user) => {
-    initialMessages[user.id] = [
+    initialMessages["ai"] = [
       {
-        text: `Hi I'm ${user.name}! 👋`,
+        text: "Hello 👋 How can I help you today?",
         sender: "them",
-        time: "10:00 AM",
+        time: "Now",
       },
     ];
-  });
-
-  initialMessages["ai"] = [
-    {
-      text: "Hello 👋 How can I help you today?",
-      sender: "them",
-      time: "Now",
-    },
-  ];
 
 
-  return initialMessages;
-});  const [input, setInput] = useState("");
+    return initialMessages;
+  }); const [input, setInput] = useState("");
 
   const sendMessage = async () => {
     if (!input.trim() || !selectedUser) return;
 
     const currentInput = input;
+    const now = Date.now();
 
     const userMessage = {
-      text: currentInput,
+      text: input,
       sender: "me",
-      time: new Date().toLocaleTimeString([], {
+      time: new Date(now).toLocaleTimeString([], {
         hour: "2-digit",
         minute: "2-digit",
       }),
+      timestamp: now,
     };
 
     setMessages((prev) => ({
@@ -84,17 +85,21 @@ const [messages, setMessages] = useState(() => {
       console.error("AI error:", error);
     }
   };
-
+  const sortedUsers = [...UsersData].sort((a, b) => {
+    const lastA = messages[a.id]?.slice(-1)[0]?.timestamp || 0;
+    const lastB = messages[b.id]?.slice(-1)[0]?.timestamp || 0;
+    return lastB - lastA;
+  });
   return createPortal(
- <div
-    className="fixed inset-0 z-[9999] flex items-end justify-end "
-    onClick={onClose}
-  >
-<div
-  className="w-[360px] h-[85vh] bg-white/30 backdrop-blur-md rounded-[32px] shadow-2xl p-4 relative overflow-hidden m-6 
+    <div
+      className="fixed inset-0 z-[9999] flex items-end justify-end "
+      onClick={onClose}
+    >
+      <div
+        className="w-[360px] h-[85vh] bg-white/30 backdrop-blur-md rounded-[32px] shadow-2xl p-4 relative overflow-hidden m-6 
   animate-[slideUp_.3s_ease-out]"
-  onClick={(e) => e.stopPropagation()}
->
+        onClick={(e) => e.stopPropagation()}
+      >
 
         {/* HEADER */}
         <div className="flex justify-between items-start mb-6">
@@ -147,7 +152,7 @@ const [messages, setMessages] = useState(() => {
         {/* LIST */}
         {!selectedUser ? (
           <div className="flex flex-col gap-6 overflow-y-auto pr-2 h-[60vh]">
-            {firstFourUsers.map((user) => (
+            {sortedUsers.slice(0, 3).map((user) => (
               <div
                 key={user.id}
                 onClick={() => setSelectedUser(user)}
@@ -164,8 +169,7 @@ const [messages, setMessages] = useState(() => {
                       {user.name}
                     </h4>
                     <p className="text-sm text-slate-400">
-                      {user.bio.slice(0, 40)}...
-                    </p>
+                      {user.bio?.slice(0, 40) || "No bio available"}...                    </p>
                   </div>
                 </div>
                 <FaChevronRight className="text-slate-300" />
@@ -174,7 +178,7 @@ const [messages, setMessages] = useState(() => {
           </div>
         ) : (
           /* CONVERSATION */
-<div className="flex flex-col h-[60vh] animate-[fadeIn_.3s_ease-in-out]">
+          <div className="flex flex-col h-[60vh] animate-[fadeIn_.3s_ease-in-out]">
 
             {/* TOP */}
             <div className="flex items-center gap-3 border-b pb-3 mb-3">
@@ -189,7 +193,9 @@ const [messages, setMessages] = useState(() => {
                 src={
                   selectedUser.id === "ai"
                     ? "https://ui-avatars.com/api/?name=AI"
-                    : usersImages[selectedUser.avatar]
+                    : selectedUser.avatar?.startsWith("http")
+                      ? selectedUser.avatar
+                      : usersImages[selectedUser.avatar]
                 }
                 className="w-10 h-10 rounded-full object-cover"
               />
@@ -204,18 +210,16 @@ const [messages, setMessages] = useState(() => {
               {(messages[selectedUser.id] || []).map((msg, i) => (
                 <div
                   key={i}
-                  className={`flex flex-col max-w-[75%] ${
-                    msg.sender === "me"
+                  className={`flex flex-col max-w-[75%] ${msg.sender === "me"
                       ? "self-end items-end"
                       : "self-start"
-                  }`}
+                    }`}
                 >
                   <div
-                    className={`px-4 py-2 rounded-2xl shadow-sm ${
-                      msg.sender === "me"
+                    className={`px-4 py-2 rounded-2xl shadow-sm ${msg.sender === "me"
                         ? "bg-gradient-to-r from-fuchsia-600 to-rose-500 text-white"
                         : "bg-slate-100 text-slate-800"
-                    }`}
+                      }`}
                   >
                     {msg.text}
                   </div>
