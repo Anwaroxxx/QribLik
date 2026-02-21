@@ -1,20 +1,20 @@
-import camera1 from "../../assets/images/Échange/camera1.jpg";
-import camera2 from "../../assets/images/Échange/camera2.jpg";
-import drone from "../../assets/images/Échange/drone.jpg";
-import echange3 from "../../assets/images/Échange/echange3.jpg";
-import echange4 from "../../assets/images/Échange/echange4.jpg";
-import echange5 from "../../assets/images/Échange/echange5.jpg";
-import guitare from "../../assets/images/Échange/guitare.jpg";
-import micro from "../../assets/images/Échange/micro.jpg";
-import mouse from "../../assets/images/Échange/mouse.jpg";
-import nintendo from "../../assets/images/Échange/nintendo.jpg";
-import pc from "../../assets/images/Échange/pc.jpg";
-import pc1 from "../../assets/images/Échange/pc1.jpg";
-import pc2 from "../../assets/images/Échange/pc2.jpg";
-import phone1 from "../../assets/images/Échange/phone1.jpg";
-import phone2 from "../../assets/images/Échange/phone2.jpg";
-import piano from "../../assets/images/Échange/piano.jpg";
-import ps4 from "../../assets/images/Échange/Ps4.jpg";
+import camera1 from "../../assets/images/exchange/camera1.jpg";
+import camera2 from "../../assets/images/exchange/camera2.jpg";
+import drone from "../../assets/images/exchange/drone.jpg";
+import echange3 from "../../assets/images/exchange/echange3.jpg";
+import echange4 from "../../assets/images/exchange/echange4.jpg";
+import echange5 from "../../assets/images/exchange/echange5.jpg";
+import guitare from "../../assets/images/exchange/guitare.jpg";
+import micro from "../../assets/images/exchange/micro.jpg";
+import mouse from "../../assets/images/exchange/mouse.jpg";
+import nintendo from "../../assets/images/exchange/nintendo.jpg";
+import pc from "../../assets/images/exchange/pc.jpg";
+import pc1 from "../../assets/images/exchange/pc1.jpg";
+import pc2 from "../../assets/images/exchange/pc2.jpg";
+import phone1 from "../../assets/images/exchange/phone1.jpg";
+import phone2 from "../../assets/images/exchange/phone2.jpg";
+import piano from "../../assets/images/exchange/piano.jpg";
+import ps4 from "../../assets/images/exchange/Ps4.jpg";
 
 export const echangeImage = {
 camera1,
