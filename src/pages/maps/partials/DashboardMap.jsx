@@ -23,29 +23,15 @@ const CATEGORIES = [
   { id: "swap_skills", label: "Swap Skills",  icon: "🔄", color: "#F97316" },
 ];
 
-// Pure JS — no Tailwind
-function useIsMobile() {
-  const [isMobile, setIsMobile] = useState(
-    typeof window !== "undefined" ? window.innerWidth < 768 : false
-  );
-  useEffect(() => {
-    const fn = () => setIsMobile(window.innerWidth < 768);
-    window.addEventListener("resize", fn);
-    return () => window.removeEventListener("resize", fn);
-  }, []);
-  return isMobile;
-}
-
-export default function DashboardMap({ category, setCategory, dark }) {
+export default function DashboardMap({ category, setCategory, dark, isMobile }) {
   const [sheetOpen, setSheetOpen] = useState(false);
-  const isMobile = useIsMobile();
 
   const bg     = dark ? "#0e0720" : "#ffffff";
   const border = dark ? "rgba(139,92,246,0.2)" : "#e6dfd7";
   const mute   = dark ? "#94a3b8" : "#94a3b8";
   const activeItem = NAV_ITEMS.find(n => n.id === category);
 
-  // ── MOBILE ───────────────────────────────────────────────────────────────
+  // ── MOBILE: just the filter sheet (no top bar — navbar handles that) ────
   if (isMobile) {
     return (
       <>
@@ -56,45 +42,7 @@ export default function DashboardMap({ category, setCategory, dark }) {
           }
         `}</style>
 
-        {/* Fixed top bar */}
-        <div style={{
-          position: "fixed", top: 0, left: 0, right: 0,
-          zIndex: 3001, height: 56,
-          background: bg,
-          borderBottom: `1px solid ${border}`,
-          display: "flex", alignItems: "center", justifyContent: "space-between",
-          padding: "0 16px",
-          boxShadow: "0 2px 16px rgba(139,92,246,0.10)",
-        }}>
-          <img src={Image.logo} alt="Qriblik" style={{ height: 30, width: "auto" }} />
-
-          <div style={{
-            display: "flex", alignItems: "center", gap: 6,
-            padding: "5px 14px", borderRadius: 20,
-            background: dark ? "rgba(139,92,246,0.25)" : "linear-gradient(135deg,rgba(232,219,255,0.9),rgba(255,220,230,0.9))",
-            fontSize: 12, fontWeight: 700,
-            color: dark ? "#C084FC" : "#9333EA",
-            fontFamily: "Sora,sans-serif",
-          }}>
-            <span style={{ fontSize: 14 }}>{activeItem?.icon}</span>
-            <span>{activeItem?.label || "All"}</span>
-          </div>
-
-          <button onClick={() => setSheetOpen(true)} style={{
-            padding: "8px 14px", borderRadius: 14,
-            border: "none", cursor: "pointer",
-            background: dark ? "rgba(139,92,246,0.2)" : "rgba(139,92,246,0.1)",
-            color: dark ? "#C084FC" : "#9333EA",
-            fontSize: 12, fontWeight: 700, fontFamily: "Sora,sans-serif",
-            display: "flex", alignItems: "center", gap: 6,
-            WebkitTapHighlightColor: "transparent",
-            touchAction: "manipulation",
-          }}>
-            <span>⚙️</span> Filter
-          </button>
-        </div>
-
-        {/* Bottom filter sheet */}
+        {/* Bottom filter sheet — opens when triggered from navbar hamburger */}
         {sheetOpen && (
           <>
             <div onClick={() => setSheetOpen(false)} style={{
@@ -102,7 +50,6 @@ export default function DashboardMap({ category, setCategory, dark }) {
               background: "rgba(0,0,0,0.45)",
               backdropFilter: "blur(4px)",
             }} />
-
             <div style={{
               position: "fixed", bottom: 0, left: 0, right: 0,
               zIndex: 3600, background: bg,
@@ -114,7 +61,6 @@ export default function DashboardMap({ category, setCategory, dark }) {
               <div style={{ display:"flex", justifyContent:"center", padding:"14px 0 8px" }}>
                 <div style={{ width:40, height:4, borderRadius:4, background: dark ? "rgba(255,255,255,0.15)" : "#e2e8f0" }} />
               </div>
-
               <div style={{ padding:"0 20px 14px", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
                 <span style={{ fontSize:15, fontWeight:800, color: dark?"#f1f5f9":"#1a1040", fontFamily:"Sora,sans-serif" }}>
                   Filter by Category
@@ -125,7 +71,6 @@ export default function DashboardMap({ category, setCategory, dark }) {
                   WebkitTapHighlightColor:"transparent",
                 }}>✕</button>
               </div>
-
               <div style={{ padding:"0 12px 40px", display:"flex", flexDirection:"column", gap:8 }}>
                 {NAV_ITEMS.map((el) => {
                   const isActive = category === el.id;
@@ -165,17 +110,24 @@ export default function DashboardMap({ category, setCategory, dark }) {
   }
 
   // ── DESKTOP sidebar ──────────────────────────────────────────────────────
+  // NOTE: No position:fixed here — the parent (MapPage) handles positioning.
+  // This component just fills whatever space it's given.
   return (
     <aside style={{
-      width: 280, height: "100vh",
-      background: bg, borderRight: `1px solid ${border}`,
-      display: "flex", flexDirection: "column",
-      padding: "16px 0", overflowY: "auto",
-      position: "fixed", top: 0, left: 0,
-      zIndex: 3000, flexShrink: 0,
+      width: "100%",
+      height: "100%",
+      background: bg,
+      borderRight: `1px solid ${border}`,
+      display: "flex",
+      flexDirection: "column",
+      padding: "16px 0",
+      overflowY: "auto",
       transition: "background .3s",
+      // Slight top padding to account for the navbar above
+      paddingTop: 20,
     }}>
-      <div style={{ position:"absolute", inset:0, zIndex:0, opacity:0.15, pointerEvents:"none" }}>
+      {/* Pixel background decoration */}
+      <div style={{ position:"absolute", inset:0, zIndex:0, opacity:0.12, pointerEvents:"none" }}>
         <PixelBlast
           variant="square" pixelSize={4} color="#d946ef"
           patternScale={2} patternDensity={1} pixelSizeJitter={0}
@@ -184,26 +136,31 @@ export default function DashboardMap({ category, setCategory, dark }) {
         />
       </div>
 
+      {/* Logo */}
       <div style={{ position:"relative", zIndex:1, padding:"0 20px 20px", display:"flex", alignItems:"center" }}>
-        <img src={Image.logo} alt="Qriblik Logo"
+        <img
+          src={Image.logo}
+          alt="Qriblik Logo"
           style={{ width:"120px", height:"auto", cursor:"pointer", transition:"transform 0.3s ease" }}
           onMouseEnter={e => e.currentTarget.style.transform = "scale(1.05)"}
           onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
         />
       </div>
 
+      {/* Section label */}
       <div style={{ position:"relative", zIndex:1, padding:"0 20px 10px", display:"flex", alignItems:"center", gap:12 }}>
         <span style={{ fontSize:10, fontWeight:800, color:mute, textTransform:"uppercase", letterSpacing:"0.2em", whiteSpace:"nowrap" }}>Social</span>
         <div style={{ flex:1, height:1, background: dark?"rgba(255,255,255,0.07)":"#f1f5f9" }} />
       </div>
 
-      <div style={{ position:"relative", zIndex:1, display:"flex", flexDirection:"column", gap:25, padding:"0 10px" }}>
+      {/* Category nav items */}
+      <div style={{ position:"relative", zIndex:1, display:"flex", flexDirection:"column", gap:4, padding:"0 10px" }}>
         {NAV_ITEMS.map((el) => {
           const isActive = category === el.id;
           return (
             <button key={el.id} onClick={() => setCategory(el.id)} style={{
               display:"flex", alignItems:"center", gap:12,
-              padding:"10px 14px", borderRadius:14, cursor:"pointer",
+              padding:"12px 14px", borderRadius:14, cursor:"pointer",
               border:"none", width:"100%", textAlign:"left",
               position:"relative", transition:"all .2s",
               fontSize:14, fontWeight: isActive ? 700 : 500,
@@ -219,18 +176,56 @@ export default function DashboardMap({ category, setCategory, dark }) {
             >
               <span style={{ fontSize:17, flexShrink:0 }}>{el.icon}</span>
               {el.label}
-              {isActive && <span style={{ position:"absolute", right:14, width:7, height:7, borderRadius:"50%", background:"#D946EF", boxShadow:"0 0 8px #D946EF" }} />}
+              {isActive && (
+                <span style={{
+                  position:"absolute", right:14,
+                  width:7, height:7, borderRadius:"50%",
+                  background:"#D946EF",
+                  boxShadow:"0 0 8px #D946EF",
+                }} />
+              )}
             </button>
           );
         })}
       </div>
 
-      <div style={{ position:"relative", zIndex:1, margin:"25px 20px 0", padding:"14px", borderRadius:14, background: dark?"rgba(139,92,246,0.08)":"rgba(139,92,246,0.05)", border:`1px solid ${dark?"rgba(139,92,246,0.18)":"rgba(139,92,246,0.12)"}` }}>
-        <p style={{ margin:"0 0 10px", fontSize:9, color:mute, textTransform:"uppercase", letterSpacing:"1px", fontWeight:700 }}>Categories</p>
+      {/* Category legend */}
+      <div style={{
+        position:"relative", zIndex:1,
+        margin:"20px 12px 0",
+        padding:"14px",
+        borderRadius:14,
+        background: dark?"rgba(139,92,246,0.08)":"rgba(139,92,246,0.05)",
+        border:`1px solid ${dark?"rgba(139,92,246,0.18)":"rgba(139,92,246,0.12)"}`,
+      }}>
+        <p style={{ margin:"0 0 10px", fontSize:9, color:mute, textTransform:"uppercase", letterSpacing:"1px", fontWeight:700 }}>
+          Categories
+        </p>
         {CATEGORIES.map(cat => (
-          <div key={cat.id} style={{ display:"flex", alignItems:"center", gap:8, marginBottom:6 }}>
-            <div style={{ width:8, height:8, borderRadius:"50%", background:cat.color, boxShadow:`0 0 6px ${cat.color}`, flexShrink:0 }} />
-            <span style={{ fontSize:11, color: dark?"#CBD5E1":"#64748b", fontFamily:"Sora,sans-serif", fontWeight: category===cat.id?700:400 }}>
+          <div
+            key={cat.id}
+            onClick={() => setCategory(cat.id)}
+            style={{
+              display:"flex", alignItems:"center", gap:8, marginBottom:8,
+              cursor: "pointer",
+              padding: "4px 6px", borderRadius: 8,
+              transition: "background 0.15s",
+              background: category === cat.id ? `${cat.color}14` : "transparent",
+            }}
+            onMouseEnter={e => e.currentTarget.style.background = `${cat.color}14`}
+            onMouseLeave={e => e.currentTarget.style.background = category === cat.id ? `${cat.color}14` : "transparent"}
+          >
+            <div style={{
+              width:8, height:8, borderRadius:"50%",
+              background: cat.color,
+              boxShadow: `0 0 6px ${cat.color}`,
+              flexShrink: 0,
+            }} />
+            <span style={{
+              fontSize:11, color: dark?"#CBD5E1":"#64748b",
+              fontFamily:"Sora,sans-serif",
+              fontWeight: category===cat.id ? 700 : 400,
+            }}>
               {cat.icon} {cat.label}
             </span>
           </div>
