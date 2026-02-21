@@ -1,15 +1,9 @@
-import { useEffect, useRef } from "react";
-import { motion, useInView, useAnimation } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useTheme } from "../../../contexts/ThemeContext";
 
 const gradient = "linear-gradient(135deg, #8B3FDE 0%, #C837AB 50%, #FF6B35 100%)";
-
-const floatingOrbs = [
-  { size: 320, x: "5%", y: "10%", delay: 0, opacity: 0.12 },
-  { size: 200, x: "75%", y: "5%", delay: 0.5, opacity: 0.09 },
-  { size: 260, x: "60%", y: "55%", delay: 1, opacity: 0.1 },
-  { size: 150, x: "20%", y: "65%", delay: 1.5, opacity: 0.07 },
-];
 
 const stats = [
   { value: "2M+", label: "Real Neighbors" },
@@ -17,9 +11,8 @@ const stats = [
   { value: "97%", label: "Feel Connected" },
 ];
 
-const words = ["real people,", "real neighborhoods,", "real connections."];
-
 export default function WhoWeAre() {
+  const { dark } = useTheme();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
@@ -28,271 +21,273 @@ export default function WhoWeAre() {
       ref={ref}
       style={{
         position: "relative",
-        minHeight: "100vh",
-        background: "#faf8ff",
+        minHeight: "70vh",
         display: "flex",
         alignItems: "center",
         overflow: "hidden",
-        fontFamily: "'Fraunces', Georgia, serif",
+        background: dark
+          ? "linear-gradient(160deg, #130820 0%, #0f0a1e 60%, #130820 100%)"
+          : "#ffff",
+        transition: "background 0.5s ease",
       }}
     >
-      {/* Import fonts */}
-      <style>{`
-       
-
-        .gradient-text {
-          background: linear-gradient(135deg, #8B3FDE 0%, #C837AB 50%, #FF6B35 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-
-        .stat-card {
-          border: 1px solid rgba(139, 63, 222, 0.12);
-          background: rgba(255,255,255,0.7);
-          backdrop-filter: blur(12px);
-        }
-
-        .orb {
-          position: absolute;
-          border-radius: 50%;
-          background: linear-gradient(135deg, #8B3FDE 0%, #C837AB 50%, #FF6B35 100%);
-          filter: blur(70px);
-          pointer-events: none;
-        }
-
-        .grid-line {
-          position: absolute;
-          background: linear-gradient(135deg, rgba(139,63,222,0.06) 0%, rgba(255,107,53,0.06) 100%);
-        }
-      `}</style>
-
-      {/* Floating orbs */}
-      {floatingOrbs.map((orb, i) => (
-        <motion.div
-          key={i}
-          className="orb"
-          style={{
-            width: orb.size,
-            height: orb.size,
-            left: orb.x,
-            top: orb.y,
-            opacity: orb.opacity,
-          }}
-          animate={{
-            y: [0, -24, 0],
-            scale: [1, 1.06, 1],
-          }}
-          transition={{
-            duration: 7 + i * 1.3,
-            delay: orb.delay,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-      ))}
-
-      {/* Subtle grid lines */}
-      <div className="grid-line" style={{ width: "1px", height: "100%", left: "33%", top: 0 }} />
-      <div className="grid-line" style={{ width: "100%", height: "1px", left: 0, top: "40%" }} />
-
-      {/* Main content */}
+      {/* Background glows — same pattern as hero */}
       <div style={{
-        position: "relative",
-        zIndex: 10,
-        maxWidth: 1100,
-        margin: "0 auto",
-        padding: "80px 48px",
-        width: "100%",
-      }}>
+        position: "absolute", inset: 0, pointerEvents: "none",
+        background: dark
+          ? "radial-gradient(ellipse 65% 55% at 85% 50%, rgba(139,63,222,0.14) 0%, transparent 65%)"
+          : "radial-gradient(ellipse 65% 55% at 85% 50%, rgba(139,63,222,0.07) 0%, transparent 65%)",
+      }} />
+      <div style={{
+        position: "absolute", inset: 0, pointerEvents: "none",
+        background: dark
+          ? "radial-gradient(ellipse 50% 50% at 10% 30%, rgba(200,55,171,0.1) 0%, transparent 60%)"
+          : "radial-gradient(ellipse 50% 50% at 10% 30%, rgba(200,55,171,0.05) 0%, transparent 60%)",
+      }} />
 
-        {/* Eyebrow label */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 10,
-            marginBottom: 36,
-          }}
-        >
-          <div style={{
-            width: 32,
-            height: 2,
-            background: gradient,
-            borderRadius: 2,
-          }} />
-          <span style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: 13,
-            fontWeight: 600,
-            letterSpacing: "0.18em",
-            textTransform: "uppercase",
-            background: gradient,
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
-          }}>
-            Our Story
-          </span>
-        </motion.div>
+      
 
-        {/* H1 */}
-        <motion.h1
-          initial={{ opacity: 0, y: 36 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.75, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          style={{
-            fontSize: "clamp(52px, 8vw, 104px)",
-            fontWeight: 900,
-            lineHeight: 1.0,
-            letterSpacing: "-0.04em",
-            color: "#1a0a2e",
-            marginBottom: 0,
-            fontStyle: "italic",
-          }}
-        >
-          Who{" "}
-          <span className="gradient-text">we are.</span>
-        </motion.h1>
+      <div style={{ position: "relative", zIndex: 10, maxWidth: 1200, margin: "0 auto", padding: "6rem 3rem", width: "100%" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5rem", alignItems: "center" }}>
 
-        {/* Layout: body + stats side-by-side */}
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: 64,
-          marginTop: 60,
-          alignItems: "start",
-        }}>
-
-          {/* Left: description */}
+          {/* ── LEFT ── */}
           <div>
-            {/* Staggered word lines */}
-            {words.map((word, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -20 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.65, delay: 0.25 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
-                style={{
-                  fontFamily: "'DM Sans', sans-serif",
-                  fontSize: "clamp(17px, 2.2vw, 22px)",
-                  fontWeight: 400,
-                  lineHeight: 1.65,
-                  color: i < 2 ? "#3d1f6d" : "#6b4fa0",
-                  marginBottom: i < 2 ? 2 : 0,
-                }}
-              >
-                {i === 0 ? (
-                  <>A platform for <strong style={{ fontWeight: 700 }}>{word}</strong></>
-                ) : i === 1 ? (
-                  <><strong style={{ fontWeight: 700 }}>{word}</strong> and <strong style={{ fontWeight: 700 }}>real connections.</strong></>
-                ) : (
-                  <span style={{ color: "#9b72cf" }}>
-                    Where neighbors become friends and communities thrive.
-                  </span>
-                )}
-              </motion.div>
-            ))}
+            {/* Eyebrow */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.55 }}
+              style={{ display: "inline-flex", alignItems: "center", gap: "0.6rem", marginBottom: "1.75rem" }}
+            >
+              <div style={{ width: 28, height: 2, background: gradient, borderRadius: 2 }} />
+              <span style={{
+                fontSize: "0.72rem",
+                fontWeight: 700,
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                background: gradient,
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}>
+                Our Story
+              </span>
+            </motion.div>
 
-            {/* CTA pill */}
-            <Link to="/signup" style={{ textDecoration: "none" }}>
-              <motion.button
-                initial={{ opacity: 0, y: 16 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.65, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.97 }}
-                style={{
-                  marginTop: 40,
-                  padding: "14px 32px",
-                  background: gradient,
-                  border: "none",
-                  borderRadius: 100,
-                  color: "white",
-                  fontFamily: "'DM Sans', sans-serif",
-                  fontSize: 15,
-                  fontWeight: 600,
-                  letterSpacing: "0.02em",
-                  cursor: "pointer",
-                  boxShadow: "0 12px 40px rgba(200, 55, 171, 0.28)",
-                }}
-              >
-                Join your neighborhood →
-              </motion.button>
-            </Link>
-          
+            {/* Headline */}
+            <motion.h2
+              initial={{ opacity: 0, y: 28 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              style={{
+                fontSize: "clamp(2.8rem, 6vw, 5rem)",
+                fontWeight: 900,
+                lineHeight: 1.05,
+                letterSpacing: "-0.04em",
+                color: dark ? "#f5f0ff" : "#1a0a2e",
+                margin: "0 0 1.5rem",
+                fontFamily: "'Fraunces', Georgia, serif",
+                fontStyle: "italic",
+                transition: "color 0.5s",
+              }}
+            >
+              Who{" "}
+              <span style={{
+                background: gradient,
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}>
+                we are.
+              </span>
+            </motion.h2>
+
+            {/* Body text */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.65, delay: 0.2 }}
+              style={{
+                fontSize: "1.05rem",
+                lineHeight: 1.8,
+                color: dark ? "rgba(220,210,255,0.6)" : "#6b5f78",
+                maxWidth: 440,
+                margin: "0 0 1rem",
+                fontFamily: "'DM Sans', sans-serif",
+                transition: "color 0.5s",
+              }}
+            >
+              A platform for <strong style={{ color: dark ? "#d4bbff" : "#3d1f6d", fontWeight: 700 }}>real people</strong>,{" "}
+              <strong style={{ color: dark ? "#d4bbff" : "#3d1f6d", fontWeight: 700 }}>real neighborhoods</strong>, and{" "}
+              <strong style={{ color: dark ? "#d4bbff" : "#3d1f6d", fontWeight: 700 }}>real connections</strong>.
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.65, delay: 0.3 }}
+              style={{
+                fontSize: "0.95rem",
+                lineHeight: 1.75,
+                color: dark ? "rgba(196,168,240,0.45)" : "#9b80c0",
+                maxWidth: 420,
+                margin: "0 0 2.5rem",
+                fontFamily: "'DM Sans', sans-serif",
+                transition: "color 0.5s",
+              }}
+            >
+              Where neighbors become friends and communities thrive — one block at a time.
+            </motion.p>
+
+            {/* CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <Link to="/signup" style={{ textDecoration: "none" }}>
+                <motion.button
+                  whileHover={{ scale: 1.04, y: -2 }}
+                  whileTap={{ scale: 0.97 }}
+                  style={{
+                    padding: "0.9rem 2rem",
+                    background: gradient,
+                    border: "none",
+                    borderRadius: "9999px",
+                    color: "white",
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "0.95rem",
+                    fontWeight: 700,
+                    cursor: "pointer",
+                    boxShadow: dark
+                      ? "0 8px 32px rgba(139,63,222,0.45)"
+                      : "0 8px 28px rgba(200,55,171,0.3)",
+                    letterSpacing: "0.02em",
+                  }}
+                >
+                  Join your neighborhood →
+                </motion.button>
+              </Link>
+            </motion.div>
           </div>
 
-          {/* Right: stats */}
-          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+          {/* ── RIGHT — Stats ── */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "1.1rem" }}>
             {stats.map((stat, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, x: 30 }}
+                initial={{ opacity: 0, x: 32 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.65, delay: 0.35 + i * 0.13, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ x: 4, transition: { duration: 0.2 } }}
-                className="stat-card"
+                transition={{ duration: 0.65, delay: 0.25 + i * 0.13, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ x: 5, transition: { duration: 0.2 } }}
                 style={{
-                  padding: "24px 32px",
-                  borderRadius: 20,
+                  padding: "1.6rem 2rem",
+                  borderRadius: "1.25rem",
                   display: "flex",
                   alignItems: "center",
-                  gap: 24,
+                  gap: "1.5rem",
+                  background: dark ? "rgba(255,255,255,0.04)" : "rgba(255,255,255,0.85)",
+                  border: dark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(139,63,222,0.12)",
+                  backdropFilter: "blur(16px)",
+                  boxShadow: dark
+                    ? "0 4px 20px rgba(0,0,0,0.3)"
+                    : "0 4px 20px rgba(139,63,222,0.06)",
+                  transition: "background 0.5s, border-color 0.5s, box-shadow 0.3s",
                 }}
               >
-                <div
-                  style={{
-                    width: 4,
-                    height: 48,
-                    borderRadius: 4,
-                    background: gradient,
-                    flexShrink: 0,
-                  }}
-                />
+                {/* Color bar */}
+                <div style={{
+                  width: 4,
+                  height: 48,
+                  borderRadius: 4,
+                  background: gradient,
+                  flexShrink: 0,
+                }} />
                 <div>
-                  <div className="gradient-text" style={{
-                    fontSize: 40,
+                  <div style={{
+                    fontSize: "2.4rem",
                     fontWeight: 900,
                     letterSpacing: "-0.04em",
                     lineHeight: 1,
                     marginBottom: 4,
+                    background: gradient,
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                    fontFamily: "'Fraunces', Georgia, serif",
                   }}>
                     {stat.value}
                   </div>
                   <div style={{
                     fontFamily: "'DM Sans', sans-serif",
-                    fontSize: 13,
-                    fontWeight: 500,
-                    color: "#9b72cf",
-                    letterSpacing: "0.06em",
+                    fontSize: "0.75rem",
+                    fontWeight: 600,
+                    color: dark ? "rgba(196,168,240,0.5)" : "#9b72cf",
+                    letterSpacing: "0.08em",
                     textTransform: "uppercase",
+                    transition: "color 0.5s",
                   }}>
                     {stat.label}
                   </div>
                 </div>
               </motion.div>
             ))}
+
+            {/* Small floating badge — mirrors hero's "active right now" */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.65 }}
+              style={{
+                marginTop: "0.5rem",
+                padding: "0.85rem 1.25rem",
+                borderRadius: "1rem",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.75rem",
+                background: dark ? "rgba(139,63,222,0.15)" : "rgba(139,63,222,0.07)",
+                border: dark ? "1px solid rgba(139,63,222,0.3)" : "1px solid rgba(139,63,222,0.15)",
+                alignSelf: "flex-start",
+                transition: "background 0.5s, border-color 0.5s",
+              }}
+            >
+              <span style={{ position: "relative", display: "inline-flex", width: 10, height: 10 }}>
+                <span style={{ position: "absolute", inset: 0, borderRadius: "50%", background: "#22c55e", opacity: 0.5, animation: "ping 2s ease-in-out infinite" }} />
+                <span style={{ position: "relative", width: 10, height: 10, borderRadius: "50%", background: "#22c55e", display: "inline-block" }} />
+              </span>
+              <div>
+                <p style={{ margin: 0, fontSize: "0.8rem", fontWeight: 700, color: dark ? "#d4bbff" : "#5b21b6" }}>
+                  5,000+ neighbors online
+                </p>
+                <p style={{ margin: "2px 0 0", fontSize: "0.7rem", color: dark ? "rgba(196,168,240,0.5)" : "#9b72cf" }}>
+                  across 48K neighborhoods
+                </p>
+              </div>
+            </motion.div>
           </div>
         </div>
 
-        {/* Bottom decorative line */}
+        {/* Bottom divider */}
         <motion.div
           initial={{ scaleX: 0 }}
           animate={isInView ? { scaleX: 1 } : {}}
-          transition={{ duration: 1, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 1.1, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
           style={{
-            marginTop: 72,
+            marginTop: "5rem",
             height: 1,
             background: gradient,
-            opacity: 0.2,
+            opacity: dark ? 0.25 : 0.15,
             transformOrigin: "left",
           }}
         />
       </div>
+
+      <style>{`
+                @keyframes ping {
+                    0%, 100% { transform: scale(1); opacity: 0.5; }
+                    50% { transform: scale(2.2); opacity: 0; }
+                }
+            `}</style>
     </section>
   );
 }

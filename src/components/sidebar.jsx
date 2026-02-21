@@ -10,7 +10,6 @@ import users from "../data/UserData.json";
 function Sidebar({ selectedCategory, setSelectedCategory }) {
   const [active, setActive] = useState("Home");
   const [notification, setNotification] = useState(null); 
-
   const categories = [
     { id: "ALL",          icon: <TbHome />,                  label: "Home Feed"     },
     { id: "SPORT",        icon: <MdOutlineSportsSoccer />,   label: "Sport"         },
