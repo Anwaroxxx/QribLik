@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const MapPinIcon = () => (
   <svg
@@ -25,14 +26,19 @@ const MapPinIcon = () => (
 
 export default function MapsButton() {
   const [ripples, setRipples] = useState([]);
+  const navigate = useNavigate(); // ← gives us the navigation function
 
   const handleClick = (e) => {
+    // 1. Run the ripple animation (same as before)
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     const id = Date.now();
     setRipples((prev) => [...prev, { x, y, id }]);
     setTimeout(() => setRipples((prev) => prev.filter((r) => r.id !== id)), 700);
+
+    // 2. Navigate to the map page after a tiny delay so the ripple is visible
+    setTimeout(() => navigate("/map"), 200);
   };
 
   return (
@@ -153,4 +159,4 @@ export default function MapsButton() {
       </button>
     </>
   );
-}
+} 
