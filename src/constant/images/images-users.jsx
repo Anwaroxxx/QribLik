@@ -33,7 +33,6 @@ import user33 from "../../assets/images/users/user-33.jpg";
 import user34 from "../../assets/images/users/user-34.jpg";
 import user35 from "../../assets/images/users/user-35.jpg";
 
-export  const usersImages = {
 import girl1 from "../../assets/images/girl-profile/girl1.jpeg";
 import girl2 from "../../assets/images/girl-profile/girl2.jpeg";
 import girl3 from "../../assets/images/girl-profile/girl3.jpeg";
