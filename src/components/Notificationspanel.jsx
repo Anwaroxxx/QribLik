@@ -1,124 +1,260 @@
-import { useState, useRef } from "react";
-import { usersImages } from "../constant/images/images-users";
+import { useEffect, useRef } from "react";
+import { FiX, FiBell, FiCheck } from "react-icons/fi";
 import { useTheme } from "../contexts/ThemeContext";
 
-/**
- * NotificationToast
- *
- * Props:
- *  - notification : { user, category, message } | null
- *  - onDismiss    : () => void
- *  - progress     : number  (0-100)
- */
-export default function NotificationToast({ notification, onDismiss, progress }) {
+const MOCK_NOTIFICATIONS = [
+  {
+    id: 1,
+    category: "SPORT",
+    message: "Match dyal football ghadi ybda f 5 pm",
+    user: { name: "Youssef Benali", neighborhood: "Maarif", time: "2m ago" },
+    avatar: "https://i.pravatar.cc/40?img=12",
+    read: false,
+  },
+  {
+    id: 2,
+    category: "LOST AND FOUND",
+    message: "Found keys near cafe central — are these yours?",
+    user: { name: "Sara Idrissi", neighborhood: "Gauthier", time: "15m ago" },
+    avatar: "https://i.pravatar.cc/40?img=47",
+    read: false,
+  },
+  {
+    id: 3,
+    category: "SWAP SKILLS",
+    message: "Swap painting lessons for French tutoring — interested!",
+    user: { name: "Karim Tazi", neighborhood: "Anfa", time: "1h ago" },
+    avatar: "https://i.pravatar.cc/40?img=33",
+    read: false,
+  },
+  {
+    id: 4,
+    category: "EVENTS",
+    message: "Workshop on photography this weekend — join us!",
+    user: { name: "Nadia Chraibi", neighborhood: "Racine", time: "3h ago" },
+    avatar: "https://i.pravatar.cc/40?img=9",
+    read: true,
+  },
+  {
+    id: 5,
+    category: "TRADING",
+    message: "Trading a laptop for a gaming console — DM me!",
+    user: { name: "Omar Filali", neighborhood: "Hay Hassani", time: "5h ago" },
+    avatar: "https://i.pravatar.cc/40?img=22",
+    read: true,
+  },
+];
+
+const categoryColors = {
+  SPORT: { bg: "rgba(139,63,222,0.12)", color: "#8B3FDE" },
+  TRADING: { bg: "rgba(200,55,171,0.12)", color: "#C837AB" },
+  "LOST AND FOUND": { bg: "rgba(255,107,53,0.12)", color: "#FF6B35" },
+  "SWAP SKILLS": { bg: "rgba(139,63,222,0.12)", color: "#8B3FDE" },
+  EVENTS: { bg: "rgba(200,55,171,0.12)", color: "#C837AB" },
+};
+
+export default function NotificationsPanel({ onClose }) {
   const { dark } = useTheme();
-  const [visible, setVisible] = useState(true);
+  const panelRef = useRef(null);
 
-  if (!notification) return null;
+  // Close on outside click
+  useEffect(() => {
+    const handleClick = (e) => {
+      if (panelRef.current && !panelRef.current.contains(e.target)) {
+        onClose();
+      }
+    };
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, [onClose]);
 
-  const handleDismiss = () => {
-    setVisible(false);
-    setTimeout(() => onDismiss?.(), 300);
-  };
+  const unreadCount = MOCK_NOTIFICATIONS.filter((n) => !n.read).length;
 
   return (
-    <div
-      className={`fixed bottom-20 right-4 z-50 rounded-2xl shadow-xl p-4 w-72 border
-        transition-all duration-300
-        ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
-        ${dark
-          ? "bg-[#1a0a2e] border-purple-800/40 shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
-          : "bg-white border-slate-100 shadow-[0_8px_32px_rgba(139,63,222,0.10)]"
-        }`}
-    >
-      {/* ── Progress bar ── */}
-      <div className="absolute top-0 left-0 right-0 h-1 rounded-t-2xl overflow-hidden">
-        <div
-          className="h-full bg-gradient-to-r from-fuchsia-500 to-rose-400 transition-all duration-100"
-          style={{ width: `${progress}%` }}
-        />
-      </div>
+    <>
+      {/* Backdrop — subtle on mobile */}
+      <div
+        className="fixed inset-0 z-40 bg-black/10 backdrop-blur-[1px] md:bg-transparent md:backdrop-blur-none"
+        onClick={onClose}
+      />
 
-      {/* ── Category pill ── */}
-      <div className="flex items-center justify-between mb-3 mt-0.5">
-        <span
-          className={`text-[10px] font-bold uppercase tracking-widest px-2.5 py-0.5 rounded-full ${dark
-              ? "bg-fuchsia-500/15 text-fuchsia-400 border border-fuchsia-500/25"
-              : "bg-fuchsia-50 text-fuchsia-600 border border-fuchsia-200"
-            }`}
-        >
-          {notification.category}
-        </span>
-
-        {/* Close button */}
-        <button
-          onClick={handleDismiss}
-          className={`text-base leading-none transition-colors ${dark
-              ? "text-purple-300/40 hover:text-purple-200"
-              : "text-slate-300 hover:text-slate-500"
-            }`}
-        >
-          ✕
-        </button>
-      </div>
-
-      {/* ── User row ── */}
-      <div className="flex items-center gap-3 mb-2">
-        <div
-          className="p-[2px] rounded-full flex-shrink-0"
-          style={{
-            background: "linear-gradient(135deg,#8B3FDE,#C837AB,#FF6B35)",
-          }}
-        >
-          <img
-            src={usersImages[notification.user.avatar]}
-            alt={notification.user.name}
-            className="w-9 h-9 rounded-full object-cover block"
-          />
-        </div>
-        <div>
-          <p
-            className={`text-sm font-semibold leading-tight ${dark ? "text-purple-50" : "text-slate-800"
-              }`}
-          >
-            {notification.user.name}
-          </p>
-          <p
-            className={`text-xs mt-0.5 ${dark ? "text-purple-300/40" : "text-slate-400"
-              }`}
-          >
-            {notification.user.neighborhood} • {notification.user.city}
-          </p>
-        </div>
-      </div>
-
-      {/* ── Message ── */}
-      <p
-        className={`text-sm leading-relaxed mb-4 ${dark ? "text-purple-200/60" : "text-slate-600"
+      {/* Panel */}
+      <div
+        ref={panelRef}
+        className={`fixed z-50 flex flex-col
+          right-4 top-[64px] w-[340px] max-h-[520px]
+          rounded-2xl border shadow-2xl overflow-hidden
+          animate-[slideDown_.2s_ease-out]
+          transition-colors duration-300
+          ${dark
+            ? "bg-[#1a0a2e] border-white/8 shadow-[0_16px_48px_rgba(0,0,0,0.6)]"
+            : "bg-white border-gray-100 shadow-[0_16px_48px_rgba(139,63,222,0.12)]"
           }`}
       >
-        {notification.message}
-      </p>
-
-      {/* ── Actions ── */}
-      <div className="flex gap-2">
-        <button
-          onClick={handleDismiss}
-          className="flex-1 py-2 rounded-xl bg-gradient-to-r from-fuchsia-600 to-rose-500
-            text-white text-xs font-bold hover:opacity-90 transition shadow-sm"
-        >
-          Accept
-        </button>
-        <button
-          onClick={handleDismiss}
-          className={`flex-1 py-2 rounded-xl text-xs font-bold transition ${dark
-              ? "bg-white/8 text-purple-300 hover:bg-white/12 border border-white/6"
-              : "bg-slate-100 text-slate-500 hover:bg-slate-200"
+        {/* ── Header ── */}
+        <div
+          className={`flex items-center justify-between px-5 py-4 border-b shrink-0 ${dark ? "border-white/6" : "border-gray-100"
             }`}
         >
-          Decline
-        </button>
+          <div className="flex items-center gap-2.5">
+            <div
+              className="w-8 h-8 rounded-xl flex items-center justify-center"
+              style={{ background: "linear-gradient(135deg,#8B3FDE,#C837AB)" }}
+            >
+              <FiBell size={15} className="text-white" />
+            </div>
+            <div>
+              <h3
+                className={`text-sm font-bold leading-tight ${dark ? "text-purple-50" : "text-gray-900"
+                  }`}
+              >
+                Notifications
+              </h3>
+              {unreadCount > 0 && (
+                <p
+                  className={`text-[10px] ${dark ? "text-purple-300/50" : "text-gray-400"
+                    }`}
+                >
+                  {unreadCount} unread
+                </p>
+              )}
+            </div>
+          </div>
+
+          <div className="flex items-center gap-1">
+            {/* Mark all read */}
+            <button
+              className={`p-1.5 rounded-lg text-[10px] font-semibold flex items-center gap-1 transition-colors ${dark
+                  ? "text-purple-300/50 hover:text-fuchsia-400 hover:bg-white/5"
+                  : "text-gray-400 hover:text-fuchsia-500 hover:bg-fuchsia-50"
+                }`}
+            >
+              <FiCheck size={12} />
+              <span className="hidden sm:inline">Mark all read</span>
+            </button>
+
+            {/* Close */}
+            <button
+              onClick={onClose}
+              className={`p-1.5 rounded-lg transition-colors ${dark
+                  ? "text-purple-300/40 hover:text-purple-200 hover:bg-white/8"
+                  : "text-gray-400 hover:text-gray-600 hover:bg-gray-100"
+                }`}
+            >
+              <FiX size={15} />
+            </button>
+          </div>
+        </div>
+
+        {/* ── Notification List ── */}
+        <div className="flex-1 overflow-y-auto">
+          {MOCK_NOTIFICATIONS.map((notif, i) => {
+            const cat = categoryColors[notif.category] || categoryColors["SPORT"];
+            return (
+              <div key={notif.id}>
+                <div
+                  className={`flex items-start gap-3 px-5 py-4 cursor-pointer transition-colors duration-150 ${!notif.read
+                      ? dark
+                        ? "bg-fuchsia-900/10 hover:bg-fuchsia-900/20"
+                        : "bg-fuchsia-50/50 hover:bg-fuchsia-50"
+                      : dark
+                        ? "hover:bg-white/4"
+                        : "hover:bg-gray-50"
+                    }`}
+                >
+                  {/* Avatar */}
+                  <div className="relative shrink-0">
+                    <div
+                      className="p-[2px] rounded-full"
+                      style={{
+                        background: "linear-gradient(135deg,#8B3FDE,#C837AB,#FF6B35)",
+                      }}
+                    >
+                      <img
+                        src={notif.avatar}
+                        alt={notif.user.name}
+                        className="w-9 h-9 rounded-full object-cover block"
+                      />
+                    </div>
+                    {/* Unread dot */}
+                    {!notif.read && (
+                      <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-fuchsia-500 rounded-full ring-2 ring-[#1a0a2e]" />
+                    )}
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                      {/* Category pill */}
+                      <span
+                        className="text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full"
+                        style={{ background: cat.bg, color: cat.color }}
+                      >
+                        {notif.category}
+                      </span>
+                      <span
+                        className={`text-[10px] ml-auto shrink-0 ${dark ? "text-purple-300/30" : "text-gray-400"
+                          }`}
+                      >
+                        {notif.user.time}
+                      </span>
+                    </div>
+
+                    <p
+                      className={`text-xs font-semibold mb-0.5 ${dark ? "text-purple-50" : "text-gray-800"
+                        }`}
+                    >
+                      {notif.user.name}
+                      <span
+                        className={`font-normal ml-1 ${dark ? "text-purple-300/40" : "text-gray-400"
+                          }`}
+                      >
+                        · {notif.user.neighborhood}
+                      </span>
+                    </p>
+                    <p
+                      className={`text-xs leading-relaxed line-clamp-2 ${dark ? "text-purple-200/60" : "text-gray-500"
+                        }`}
+                    >
+                      {notif.message}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Divider */}
+                {i < MOCK_NOTIFICATIONS.length - 1 && (
+                  <div
+                    className={`mx-5 h-[1px] ${dark ? "bg-white/4" : "bg-gray-100"
+                      }`}
+                  />
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* ── Footer ── */}
+        <div
+          className={`px-5 py-3 border-t shrink-0 ${dark ? "border-white/6" : "border-gray-100"
+            }`}
+        >
+          <button
+            className={`w-full text-xs font-bold py-2 rounded-xl transition-colors ${dark
+                ? "text-fuchsia-400 hover:bg-fuchsia-900/20"
+                : "text-fuchsia-600 hover:bg-fuchsia-50"
+              }`}
+          >
+            View all notifications
+          </button>
+        </div>
       </div>
-    </div>
+
+      <style>{`
+        @keyframes slideDown {
+          from { opacity: 0; transform: translateY(-8px); }
+          to   { opacity: 1; transform: translateY(0);    }
+        }
+      `}</style>
+    </>
   );
 }
