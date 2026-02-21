@@ -17,6 +17,7 @@ import MapPage from "./pages/maps/index";
 import Footer from "./pages/landing/partials/footer";
 
 
+
 function App() {
   const { dark } = useTheme();
   const location = useLocation();

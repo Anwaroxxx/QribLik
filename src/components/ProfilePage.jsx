@@ -37,13 +37,17 @@ const BADGE_META = {
   'Legend': { icon: FiAward, color: '#FF6B35' },
 }
 
+const storedUser = JSON.parse(localStorage.getItem("qriblikUser"));
+
 const initialUser = {
-  name: 'Alex Neighbor',
-  username: 'alexneighbor_07',
+  name: storedUser?.name || 'Alex Neighbor',
+  username: storedUser
+    ? storedUser.firstName.toLowerCase() + storedUser.lastName.toLowerCase()
+    : 'alexneighbor_07',
   neighborhood: 'Sunset District',
   city: 'Casablanca',
-  avatar: 'https://i.pravatar.cc/150?img=5',
-  bio: "Hi! I'm Alex, living in Sunset District. Love connecting with neighbors and helping out 🤝",
+  avatar: storedUser?.avatar || 'https://i.pravatar.cc/150?img=5',
+  bio: `Hi! ${storedUser?.name || 'Alex Neighbor'}, living in Sunset District. Love connecting with neighbors and helping out 🤝`,
   languages: ['English', 'French'],
   favoriteCategories: ['Sport', 'Trading', 'Events'],
   offeredSkills: ['React', 'Python', 'UI Design'],
@@ -67,6 +71,8 @@ const initialUser = {
     trading: { successfulTrades: 8, rating: 4.7, reviews: 12 },
   },
 }
+
+
 
 // ── ANIMATED COUNTER ──────────────────────────────────────────────────────────
 
