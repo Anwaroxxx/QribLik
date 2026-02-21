@@ -16,7 +16,6 @@ import Maps from "./pages/maps";
 import MapPage from "./pages/maps/index";
 import Footer from "./pages/landing/partials/footer";
 
-
 function App() {
   const { dark } = useTheme();
   const location = useLocation();
@@ -44,6 +43,7 @@ function App() {
           <Route path="/maps"    element={<Maps />} />
           <Route path="/map"     element={<MapPage />} />
           <Route path="*"        element={<Errors />} />
+          
         </Routes>
 
         {shouldShowFotter && <Footer />}
