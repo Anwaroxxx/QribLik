@@ -43,7 +43,7 @@ function App() {
           <Route path="/maps"    element={<Maps />} />
           <Route path="/map"     element={<MapPage />} />
           <Route path="*"        element={<Errors />} />
-         
+          
         </Routes>
 
         {shouldShowFotter && <Footer />}
