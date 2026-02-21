@@ -428,7 +428,7 @@ export default function ProfilePage({ onBack }) {
   const displayUser = editing ? draft : user
 
   return (
-    <div className="flex-1 bg-gray-50 min-h-screen   overflow-y-auto ">
+    <div className="flex-1 bg-gray-50 min-h-screen   ">
 
       {/* her modal where its pops up  */}
 
@@ -438,7 +438,7 @@ export default function ProfilePage({ onBack }) {
 
 
       {/* TOP BAR */}
-      <div className="sticky top-0 z-40 bg-white border-b border-gray-100 px-6 py-3 flex items-center justify-between">
+      <div className="sticky top-9 z-40 bg-white border-b border-gray-100 px-6 py-3 flex items-center justify-between">
         <button onClick={onBack}
           className="flex items-center gap-2 text-sm font-semibold text-gray-500 hover:text-gray-800 transition-colors group">
           <FiArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform duration-150" />
@@ -468,7 +468,7 @@ export default function ProfilePage({ onBack }) {
         )}
       </div>
 
-      <div className="max-w-2xl mx-auto px-6 py-8 flex flex-col gap-6">
+      <div className="max-w-2xl mx-auto px-6 py-8 pt-20 flex flex-col gap-6">
 
         {/* HERO CARD */}
         <div className="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden">

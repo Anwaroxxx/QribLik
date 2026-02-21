@@ -168,3 +168,10 @@
     </div>
   </div>
 */
+
+
+/* scroll to be smooth   */
+
+.scroll-smooth {
+  scroll-behavior: smooth;
+}

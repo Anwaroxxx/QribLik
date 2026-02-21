@@ -8,7 +8,7 @@ function Home() {
   const [selectedCategory, setSelectedCategory] = useState("ALL");
 
   return (
-    <div className="flex h-screen overflow-hidden bg-gray-50">
+    <div className="flex-1 bg-gray-50 min-h-screen overflow-y-auto">
       <Sidebar
         activeView={activeView}
         onViewChange={setActiveView}
