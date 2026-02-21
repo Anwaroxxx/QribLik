@@ -89,7 +89,7 @@ function Sidebar({ selectedCategory, setSelectedCategory }) {
             <TbHome className="text-white w-6 h-6" />
           </div>
           <div className="flex flex-col">
-            <span className="font-black text-2xl tracking-tighter text-slate-900 leading-none">Qriblik</span>
+            <span className="font-black text-2xl tracking-tighter text-slate-900 leading-none">QribLik</span>
             <span className="text-[10px] font-bold text-fuchsia-500 uppercase tracking-[0.2em] mt-1.5">Community Hub</span>
           </div>
         </div>
