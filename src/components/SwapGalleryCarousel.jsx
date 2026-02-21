@@ -1,142 +1,90 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import {ImagesCommunity} from '../constant/images/images-community';
-import { eventsImage } from "../constant/images/images-events";
 
-const SLIDES = [
-        {id : 1 , image : ImagesCommunity.imgAbout1 ,  alt : "Community Activity 1" } , 
-        {id : 2 , image : ImagesCommunity.imgAbout2 ,  alt : "Community Activity 2" },
-        {id : 3 , image : eventsImage.event1 ,  alt : "Community Activity 3" },
-        {id : 4 , image : ImagesCommunity.imgAbout4 ,  alt : "Community Activity 4" },
-        {id : 5 , image : ImagesCommunity.imgAbout5 ,  alt : "Community Activity 5" }
-    
+const labels = ["Running", "Skill Swap", "Trading", "event"];
+const emojis = ["🏃", "🔄", "🤝", "📅"];
+const images = [
+  ImagesCommunity.imgAbout1,
+  ImagesCommunity.imgAbout2,
+  ImagesCommunity.imgAbout3,
+  ImagesCommunity.imgAbout4,
 ];
 
-const TIMER_DELAY = 5000;
+const fanConfig = [
+  { x: "18%", y: "-4%", rot: 0, scale: 1, z: 50, opacity: 1 },
+  { x: "52%", y: "8%", rot: 12, scale: 0.82, z: 30, opacity: 0.85 },
+  { x: "-14%", y: "12%", rot: -14, scale: 0.78, z: 20, opacity: 0.7 },
+  { x: "20%", y: "18%", rot: 6, scale: 0.68, z: 10, opacity: 0.45 },
+];
 
-export default function SwapGalleryCarousel() {
-  const [activeSlide, setActiveSlide] = useState(0);
-  const [dragOffset, setDragOffset] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
+export default function SwapGalleryCarousel({ dark = false }) {
+  const [current, setCurrent] = useState(0);
+  const [transitioning, setTransitioning] = useState(false);
   const timerRef = useRef(null);
-  const trackRef = useRef(null);
-  const dragStartX = useRef(null);
 
-  const resetTimer = useCallback((nextFn) => {
-    clearInterval(timerRef.current);
-    timerRef.current = setInterval(nextFn, TIMER_DELAY);
-  }, []);
-
-  const goTo = useCallback(
-    (index) => {
-      const clamped = (index + SLIDES.length) % SLIDES.length;
-      setActiveSlide(clamped);
-      setDragOffset(0);
-    },
-    []
-  );
-
-  const next = useCallback(() => goTo(activeSlide + 1), [activeSlide, goTo]);
-  const prev = useCallback(() => goTo(activeSlide - 1), [activeSlide, goTo]);
+  const advance = (newIndex) => {
+    setTransitioning(true);
+    setTimeout(() => {
+      setCurrent(newIndex);
+      setTransitioning(false);
+    }, 300);
+  };
 
   useEffect(() => {
-    timerRef.current = setInterval(next, TIMER_DELAY);
+    timerRef.current = setInterval(() => {
+      advance((current + 1) % images.length);
+    }, 4000);
     return () => clearInterval(timerRef.current);
-  }, [next]);
+  }, [current]);
 
-  // --- Pointer (mouse + touch) drag logic ---
-  const onPointerDown = (e) => {
-    dragStartX.current = e.clientX ?? e.touches?.[0]?.clientX;
-    setIsDragging(true);
-    clearInterval(timerRef.current);
-  };
-
-  const onPointerMove = (e) => {
-    if (!isDragging || dragStartX.current === null) return;
-    const clientX = e.clientX ?? e.touches?.[0]?.clientX;
-    setDragOffset(clientX - dragStartX.current);
-  };
-
-  const onPointerUp = (e) => {
-    if (!isDragging) return;
-    const clientX =
-      e.clientX ?? e.changedTouches?.[0]?.clientX ?? dragStartX.current;
-    const diff = dragStartX.current - clientX;
-    const threshold = 50;
-
-    if (Math.abs(diff) > threshold) {
-      const target = diff > 0 ? activeSlide + 1 : activeSlide - 1;
-      goTo(target);
-    } else {
-      setDragOffset(0);
-    }
-
-    setIsDragging(false);
-    dragStartX.current = null;
-    timerRef.current = setInterval(next, TIMER_DELAY);
-  };
-
-  const trackStyle = {
-    transform: `translateX(calc(-${activeSlide * 100}% + ${dragOffset}px))`,
-    transition: isDragging ? "none" : "transform 500ms ease-in-out",
-    cursor: isDragging ? "grabbing" : "grab",
-  };
+  const getSlotImage = (slot) => images[(current + slot) % images.length];
+  const getSlotLabel = (slot) => labels[(current + slot) % labels.length];
+  const getSlotEmoji = (slot) => emojis[(current + slot) % emojis.length];
 
   return (
-    <section className="bg-gray-100 p-8">
-      <div
-        className="w-64 sm:w-128 mx-auto relative group select-none"
-        style={{ width: "min(812px, 100%)" }}
-      >
-        {/* Track */}
-        <div className="relative overflow-hidden rounded-lg shadow-xl">
-          <div
-            ref={trackRef}
-            className="flex"
-            style={trackStyle}
-            onMouseDown={onPointerDown}
-            onMouseMove={onPointerMove}
-            onMouseUp={onPointerUp}
-            onMouseLeave={onPointerUp}
-            onTouchStart={onPointerDown}
-            onTouchMove={onPointerMove}
-            onTouchEnd={onPointerUp}
-          >
-            {SLIDES.map((slide, i) => (
-              <div
-                key={i}
-                className="min-w-full flex items-center justify-center overflow-hidden"
-                style={{ height: "clamp(628px, 25vw, 256px)" }}
-              >
-                <img
-                  src={slide.image}
-                  alt={slide.alt}
-                  className="w-full h-full object-cover pointer-events-none"
-                  draggable={false}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
+    <div className="relative h-[540px] flex items-center justify-center my-10 w-full">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] rounded-full bg-gradient-to-br from-[#8B3FDE]/20 to-[#FF6B35]/10 blur-3xl pointer-events-none" />
+      <div className="relative w-[75%] max-w-5xl h-full mx-auto">
+        {fanConfig.map((cfg, slot) => {
+          const isActive = slot === 0;
+          return (
+            <div
+              key={slot}
+              onClick={() => !isActive && advance((current + slot) % images.length)}
+              className={`absolute top-[8%]  w-[78%] h-[78%] rounded-3xl overflow-hidden transition-all duration-[600ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] ${isActive ? "cursor-default" : "cursor-pointer hover:brightness-110"}`}
+              style={{ left: "35%", transform: `translateX(calc(-50% + ${cfg.x})) translateY(${cfg.y}) rotate(${cfg.rot}deg) scale(${cfg.scale})`, zIndex: cfg.z, opacity: cfg.opacity }}
+            >
+              <img src={getSlotImage(slot)} alt={getSlotLabel(slot)} className={`w-full h-full object-cover block transition-all duration-500 ${transitioning && isActive ? "scale-110 opacity-60" : "scale-100 opacity-100"}`} />
 
-        {/* Prev Button */}
+              {isActive && (
+                <>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4 flex items-end justify-between">
+                    <div>
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-lg">{getSlotEmoji(0)}</span>
+                        <span className="text-white font-bold text-sm tracking-wide">{getSlotLabel(0)}</span>
+                      </div>
+                      <div className="flex gap-1">
+                        {images.map((_, i) => (
+                          <button key={i} onClick={(e) => { e.stopPropagation(); advance(i); }} className={`h-1 rounded-full border-0 cursor-pointer p-0 transition-all duration-300 ${i === current ? "w-6 bg-white" : "w-1 bg-white/40 hover:bg-white/70"}`} />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )}
 
-
-        {/* Next Button */}
-      
-
-        {/* Indicators */}
-        <div className="absolute bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
-          {SLIDES.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => goTo(i)}
-              className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-colors bg-white ${
-                i !== activeSlide ? "opacity-50 hover:opacity-75" : ""
-              }`}
-            />
-          ))}
-        </div>
+              {!isActive && (
+                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-3 flex items-center gap-1.5">
+                  <span className="text-base">{getSlotEmoji(slot)}</span>
+                  <span className="text-white text-xs font-semibold">{getSlotLabel(slot)}</span>
+                </div>
+              )}
+            </div>
+          );
+        })}
       </div>
-    </section>
+    </div>
   );
 }
