@@ -30,16 +30,14 @@ const GLOBAL_CSS = `
   ::-webkit-scrollbar-thumb { background: rgba(139,92,246,0.28); border-radius: 4px; }
 `;
 
-// ── Navbar ────────────────────────────────────────────────────────────────
-// FIX: always left:0 / right:0 — full width on both desktop & mobile.
-// Previously left: SIDEBAR_W on desktop which left a dead zone above the sidebar.
+
 function Navbar({ dark, onToggleDark, onToggleSidebar, isMobile }) {
   const navigate = useNavigate();
 
   return (
     <nav style={{
       position: "fixed",
-      top: 0, left: 0, right: 0,   // ← FULL WIDTH always
+      top: 0, left: 0, right: 0, 
       zIndex: 4000,
       height: NAVBAR_H,
       display: "flex",

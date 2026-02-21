@@ -4,7 +4,6 @@ import { MdEvent, MdOutlineSportsSoccer } from "react-icons/md";
 import { TbClearAll } from "react-icons/tb";
 import PixelBlast from "../../../animations/Pixel";
 
-// FIX: direct import instead of Image.logo constant (which wasn't resolving on mobile)
 import logo from "../../../assets/images/logo/our-logo.webp";
 
 const NAV_ITEMS = [
@@ -29,9 +28,6 @@ export default function DashboardMap({ category, setCategory, dark, isMobile }) 
   const border = dark ? "rgba(139,92,246,0.2)" : "#e6dfd7";
   const mute   = dark ? "#94a3b8" : "#94a3b8";
 
-  // ── Shared sidebar content (used by both mobile & desktop) ────────────
-  // We always render the full sidebar — index.jsx handles the slide-in/out.
-  // No more isMobile early-return that was hiding the logo on mobile.
   return (
     <aside style={{
       width: "100%",
