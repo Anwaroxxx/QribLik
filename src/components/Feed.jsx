@@ -7,7 +7,6 @@ import NotificationsPanel from './Notificationspanel'
 import OverviewCard from './OverView'
 import initialPosts from '../data/posts.json/Posts'
 import { LuMessageSquareText } from 'react-icons/lu'
-
 const currentUser = {
   name: 'Alex Neighbor',
   neighborhood: 'Sunset District',
