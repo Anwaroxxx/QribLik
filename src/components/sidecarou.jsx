@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
-
 import { Image } from "../constant/images/images-activité";
-import { FaPlay } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { useTheme } from "../contexts/ThemeContext";
+
 
 const images = [
     Image.activite3,
@@ -15,10 +14,11 @@ const cardClasses = [
     "w-[72%] h-[85%] top-0 right-0 z-40 shadow-2xl",
     "w-[48%] h-[55%] bottom-0 left-0 z-30 shadow-xl",
     "w-[36%] h-[38%] top-[28%] left-[4%] z-20 shadow-lg",
-    "w-[30%] h-[32%] bottom-[16%] right-[4%] z-10 shadow-md opacity-50",
+    "w-[30%] h-[32%] bottom-[16%] right-[4%] z-10 shadow-md opacity-40",
 ];
 
 export default function Sidecarou() {
+    const { dark } = useTheme();
     const [current, setCurrent] = useState(0);
     const [animating, setAnimating] = useState(false);
 
@@ -34,49 +34,105 @@ export default function Sidecarou() {
     }, []);
 
     return (
-        <section className="relative min-h-screen flex items-center overflow-hidden font-sans bg-[linear-gradient(160deg,_#ffffff_0%,_#f7f0ff_50%,_#fff5f0_100%)]">
+        <section
+            className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden transition-colors duration-500"
+            style={{
+                background: dark
+                    ? "linear-gradient(160deg, #0f0a1e 0%, #1a0a2e 100%)"
+                    : "linear-gradient(160deg, #f7f0ff 0%, #fff5f0 100%)",
+            }}
+        >
+            <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                    background: dark
+                        ? "radial-gradient(ellipse 70% 50% at 50% 50%, rgba(139,63,222,0.12) 0%, transparent 70%)"
+                        : "radial-gradient(ellipse 70% 50% at 50% 50%, rgba(139,63,222,0.07) 0%, transparent 70%)",
+                }}
+            />
 
-            <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_80%_60%_at_20%_50%,rgba(139,63,222,0.08)_0%,transparent_70%)]" />
 
-            <div className="relative z-10 w-full max-w-6xl mx-auto px-12 py-20 grid grid-cols-1  gap-20 items-center">
+            <div className="relative z-10 mb-10 flex flex-col items-center gap-1 text-center px-8">
+                <img src={Image.logo} className="h-13 w-auto cursor-pointer hover:scale-105 transition-transform duration-300" alt="Logo" />
 
+                <div className="flex items-center gap-2 mt-1">
+                    <div
+                        className="h-px w-6 rounded-full"
+                        style={{
+                            background: dark
+                                ? "rgba(196,168,240,0.25)"
+                                : "rgba(139,63,222,0.2)",
+                        }}
+                    />
+                    <p
+                        className="text-[11px] font-semibold tracking-[0.2em] uppercase transition-colors duration-500"
+                        style={{ color: dark ? "rgba(196,168,240,0.5)" : "#b8a0c8" }}
+                    >
+                        Always Near, Always Here
+                    </p>
+                    <div
+                        className="h-px w-6 rounded-full"
+                        style={{
+                            background: dark
+                                ? "rgba(196,168,240,0.25)"
+                                : "rgba(139,63,222,0.2)",
+                        }}
+                    />
+                </div>
+            </div>
 
+            {/* Carousel */}
+            <div className="relative z-10 w-full max-w-xs mx-auto px-8">
+                <div className="relative h-[360px]">
+                    {cardClasses.map((cls, slot) => {
+                        const imgIndex = (current + slot) % images.length;
+                        return (
+                            <div
+                                key={slot}
+                                className={`absolute rounded-2xl overflow-hidden transition-all duration-500 ${cls}`}
+                            >
+                                <img
+                                    src={images[imgIndex]}
+                                    alt={`slide ${imgIndex + 1}`}
+                                    className={`w-full h-full object-cover block transition-opacity duration-[400ms] ${
+                                        animating ? "opacity-0" : "opacity-100"
+                                    }`}
+                                />
+                                {slot === 0 && (
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                                )}
+                            </div>
+                        );
+                    })}
 
-                <div className="relative  h-[480px]">
-
-                    <div className="relative w-full h-full">
-                        {cardClasses.map((cls, slot) => {
-                            const imgIndex = (current + slot) % images.length;
-                            return (
-                                <div
-                                    key={slot}
-                                    className={`absolute rounded-2xl overflow-hidden transition-all duration-500 ${cls}`}
-                                >
-                                    <img
-                                        src={images[imgIndex]}
-                                        alt={`Community ${imgIndex + 1}`}
-                                        className={`w-full h-full object-cover block transition-opacity duration-[400ms] ${animating ? "opacity-0" : "opacity-100"
-                                            }`}
-                                    />
-                                </div>
-                            );
-                        })}
-                    </div>
-
-                    <div className="absolute -bottom-7 left-1/2 -translate-x-1/2 flex items-center gap-2">
+                    {/* Dot indicators */}
+                    <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2">
                         {images.map((_, i) => (
                             <button
                                 key={i}
                                 onClick={() => setCurrent(i)}
-                                className={`h-1.5 rounded-full border-0 cursor-pointer p-0 transition-all duration-300 ${i === current
-                                    ? "w-5 bg-gradient-to-r from-[#8B3FDE] via-[#C837AB] to-[#FF6B35]"
-                                    : "w-1.5 bg-[#d4c9c0]"
-                                    }`}
+                                className="rounded-full border-0 cursor-pointer p-0 transition-all duration-300"
+                                style={{
+                                    height: "6px",
+                                    width: i === current ? "20px" : "6px",
+                                    background: i === current
+                                        ? "linear-gradient(135deg, #8B3FDE, #C837AB)"
+                                        : dark ? "rgba(196,168,240,0.25)" : "#d4c9c0",
+                                }}
                             />
                         ))}
                     </div>
-
                 </div>
+            </div>
+
+            {/* Bottom slogan — large, elegant, faded */}
+            <div className="relative z-10 mt-20 px-10 text-center">
+                <p
+                    className="text-xs font-medium tracking-[0.25em] uppercase transition-colors duration-500"
+                    style={{ color: dark ? "rgba(196,168,240,0.2)" : "rgba(139,63,222,0.18)" }}
+                >
+                    Always Near — Always Here
+                </p>
             </div>
         </section>
     );
