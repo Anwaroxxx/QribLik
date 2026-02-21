@@ -36,7 +36,7 @@ const About = () => {
     {
       id: 4,
       image: usersImages.user31,
-      title: UserData[30].name,
+      title: UserData[31].name,
       description:
         "I love the idea of a knowledge-sharing economy. I taught a neighbor Photoshop, and in return, they helped me understand the basics of React. It's such a rewarding way to learn!",
       rating: 4,

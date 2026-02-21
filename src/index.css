@@ -63,11 +63,21 @@
 
 
 @keyframes slide-in {
-  0% { transform: translateX(100%); opacity: 0; }
-  100% { transform: translateX(0); opacity: 1; }
+  0% { transform: translateY(100%); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slide-out {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(100%); opacity: 0; }
 }
 
 .animate-slide-in {
+  animation: slide-in 0.5s ease forwards;
+}
+
+.animate-slide-out {
+  animation: slide-out 0.5s ease forwards;
   animation: slide-in 0.3s ease-out forwards;
 }
 
@@ -102,4 +112,66 @@
 
 .animate-slide-in {
   animation: slide-in 0.35s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+}
+
+/*
+  ─────────────────────────────────────────────────────────
+  Maps Page Layout — apply these styles to your Maps page
+  wrapper (the component that renders DashboardMap + SectionMap)
+  ─────────────────────────────────────────────────────────
+
+  The DashboardMap now renders:
+    - Desktop (md+): fixed left sidebar 280px wide
+    - Mobile (<md):  fixed top bar 52px tall + bottom sheet for filters
+
+  The SectionMap fills the remaining space.
+
+  Apply this to your Maps page root element:
+*/
+
+/* ── Desktop ── */
+.maps-layout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.maps-sidebar-offset {
+  /* push map content past the sidebar on desktop */
+  margin-left: 280px;
+  flex: 1;
+  height: 100vh;
+}
+
+/* ── Mobile ── */
+@media (max-width: 767px) {
+  .maps-sidebar-offset {
+    margin-left: 0;
+    /* push map content below the mobile top bar */
+    padding-top: 56px;
+    height: 100vh;
+  }
+}
+
+/*
+  Or in JSX (if you use inline styles / Tailwind):
+
+  <div style={{ display:"flex", height:"100vh", overflow:"hidden" }}>
+    <DashboardMap category={category} setCategory={setCategory} dark={dark} />
+    <div style={{
+      marginLeft: isMobile ? 0 : 280,
+      paddingTop: isMobile ? 56 : 0,
+      flex: 1,
+      height: "100vh",
+    }}>
+      <SectionMap category={category} dark={dark} />
+    </div>
+  </div>
+*/
+
+
+/* scroll to be smooth   */
+
+.scroll-smooth {
+  scroll-behavior: smooth;
 }
