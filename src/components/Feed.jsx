@@ -450,7 +450,7 @@ export default function MainFeed({ activeView, onViewChange, activeCategory }) {
 
   // ── Feed view ──────────────────────────────────────────────────────────────
   return (
-    <div className="flex-1 bg-white h-screen flex flex-col overflow-y-auto pb-20 md:pb-0">
+    <div className="flex-1 bg-white h-screen flex flex-col overflow-y-auto pb-20 md:pb-0 pt-[60px] md:pt-0">
 
       {/* TOP BAR */}
       <header className="sticky top-0 z-40 bg-white border-b border-gray-100 px-4 sm:px-6 py-3">
