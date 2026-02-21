@@ -536,26 +536,26 @@ export default function MainFeed({ activeView, onViewChange, activeCategory }) {
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_30%] gap-4">
-            <div className="flex flex-col gap-5">
-              {filteredPosts.map(post => (
-                <PostCardWithResponses
-                  key={post.id}
-                  post={post}
-                  responses={responses}
-                  onAddReply={handleAddReply}
-                  onLikeReply={handleLikeReply}
-                  onEdit={() => { setEditPost(post); setShowCreatePost(true) }}
-                  onDelete={() => handleDelete(post.id)}
-                />
-              ))}
-            </div>
-            <div className="hidden lg:block">
-              <div className="sticky top-[72px]">
-                <OverviewCard />
-              </div>
-            </div>
-          </div>
+         <div className="flex gap-8 justify-center">
+  <div className="flex flex-col gap-5 w-full" style={{ maxWidth: '400px' }}>
+    {filteredPosts.map(post => (
+      <PostCardWithResponses
+        key={post.id}
+        post={post}
+        responses={responses}
+        onAddReply={handleAddReply}
+        onLikeReply={handleLikeReply}
+        onEdit={() => { setEditPost(post); setShowCreatePost(true) }}
+        onDelete={() => handleDelete(post.id)}
+      />
+    ))}
+  </div>
+  <div className="hidden lg:block">
+    <div className="sticky top-[72px]">
+      <OverviewCard />
+    </div>
+  </div>
+</div>
         )}
       </main>
 
