@@ -435,7 +435,7 @@ export default function ProfilePage({ onBack }) {
         )}
       </div>
 
-      <div className="max-w-2xl mx-auto px-6 py-8 flex flex-col gap-6">
+      <div className="max-w-2xl mx-auto px-6 py-8 pt-20 flex flex-col gap-6">
 
         {/* HERO CARD */}
         <div className={`rounded-3xl border shadow-sm overflow-hidden transition-colors duration-500 ${card}`}>

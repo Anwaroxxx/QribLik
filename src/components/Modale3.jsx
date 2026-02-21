@@ -30,7 +30,6 @@ const [messages, setMessages] = useState(() => {
       time: "Now",
     },
   ];
-  console.log("KEY:", import.meta.env.VITE_GROQ_API_KEY);
 
 
   return initialMessages;

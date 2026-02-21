@@ -134,6 +134,37 @@ function Sidebar({ selectedCategory, setSelectedCategory }) {
     timeoutRef.current = setTimeout(() => showNextNotification(), 2000);
   };
 
+  // ── SHARED LOGO COMPONENT ─────────────────────────────────────────────────
+  const Logo = ({ size = "md" }) => (
+    <div className="flex items-center gap-2.5 group cursor-pointer">
+      <div
+        className={`
+          bg-gradient-to-tr from-fuchsia-600 to-rose-500 flex items-center justify-center
+          shadow-fuchsia-200 transition-transform group-hover:rotate-6 duration-300
+          ${size === "md" ? "w-11 h-11 rounded-[16px] shadow-lg" : "w-9 h-9 rounded-[14px] shadow-md"}
+        `}
+      >
+        <TbHome className={`text-white ${size === "md" ? "w-6 h-6" : "w-5 h-5"}`} />
+      </div>
+      <div className="flex flex-col leading-none">
+        <span
+          className={`font-black tracking-tighter text-slate-900 ${
+            size === "md" ? "text-2xl" : "text-xl"
+          }`}
+        >
+          Qriblik
+        </span>
+        <span
+          className={`font-bold text-fuchsia-500 uppercase tracking-[0.2em] mt-1 ${
+            size === "md" ? "text-[10px]" : "text-[8px]"
+          }`}
+        >
+          Community Hub
+        </span>
+      </div>
+    </div>
+  );
+
   // ── MOBILE BOTTOM NAV ─────────────────────────────────────────────────────
   const MobileBottomNav = () => (
     <div
@@ -153,7 +184,7 @@ function Sidebar({ selectedCategory, setSelectedCategory }) {
                 : "text-slate-400 hover:text-slate-600"
             }`}
         >
-          {el.icon}
+          <span className="text-base">{el.icon}</span>
           {el.label.split(" ")[0]}
           {selectedCategory === el.id && (
             <span className="w-1 h-1 rounded-full bg-fuchsia-500 mt-0.5" />

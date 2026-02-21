@@ -593,4 +593,4 @@ export default function MainFeed({ activeView, onViewChange, activeCategory }) {
       {openModal && <Modale3 onClose={() => setOpenModal(false)} />}
     </div>
   )
-}
+}                                   
