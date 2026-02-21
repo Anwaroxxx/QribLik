@@ -32,19 +32,14 @@ function Sidebar({ selectedCategory, setSelectedCategory }) {
     "bg-gradient-to-r from-fuchsia-50 to-rose-50 text-fuchsia-600 shadow-sm";
   const inactiveStyle = "text-slate-500 hover:bg-slate-100";
 
-  // ── SINGLE MERGED LIST ────────────────────────────────────────────────────
-  // One array does both jobs:
-  //   • sets the selected category in the feed  (setSelectedCategory)
-  //   • triggers notifications                  (notificationKey)
   const categories = [
-    { id: "SPORT",          icon: <MdOutlineSportsSoccer />, label: "Sport",          notificationKey: "Sport"  },
-    { id: "TRADING",        icon: <FaArrowRightArrowLeft />, label: "Trading",        notificationKey: "Trading"},
-    { id: "LOST AND FOUND", icon: <FaMagnifyingGlass />,     label: "Lost and Found", notificationKey: "Lost"   },
-    { id: "SWAP SKILLS",    icon: <BsStars />,               label: "Swap Skills",    notificationKey: "Swap"   },
-    { id: "EVENTS",         icon: <MdEvent />,               label: "Events",         notificationKey: "Events" },
+    { id: "SPORT",          icon: <MdOutlineSportsSoccer />, label: "Sport",          notificationKey: "Sport"   },
+    { id: "TRADING",        icon: <FaArrowRightArrowLeft />, label: "Trading",        notificationKey: "Trading" },
+    { id: "LOST AND FOUND", icon: <FaMagnifyingGlass />,     label: "Lost and Found", notificationKey: "Lost"    },
+    { id: "SWAP SKILLS",    icon: <BsStars />,               label: "Swap Skills",    notificationKey: "Swap"    },
+    { id: "EVENTS",         icon: <MdEvent />,               label: "Events",         notificationKey: "Events"  },
   ];
 
-  // ── NOTIFICATION MESSAGES ─────────────────────────────────────────────────
   const categoryMessages = {
     Sport:   ["Wach tbghi nmchiw njriw had sbah?", "Match dyal football ghadi ybda f 5 pm", "Yoga session gheda f parc"],
     Trading: ["3andi sneakers jdad, bgha ndir trading m3a chi jacket", "Je cherche quelqu'un pour trader un vélo contre une trottinette", "Trading a laptop for a gaming console"],
@@ -85,22 +80,15 @@ function Sidebar({ selectedCategory, setSelectedCategory }) {
       setAnimate(false);
       setTimeout(() => {
         setNotification(null);
-        setTimeout(() => {
-          showNextNotification();
-        }, 500);
+        setTimeout(() => showNextNotification(), 500);
       }, 300);
     }, 6000);
   };
 
-  // ── UNIFIED CLICK HANDLER ─────────────────────────────────────────────────
-  // Runs when the user clicks ANY category item.
-  // Does TWO things at once: filters the feed AND queues notifications.
   const handleCategoryClick = (category) => {
-    // 1. Highlight this item and filter the feed
     setSelectedCategory(category.id);
     setActive(category.id);
 
-    // 2. Queue notifications — skip if "ALL / Home Feed" (notificationKey is null)
     if (!category.notificationKey) return;
 
     const key = category.notificationKey;
@@ -117,10 +105,39 @@ function Sidebar({ selectedCategory, setSelectedCategory }) {
     });
 
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    timeoutRef.current = setTimeout(() => {
-      showNextNotification();
-    }, 2000);
+    timeoutRef.current = setTimeout(() => showNextNotification(), 2000);
   };
+
+  // ── SHARED LOGO COMPONENT ─────────────────────────────────────────────────
+  const Logo = ({ size = "md" }) => (
+    <div className="flex items-center gap-2.5 group cursor-pointer">
+      <div
+        className={`
+          bg-gradient-to-tr from-fuchsia-600 to-rose-500 flex items-center justify-center
+          shadow-fuchsia-200 transition-transform group-hover:rotate-6 duration-300
+          ${size === "md" ? "w-11 h-11 rounded-[16px] shadow-lg" : "w-9 h-9 rounded-[14px] shadow-md"}
+        `}
+      >
+        <TbHome className={`text-white ${size === "md" ? "w-6 h-6" : "w-5 h-5"}`} />
+      </div>
+      <div className="flex flex-col leading-none">
+        <span
+          className={`font-black tracking-tighter text-slate-900 ${
+            size === "md" ? "text-2xl" : "text-xl"
+          }`}
+        >
+          Qriblik
+        </span>
+        <span
+          className={`font-bold text-fuchsia-500 uppercase tracking-[0.2em] mt-1 ${
+            size === "md" ? "text-[10px]" : "text-[8px]"
+          }`}
+        >
+          Community Hub
+        </span>
+      </div>
+    </div>
+  );
 
   // ── MOBILE BOTTOM NAV ─────────────────────────────────────────────────────
   const MobileBottomNav = () => (
@@ -135,16 +152,15 @@ function Sidebar({ selectedCategory, setSelectedCategory }) {
               : "text-slate-400 hover:text-slate-600"
           }`}
         >
-          {el.icon}
+          <span className="text-base">{el.icon}</span>
           {el.label.split(" ")[0]}
           {selectedCategory === el.id && (
             <span className="w-1 h-1 rounded-full bg-fuchsia-500 mt-0.5" />
           )}
         </button>
       ))}
-      {/* Maps slot */}
       <div className="flex-1 flex flex-col items-center justify-center py-2 gap-0.5 text-[10px] font-semibold text-slate-400">
-        <FiMap className="text-lg" />
+        <FiMap className="text-base" />
         Map
       </div>
     </div>
@@ -157,9 +173,8 @@ function Sidebar({ selectedCategory, setSelectedCategory }) {
       <aside className="hidden md:flex flex-col justify-between w-64 h-screen fixed left-0 top-0 bg-white border-r border-slate-100 py-6 px-3 overflow-y-auto z-40">
 
         {/* Logo */}
-        <div className="px-5 mb-6">
-          <h1 className="text-xl font-bold text-fuchsia-600">QribLik</h1>
-          <p className="text-xs text-slate-400">Community Hub</p>
+        <div className="px-5 mb-12">
+          <Logo size="md" />
         </div>
 
         {/* Static links */}
@@ -188,7 +203,6 @@ function Sidebar({ selectedCategory, setSelectedCategory }) {
           </Link>
         </nav>
 
-        {/* ── ONE LIST — category filter + notifications ── */}
         <p className="px-5 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
           Social
         </p>
@@ -211,7 +225,7 @@ function Sidebar({ selectedCategory, setSelectedCategory }) {
         </nav>
 
         {/* Profile & Settings */}
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-1 mt-auto pt-4">
           <div
             onClick={() => setActive("Profile")}
             className={`${itemStyle} ${active === "Profile" ? activeStyle : inactiveStyle}`}
@@ -228,9 +242,24 @@ function Sidebar({ selectedCategory, setSelectedCategory }) {
         </div>
       </aside>
 
-      {/* ── MOBILE TOP LOGO HEADER ── */}
-      <header className="md:hidden fixed top-0 left-0 right-0 z-50 bg-white border-b border-slate-100 px-4 py-3">
-        <h1 className="text-lg font-bold text-fuchsia-600">Qriblik Community Hub</h1>
+      {/* ── MOBILE TOP HEADER ── */}
+      <header className="md:hidden fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100 px-4 py-2.5">
+        <div className="flex items-center justify-between">
+
+          {/* Logo */}
+          <Logo size="sm" />
+
+          {/* Right action buttons */}
+          <div className="flex items-center gap-1.5">
+            <button className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-fuchsia-50 hover:text-fuchsia-500 transition-colors duration-150">
+              <FaMagnifyingGlass className="w-3.5 h-3.5" />
+            </button>
+            <button className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-fuchsia-50 hover:text-fuchsia-500 transition-colors duration-150">
+              <FaRegUser className="w-3.5 h-3.5" />
+            </button>
+          </div>
+
+        </div>
       </header>
 
       {/* ── MOBILE BOTTOM NAV ── */}
