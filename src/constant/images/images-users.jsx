@@ -33,7 +33,7 @@ import user33 from "../../assets/images/users/user-33.jpg";
 import user34 from "../../assets/images/users/user-34.jpg";
 import user35 from "../../assets/images/users/user-35.jpg";
 
-export const usersImages = {
+export  const usersImages = {
   user1, user2, user3, user4, user5, user6, user7,
   user8, user9, user10, user12, user13, user14, user15,
   user16, user17, user18, user19, user20, user21, user22,
