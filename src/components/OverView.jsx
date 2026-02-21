@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
+import { useTheme } from "../contexts/ThemeContext";
 
 function AnimatedNumber({ value, duration = 1.5, delay = 0 }) {
   const count = useMotionValue(0);
@@ -22,7 +23,7 @@ function AnimatedNumber({ value, duration = 1.5, delay = 0 }) {
   return <span>{display}</span>;
 }
 
-function StarIcon({ filled, delay }) {
+function StarIcon({ filled, delay, dark }) {
   return (
     <motion.svg
       initial={{ scale: 0, rotate: -30, opacity: 0 }}
@@ -32,7 +33,7 @@ function StarIcon({ filled, delay }) {
       height="28"
       viewBox="0 0 24 24"
       fill={filled ? "url(#starGradLight)" : "none"}
-      stroke={filled ? "none" : "rgba(0,0,0,0.15)"}
+      stroke={filled ? "none" : (dark ? "rgba(255,255,255,0.12)" : "rgba(0,0,0,0.15)")}
       strokeWidth="1.5"
       style={{ filter: filled ? "drop-shadow(0 2px 6px rgba(255,107,53,0.45))" : "none" }}
     >
@@ -58,14 +59,17 @@ const userData = {
 };
 
 export default function OverviewCard() {
+  const { dark } = useTheme();
   const [hovered, setHovered] = useState(false);
 
-  return (
-    <div 
-      
-    >
-      
+  const labelColor = dark ? "rgba(167,139,250,0.45)" : "rgba(0,0,0,0.35)";
+  const subColor = dark ? "rgba(167,139,250,0.35)" : "rgba(0,0,0,0.4)";
+  const cardBg = dark
+    ? "linear-gradient(160deg, #1a0a2e 0%, #150d27 60%, #1c0d30 100%)"
+    : "linear-gradient(160deg, #ffffff 0%, #faf8ff 60%, #fdf5ff 100%)";
 
+  return (
+    <div>
       <motion.div
         initial={{ opacity: 0, y: 40, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -81,7 +85,6 @@ export default function OverviewCard() {
           style={{
             position: "absolute",
             inset: "8px",
-           
             borderRadius: "28px",
             filter: "blur(28px)",
             zIndex: 0,
@@ -92,7 +95,7 @@ export default function OverviewCard() {
         <motion.div
           animate={{ y: hovered ? -4 : 0 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="shimmer-light w-full fixed"
+          className="shimmer-light w-full"
           style={{
             position: "relative",
             zIndex: 1,
@@ -104,23 +107,28 @@ export default function OverviewCard() {
           <div
             style={{
               borderRadius: "24px",
-              background: "linear-gradient(160deg, #ffffff 0%, #faf8ff 60%, #fdf5ff 100%)",
+              background: cardBg,
               padding: "32px",
               overflow: "hidden",
               position: "relative",
+              transition: "background 0.5s ease",
             }}
           >
             {/* Decorative blobs */}
             <div style={{
               position: "absolute", top: "-40px", right: "-40px",
               width: "160px", height: "160px",
-              background: "radial-gradient(circle, rgba(139,63,222,0.08) 0%, transparent 70%)",
+              background: dark
+                ? "radial-gradient(circle, rgba(139,63,222,0.18) 0%, transparent 70%)"
+                : "radial-gradient(circle, rgba(139,63,222,0.08) 0%, transparent 70%)",
               borderRadius: "50%", pointerEvents: "none",
             }} />
             <div style={{
               position: "absolute", bottom: "-30px", left: "-30px",
               width: "120px", height: "120px",
-              background: "radial-gradient(circle, rgba(255,107,53,0.07) 0%, transparent 70%)",
+              background: dark
+                ? "radial-gradient(circle, rgba(255,107,53,0.14) 0%, transparent 70%)"
+                : "radial-gradient(circle, rgba(255,107,53,0.07) 0%, transparent 70%)",
               borderRadius: "50%", pointerEvents: "none",
             }} />
 
@@ -131,7 +139,11 @@ export default function OverviewCard() {
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.2 }}
-                  style={{ fontSize: "11px", letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(0,0,0,0.35)", fontFamily: "'DM Sans', sans-serif", fontWeight: 600, marginBottom: "6px" }}
+                  style={{
+                    fontSize: "11px", letterSpacing: "0.2em", textTransform: "uppercase",
+                    color: labelColor,
+                    fontFamily: "'DM Sans', sans-serif", fontWeight: 600, marginBottom: "6px",
+                  }}
                 >
                   Overview
                 </motion.p>
@@ -139,7 +151,11 @@ export default function OverviewCard() {
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.3 }}
-                  style={{ fontFamily: "'Syne', sans-serif", fontSize: "22px", fontWeight: 800, color: "#1a0a2e", margin: 0, letterSpacing: "-0.5px" }}
+                  style={{
+                    fontFamily: "'Syne', sans-serif", fontSize: "22px", fontWeight: 800,
+                    color: dark ? "#f5f0ff" : "#1a0a2e",
+                    margin: 0, letterSpacing: "-0.5px",
+                  }}
                 >
                   {userData.name}
                 </motion.h2>
@@ -170,7 +186,13 @@ export default function OverviewCard() {
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ delay: 0.5, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              style={{ height: "1px", background: "linear-gradient(90deg, rgba(139,63,222,0.3), rgba(200,55,171,0.2), transparent)", marginBottom: "24px", transformOrigin: "left" }}
+              style={{
+                height: "1px",
+                background: dark
+                  ? "linear-gradient(90deg, rgba(139,63,222,0.5), rgba(200,55,171,0.3), transparent)"
+                  : "linear-gradient(90deg, rgba(139,63,222,0.3), rgba(200,55,171,0.2), transparent)",
+                marginBottom: "24px", transformOrigin: "left",
+              }}
             />
 
             {/* Points */}
@@ -180,12 +202,18 @@ export default function OverviewCard() {
               transition={{ delay: 0.55 }}
               style={{ marginBottom: "28px" }}
             >
-              <p style={{ fontSize: "11px", letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(0,0,0,0.35)", marginBottom: "6px", fontWeight: 600 }}>Total Points</p>
+              <p style={{ fontSize: "11px", letterSpacing: "0.15em", textTransform: "uppercase", color: labelColor, marginBottom: "6px", fontWeight: 600 }}>
+                Total Points
+              </p>
               <div style={{ display: "flex", alignItems: "baseline", gap: "6px" }}>
-                <span style={{ fontFamily: "'Syne', sans-serif", fontSize: "44px", fontWeight: 800, lineHeight: 1, background: "var(--gradient-qriblik)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+                <span style={{
+                  fontFamily: "'Syne', sans-serif", fontSize: "44px", fontWeight: 800, lineHeight: 1,
+                  background: "var(--gradient-qriblik)",
+                  WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
+                }}>
                   <AnimatedNumber value={userData.points} duration={1.8} delay={0.6} />
                 </span>
-                <span style={{ fontSize: "14px", color: "rgba(0,0,0,0.25)", fontWeight: 500 }}>pts</span>
+                <span style={{ fontSize: "14px", color: subColor, fontWeight: 500 }}>pts</span>
               </div>
             </motion.div>
 
@@ -197,15 +225,23 @@ export default function OverviewCard() {
               style={{ marginBottom: "28px" }}
             >
               <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px" }}>
-                <span style={{ fontSize: "11px", color: "rgba(0,0,0,0.35)", letterSpacing: "0.12em", textTransform: "uppercase", fontWeight: 600 }}>Next Level</span>
-                <span style={{ fontSize: "12px", color: "rgba(0,0,0,0.4)", fontWeight: 500 }}>{userData.nextLevelPoints.toLocaleString()} pts away</span>
+                <span style={{ fontSize: "11px", color: labelColor, letterSpacing: "0.12em", textTransform: "uppercase", fontWeight: 600 }}>Next Level</span>
+                <span style={{ fontSize: "12px", color: subColor, fontWeight: 500 }}>{userData.nextLevelPoints.toLocaleString()} pts away</span>
               </div>
-              <div style={{ height: "6px", borderRadius: "99px", background: "rgba(0,0,0,0.07)", overflow: "hidden" }}>
+              <div style={{
+                height: "6px", borderRadius: "99px",
+                background: dark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.07)",
+                overflow: "hidden",
+              }}>
                 <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: `${userData.levelProgress}%` }}
                   transition={{ delay: 0.8, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                  style={{ height: "100%", borderRadius: "99px", background: "var(--gradient-qriblik)", boxShadow: "0 0 10px rgba(200,55,171,0.35)" }}
+                  style={{
+                    height: "100%", borderRadius: "99px",
+                    background: "var(--gradient-qriblik)",
+                    boxShadow: "0 0 10px rgba(200,55,171,0.35)",
+                  }}
                 />
               </div>
             </motion.div>
@@ -216,21 +252,24 @@ export default function OverviewCard() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 }}
             >
-              <p style={{ fontSize: "11px", letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(0,0,0,0.35)", marginBottom: "12px", fontWeight: 600 }}>Stars Earned</p>
+              <p style={{ fontSize: "11px", letterSpacing: "0.15em", textTransform: "uppercase", color: labelColor, marginBottom: "12px", fontWeight: 600 }}>
+                Stars Earned
+              </p>
               <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
                 {Array.from({ length: userData.maxStars }).map((_, i) => (
-                  <StarIcon key={i} filled={i < userData.stars} delay={0.9 + i * 0.08} />
+                  <StarIcon key={i} filled={i < userData.stars} delay={0.9 + i * 0.08} dark={dark} />
                 ))}
                 <motion.span
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 1.4 }}
-                  style={{ marginLeft: "8px", fontSize: "13px", color: "rgba(0,0,0,0.3)", fontWeight: 500 }}
+                  style={{ marginLeft: "8px", fontSize: "13px", color: subColor, fontWeight: 500 }}
                 >
                   {userData.stars}/{userData.maxStars}
                 </motion.span>
               </div>
             </motion.div>
+
           </div>
         </motion.div>
       </motion.div>
