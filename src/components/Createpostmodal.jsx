@@ -209,7 +209,8 @@ function CircleProgress({ value, max, color }) {
   const nearLimit = pct > 0.85
   return (
     <svg width="28" height="28" viewBox="0 0 28 28">
-      <circle cx="14" cy="14" r={r} fill="none" stroke="#f3f4f6" strokeWidth="2.5" />
+      <circle cx="14" cy="14" r={r} fill="none"
+        stroke={dark ? 'rgba(255,255,255,0.08)' : '#f3f4f6'} strokeWidth="2.5" />
       <circle cx="14" cy="14" r={r} fill="none"
         stroke={nearLimit ? '#FF6B35' : color} strokeWidth="2.5"
         strokeDasharray={`${dash} ${circ}`} strokeLinecap="round"
@@ -566,6 +567,7 @@ function AIAssistant({ category, onApply, currentTitle, currentDesc }) {
 // ─────────────────────────────────────────────────────────────────────────────
 
 export default function CreatePostModal({ onClose, onPost, editPost = null, onDelete = null }) {
+  const { dark } = useTheme()
   const isEditing = editPost !== null
 
   const [step,              setStep]            = useState(isEditing ? 2 : 1)
@@ -657,7 +659,7 @@ export default function CreatePostModal({ onClose, onPost, editPost = null, onDe
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center"
-      style={{ backgroundColor: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(4px)' }}
+      style={{ backgroundColor: 'rgba(0,0,0,0.45)', backdropFilter: 'blur(4px)' }}
       onClick={onClose}>
 
       <div

@@ -1,14 +1,16 @@
 import { useState } from "react";
+import { useTheme } from "../contexts/ThemeContext";
 import Sidebar from "../components/sidebar";
 import MainFeed from "../components/Feed";
 
 function Home() {
+   const { dark } = useTheme();
   const [activeView, setActiveView] = useState("feed");
   const [activeCategory, setActiveCategory] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("ALL");
 
   return (
-    <div className="flex-1 bg-gray-50 min-h-screen overflow-y-auto">
+    <div className={`flex h-screen overflow-hidden transition-colors duration-500 ${dark ? "bg-[#0f0a1e]" : "bg-[#f9fafb]"}`}>
       <Sidebar
         activeView={activeView}
         onViewChange={setActiveView}
