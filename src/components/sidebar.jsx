@@ -6,6 +6,7 @@ import { FaMagnifyingGlass,  FaRegUser, FaArrowRightArrowLeft, FaCircleInfo } fr
 import { BsStars } from "react-icons/bs";
 import { IoSettingsOutline } from "react-icons/io5";
 import users from "../data/UserData.json";
+import MapsButton from "./buttonMap";
 
 function Sidebar({ selectedCategory, setSelectedCategory }) {
   const [active, setActive] = useState("Home");
@@ -116,17 +117,16 @@ function Sidebar({ selectedCategory, setSelectedCategory }) {
 
         {/* PROFILE / SETTINGS */}
         <section className="mt-auto flex flex-col gap-1.5 pt-6 px-2">
-          <div
-            onClick={() => setActive("Profile")}
-            className={`${itemStyle} ${active === "Profile" ? activeStyle : inactiveStyle}`}
-          >
-            <FaRegUser /> My Profile
-          </div>
+         
           <div
             onClick={() => setActive("Settings")}
             className={`${itemStyle} ${active === "Settings" ? activeStyle : inactiveStyle}`}
           >
-            <IoSettingsOutline /> Settings
+             {/* The Button */}
+             <Link to='/maps'>
+               <MapsButton/>
+             </Link>
+            
           </div>
         </section>
       </section>

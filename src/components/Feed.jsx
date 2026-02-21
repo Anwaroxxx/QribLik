@@ -7,6 +7,8 @@ import NotificationsPanel from './Notificationspanel'
 import OverviewCard from './OverView'
 import initialPosts from '../data/posts.json/Posts'
 import { LuMessageSquareText } from 'react-icons/lu'
+import Modale3 from './Modale3'
+
 const currentUser = {
   name: 'Alex Neighbor',
   neighborhood: 'Sunset District',
