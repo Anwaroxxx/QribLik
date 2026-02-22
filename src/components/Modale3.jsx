@@ -6,11 +6,11 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 import { sendMessageToAI } from "../services/chatbot";
 import { useTheme } from "../contexts/ThemeContext";
 
-function Modale3({ onClose }) {
+function Modale3({ onClose, initialUser = null }) {
   const { dark } = useTheme();
 
   const firstFourUsers = UsersData.slice(0, 3);
-  const [selectedUser, setSelectedUser] = useState(null);
+const [selectedUser, setSelectedUser] = useState(initialUser || null);
 
   const [messages, setMessages] = useState(() => {
     const initialMessages = {};
