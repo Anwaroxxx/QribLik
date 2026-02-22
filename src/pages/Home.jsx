@@ -10,7 +10,7 @@ function Home() {
   const [selectedCategory, setSelectedCategory] = useState("ALL");
 
   return (
-    <div className={`flex h-screen overflow-hidden transition-colors duration-500 ${dark ? "bg-[#0f0a1e]" : "bg-[#f9fafb]"}`}>
+    <div className={`flex h-screen overflow-y-auto transition-colors duration-500 ${dark ? "bg-[#0f0a1e]" : "bg-[#f9fafb]"}`}>
       <Sidebar
         activeView={activeView}
         onViewChange={setActiveView}
@@ -19,7 +19,7 @@ function Home() {
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
       />
-      <div className="flex-1 ml-0 md:ml-64 overflow-hidden">
+      <div className="flex-1 ml-0 md:ml-64 overflow-y-auto">
         <MainFeed
           activeView={activeView}
           onViewChange={setActiveView}
