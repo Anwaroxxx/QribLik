@@ -31,6 +31,7 @@ function App() {
           background: dark ? "#0f0a1e" : "#ffffff",
           color: dark ? "#f5f0ff" : "#1a1410",
           transition: "background 0.5s ease, color 0.5s ease",
+          
         }}
       >
         <Routes>
