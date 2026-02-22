@@ -59,7 +59,7 @@ const [selectedUser, setSelectedUser] = useState(initialUser || null);
     }));
 
     setInput("");
-
+ setSelectedUser((prev) => ({ ...prev })); 
     if (selectedUser.id !== "ai") return;
 
     try {
