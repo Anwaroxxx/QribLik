@@ -101,7 +101,7 @@ function Card({ card, index, dark }) {
   const [hovered, setHovered] = useState(false);
   const { setOpen } = useContext(ModalContext);
 
-  // Pick the correct static class set based on dark flag
+
   const bgClass = dark ? card.darkBg : card.lightBg;
   const borderClass = dark ? card.darkBorder : card.lightBorder;
 
@@ -123,7 +123,7 @@ function Card({ card, index, dark }) {
         transition: "box-shadow 0.3s ease",
       }}
     >
-      {/* Glow on hover */}
+
       <motion.div
         className="absolute inset-0 rounded-3xl pointer-events-none"
         animate={{ opacity: hovered ? 1 : 0 }}
@@ -131,7 +131,7 @@ function Card({ card, index, dark }) {
         style={{ background: `radial-gradient(ellipse at 50% 0%, ${card.accent}22 0%, transparent 70%)` }}
       />
 
-      {/* Tag row */}
+
       <div className="flex items-center justify-between">
         <motion.span
           className="text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full"
@@ -158,12 +158,10 @@ function Card({ card, index, dark }) {
         {card.title}
       </h3>
 
-      {/* Description */}
       <p className={`text-sm leading-relaxed flex-1 transition-colors duration-500 ${dark ? "text-purple-200/60" : "text-gray-500"}`}>
         {card.desc}
       </p>
 
-      {/* Stats */}
       <div className="flex gap-5">
         {card.stats.map((s) => (
           <div key={s.label}>
@@ -177,7 +175,6 @@ function Card({ card, index, dark }) {
         ))}
       </div>
 
-      {/* CTA */}
       <motion.button
         whileTap={{ scale: 0.96 }}
         onClick={() => setOpen(true)}
@@ -218,21 +215,18 @@ export default function Cards() {
             : "bg-gradient-to-br from-slate-50 via-purple-50/40 to-orange-50/30"
           }`}
       >
-        {/* ── HEADER ── */}
         <header className="relative overflow-hidden">
 
           <Orb dark={dark} style={{ width: 500, height: 500, background: "#8B3FDE", top: -180, left: -120 }} delay={0} />
           <Orb dark={dark} style={{ width: 400, height: 400, background: "#C837AB", top: -100, right: -80 }} delay={1.2} />
           <Orb dark={dark} style={{ width: 300, height: 300, background: "#FF6B35", bottom: -60, left: "40%" }} delay={0.6} />
 
-          {/* Header inner — switches bg */}
           <div
             className={`relative flex-col flex gap-10 z-10 padding py-16 px-6 justify-between items-center text-center transition-colors duration-500 ${dark ? "bg-[#0d061a]/95" : "bg-[#FAF7FE]"
               }`}
           >
             <div className="flex justify-center flex-col items-center">
 
-              {/* Main title */}
               <motion.h1
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -244,7 +238,6 @@ export default function Cards() {
                 What We Offer
               </motion.h1>
 
-              {/* Animated word */}
               <div className="h-14 flex items-center justify-center mb-4">
                 <AnimatePresence mode="wait">
                   <motion.span
@@ -279,7 +272,6 @@ export default function Cards() {
               </div>
             </div>
 
-            {/* Floating pills */}
             {["🎉 Events", "⚽ Sports", "📦 Trading", "🔍 Lost & Found", "🤝 Swap Skills"].map((p, i) => (
               <motion.span
                 key={p}
@@ -303,7 +295,6 @@ export default function Cards() {
           </div>
         </header>
 
-        {/* ── CARDS SECTION ── */}
         <section className="grid pb-20 grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-2">
           <div className="flex justify-center items-center">
             <div className="grid grid-cols-1 padding w-screen sm:grid-cols-2 lg:place-items-center gap-6 max-w-2xl mx-auto lg:max-w-none lg:grid-cols-3 lg:mx-0 lg:w-2/3 lg:ml-auto lg:mr-auto">

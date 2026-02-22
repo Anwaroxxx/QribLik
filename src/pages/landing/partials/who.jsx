@@ -31,7 +31,6 @@ export default function WhoWeAre() {
         transition: "background 0.5s ease",
       }}
     >
-      {/* Background glows — same pattern as hero */}
       <div style={{
         position: "absolute", inset: 0, pointerEvents: "none",
         background: dark
@@ -50,9 +49,7 @@ export default function WhoWeAre() {
       <div style={{ position: "relative", zIndex: 10, maxWidth: 1200, margin: "0 auto", padding: "6rem 3rem", width: "100%" }}>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5rem", alignItems: "center" }}>
 
-          {/* ── LEFT ── */}
           <div>
-            {/* Eyebrow */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -74,7 +71,6 @@ export default function WhoWeAre() {
               </span>
             </motion.div>
 
-            {/* Headline */}
             <motion.h2
               initial={{ opacity: 0, y: 28 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -102,7 +98,6 @@ export default function WhoWeAre() {
               </span>
             </motion.h2>
 
-            {/* Body text */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -139,7 +134,6 @@ export default function WhoWeAre() {
               Where neighbors become friends and communities thrive — one block at a time.
             </motion.p>
 
-            {/* CTA */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -171,7 +165,6 @@ export default function WhoWeAre() {
             </motion.div>
           </div>
 
-          {/* ── RIGHT — Stats ── */}
           <div style={{ display: "flex", flexDirection: "column", gap: "1.1rem" }}>
             {stats.map((stat, i) => (
               <motion.div
@@ -195,7 +188,6 @@ export default function WhoWeAre() {
                   transition: "background 0.5s, border-color 0.5s, box-shadow 0.3s",
                 }}
               >
-                {/* Color bar */}
                 <div style={{
                   width: 4,
                   height: 48,
@@ -233,7 +225,6 @@ export default function WhoWeAre() {
               </motion.div>
             ))}
 
-            {/* Small floating badge — mirrors hero's "active right now" */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -267,7 +258,6 @@ export default function WhoWeAre() {
           </div>
         </div>
 
-        {/* Bottom divider */}
         <motion.div
           initial={{ scaleX: 0 }}
           animate={isInView ? { scaleX: 1 } : {}}

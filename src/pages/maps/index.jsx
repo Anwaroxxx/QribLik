@@ -4,9 +4,8 @@ import DashboardMap from "./partials/DashboardMap";
 import SectionMap from "./partials/SectionMap";
 import PixelBlast from "../../animations/Pixel";
 
-// ── Heights (single source of truth — used by all children) ──────────────
-export const NAVBAR_H    = 60;
-export const SIDEBAR_W   = 280; // desktop only
+export const NAVBAR_H  = 60;
+export const SIDEBAR_W = 280;
 
 const GLOBAL_CSS = `
   @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap');
@@ -31,17 +30,14 @@ const GLOBAL_CSS = `
   ::-webkit-scrollbar-thumb { background: rgba(139,92,246,0.28); border-radius: 4px; }
 `;
 
-// ── Navbar ────────────────────────────────────────────────────────────────
+
 function Navbar({ dark, onToggleDark, onToggleSidebar, isMobile }) {
   const navigate = useNavigate();
 
   return (
     <nav style={{
       position: "fixed",
-      // On mobile: full width. On desktop: offset by sidebar width.
-      top: 0,
-      left: isMobile ? 0 : SIDEBAR_W,
-      right: 0,
+      top: 0, left: 0, right: 0, 
       zIndex: 4000,
       height: NAVBAR_H,
       display: "flex",
@@ -54,7 +50,7 @@ function Navbar({ dark, onToggleDark, onToggleSidebar, isMobile }) {
       boxShadow: "0 2px 20px rgba(139,92,246,0.07)",
     }}>
 
-      {/* Pixel background */}
+      {/* Pixel bg */}
       <div style={{ position:"absolute", inset:0, zIndex:0, opacity:0.07, pointerEvents:"none" }}>
         <PixelBlast
           variant="square" pixelSize={3} color="#d946ef"
@@ -64,39 +60,36 @@ function Navbar({ dark, onToggleDark, onToggleSidebar, isMobile }) {
         />
       </div>
 
-      {/* LEFT: back button (mobile) or hamburger toggle (mobile sidebar) */}
+      {/* LEFT */}
       <div style={{ display:"flex", alignItems:"center", gap:8, position:"relative", zIndex:1 }}>
-        {/* Back to home */}
         <button
           onClick={() => navigate("/home")}
           style={{
-            display: "flex", alignItems: "center", gap: 6,
-            padding: "6px 12px", borderRadius: 20, border: "none",
+            display:"flex", alignItems:"center", gap:6,
+            padding:"6px 12px", borderRadius:20, border:"none",
             background: dark ? "rgba(139,92,246,0.15)" : "rgba(139,92,246,0.08)",
             color: dark ? "#C084FC" : "#8B5CF6",
-            fontSize: 12, fontWeight: 700, cursor: "pointer",
-            fontFamily: "Sora,sans-serif",
-            transition: "all 0.2s",
-            WebkitTapHighlightColor: "transparent",
+            fontSize:12, fontWeight:700, cursor:"pointer",
+            fontFamily:"Sora,sans-serif", transition:"all 0.2s",
+            WebkitTapHighlightColor:"transparent",
           }}
-          onMouseEnter={e => e.currentTarget.style.background = dark ? "rgba(139,92,246,0.25)" : "rgba(139,92,246,0.15)"}
-          onMouseLeave={e => e.currentTarget.style.background = dark ? "rgba(139,92,246,0.15)" : "rgba(139,92,246,0.08)"}
+          onMouseEnter={e => e.currentTarget.style.background = dark?"rgba(139,92,246,0.25)":"rgba(139,92,246,0.15)"}
+          onMouseLeave={e => e.currentTarget.style.background = dark?"rgba(139,92,246,0.15)":"rgba(139,92,246,0.08)"}
         >
           ← {isMobile ? "" : "Back to Feed"}
         </button>
 
-        {/* Hamburger — mobile only, opens the filter sidebar */}
+        {/* Hamburger — mobile only */}
         {isMobile && (
           <button
             onClick={onToggleSidebar}
             style={{
-              width: 36, height: 36, borderRadius: 10, border: "none",
-              background: dark ? "rgba(139,92,246,0.15)" : "rgba(139,92,246,0.08)",
-              cursor: "pointer",
-              display: "flex", flexDirection: "column", alignItems: "center",
-              justifyContent: "center", gap: 5, padding: 8,
-              color: dark ? "#C084FC" : "#8B5CF6",
-              WebkitTapHighlightColor: "transparent",
+              width:36, height:36, borderRadius:10, border:"none",
+              background: dark?"rgba(139,92,246,0.15)":"rgba(139,92,246,0.08)",
+              cursor:"pointer", display:"flex", flexDirection:"column",
+              alignItems:"center", justifyContent:"center", gap:5, padding:8,
+              color: dark?"#C084FC":"#8B5CF6",
+              WebkitTapHighlightColor:"transparent",
             }}
           >
             <span style={{ display:"block", width:16, height:2, background:"currentColor", borderRadius:2 }}/>
@@ -106,60 +99,44 @@ function Navbar({ dark, onToggleDark, onToggleSidebar, isMobile }) {
         )}
       </div>
 
-      {/* CENTER: title */}
-      <div style={{ position:"relative", zIndex:1, display:"flex", alignItems:"center", gap:8 }}>
+      {/* CENTER */}
+      <div style={{ position:"relative", zIndex:1 }}>
         <span style={{
-          fontSize: isMobile ? 14 : 16,
-          fontWeight: 800,
-          fontFamily: "Sora,sans-serif",
-          background: "linear-gradient(135deg,#8B3FDE,#C837AB,#FF6B35)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          backgroundClip: "text",
-        }}>
-          🗺️ QribLik Map
-        </span>
+          fontSize: isMobile ? 14 : 16, fontWeight:800, fontFamily:"Sora,sans-serif",
+          background:"linear-gradient(135deg,#8B3FDE,#C837AB,#FF6B35)",
+          WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text",
+        }}>🗺️ QribLik Map</span>
       </div>
 
-      {/* RIGHT: dark mode toggle + profile */}
+      {/* RIGHT */}
       <div style={{ display:"flex", alignItems:"center", gap:10, position:"relative", zIndex:1 }}>
-        {/* Dark mode toggle */}
         <button
           onClick={onToggleDark}
-          aria-label="Toggle dark mode"
           style={{
-            position: "relative",
-            width: "3rem",
-            height: "1.7rem",
-            borderRadius: "9999px",
-            border: "none",
-            cursor: "pointer",
-            padding: 0,
-            background: dark ? "linear-gradient(135deg,#8B3FDE,#C837AB)" : "#e2e8f0",
-            transition: "background 0.35s ease",
-            boxShadow: dark ? "0 0 12px rgba(139,63,222,0.45)" : "0 1px 4px rgba(0,0,0,0.12)",
-            flexShrink: 0,
+            position:"relative", width:"3rem", height:"1.7rem",
+            borderRadius:"9999px", border:"none", cursor:"pointer", padding:0,
+            background: dark?"linear-gradient(135deg,#8B3FDE,#C837AB)":"#e2e8f0",
+            transition:"background 0.35s ease",
+            boxShadow: dark?"0 0 12px rgba(139,63,222,0.45)":"0 1px 4px rgba(0,0,0,0.12)",
+            flexShrink:0,
           }}
         >
           <span style={{
-            position: "absolute", top: "0.22rem",
-            left: dark ? "calc(100% - 1.48rem)" : "0.22rem",
-            width: "1.25rem", height: "1.25rem",
-            borderRadius: "50%", background: "#fff",
-            transition: "left 0.3s cubic-bezier(0.34,1.56,0.64,1)",
-            display: "flex", alignItems: "center", justifyContent: "center",
-            fontSize: "0.6rem",
+            position:"absolute", top:"0.22rem",
+            left: dark?"calc(100% - 1.48rem)":"0.22rem",
+            width:"1.25rem", height:"1.25rem", borderRadius:"50%", background:"#fff",
+            transition:"left 0.3s cubic-bezier(0.34,1.56,0.64,1)",
+            display:"flex", alignItems:"center", justifyContent:"center", fontSize:"0.6rem",
           }}>
             {dark ? "🌙" : "☀️"}
           </span>
         </button>
 
-        {/* Profile chip — hidden on small mobile to save space */}
         {!isMobile && (
           <div style={{
             display:"flex", alignItems:"center", gap:8,
             paddingLeft:10,
-            borderLeft:`1px solid ${dark ? "rgba(139,92,246,0.2)" : "rgba(139,92,246,0.15)"}`,
+            borderLeft:`1px solid ${dark?"rgba(139,92,246,0.2)":"rgba(139,92,246,0.15)"}`,
           }}>
             <div style={{
               width:30, height:30, borderRadius:"50%",
@@ -169,7 +146,7 @@ function Navbar({ dark, onToggleDark, onToggleSidebar, isMobile }) {
               boxShadow:"0 2px 10px rgba(139,92,246,0.35)",
             }}>A</div>
             <div>
-              <div style={{ fontSize:11, fontWeight:700, color: dark?"#e2e8f0":"#1e1b4b", lineHeight:1 }}>Alex</div>
+              <div style={{ fontSize:11, fontWeight:700, color:dark?"#e2e8f0":"#1e1b4b", lineHeight:1 }}>Alex</div>
               <div style={{ fontSize:9, color:"#9CA3AF", lineHeight:1.4 }}>Active Helper</div>
             </div>
           </div>
@@ -179,7 +156,7 @@ function Navbar({ dark, onToggleDark, onToggleSidebar, isMobile }) {
   );
 }
 
-// ── useIsMobile hook ──────────────────────────────────────────────────────
+// ── useIsMobile ───────────────────────────────────────────────────────────
 function useIsMobile() {
   const [isMobile, setIsMobile] = useState(
     typeof window !== "undefined" ? window.innerWidth < 768 : false
@@ -199,7 +176,6 @@ export default function MapPage() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const isMobile = useIsMobile();
 
-  // Inject global CSS once
   useEffect(() => {
     const el = document.createElement("style");
     el.textContent = GLOBAL_CSS;
@@ -209,15 +185,11 @@ export default function MapPage() {
 
   return (
     <div style={{
-      width: "100vw",
-      height: "100vh",
-      display: "flex",
-      flexDirection: "column",
-      overflow: "hidden",
-      background: dark ? "#080414" : "#f5f3ff",
-      fontFamily: "Sora,sans-serif",
+      width:"100vw", height:"100vh", display:"flex",
+      flexDirection:"column", overflow:"hidden",
+      background: dark?"#080414":"#f5f3ff",
+      fontFamily:"Sora,sans-serif",
     }}>
-      {/* ── NAVBAR ── */}
       <Navbar
         dark={dark}
         onToggleDark={() => setDark(d => !d)}
@@ -225,47 +197,25 @@ export default function MapPage() {
         isMobile={isMobile}
       />
 
-      {/*
-        LAYOUT STRUCTURE:
-        ┌───────────────────────────────────────────────────┐
-        │                  NAVBAR (fixed)                   │
-        ├──────────────┬────────────────────────────────────┤
-        │  DashboardMap│         SectionMap (leaflet)       │
-        │  (sidebar)   │                                    │
-        │  desktop:    │                                    │
-        │  fixed left  │                                    │
-        │  mobile:     │                                    │
-        │  slide-in    │                                    │
-        └──────────────┴────────────────────────────────────┘
-      */}
+      {/* Body — sits below full-width navbar */}
       <div style={{
-        // This wrapper sits below the navbar
-        position: "fixed",
-        top: NAVBAR_H,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        display: "flex",
-        overflow: "hidden",
+        position:"fixed",
+        top: NAVBAR_H, left:0, right:0, bottom:0,
+        display:"flex", overflow:"hidden",
       }}>
 
-        {/* ── MOBILE BACKDROP (tap to close sidebar) ── */}
+        {/* Mobile backdrop */}
         {isMobile && sidebarOpen && (
           <div
             onClick={() => setSidebarOpen(false)}
             style={{
-              position: "fixed", inset: 0, zIndex: 3000,
-              background: "rgba(0,0,0,0.45)",
-              backdropFilter: "blur(3px)",
+              position:"fixed", inset:0, zIndex:3000,
+              background:"rgba(0,0,0,0.45)", backdropFilter:"blur(3px)",
             }}
           />
         )}
 
-        {/* ── FILTER SIDEBAR ── */}
-        {/*
-          Desktop: permanently visible, 280px wide, not overlapping anything
-          Mobile:  hidden off-screen to the left, slides in when sidebarOpen=true
-        */}
+        {/* Sidebar */}
         <div style={{
           position: isMobile ? "fixed" : "relative",
           top: isMobile ? 0 : "auto",
@@ -276,40 +226,25 @@ export default function MapPage() {
           transform: isMobile
             ? sidebarOpen ? "translateX(0)" : "translateX(-100%)"
             : "none",
-          transition: "transform 0.3s cubic-bezier(0.32,0.72,0,1)",
+          transition:"transform 0.3s cubic-bezier(0.32,0.72,0,1)",
           flexShrink: 0,
           height: "100%",
         }}>
           <DashboardMap
             category={category}
-            setCategory={(cat) => {
-              setCategory(cat);
-              setSidebarOpen(false); // auto-close on mobile after picking a filter
-            }}
+            setCategory={(cat) => { setCategory(cat); setSidebarOpen(false); }}
             dark={dark}
+            isMobile={isMobile}
           />
         </div>
 
-        {/* ── MAP ── */}
-        {/*
-          Desktop: fills the space to the right of the sidebar
-          Mobile:  fills the full screen (sidebar slides over it)
-        */}
+        {/* Map */}
         <div style={{
-          flex: 1,
-          position: "relative",
-          minWidth: 0,
-          height: "100%",
-          // On mobile, the map fills the full width behind the sidebar
+          flex:1, position:"relative", minWidth:0, height:"100%",
           marginLeft: isMobile ? `-${SIDEBAR_W}px` : 0,
           width: isMobile ? `calc(100% + ${SIDEBAR_W}px)` : "auto",
         }}>
-          <SectionMap
-            category={category}
-            dark={dark}
-            navbarH={NAVBAR_H}
-            isMobile={isMobile}
-          />
+          <SectionMap category={category} dark={dark} isMobile={isMobile} />
         </div>
       </div>
     </div>
