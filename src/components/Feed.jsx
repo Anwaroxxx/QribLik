@@ -10,11 +10,13 @@ import { LuMessageSquareText } from 'react-icons/lu'
 import Modale3 from './Modale3'
 import { useTheme } from '../contexts/ThemeContext'
 
+const storedUser = JSON.parse(localStorage.getItem("qriblikUser"));
+
 const currentUser = {
-  name: 'Alex Neighbor',
-  neighborhood: 'Sunset District',
-  avatar: 'https://i.pravatar.cc/150?img=5',
-}
+  name: storedUser?.name || 'Alex Neighbor',
+  neighborhood: storedUser?.neighborhood || 'Sunset District',
+  avatar: storedUser?.avatar || 'https://i.pravatar.cc/150?img=5',
+};
 
 const CATEGORY_MAP = {
   'ALL':            'Home Feed',
@@ -95,6 +97,8 @@ function ReplyComposer({ postId, parentReplyId = null, onSubmit, onCancel, place
     if (e.key === 'Escape' && onCancel) onCancel()
   }
 
+
+  
   return (
     <div className="flex items-start gap-2.5 mt-2">
       <img src={currentUser.avatar} alt={currentUser.name} className="w-7 h-7 rounded-full object-cover shrink-0 mt-1" />
