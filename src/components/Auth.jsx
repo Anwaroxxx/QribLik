@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import LiquidEther from "../animations/LiquidEther";
 import logo from "../assets/images/logo/our-logo.webp";
 
-// ── SVG Icons (no library needed) ────────────────────────────────────────────
+// ── SVG Icons ─────────────────────────────────────────────────────────────────
 const IconMail = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
     <rect x="2" y="4" width="20" height="16" rx="2" />
@@ -60,7 +60,8 @@ const IconApple = () => (
   </svg>
 );
 
-// ── Memoized: typing in form inputs NEVER triggers a re-render here ────────────
+// ── AnimatedPanel: memo means it NEVER re-renders when parent state changes ───
+// Without memo, every keystroke in the form would restart the animation!
 const AnimatedPanel = memo(function AnimatedPanel() {
   return (
     <div style={{ position: "absolute", inset: 0 }}>
@@ -76,7 +77,6 @@ const AnimatedPanel = memo(function AnimatedPanel() {
   );
 });
 
-// ── Overlay branding on the animation panel ───────────────────────────────────
 function PanelBranding({ isSignUp, onSwitch }) {
   return (
     <div style={{
@@ -85,38 +85,32 @@ function PanelBranding({ isSignUp, onSwitch }) {
       padding: "2.8rem 3rem",
       background: "linear-gradient(160deg,rgba(6,1,20,0.88) 0%,rgba(6,1,20,0.36) 45%,rgba(6,1,20,0.82) 100%)",
     }}>
-      {/* Logo */}
       <img src={logo} alt="QribLik" style={{ height: 36, width: "auto", objectFit: "contain", filter: "brightness(0) invert(1)", opacity: 0.93 }} />
-
-      {/* Headline block */}
       <div>
         <p style={{ fontFamily: "'Sora',sans-serif", fontWeight: 700, fontSize: "0.63rem", letterSpacing: "0.3em", textTransform: "uppercase", color: "#c084fc", margin: "0 0 1rem" }}>
           {isSignUp ? "✦  Start your journey" : "✦  Continue your journey"}
         </p>
-        <h2 style={{ fontFamily: "'DM Serif Display',Georgia,serif", fontSize: "clamp(2.4rem,3.8vw,3.6rem)", fontWeight: 700, fontStyle: "italic", color: "#fff", margin: "0 0 1.2rem", lineHeight: 1.08, textShadow: "0 2px 24px rgba(0,0,0,0.4)", whiteSpace: "pre-line" }}>
+        <h2 style={{ fontFamily: "'DM Serif Display',Georgia,serif", fontSize: "clamp(2.2rem,3.2vw,3.2rem)", fontWeight: 700, fontStyle: "italic", color: "#fff", margin: "0 0 1.2rem", lineHeight: 1.08, textShadow: "0 2px 24px rgba(0,0,0,0.4)", whiteSpace: "pre-line" }}>
           {isSignUp ? "Your neighborhood\nstarts here." : "Good to have\nyou back."}
         </h2>
-        <p style={{ fontFamily: "'Sora',sans-serif", fontWeight: 400, fontSize: "0.95rem", lineHeight: 1.78, color: "rgba(255,255,255,0.78)", maxWidth: 330, margin: "0 0 2.5rem" }}>
+        <p style={{ fontFamily: "'Sora',sans-serif", fontWeight: 400, fontSize: "0.92rem", lineHeight: 1.78, color: "rgba(255,255,255,0.78)", maxWidth: 300, margin: "0 0 2.5rem" }}>
           {isSignUp
             ? "Connect with people just blocks away. Share skills, discover events, and build something real together."
             : "Your neighborhood is alive with activity. Let's see what's happening around you today."}
         </p>
-        {/* Stats */}
-        <div style={{ display: "flex", gap: "2.5rem", paddingTop: "1.75rem", borderTop: "1px solid rgba(255,255,255,0.14)" }}>
-          {[["5K+", "Active neighbors"], ["48K", "Neighborhoods"], ["97%", "Feel connected"]].map(([val, lbl]) => (
+        <div style={{ display: "flex", gap: "2rem", paddingTop: "1.5rem", borderTop: "1px solid rgba(255,255,255,0.14)" }}>
+          {[["5K+","Active neighbors"],["48K","Neighborhoods"],["97%","Feel connected"]].map(([val, lbl]) => (
             <div key={lbl}>
-              <div style={{ fontFamily: "'DM Serif Display',Georgia,serif", fontStyle: "italic", fontSize: "1.9rem", fontWeight: 700, color: "#e9d5ff", lineHeight: 1 }}>{val}</div>
-              <div style={{ fontFamily: "'Sora',sans-serif", fontSize: "0.61rem", fontWeight: 600, color: "rgba(255,255,255,0.44)", letterSpacing: "0.12em", textTransform: "uppercase", marginTop: 5 }}>{lbl}</div>
+              <div style={{ fontFamily: "'DM Serif Display',Georgia,serif", fontStyle: "italic", fontSize: "1.7rem", fontWeight: 700, color: "#e9d5ff", lineHeight: 1 }}>{val}</div>
+              <div style={{ fontFamily: "'Sora',sans-serif", fontSize: "0.58rem", fontWeight: 600, color: "rgba(255,255,255,0.44)", letterSpacing: "0.12em", textTransform: "uppercase", marginTop: 5 }}>{lbl}</div>
             </div>
           ))}
         </div>
       </div>
-
-      {/* Bottom switch */}
       <div style={{ paddingTop: "1.5rem", borderTop: "1px solid rgba(255,255,255,0.1)" }}>
         <p style={{ fontFamily: "'Sora',sans-serif", fontSize: "0.875rem", color: "rgba(255,255,255,0.52)", margin: 0 }}>
           {isSignUp ? "Already have an account? " : "Don't have an account? "}
-          <button onClick={onSwitch} style={{ background: "none", border: "none", cursor: "pointer", color: "#c084fc", fontWeight: 700, fontSize: "0.875rem", fontFamily: "'Sora',sans-serif", padding: 0, textDecoration: "underline", textDecorationColor: "rgba(192,132,252,0.3)", textUnderlineOffset: 3, transition: "color 0.2s" }}
+          <button onClick={onSwitch} style={{ background: "none", border: "none", cursor: "pointer", color: "#c084fc", fontWeight: 700, fontSize: "0.875rem", fontFamily: "'Sora',sans-serif", padding: 0, textDecoration: "underline", textDecorationColor: "rgba(192,132,252,0.3)", textUnderlineOffset: 3 }}
             onMouseEnter={e => e.currentTarget.style.color = "#e9d5ff"}
             onMouseLeave={e => e.currentTarget.style.color = "#c084fc"}>
             {isSignUp ? "Sign in →" : "Create one free →"}
@@ -127,7 +121,7 @@ function PanelBranding({ isSignUp, onSwitch }) {
   );
 }
 
-// ── Input field with icon + validation ───────────────────────────────────────
+// ── Shared form components ─────────────────────────────────────────────────────
 function Field({ label, labelRight, IconComp, touched, valid, error, children }) {
   return (
     <div>
@@ -165,19 +159,14 @@ function mkInput(touched, valid, hasIcon = true, hasPadRight = false) {
   };
 }
 
-// ── Google + Apple buttons ────────────────────────────────────────────────────
 function SocialButtons() {
-  const base = { height: 48, borderRadius: 11, border: "1.5px solid #e2e8f0", background: "#fff", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 10, fontFamily: "'Sora',sans-serif", fontSize: "0.82rem", fontWeight: 600, color: "#0f172a", transition: "all 0.18s", boxSizing: "border-box" };
+  const base = { height: 48, borderRadius: 11, border: "1.5px solid #e2e8f0", background: "#fff", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 10, fontFamily: "'Sora',sans-serif", fontSize: "0.82rem", fontWeight: 600, color: "#0f172a", transition: "all 0.18s", boxSizing: "border-box", width: "100%" };
   const hover = e => { e.currentTarget.style.background = "#f8fafc"; e.currentTarget.style.borderColor = "#c7d2e1"; e.currentTarget.style.transform = "translateY(-1px)"; e.currentTarget.style.boxShadow = "0 4px 14px rgba(0,0,0,0.07)"; };
   const leave = e => { e.currentTarget.style.background = "#fff"; e.currentTarget.style.borderColor = "#e2e8f0"; e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "none"; };
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-      <button style={{ ...base, width: "100%" }} onMouseEnter={hover} onMouseLeave={leave} onClick={() => alert("Google auth coming soon")}>
-        <IconGoogle /> Continue with Google
-      </button>
-      <button style={{ ...base, width: "100%" }} onMouseEnter={hover} onMouseLeave={leave} onClick={() => alert("Apple auth coming soon")}>
-        <IconApple /> Continue with Apple
-      </button>
+      <button style={base} onMouseEnter={hover} onMouseLeave={leave} onClick={() => alert("Google auth coming soon")}><IconGoogle /> Continue with Google</button>
+      <button style={base} onMouseEnter={hover} onMouseLeave={leave} onClick={() => alert("Apple auth coming soon")}><IconApple /> Continue with Apple</button>
     </div>
   );
 }
@@ -192,7 +181,6 @@ function Divider() {
   );
 }
 
-// ── Sign In ───────────────────────────────────────────────────────────────────
 function SignInForm({ onSwitch }) {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -224,16 +212,13 @@ function SignInForm({ onSwitch }) {
         <p style={{ fontFamily: "'Sora',sans-serif", fontWeight: 700, fontSize: "0.63rem", letterSpacing: "0.26em", textTransform: "uppercase", color: "#8B3FDE", marginBottom: "0.6rem" }}>Welcome back</p>
         <h1 style={{ fontFamily: "'DM Serif Display',Georgia,serif", fontSize: "clamp(1.75rem,2.5vw,2.25rem)", fontWeight: 700, fontStyle: "italic", color: "#0f172a", margin: 0, lineHeight: 1.1 }}>Sign in to QribLik</h1>
       </div>
-
       <SocialButtons />
       <Divider />
-
       {error && (
         <div style={{ background: "#fff1f2", border: "1px solid #fecdd3", borderRadius: 10, padding: "11px 15px", marginBottom: 16, color: "#e11d48", fontSize: "0.82rem", fontFamily: "'Sora',sans-serif", fontWeight: 500, display: "flex", alignItems: "center", gap: 8 }}>
           <IconAlert /> {error}
         </div>
       )}
-
       <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
         <Field label="Email address" IconComp={IconMail} touched={touched.email} valid={valid.email} error="Enter a valid email address">
           <input type="email" placeholder="you@example.com" value={email}
@@ -241,7 +226,6 @@ function SignInForm({ onSwitch }) {
             onBlur={() => blur("email")} onKeyDown={e => e.key === "Enter" && handleLogin()}
             style={mkInput(touched.email, valid.email)} />
         </Field>
-
         <Field label="Password"
           labelRight={<button onClick={() => alert("Coming soon")} style={{ background: "none", border: "none", cursor: "pointer", color: "#8B3FDE", fontWeight: 700, fontSize: "0.63rem", fontFamily: "'Sora',sans-serif", letterSpacing: "0.1em", textTransform: "uppercase", padding: 0 }}>Forgot?</button>}
           IconComp={IconLock} touched={touched.password} valid={valid.password} error="Password is required">
@@ -256,12 +240,10 @@ function SignInForm({ onSwitch }) {
           </button>
         </Field>
       </div>
-
       <button onClick={handleLogin} disabled={loading} className="grad-btn"
         style={{ marginTop: 22, width: "100%", height: 52, borderRadius: 12, border: "none", background: "linear-gradient(135deg,#7c3aed 0%,#c026d3 55%,#f97316 100%)", backgroundSize: "200% 200%", color: "white", fontSize: "0.9rem", fontWeight: 700, cursor: loading ? "not-allowed" : "pointer", fontFamily: "'Sora',sans-serif", boxShadow: "0 6px 24px rgba(124,58,237,0.35)", opacity: loading ? 0.8 : 1 }}>
         {loading ? <span style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10 }}><span className="spinner" />Signing in...</span> : "Sign In →"}
       </button>
-
       <p style={{ textAlign: "center", marginTop: "1.5rem", fontFamily: "'Sora',sans-serif", fontSize: "0.85rem", color: "#64748b" }}>
         Don't have an account?{" "}
         <button onClick={onSwitch} style={{ background: "none", border: "none", cursor: "pointer", color: "#8B3FDE", fontWeight: 700, fontSize: "0.85rem", fontFamily: "'Sora',sans-serif", padding: 0 }}>Create one free →</button>
@@ -270,7 +252,6 @@ function SignInForm({ onSwitch }) {
   );
 }
 
-// ── Sign Up ───────────────────────────────────────────────────────────────────
 function SignUpForm({ onSwitch }) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -348,10 +329,8 @@ function SignUpForm({ onSwitch }) {
         <p style={{ fontFamily: "'Sora',sans-serif", fontWeight: 700, fontSize: "0.63rem", letterSpacing: "0.26em", textTransform: "uppercase", color: "#8B3FDE", marginBottom: "0.6rem" }}>Join the community</p>
         <h1 style={{ fontFamily: "'DM Serif Display',Georgia,serif", fontSize: "clamp(1.75rem,2.5vw,2.25rem)", fontWeight: 700, fontStyle: "italic", color: "#0f172a", margin: 0, lineHeight: 1.1 }}>Create your account</h1>
       </div>
-
       <SocialButtons />
       <Divider />
-
       <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8, marginBottom: 4 }}>
           <label htmlFor="avatar-upload" style={{ cursor: "pointer", position: "relative", display: "inline-block" }}>
@@ -379,26 +358,25 @@ function SignUpForm({ onSwitch }) {
           ].map(({ key, label, val, set, ph }) => (
             <div key={key} style={{ flex: 1 }}>
               <Field label={label} IconComp={IconUser} touched={touched[key]} valid={valid[key]} error="Min 2 chars">
-                <input placeholder={ph} value={val} onChange={e => set(e.target.value)} onBlur={() => blur(key)} style={mkInput(touched[key], valid[key])} />
+                <input value={val} onChange={e => set(e.target.value)} onBlur={() => blur(key)} style={mkInput(touched[key], valid[key])} />
               </Field>
             </div>
           ))}
         </div>
-
         <Field label="Email address" IconComp={IconMail} touched={touched.email} valid={valid.email} error="Enter a valid email address">
           <input type="email" placeholder="you@example.com" value={email} onChange={e => setEmail(e.target.value)} onBlur={() => blur("email")} style={mkInput(touched.email, valid.email)} />
         </Field>
-
         <div>
           <Field label="Password" IconComp={IconLock} touched={touched.password} valid={valid.password} error="8+ chars, 1 number and 1 symbol">
-            <input type={showPw ? "text" : "password"} placeholder="Create a strong password" value={password} onChange={e => setPassword(e.target.value)} onBlur={() => blur("password")} style={mkInput(touched.password, valid.password, true, true)} />
+            <input type={showPw ? "text" : "password"} placeholder="Create a strong password" value={password}
+              onChange={e => setPassword(e.target.value)} onBlur={() => blur("password")}
+              style={mkInput(touched.password, valid.password, true, true)} />
             <button onClick={() => setShowPw(s => !s)} style={{ position: "absolute", right: 14, top: "50%", transform: "translateY(-50%)", background: "none", border: "none", cursor: "pointer", color: "#94a3b8", padding: 0, lineHeight: 0, transition: "color 0.2s" }}
               onMouseEnter={e => e.currentTarget.style.color = "#475569"}
               onMouseLeave={e => e.currentTarget.style.color = "#94a3b8"}>
               {showPw ? <IconEyeOff /> : <IconEye />}
             </button>
           </Field>
-
           {password.length > 0 && (
             <div style={{ marginTop: 10 }}>
               <div style={{ display: "flex", gap: 4, marginBottom: 8 }}>
@@ -421,16 +399,13 @@ function SignUpForm({ onSwitch }) {
           )}
         </div>
       </div>
-
       <button onClick={handleSubmit} disabled={loading} className="grad-btn"
         style={{ marginTop: 20, width: "100%", height: 52, borderRadius: 12, border: "none", background: "linear-gradient(135deg,#7c3aed 0%,#c026d3 55%,#f97316 100%)", backgroundSize: "200% 200%", color: "white", fontSize: "0.9rem", fontWeight: 700, cursor: loading ? "not-allowed" : "pointer", fontFamily: "'Sora',sans-serif", boxShadow: "0 6px 24px rgba(124,58,237,0.35)", opacity: loading ? 0.8 : 1 }}>
         {loading ? <span style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10 }}><span className="spinner" />Creating account...</span> : "Create Account →"}
       </button>
-
       <p style={{ fontSize: "0.7rem", color: "#94a3b8", textAlign: "center", marginTop: 10, fontFamily: "'Sora',sans-serif" }}>
         By signing up you agree to our <span style={{ color: "#8B3FDE", cursor: "pointer" }}>Terms</span> &amp; <span style={{ color: "#8B3FDE", cursor: "pointer" }}>Privacy Policy</span>
       </p>
-
       <p style={{ textAlign: "center", marginTop: "1.2rem", fontFamily: "'Sora',sans-serif", fontSize: "0.85rem", color: "#64748b" }}>
         Already have an account?{" "}
         <button onClick={onSwitch} style={{ background: "none", border: "none", cursor: "pointer", color: "#8B3FDE", fontWeight: 700, fontSize: "0.85rem", fontFamily: "'Sora',sans-serif", padding: 0 }}>Sign in →</button>
@@ -439,19 +414,28 @@ function SignUpForm({ onSwitch }) {
   );
 }
 
-// ── Root ──────────────────────────────────────────────────────────────────────
+// ── ROOT ──────────────────────────────────────────────────────────────────────
 export default function Auth() {
   const location = useLocation();
   const [isSignUp, setIsSignUp] = useState(location.pathname.toLowerCase() === "/signup");
-  const [animSide, setAnimSide] = useState("left");
-  const [switching, setSwitching] = useState(false);
+  const [fading,   setFading]   = useState(false);
 
+  // THE FIX: instead of conditionally rendering the form in two different slots
+  // (which caused a blank window), we keep ONE form area that is always in the DOM.
+  // The dark panel slides via CSS transition on its `left` property.
+  // The form fades in/out with opacity during the switch.
   const handleSwitch = useCallback(() => {
-    if (switching) return;
-    setSwitching(true);
-    setTimeout(() => { setIsSignUp(s => !s); setAnimSide(s => s === "left" ? "right" : "left"); }, 400);
-    setTimeout(() => setSwitching(false), 800);
-  }, [switching]);
+    if (fading) return;
+    setFading(true);
+    setTimeout(() => {
+      setIsSignUp(s => !s);
+      setFading(false);
+    }, 220);
+  }, [fading]);
+
+  // Panel is on LEFT for Sign In, RIGHT for Sign Up
+  // (so it doesn't cover the form)
+  const panelOnLeft = !isSignUp;
 
   return (
     <>
@@ -461,40 +445,104 @@ export default function Auth() {
         @keyframes spin    { to { transform: rotate(360deg); } }
         @keyframes shake   { 0%,100%{transform:translateX(0)} 20%,60%{transform:translateX(-8px)} 40%,80%{transform:translateX(8px)} }
         @keyframes shimmer { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
-        @keyframes fadeUp  { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
-        .grad-btn { background-size:200% 200% !important; animation:shimmer 3.5s ease infinite !important; transition:transform 0.18s,box-shadow 0.18s !important; }
-        .grad-btn:hover:not(:disabled) { transform:translateY(-2px) !important; box-shadow:0 12px 32px rgba(124,58,237,0.5) !important; }
+        .grad-btn { background-size:200% 200%!important; animation:shimmer 3.5s ease infinite!important; transition:transform .18s,box-shadow .18s!important; }
+        .grad-btn:hover:not(:disabled) { transform:translateY(-2px)!important; box-shadow:0 12px 32px rgba(124,58,237,0.5)!important; }
         .spinner { display:inline-block; width:17px; height:17px; border:2.5px solid rgba(255,255,255,0.28); border-top-color:white; border-radius:50%; animation:spin 0.7s linear infinite; flex-shrink:0; }
-        .anim-panel { transition: left 0.82s cubic-bezier(0.86,0,0.07,1); will-change:left; }
-        .form-enter { animation: fadeUp 0.5s cubic-bezier(0.22,1,0.36,1) both; }
-        input:focus { border-color:#8B3FDE !important; box-shadow:0 0 0 3px rgba(139,63,222,0.1) !important; background:#fff !important; }
-        @media (max-width:768px) { .anim-panel{display:none!important;} .form-side{width:100%!important;left:0!important;} }
+        input:focus { border-color:#8B3FDE!important; box-shadow:0 0 0 3px rgba(139,63,222,0.1)!important; background:#fff!important; }
+
+        /* Panel slides smoothly */
+        .auth-panel { transition: left 0.78s cubic-bezier(0.86,0,0.07,1); will-change: left; }
+
+        /* Form area slides in sync with panel */
+        .auth-form-area { transition: margin-left 0.78s cubic-bezier(0.86,0,0.07,1); }
+
+        /* ── TABLET (768–1100px) ── */
+        @media (max-width: 1100px) and (min-width: 769px) {
+          .auth-panel { width: 44%!important; }
+          .auth-form-area { padding: 2rem 2rem!important; }
+        }
+
+        /* ── MOBILE (≤768px): hide animated panel, show gradient header ── */
+        @media (max-width: 768px) {
+          .auth-panel          { display: none!important; }
+          .auth-mobile-header  { display: flex!important; }
+          .auth-form-area {
+            width: 100%!important;
+            margin-left: 0!important;
+            min-height: auto!important;
+            padding: 2rem 1.5rem 3rem!important;
+          }
+          .auth-root {
+            flex-direction: column!important;
+            height: auto!important;
+            min-height: 100vh!important;
+            overflow-y: auto!important;
+            align-items: stretch!important;
+          }
+        }
       `}</style>
 
-      <div style={{ minHeight: "100vh", width: "100vw", position: "relative", overflow: "hidden", background: "#0f0a1e" }}>
+      <div className="auth-root" style={{ minHeight: "100vh", width: "100vw", position: "relative", overflow: "hidden", background: "#fff", display: "flex", alignItems: "stretch" }}>
 
-        {/* Left form slot */}
-        <div className="form-side" style={{ position: "absolute", left: 0, top: 0, width: "50%", height: "100%", background: "#fff", zIndex: 1, display: "flex", alignItems: "center", justifyContent: "center", overflowY: "auto" }}>
-          {animSide === "right" && (
-            <div key={isSignUp ? "su-l" : "si-l"} className="form-enter" style={{ width: "100%", maxWidth: 420, padding: "2.5rem 3.5rem" }}>
-              {isSignUp ? <SignUpForm onSwitch={handleSwitch} /> : <SignInForm onSwitch={handleSwitch} />}
-            </div>
-          )}
+        {/* ── MOBILE HEADER (hidden on desktop via CSS) ── */}
+        <div className="auth-mobile-header" style={{
+          display: "none", // CSS shows it on mobile
+          flexDirection: "column", alignItems: "center", justifyContent: "center",
+          padding: "2.5rem 1.5rem 2rem", textAlign: "center",
+          background: "linear-gradient(160deg,#0f0a1e 0%,#2d1b5e 50%,#1a0f2e 100%)",
+          gap: 12,
+        }}>
+          <img src={logo} alt="QribLik" style={{ height: 32, width: "auto", filter: "brightness(0) invert(1)", opacity: 0.95 }} />
+          <h2 style={{ fontFamily: "'DM Serif Display',Georgia,serif", fontSize: "1.8rem", fontWeight: 700, fontStyle: "italic", color: "#fff", margin: 0, lineHeight: 1.1 }}>
+            {isSignUp ? "Join your neighborhood." : "Welcome back."}
+          </h2>
+          <p style={{ fontFamily: "'Sora',sans-serif", fontSize: "0.85rem", color: "rgba(255,255,255,0.65)", margin: 0, maxWidth: 280 }}>
+            {isSignUp ? "Connect, swap skills, and build community." : "Your neighborhood is alive with activity."}
+          </p>
         </div>
 
-        {/* Right form slot */}
-        <div className="form-side" style={{ position: "absolute", left: "50%", top: 0, width: "50%", height: "100%", background: "#fff", zIndex: 1, display: "flex", alignItems: "center", justifyContent: "center", overflowY: "auto" }}>
-          {animSide === "left" && (
-            <div key={isSignUp ? "su-r" : "si-r"} className="form-enter" style={{ width: "100%", maxWidth: 420, padding: "2.5rem 3.5rem" }}>
-              {isSignUp ? <SignUpForm onSwitch={handleSwitch} /> : <SignInForm onSwitch={handleSwitch} />}
-            </div>
-          )}
-        </div>
-
-        {/* Animation panel — slides left/right, memo keeps it alive through typing */}
-        <div className="anim-panel" style={{ position: "absolute", left: animSide === "left" ? "0%" : "50%", top: 0, width: "50%", height: "100%", zIndex: 3 }}>
+        {/* ── ANIMATED DARK PANEL ── */}
+        {/* Always in the DOM, slides with CSS transition — never causes blank state */}
+        <div className="auth-panel" style={{
+          position: "absolute",
+          top: 0,
+          left: panelOnLeft ? "0%" : "50%",  // ← this is what slides
+          width: "50%",
+          height: "100%",
+          zIndex: 10,
+          background: "#0f0a1e",
+        }}>
           <AnimatedPanel />
           <PanelBranding isSignUp={isSignUp} onSwitch={handleSwitch} />
+        </div>
+
+        {/* ── FORM AREA ── */}
+        {/* Also always in the DOM. marginLeft pushes it to whichever side the panel is NOT on. */}
+        <div className="auth-form-area" style={{
+          width: "50%",
+          marginLeft: panelOnLeft ? "50%" : "0%",  // ← slides in sync with panel
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          minHeight: "100vh",
+          padding: "2.5rem 3.5rem",
+          background: "#fff",
+          zIndex: 1,
+          overflowY: "auto",
+        }}>
+          {/* Inner wrapper fades during switch */}
+          <div style={{
+            width: "100%", maxWidth: 420,
+            opacity: fading ? 0 : 1,
+            transform: fading ? "translateY(8px)" : "translateY(0)",
+            transition: "opacity 0.22s ease, transform 0.22s ease",
+          }}>
+            {/* Form is ALWAYS rendered — just fades. No conditional unmounting = no blank page. */}
+            {isSignUp
+              ? <SignUpForm onSwitch={handleSwitch} />
+              : <SignInForm onSwitch={handleSwitch} />
+            }
+          </div>
         </div>
 
       </div>

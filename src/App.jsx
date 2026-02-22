@@ -1,4 +1,3 @@
-
 // src/App.jsx
 import { Routes, Route } from "react-router-dom";
 import "./index.css";
@@ -15,7 +14,7 @@ import Support from "./pages/Support";
 import Maps from "./pages/maps";
 import MapPage from "./pages/maps/index";
 import Footer from "./pages/landing/partials/footer";
-
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 function App() {
   const { dark } = useTheme();
@@ -44,10 +43,10 @@ function App() {
           <Route path="/maps"    element={<Maps />} />
           <Route path="/map"     element={<MapPage />} />
           <Route path="*"        element={<Errors />} />
-          
         </Routes>
 
         {shouldShowFotter && <Footer />}
+        <SpeedInsights />
       </div>
     </>
   );
