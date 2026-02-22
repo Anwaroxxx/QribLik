@@ -33,7 +33,6 @@ const CATEGORY_MAP = {
 // ─────────────────────────────────────────────────────────────────────────────
 function ReplyBubble({ reply, onLike }) {
   const { dark } = useTheme()
-
   return (
     <div className="flex items-start gap-2.5 group">
       <img
@@ -46,24 +45,16 @@ function ReplyBubble({ reply, onLike }) {
           dark ? 'bg-white/5 border-white/8' : 'bg-gray-50 border-gray-100'
         }`}>
           <div className="flex items-center gap-2 mb-1">
-            <span className={`text-xs font-bold ${dark ? 'text-purple-100' : 'text-gray-800'}`}>
-              {reply.author}
-            </span>
-            <span className={`text-[10px] ${dark ? 'text-purple-300/40' : 'text-gray-400'}`}>
-              {reply.time}
-            </span>
+            <span className={`text-xs font-bold ${dark ? 'text-purple-100' : 'text-gray-800'}`}>{reply.author}</span>
+            <span className={`text-[10px] ${dark ? 'text-purple-300/40' : 'text-gray-400'}`}>{reply.time}</span>
           </div>
-          <p className={`text-sm leading-relaxed ${dark ? 'text-purple-200/70' : 'text-gray-700'}`}>
-            {reply.text}
-          </p>
+          <p className={`text-sm leading-relaxed ${dark ? 'text-purple-200/70' : 'text-gray-700'}`}>{reply.text}</p>
         </div>
         <div className="flex items-center gap-3 px-1 mt-1">
           <button
             onClick={() => onLike(reply.id)}
             className={`text-[11px] font-semibold transition-colors duration-150 ${
-              reply.liked
-                ? 'text-fuchsia-500'
-                : dark ? 'text-purple-300/40 hover:text-fuchsia-400' : 'text-gray-400 hover:text-fuchsia-500'
+              reply.liked ? 'text-fuchsia-500' : dark ? 'text-purple-300/40 hover:text-fuchsia-400' : 'text-gray-400 hover:text-fuchsia-500'
             }`}
           >
             {reply.liked ? '❤️' : '🤍'} {reply.likes > 0 ? reply.likes : ''}
@@ -97,8 +88,6 @@ function ReplyComposer({ postId, parentReplyId = null, onSubmit, onCancel, place
     if (e.key === 'Escape' && onCancel) onCancel()
   }
 
-
-  
   return (
     <div className="flex items-start gap-2.5 mt-2">
       <img src={currentUser.avatar} alt={currentUser.name} className="w-7 h-7 rounded-full object-cover shrink-0 mt-1" />
@@ -125,14 +114,9 @@ function ReplyComposer({ postId, parentReplyId = null, onSubmit, onCancel, place
         />
         <div className="flex items-center gap-1.5 shrink-0 pb-0.5">
           {onCancel && (
-            <button
-              onClick={onCancel}
-              className={`p-1 rounded-lg transition-colors ${
-                dark
-                  ? 'text-purple-300/50 hover:text-purple-200 hover:bg-white/8'
-                  : 'text-gray-400 hover:text-gray-600 hover:bg-gray-100'
-              }`}
-            >
+            <button onClick={onCancel} className={`p-1 rounded-lg transition-colors ${
+              dark ? 'text-purple-300/50 hover:text-purple-200 hover:bg-white/8' : 'text-gray-400 hover:text-gray-600 hover:bg-gray-100'
+            }`}>
               <FiX size={14} />
             </button>
           )}
@@ -178,12 +162,9 @@ function ResponseSection({ post, responses, onAddReply, onLikeReply, isSheet = f
           {postResponses.length} {postResponses.length === 1 ? 'Reply' : 'Replies'}
         </button>
         {isSheet && (
-          <button
-            onClick={onClose}
-            className={`p-1.5 rounded-xl transition-colors ${
-              dark ? 'hover:bg-white/8 text-purple-300/50 hover:text-purple-200' : 'hover:bg-gray-100 text-gray-400 hover:text-gray-600'
-            }`}
-          >
+          <button onClick={onClose} className={`p-1.5 rounded-xl transition-colors ${
+            dark ? 'hover:bg-white/8 text-purple-300/50 hover:text-purple-200' : 'hover:bg-gray-100 text-gray-400 hover:text-gray-600'
+          }`}>
             <FiX size={16} />
           </button>
         )}
@@ -281,7 +262,6 @@ function PostCardWithResponses({ post, responses, onAddReply, onLikeReply, onEdi
     }`}>
       <PostCard post={post} onEdit={onEdit} onDelete={onDelete} />
 
-      {/* Reply trigger bar */}
       <div className={`flex items-center gap-3 px-4 py-2 border-t transition-colors duration-500 ${
         dark ? 'border-white/8 bg-white/3' : 'border-gray-100 bg-gray-50/50'
       }`}>
@@ -289,8 +269,6 @@ function PostCardWithResponses({ post, responses, onAddReply, onLikeReply, onEdi
           {(responses[post.id] || []).length}{' '}
           {(responses[post.id] || []).length === 1 ? 'reply' : 'replies'}
         </span>
-
-        {/* Mobile: bottom sheet */}
         <button
           onClick={() => setShowSheet(true)}
           className={`ml-auto flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-xl transition-all duration-150 sm:hidden ${
@@ -299,8 +277,6 @@ function PostCardWithResponses({ post, responses, onAddReply, onLikeReply, onEdi
         >
           <LuMessageSquareText size={13} /> Reply
         </button>
-
-        {/* Desktop: inline toggle */}
         <button
           onClick={() => setShowInline(v => !v)}
           className={`ml-auto hidden sm:flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-xl transition-all duration-150 ${
@@ -388,7 +364,7 @@ export default function MainFeed({ activeView, onViewChange, activeCategory }) {
   if (activeView === 'profile') return <ProfilePage onBack={() => onViewChange('feed')} />
 
   if (activeView === 'inbox') return (
-    <div className={`flex-1 h-screen flex items-center justify-center transition-colors duration-500 ${dark ? 'bg-[#0f0a1e]' : 'bg-white'}`}>
+    <div className={`flex-1 flex items-center justify-center transition-colors duration-500 ${dark ? 'bg-[#0f0a1e]' : 'bg-white'}`}>
       <div className="text-center">
         <div className="w-16 h-16 rounded-2xl mx-auto mb-4 flex items-center justify-center" style={{ background: 'var(--gradient-qriblik)' }}>
           <FiBell size={28} className="text-white" />
@@ -400,7 +376,7 @@ export default function MainFeed({ activeView, onViewChange, activeCategory }) {
   )
 
   if (activeView === 'settings') return (
-    <div className={`flex-1 h-screen flex items-center justify-center transition-colors duration-500 ${dark ? 'bg-[#0f0a1e]' : 'bg-white'}`}>
+    <div className={`flex-1 flex items-center justify-center transition-colors duration-500 ${dark ? 'bg-[#0f0a1e]' : 'bg-white'}`}>
       <div className="text-center">
         <div className="w-16 h-16 rounded-2xl mx-auto mb-4 flex items-center justify-center" style={{ background: 'var(--gradient-qriblik)' }}>
           <FiPlus size={28} className="text-white" />
@@ -413,155 +389,178 @@ export default function MainFeed({ activeView, onViewChange, activeCategory }) {
 
   // ── Feed view ──────────────────────────────────────────────────────────────
   return (
-    <div className={`flex-1 h-screen flex flex-col overflow-y-auto pb-20 md:pb-0 pt-[60px] md:pt-0 transition-colors duration-500 ${
+    <div className={`flex-1 min-h-0 flex flex-col transition-colors duration-500 ${
       dark ? 'bg-[#0f0a1e]' : 'bg-white'
     }`}>
 
-      {/* TOP BAR */}
-      <header className={`sticky top-0 z-40 border-b px-4 sm:px-6 py-3 transition-colors duration-500 ${
+      {/* ═══════════════════════════════════════════════════════
+          SEARCH BAR — fixed على الموبايل، sticky على الـ desktop
+          يظهر دائماً فوق المحتوى عند الـ scroll
+          ═══════════════════════════════════════════════════════ */}
+
+      {/* موبايل: fixed بحيث يبقى ثابتاً عند الـ scroll */}
+      <header className={`fixed top-[52px] left-0 right-0 z-40 flex items-center gap-2 px-3 py-2 border-b md:hidden transition-colors duration-500 ${
+        dark ? 'bg-[#0d0719]/95 border-white/5 backdrop-blur-md' : 'bg-white/95 border-gray-100 backdrop-blur-sm'
+      }`}>
+        <div className="flex-1 relative">
+          <FiSearch size={14} className={`absolute left-2.5 top-1/2 -translate-y-1/2 ${dark ? 'text-purple-300/40' : 'text-gray-400'}`} />
+          <input
+            type="text"
+            placeholder="Search neighborhood posts…"
+            className={`w-full pl-8 pr-3 py-1.5 rounded-xl border text-sm outline-none transition-all duration-200 ${
+              dark
+                ? 'bg-white/5 border-white/8 text-purple-100 placeholder-purple-300/30 focus:border-fuchsia-500/50'
+                : 'bg-gray-50 border-gray-200 text-gray-700 placeholder-gray-400 focus:border-[#8B3FDE]'
+            }`}
+          />
+        </div>
+        <button
+          onClick={() => { setEditPost(null); setShowCreatePost(true) }}
+          className="flex items-center justify-center w-9 h-9 rounded-xl text-white shrink-0 transition-all active:scale-95"
+          style={{ background: 'var(--gradient-qriblik)' }}
+        >
+          <FiPlus size={18} strokeWidth={2.5} />
+        </button>
+        <button
+          onClick={handleBellClick}
+          className={`relative p-1.5 rounded-xl shrink-0 ${dark ? 'text-purple-300/60' : 'text-gray-500'}`}
+        >
+          <FiBell size={18} />
+          {notifCount > 0 && <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full ring-2 ring-white" />}
+        </button>
+        <button
+          onClick={() => onViewChange('profile')}
+          className="shrink-0"
+        >
+          <div className="p-[2px] rounded-full" style={{ background: 'var(--gradient-qriblik)' }}>
+            <img src={currentUser.avatar} alt={currentUser.name} className="w-7 h-7 rounded-full object-cover block" />
+          </div>
+        </button>
+      </header>
+
+      {/* desktop: sticky header كما كان */}
+      <header className={`hidden md:flex sticky top-0 z-40 border-b px-6 py-3 items-center gap-4 transition-colors duration-500 ${
         dark ? 'bg-[#0d0719]/95 border-white/5 backdrop-blur-md' : 'bg-white border-gray-100'
       }`}>
-        <div className="flex items-center gap-3 sm:gap-4">
-
-          {/* Search */}
-          <div className="flex-1 relative">
-            <FiSearch
-              size={16}
-              className={`absolute left-3 top-1/2 -translate-y-1/2 ${dark ? 'text-purple-300/40' : 'text-gray-400'}`}
-            />
-            <input
-              type="text"
-              placeholder="Search neighborhood posts…"
-              className={`w-full pl-9 pr-4 py-2 rounded-xl border text-sm outline-none transition-all duration-200 ${
-                dark
-                  ? 'bg-white/5 border-white/8 text-purple-100 placeholder-purple-300/30 focus:border-fuchsia-500/50 focus:bg-white/8'
-                  : 'bg-gray-50 border-gray-200 text-gray-700 placeholder-gray-400 focus:border-[#8B3FDE] focus:bg-white focus:shadow-sm'
-              }`}
-            />
-          </div>
-
-          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-            {/* Post button */}
-            <button
-              onClick={() => { setEditPost(null); setShowCreatePost(true) }}
-              className="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl text-white text-sm font-semibold transition-all duration-150 hover:opacity-90 active:scale-95"
-              style={{ background: 'var(--gradient-qriblik)' }}
-            >
-              <FiPlus size={16} strokeWidth={2.5} />
-              <span className="hidden sm:inline">Post Something</span>
-            </button>
-
-            {/* Bell */}
-            <button
-              onClick={handleBellClick}
-              className={`relative p-2 rounded-xl transition-colors duration-150 ${
-                dark
-                  ? 'text-purple-300/60 hover:bg-white/8 hover:text-purple-100'
-                  : 'text-gray-500 hover:bg-gray-100 hover:text-gray-800'
-              }`}
-            >
-              <FiBell size={20} />
-              {notifCount > 0 && (
-                <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full ring-2 ring-white" />
-              )}
-            </button>
-
-            {/* User */}
-            <button
-              onClick={() => onViewChange('profile')}
-              className={`flex items-center gap-2.5 pl-2 pr-3 py-1.5 rounded-xl border transition-all duration-150 active:scale-95 ${
-                dark
-                  ? 'hover:bg-white/5 border-white/8 hover:border-fuchsia-500/30'
-                  : 'hover:bg-gray-50 border-gray-100 hover:border-[#8B3FDE40]'
-              }`}
-            >
-              <div className="p-[2px] rounded-full shrink-0" style={{ background: 'var(--gradient-qriblik)' }}>
-                <img src={currentUser.avatar} alt={currentUser.name} className="w-7 h-7 rounded-full object-cover block" />
+        <div className="flex-1 relative">
+          <FiSearch size={16} className={`absolute left-3 top-1/2 -translate-y-1/2 ${dark ? 'text-purple-300/40' : 'text-gray-400'}`} />
+          <input
+            type="text"
+            placeholder="Search neighborhood posts…"
+            className={`w-full pl-9 pr-4 py-2 rounded-xl border text-sm outline-none transition-all duration-200 ${
+              dark
+                ? 'bg-white/5 border-white/8 text-purple-100 placeholder-purple-300/30 focus:border-fuchsia-500/50 focus:bg-white/8'
+                : 'bg-gray-50 border-gray-200 text-gray-700 placeholder-gray-400 focus:border-[#8B3FDE] focus:bg-white focus:shadow-sm'
+            }`}
+          />
+        </div>
+        <div className="flex items-center gap-3 shrink-0">
+          <button
+            onClick={() => { setEditPost(null); setShowCreatePost(true) }}
+            className="flex items-center gap-2 px-4 py-2 rounded-xl text-white text-sm font-semibold transition-all duration-150 hover:opacity-90 active:scale-95"
+            style={{ background: 'var(--gradient-qriblik)' }}
+          >
+            <FiPlus size={16} strokeWidth={2.5} /> Post Something
+          </button>
+          <button
+            onClick={handleBellClick}
+            className={`relative p-2 rounded-xl transition-colors duration-150 ${
+              dark ? 'text-purple-300/60 hover:bg-white/8 hover:text-purple-100' : 'text-gray-500 hover:bg-gray-100 hover:text-gray-800'
+            }`}
+          >
+            <FiBell size={20} />
+            {notifCount > 0 && <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full ring-2 ring-white" />}
+          </button>
+          <button
+            onClick={() => onViewChange('profile')}
+            className={`flex items-center gap-2.5 pl-2 pr-3 py-1.5 rounded-xl border transition-all duration-150 active:scale-95 ${
+              dark ? 'hover:bg-white/5 border-white/8 hover:border-fuchsia-500/30' : 'hover:bg-gray-50 border-gray-100 hover:border-[#8B3FDE40]'
+            }`}
+          >
+            <div className="p-[2px] rounded-full shrink-0" style={{ background: 'var(--gradient-qriblik)' }}>
+              <img src={currentUser.avatar} alt={currentUser.name} className="w-7 h-7 rounded-full object-cover block" />
+            </div>
+            <div className="text-left">
+              <p className={`text-xs font-semibold leading-tight ${dark ? 'text-purple-100' : 'text-gray-800'}`}>{currentUser.name}</p>
+              <div className="flex items-center gap-1">
+                <FiMapPin size={9} style={{ color: '#C837AB' }} />
+                <p className={`text-[10px] leading-tight ${dark ? 'text-purple-300/40' : 'text-gray-400'}`}>{currentUser.neighborhood}</p>
               </div>
-              <div className="text-left hidden sm:block">
-                <p className={`text-xs font-semibold leading-tight ${dark ? 'text-purple-100' : 'text-gray-800'}`}>
-                  {currentUser.name}
-                </p>
-                <div className="flex items-center gap-1">
-                  <FiMapPin size={9} style={{ color: '#C837AB' }} />
-                  <p className={`text-[10px] leading-tight ${dark ? 'text-purple-300/40' : 'text-gray-400'}`}>
-                    {currentUser.neighborhood}
-                  </p>
-                </div>
-              </div>
-            </button>
-          </div>
+            </div>
+          </button>
         </div>
       </header>
 
-      {/* FEED MAIN */}
-      <main className="flex-1 p-4 sm:p-6 lg:p-8 w-full">
-        <div className="flex items-center justify-between mb-6">
-          <div>
-            <h1
-              className="text-xl sm:text-2xl font-bold"
-              style={{ background: 'var(--gradient-qriblik)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}
-            >
-              {CATEGORY_MAP[activeCategory] || 'Home Feed'}
-            </h1>
-            <p className={`text-sm mt-0.5 ${dark ? 'text-purple-300/40' : 'text-gray-400'}`}>
-              {filteredPosts.length} {activeCategory ? 'posts in this category' : 'posts in your neighborhood'}
-            </p>
-          </div>
-          <div className={`flex items-center gap-2 text-sm ${dark ? 'text-purple-300/50' : 'text-gray-500'}`}>
-            <span className="hidden sm:inline">Sort by:</span>
-            <select
-              className={`font-semibold bg-transparent border-none outline-none cursor-pointer text-xs sm:text-sm ${
-                dark ? 'text-fuchsia-400' : 'text-[#8B3FDE]'
-              }`}
-            >
-              <option>Most Recent</option>
-              <option>Most Liked</option>
-              <option>Most Commented</option>
-            </select>
-          </div>
-        </div>
-
-        <div className="h-[2px] rounded-full mb-6" style={{ background: 'var(--gradient-qriblik)', opacity: 0.3 }} />
-
-        {filteredPosts.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-20">
-            <div className="w-16 h-16 rounded-2xl mb-4 flex items-center justify-center" style={{ background: 'rgba(139,63,222,0.08)' }}>
-              <FiSearch size={28} style={{ color: '#8B3FDE' }} />
+      {/* ═══════════════════════════════════════════════════════
+          SCROLLABLE CONTENT
+          pt-[108px]: 52px (شريط Qriblik) + 52px (شريط Search) + 4px gap
+          على الموبايل فقط — الـ desktop لا يحتاج padding لأن الـ header sticky
+          ═══════════════════════════════════════════════════════ */}
+      <div className="flex-1 overflow-y-auto pb-20 md:pb-0 pt-[108px] md:pt-0">
+        <main className="p-4 sm:p-6 lg:p-8 w-full">
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <h1
+                className="text-xl sm:text-2xl font-bold"
+                style={{ background: 'var(--gradient-qriblik)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}
+              >
+                {CATEGORY_MAP[activeCategory] || 'Home Feed'}
+              </h1>
+              <p className={`text-sm mt-0.5 ${dark ? 'text-purple-300/40' : 'text-gray-400'}`}>
+                {filteredPosts.length} {activeCategory ? 'posts in this category' : 'posts in your neighborhood'}
+              </p>
             </div>
-            <p className={`font-black text-lg ${dark ? 'text-purple-50' : 'text-gray-900'}`}>No posts in this category yet</p>
-            <p className={`text-sm mt-1 ${dark ? 'text-purple-300/50' : 'text-gray-400'}`}>Be the first to post something!</p>
-            <button
-              onClick={() => { setEditPost(null); setShowCreatePost(true) }}
-              className="mt-4 px-5 py-2.5 rounded-xl text-white text-sm font-bold transition-opacity hover:opacity-90"
-              style={{ background: 'var(--gradient-qriblik)' }}
-            >
-              Create Post
-            </button>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_30%] gap-4">
-            <div className="flex flex-col gap-5">
-              {filteredPosts.map(post => (
-                <PostCardWithResponses
-                  key={post.id}
-                  post={post}
-                  responses={responses}
-                  onAddReply={handleAddReply}
-                  onLikeReply={handleLikeReply}
-                  onEdit={() => { setEditPost(post); setShowCreatePost(true) }}
-                  onDelete={() => handleDelete(post.id)}
-                />
-              ))}
+            <div className={`flex items-center gap-2 text-sm ${dark ? 'text-purple-300/50' : 'text-gray-500'}`}>
+              <span className="hidden sm:inline">Sort by:</span>
+              <select className={`font-semibold bg-transparent border-none outline-none cursor-pointer text-xs sm:text-sm ${dark ? 'text-fuchsia-400' : 'text-[#8B3FDE]'}`}>
+                <option>Most Recent</option>
+                <option>Most Liked</option>
+                <option>Most Commented</option>
+              </select>
             </div>
-            <div className="hidden lg:block">
-              <div className="sticky top-[72px]">
-                <OverviewCard />
+          </div>
+
+          <div className="h-[2px] rounded-full mb-6" style={{ background: 'var(--gradient-qriblik)', opacity: 0.3 }} />
+
+          {filteredPosts.length === 0 ? (
+            <div className="flex flex-col items-center justify-center py-20">
+              <div className="w-16 h-16 rounded-2xl mb-4 flex items-center justify-center" style={{ background: 'rgba(139,63,222,0.08)' }}>
+                <FiSearch size={28} style={{ color: '#8B3FDE' }} />
+              </div>
+              <p className={`font-black text-lg ${dark ? 'text-purple-50' : 'text-gray-900'}`}>No posts in this category yet</p>
+              <p className={`text-sm mt-1 ${dark ? 'text-purple-300/50' : 'text-gray-400'}`}>Be the first to post something!</p>
+              <button
+                onClick={() => { setEditPost(null); setShowCreatePost(true) }}
+                className="mt-4 px-5 py-2.5 rounded-xl text-white text-sm font-bold transition-opacity hover:opacity-90"
+                style={{ background: 'var(--gradient-qriblik)' }}
+              >
+                Create Post
+              </button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_30%] gap-4">
+              <div className="flex flex-col gap-5">
+                {filteredPosts.map(post => (
+                  <PostCardWithResponses
+                    key={post.id}
+                    post={post}
+                    responses={responses}
+                    onAddReply={handleAddReply}
+                    onLikeReply={handleLikeReply}
+                    onEdit={() => { setEditPost(post); setShowCreatePost(true) }}
+                    onDelete={() => handleDelete(post.id)}
+                  />
+                ))}
+              </div>
+              <div className="hidden lg:block">
+                <div className="sticky top-[72px]">
+                  <OverviewCard />
+                </div>
               </div>
             </div>
-          </div>
-        )}
-      </main>
+          )}
+        </main>
+      </div>
 
       {/* OVERLAYS */}
       {showNotifications && <NotificationsPanel onClose={() => setShowNotifications(false)} />}
