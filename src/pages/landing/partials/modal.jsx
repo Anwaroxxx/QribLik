@@ -48,7 +48,7 @@ export default function QribLikModal() {
       <AnimatePresence>
         {open && (
           <>
-            {/* Backdrop */}
+
             <motion.div
               key="backdrop"
               initial={{ opacity: 0 }}
@@ -64,10 +64,9 @@ export default function QribLikModal() {
               }}
             />
 
-            {/* Centering wrapper */}
             <div className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none">
 
-              {/* Modal card */}
+
               <motion.div
                 key="modal"
                 initial={{ opacity: 0, scale: 0.88, y: 24 }}
@@ -79,7 +78,6 @@ export default function QribLikModal() {
                   width: "min(480px, 92vw)",
                   padding: "48px 44px 40px",
                   pointerEvents: "auto",
-                  // ── card background switches ──
                   background: dark
                     ? "rgba(20, 8, 40, 0.95)"
                     : "rgba(255, 255, 255, 0.92)",
@@ -94,7 +92,7 @@ export default function QribLikModal() {
                   transition: "background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease",
                 }}
               >
-                {/* Close button */}
+
                 <motion.button
                   whileTap={{ scale: 0.9 }}
                   onClick={() => setOpen(false)}
@@ -111,7 +109,7 @@ export default function QribLikModal() {
                   </svg>
                 </motion.button>
 
-                {/* Top gradient bar */}
+
                 <motion.div
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
@@ -157,7 +155,7 @@ export default function QribLikModal() {
                     letterSpacing: "-0.03em",
                     lineHeight: 1.1,
                     marginBottom: 14,
-                    // ── heading color switches ──
+
                     color: dark ? "#f5f0ff" : "#1a0a2e",
                     transition: "color 0.5s ease",
                   }}
@@ -166,7 +164,7 @@ export default function QribLikModal() {
                   <span className="gradient-text">QribLik</span>
                 </motion.h2>
 
-                {/* Subtext */}
+
                 <motion.p
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -185,7 +183,6 @@ export default function QribLikModal() {
                   communities. Let's go!
                 </motion.p>
 
-                {/* Divider */}
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -200,7 +197,7 @@ export default function QribLikModal() {
                   }}
                 />
 
-                {/* CTA button */}
+
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}

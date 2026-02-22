@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Image } from "../../../constant/images/images-activité";
 import { Link } from "react-router-dom";
 import { useTheme } from "../../../contexts/ThemeContext";
+import { usersImages } from "../../../constant/images/images-users";
 
 const images = [
     Image.activite3,
@@ -62,9 +63,8 @@ export default function HeroSection() {
             </div>
 
             <div className="relative z-10 w-full max-w-6xl mx-auto px-12 py-20 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                {/* LEFT */}
                 <div className="flex flex-col">
-                    {/* Badge */}
+
                     <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-8 w-fit" style={{ background: dark ? "rgba(139,63,222,0.2)" : "white", border: dark ? "1px solid rgba(139,63,222,0.4)" : "1px solid #ede6ff", boxShadow: dark ? "0 0 12px rgba(139,63,222,0.15)" : "0 1px 4px rgba(139,63,222,0.1)" }}>
                         <span className="relative flex w-2 h-2">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#8B3FDE] opacity-60" />
@@ -73,7 +73,6 @@ export default function HeroSection() {
                         <span className="text-xs font-semibold tracking-wide text-[#8B3FDE]">Connecting 5,000+ Neighbors</span>
                     </div>
 
-                    {/* Headline */}
                     <h1 className="text-5xl xl:text-[66px] font-black leading-[1.06] tracking-tight mb-6 transition-colors duration-500" style={{ color: dark ? "#f1e9ff" : "#1a1410" }}>
                         Help is{" "}
                         <span className="relative inline-block">
@@ -102,7 +101,7 @@ export default function HeroSection() {
                     </div>
                 </div>
 
-                {/* RIGHT */}
+                {/* right */}
                 <div className="relative h-[540px] flex items-center justify-center">
                     <div className="absolute top-[20%] left-[20%] w-[60%] h-[60%] rounded-full bg-gradient-to-br from-[#8B3FDE]/20 to-[#FF6B35]/10 blur-3xl pointer-events-none" />
                     <div className="relative w-full h-full">
@@ -158,8 +157,8 @@ export default function HeroSection() {
                     {/* Neighbors badge */}
                     <div className="absolute bottom-[5%] right-0 z-50 rounded-2xl px-4 py-3 shadow-xl flex items-center gap-3 transition-colors duration-500" style={{ background: dark ? "rgba(26,10,46,0.95)" : "white", border: dark ? "1px solid rgba(139,63,222,0.3)" : "1px solid #f0e8ff", boxShadow: dark ? "0 8px 32px rgba(139,63,222,0.2)" : "0 8px 24px rgba(139,63,222,0.1)" }}>
                         <div className="flex -space-x-2">
-                            {["bg-gradient-to-br from-[#8B3FDE] to-[#C837AB]", "bg-gradient-to-br from-[#C837AB] to-[#FF6B35]", "bg-gradient-to-br from-[#FF6B35] to-[#8B3FDE]"].map((g, i) => (
-                                <span key={i} className={`w-7 h-7 rounded-full ${g} border-2 flex items-center justify-center text-white text-[9px] font-bold`} style={{ borderColor: dark ? "#1a0a2e" : "white" }}>{["A", "B", "C"][i]}</span>
+                            {[usersImages.user2, usersImages.girl3, usersImages.user29].map((src, i) => (
+                                <img key={i} src={src} alt="neighbor" className="w-7 h-7 rounded-full object-cover border-2" style={{ borderColor: dark ? "#1a0a2e" : "white" }} />
                             ))}
                         </div>
                         <div>
