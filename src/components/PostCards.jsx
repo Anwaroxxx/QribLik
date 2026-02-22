@@ -18,11 +18,11 @@ const categoryStyles = {
   "TECH HELP":    { bg: "rgba(255,107,53,0.08)",  color: "#FF6B35", border: "rgba(255,107,53,0.25)"  },
   CHILDCARE:      { bg: "rgba(139,63,222,0.08)",  color: "#8B3FDE", border: "rgba(139,63,222,0.25)"  },
 };
-const defaultBadge = { bg: "rgba(139,63,222,0.08)", color: "#8B3FDE", border: "rgba(139,63,222,0.25)" }; 
+const defaultBadge = { bg: "rgba(139,63,222,0.08)", color: "#8B3FDE", border: "rgba(139,63,222,0.25)" };
 
 const ME = "Alex Neighbor";
 
-export default function PostCard({ post, onEdit, onDelete }) { 
+export default function PostCard({ post, onEdit, onDelete }) {
   const { author, neighborhood, avatar, timeAgo, category, title, description, likes, comments, image } = post;
   const badge = categoryStyles[category] || defaultBadge;
   const isMyPost = author === ME;

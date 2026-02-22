@@ -6,11 +6,11 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 import { sendMessageToAI } from "../services/chatbot";
 import { useTheme } from "../contexts/ThemeContext";
 
-function Modale3({ onClose }) {
+function Modale3({ onClose, initialUser = null }) {
   const { dark } = useTheme();
 
   const firstFourUsers = UsersData.slice(0, 3);
-  const [selectedUser, setSelectedUser] = useState(null);
+const [selectedUser, setSelectedUser] = useState(initialUser || null);
 
   const [messages, setMessages] = useState(() => {
     const initialMessages = {};
@@ -20,9 +20,11 @@ function Modale3({ onClose }) {
           text: `Hi I'm ${user.name}! 👋`,
           sender: "them",
           time: "10:00 AM",
+          timestamp: 1,
         },
       ];
     });
+
     initialMessages["ai"] = [
       {
         text: "Hello 👋 How can I help you today?",
@@ -30,23 +32,25 @@ function Modale3({ onClose }) {
         time: "Now",
       },
     ];
-    return initialMessages;
-  });
 
-  const [input, setInput] = useState("");
+
+    return initialMessages;
+  }); const [input, setInput] = useState("");
 
   const sendMessage = async () => {
     if (!input.trim() || !selectedUser) return;
 
     const currentInput = input;
+    const now = Date.now();
 
     const userMessage = {
-      text: currentInput,
+      text: input,
       sender: "me",
-      time: new Date().toLocaleTimeString([], {
+      time: new Date(now).toLocaleTimeString([], {
         hour: "2-digit",
         minute: "2-digit",
       }),
+      timestamp: now,
     };
 
     setMessages((prev) => ({
@@ -76,7 +80,11 @@ function Modale3({ onClose }) {
       console.error("AI error:", error);
     }
   };
-
+  const sortedUsers = [...UsersData].sort((a, b) => {
+    const lastA = messages[a.id]?.slice(-1)[0]?.timestamp || 0;
+    const lastB = messages[b.id]?.slice(-1)[0]?.timestamp || 0;
+    return lastB - lastA;
+  });
   return createPortal(
     <div
       className="fixed inset-0 z-[9999] flex items-end justify-end"
@@ -150,7 +158,7 @@ function Modale3({ onClose }) {
         {/* USER LIST */}
         {!selectedUser ? (
           <div className="flex flex-col gap-6 overflow-y-auto pr-2 h-[60vh]">
-            {firstFourUsers.map((user) => (
+            {sortedUsers.slice(0, 3).map((user) => (
               <div
                 key={user.id}
                 onClick={() => setSelectedUser(user)}
@@ -207,7 +215,9 @@ function Modale3({ onClose }) {
                 src={
                   selectedUser.id === "ai"
                     ? "https://ui-avatars.com/api/?name=AI"
-                    : usersImages[selectedUser.avatar]
+                    : selectedUser.avatar?.startsWith("http")
+                      ? selectedUser.avatar
+                      : usersImages[selectedUser.avatar]
                 }
                 className="w-10 h-10 rounded-full object-cover"
               />
