@@ -6,14 +6,14 @@
 <br/><br/>
 
 > **Connect Locally. Exchange Freely.**
-> 
+>
 > A community-driven platform where neighbors discover each other — trade skills, share services, and build real local connections through an interactive map, real-time messaging, and AI-powered publishing.
 
 <br/>
 
 [![Version](https://img.shields.io/badge/version-0.0.0-6366f1?style=for-the-badge&labelColor=0f172a)](.)
 [![Status](https://img.shields.io/badge/status-active_development-22c55e?style=for-the-badge&labelColor=0f172a)](.)
-[![License](https://img.shields.io/badge/license-MIT-f59e0b?style=for-the-badge&labelColor=0f172a)](./LICENSE)
+[![License](https://img.shields.io/badge/license-Proprietary-ef4444?style=for-the-badge&labelColor=0f172a)](./LICENSE)
 [![Deployed on Vercel](https://img.shields.io/badge/deployed_on-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white&labelColor=0f172a)](https://vercel.com)
 
 </div>
@@ -71,7 +71,7 @@
     </td>
     <td width="50%">
       <h3>
-        <img src="https://cdn.simpleicons.org/openai/ffffff" width="18" height="18" />
+        <img src="https://cdn.simpleicons.org/openai/10a37f" width="18" height="18" />
         &nbsp; AI Post Creator
       </h3>
       Stuck writing your listing? An integrated AI assistant guides your post creation — faster publishing, better results.
@@ -80,7 +80,7 @@
   <tr>
     <td>
       <h3>
-        <img src="https://cdn.simpleicons.org/googlemessages/34A853" width="18" height="18" />
+        <img src="https://cdn.simpleicons.org/telegram/2CA5E0" width="18" height="18" />
         &nbsp; Real-Time Messaging
       </h3>
       Instant DMs between users. A chatbot assistant lives inside your inbox for quick support — no delays, no dropped responses.
@@ -96,50 +96,20 @@
   <tr>
     <td>
       <h3>
-        <img src="https://cdn.simpleicons.org/theme/8b5cf6" width="18" height="18" />
+        <img src="https://cdn.simpleicons.org/googlechrome/4285F4" width="18" height="18" />
         &nbsp; Dark Mode — Everywhere
       </h3>
       Full dark mode rolled out across every page, every component, every state. No half-measures.
     </td>
     <td>
       <h3>
-        <img src="https://cdn.simpleicons.org/googlemobileads/4285F4" width="18" height="18" />
+        <img src="https://cdn.simpleicons.org/materialdesign/757575" width="18" height="18" />
         &nbsp; Fully Responsive
       </h3>
       From Login to Support, from the Map to Messages — every screen adapts. Pixel-perfect on any device.
     </td>
   </tr>
 </table>
-
-<br/>
-
----
-
-<br/>
-
-## Quick Start
-
-```bash
-# Clone the repository
-git clone https://github.com/Anwaroxxx/qriblik.git
-cd qriblik
-
-# Install dependencies
-npm install
-
-# Launch development server
-npm run dev
-# → http://localhost:5173
-```
-
-<br/>
-
-| Script | Description |
-|--------|-------------|
-| `npm run dev` | Start local dev server with hot reload |
-| `npm run build` | Compile & bundle for production |
-| `npm run preview` | Preview the production build locally |
-| `npm run lint` | Run ESLint across the codebase |
 
 <br/>
 
@@ -367,13 +337,60 @@ npm run dev
 
 ## What We Learned
 
-Building Qriblik wasn't just about shipping features — it was a lesson in what real teamwork looks like under pressure.
+This project was never just about building a web app. It was about learning how to build things *together* — which turned out to be the harder challenge.
 
-We learned that **a clean git history is a love letter to your teammates**, that **responsiveness is not an afterthought**, and that the hardest bugs are always the ones that only show up in production.
+**Working as a team is a skill of its own.** Eight people, eight opinions, eight different ways of writing code. We had to agree on conventions, on structure, on what "done" actually means. That kind of alignment doesn't come automatically — it takes conversations, compromises, and a lot of patience. We learned that the best teams aren't the ones who never disagree, they're the ones who disagree well.
 
-We debugged things we didn't know could break. We argued about design decisions at midnight. We rewrote components three times because "good enough" wasn't the standard we held ourselves to.
+**Git conflicts are just people conflicts in disguise.** When two teammates modify the same file, git shows you a merge conflict. But really, what it's showing you is two people who both cared enough to work on the same thing. We learned to resolve those conflicts calmly — read both versions, understand what each person was trying to do, and find the solution that respects both. On the code side and the human side.
 
-If you're reading this as a future contributor — welcome. The codebase is yours to improve.
+**Managing chaos is a real discipline.** There were days where three things were broken at once, someone's branch was two days behind, and the deadline was the next morning. We learned to stay calm under pressure, triage problems by priority, divide responsibilities clearly, and trust each other to handle their part. Panic is expensive. Focus is free.
+
+**Communication saves more time than any tool.** A two-minute conversation about what a component is supposed to do saves two hours of debugging why it doesn't. We got better at writing clear commit messages, asking precise questions, and flagging blockers early instead of suffering in silence.
+
+**Ownership matters.** When everyone is responsible for everything, nothing gets done. When each person owns a clear piece, things ship. We learned to define boundaries, respect each other's territory, and ask before touching someone else's work.
+
+**Bugs are the best teachers.** The chatbot that refused to respond. The map card that wouldn't redirect. The scroll that locked on profile. Every single bug forced us to understand our own code more deeply than any tutorial ever could. Debugging is where you stop following instructions and start actually thinking.
+
+**The product is always bigger than any one of us.** There were moments where someone's feature had to wait, or be changed, or removed entirely — because it wasn't what the product needed. We learned to detach from our own work just enough to ask "does this actually make Qriblik better?" That's a hard question when you spent two days on something. But it's the right one.
+
+Qriblik is the result of all of that. Not eight people writing code in the same repo — eight people becoming better developers, better collaborators, and better at shipping real things into the world.
+
+<br/>
+
+---
+
+<br/>
+
+## License
+
+<br/>
+
+<div align="center">
+
+[![License](https://img.shields.io/badge/PROPRIETARY%20%E2%80%94%20ALL%20RIGHTS%20RESERVED-ef4444?style=for-the-badge&labelColor=0f172a&logo=gitbook&logoColor=white)](.)
+
+</div>
+
+<br/>
+
+**Copyright © 2025 Anwar Azarzou & the Qriblik Team. All rights reserved.**
+
+This repository and all of its contents — including but not limited to source code, design assets, UI components, business logic, configuration files, and documentation — are the exclusive intellectual property of the Qriblik team.
+
+**The following are strictly prohibited without prior written permission from the copyright holders:**
+
+- Using, running, or deploying this software in any environment
+- Copying, reproducing, or distributing any part of this codebase
+- Modifying, adapting, translating, or building derivative works
+- Extracting components, logic, designs, or assets for use in other projects
+- Sublicensing, selling, or commercially exploiting any part of this project
+- Reverse engineering or attempting to reconstruct the application's architecture
+
+This repository is made publicly visible **for portfolio and academic presentation purposes only.** Public visibility on GitHub does not constitute an open-source license, a grant of permission, or a waiver of any intellectual property rights.
+
+Unauthorized use of any part of this codebase may constitute copyright infringement and may be subject to legal action under applicable national and international law.
+
+For licensing inquiries or permissions, contact the team lead: **[github.com/Anwaroxxx](https://github.com/Anwaroxxx)**
 
 <br/>
 
@@ -387,7 +404,7 @@ If you're reading this as a future contributor — welcome. The codebase is your
 
 <br/><br/>
 
-<sub>Built in Morocco &nbsp;·&nbsp; 2025 &nbsp;·&nbsp; MIT License</sub>
+<sub>Built in Morocco &nbsp;·&nbsp; 2025 &nbsp;·&nbsp; All Rights Reserved</sub>
 
 <br/>
 
