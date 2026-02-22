@@ -3,8 +3,13 @@ import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { useTheme } from "../contexts/ThemeContext";
 
 // ── Shared profile data (single source of truth) ──────────────────────────────
+
+const storedUser = JSON.parse(localStorage.getItem("qriblikUser"));
+
+
+
 export const initialUser = {
-  name: 'Alex Neighbor',
+  name: storedUser?.name || 'Alex Neighbor',
   username: 'alexneighbor_07',
   neighborhood: 'Sunset District',
   city: 'Casablanca',
