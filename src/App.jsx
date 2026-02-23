@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import "./index.css";
 import { useTheme } from "./contexts/ThemeContext";
 import { useLocation } from "react-router-dom";
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import Landing from "./pages/landing";
 import "./index.css"; 
 import Home from "./pages/Home";
@@ -49,6 +50,7 @@ function App() {
         {shouldShowFotter && <Footer />}
         <SpeedInsights />
       </div>
+      <SpeedInsights />
     </>
   );
 }
