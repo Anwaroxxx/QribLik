@@ -9,14 +9,8 @@ import initialPosts from '../data/posts.json/Posts'
 import { LuMessageSquareText } from 'react-icons/lu'
 import Modale3 from './Modale3'
 import { useTheme } from '../contexts/ThemeContext'
-
-const storedUser = JSON.parse(localStorage.getItem("qriblikUser"));
-
-const currentUser = {
-  name: storedUser?.name || 'Alex Neighbor',
-  neighborhood: storedUser?.neighborhood || 'Sunset District',
-  avatar: storedUser?.avatar || 'https://i.pravatar.cc/150?img=5',
-};
+// ── Single source of truth for user data ──────────────────────────────────────
+import currentUser from '../utils/userUtils'
 
 const CATEGORY_MAP = {
   'ALL':            'Home Feed',
@@ -36,7 +30,7 @@ function ReplyBubble({ reply, onLike }) {
   return (
     <div className="flex items-start gap-2.5 group">
       <img
-        src={reply.avatar || `https://i.pravatar.cc/40?u=${reply.author}`}
+        src={reply.avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(reply.author)}&background=8B3FDE&color=fff&size=40&bold=true`}
         alt={reply.author}
         className="w-7 h-7 rounded-full object-cover shrink-0 mt-0.5"
       />
@@ -393,12 +387,7 @@ export default function MainFeed({ activeView, onViewChange, activeCategory }) {
       dark ? 'bg-[#0f0a1e]' : 'bg-white'
     }`}>
 
-      {/* ═══════════════════════════════════════════════════════
-          SEARCH BAR — fixed على الموبايل، sticky على الـ desktop
-          يظهر دائماً فوق المحتوى عند الـ scroll
-          ═══════════════════════════════════════════════════════ */}
-
-      {/* موبايل: fixed بحيث يبقى ثابتاً عند الـ scroll */}
+      {/* Mobile: fixed header */}
       <header className={`fixed top-[52px] left-0 right-0 z-40 flex items-center gap-2 px-3 py-2 border-b md:hidden transition-colors duration-500 ${
         dark ? 'bg-[#0d0719]/95 border-white/5 backdrop-blur-md' : 'bg-white/95 border-gray-100 backdrop-blur-sm'
       }`}>
@@ -428,17 +417,22 @@ export default function MainFeed({ activeView, onViewChange, activeCategory }) {
           <FiBell size={18} />
           {notifCount > 0 && <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full ring-2 ring-white" />}
         </button>
-        <button
-          onClick={() => onViewChange('profile')}
-          className="shrink-0"
-        >
+        {/* ── Profile avatar — reads from currentUser (synced with signup) ── */}
+        <button onClick={() => onViewChange('profile')} className="shrink-0">
           <div className="p-[2px] rounded-full" style={{ background: 'var(--gradient-qriblik)' }}>
-            <img src={currentUser.avatar} alt={currentUser.name} className="w-7 h-7 rounded-full object-cover block" />
+            <img
+              src={currentUser.avatar}
+              alt={currentUser.name}
+              className="w-7 h-7 rounded-full object-cover block bg-purple-200"
+              onError={(e) => {
+                e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(currentUser.name)}&background=8B3FDE&color=fff&size=60&bold=true`
+              }}
+            />
           </div>
         </button>
       </header>
 
-      {/* desktop: sticky header كما كان */}
+      {/* Desktop: sticky header */}
       <header className={`hidden md:flex sticky top-0 z-40 border-b px-6 py-3 items-center gap-4 transition-colors duration-500 ${
         dark ? 'bg-[#0d0719]/95 border-white/5 backdrop-blur-md' : 'bg-white border-gray-100'
       }`}>
@@ -471,6 +465,7 @@ export default function MainFeed({ activeView, onViewChange, activeCategory }) {
             <FiBell size={20} />
             {notifCount > 0 && <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full ring-2 ring-white" />}
           </button>
+          {/* ── Profile button — synced name + avatar ── */}
           <button
             onClick={() => onViewChange('profile')}
             className={`flex items-center gap-2.5 pl-2 pr-3 py-1.5 rounded-xl border transition-all duration-150 active:scale-95 ${
@@ -478,7 +473,14 @@ export default function MainFeed({ activeView, onViewChange, activeCategory }) {
             }`}
           >
             <div className="p-[2px] rounded-full shrink-0" style={{ background: 'var(--gradient-qriblik)' }}>
-              <img src={currentUser.avatar} alt={currentUser.name} className="w-7 h-7 rounded-full object-cover block" />
+              <img
+                src={currentUser.avatar}
+                alt={currentUser.name}
+                className="w-7 h-7 rounded-full object-cover block bg-purple-200"
+                onError={(e) => {
+                  e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(currentUser.name)}&background=8B3FDE&color=fff&size=60&bold=true`
+                }}
+              />
             </div>
             <div className="text-left">
               <p className={`text-xs font-semibold leading-tight ${dark ? 'text-purple-100' : 'text-gray-800'}`}>{currentUser.name}</p>
@@ -491,11 +493,7 @@ export default function MainFeed({ activeView, onViewChange, activeCategory }) {
         </div>
       </header>
 
-      {/* ═══════════════════════════════════════════════════════
-          SCROLLABLE CONTENT
-          pt-[108px]: 52px (شريط Qriblik) + 52px (شريط Search) + 4px gap
-          على الموبايل فقط — الـ desktop لا يحتاج padding لأن الـ header sticky
-          ═══════════════════════════════════════════════════════ */}
+      {/* Scrollable content */}
       <div className="flex-1 overflow-y-auto pb-20 md:pb-0 pt-[108px] md:pt-0">
         <main className="p-4 sm:p-6 lg:p-8 w-full">
           <div className="flex items-center justify-between mb-6">

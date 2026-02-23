@@ -1,42 +1,35 @@
 import { useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { TbHome } from "react-icons/tb";
 import { MdEvent, MdOutlineSportsSoccer, MdSupportAgent } from "react-icons/md";
-import {
-  FaMagnifyingGlass,
-  FaRegUser,
-  FaArrowRightArrowLeft,
-  FaCircleInfo,
-} from "react-icons/fa6";
+import { FaMagnifyingGlass, FaArrowRightArrowLeft, FaCircleInfo } from "react-icons/fa6";
 import { BsStars } from "react-icons/bs";
-import { FiMap } from "react-icons/fi";
-import MapsButton from "./buttonMap";
+import { FiLogOut } from "react-icons/fi";
+import { IoMapOutline } from "react-icons/io5";
 import users from "../data/UserData.json";
 import { useTheme } from "../contexts/ThemeContext";
 import NotificationToast from "./NotificationToast";
+import Modale3 from "./Modale3";
+import currentUser from "../utils/userUtils";
+// ── Your real logo ────────────────────────────────────────────────────────────
+import logo from "../assets/images/logo/our-logo.webp";
 
-// ── Dark Mode Toggle ────────────────────────────────────────────────────────
+/* ─── Dark / Light Toggle ─────────────────────────────────────────────────── */
 function DarkModeToggle() {
   const { dark, toggleDark } = useTheme();
   return (
     <button
       onClick={toggleDark}
       aria-label="Toggle dark mode"
-      className={`relative w-12 h-7 rounded-full border-0 cursor-pointer p-0 transition-all duration-300 ${
-        dark
-          ? "shadow-[0_0_12px_rgba(139,63,222,0.5)]"
-          : "shadow-[0_1px_4px_rgba(0,0,0,0.15)]"
-      }`}
+      className="relative w-11 h-6 rounded-full transition-all duration-300 focus:outline-none"
       style={{
-        background: dark
-          ? "linear-gradient(135deg, #8B3FDE, #C837AB)"
-          : "#e2e8f0",
+        background: dark ? "linear-gradient(135deg,#8B3FDE,#C837AB)" : "rgba(0,0,0,0.12)",
+        boxShadow: dark ? "0 0 12px rgba(200,55,171,0.45)" : "none",
       }}
     >
       <span
-        className={`absolute top-1 w-5 h-5 rounded-full bg-white flex items-center justify-center text-[11px] transition-all duration-300 ${
-          dark ? "left-[calc(100%-1.4rem)]" : "left-1"
-        }`}
+        className="absolute top-0.5 w-5 h-5 rounded-full bg-white shadow-md flex items-center justify-center text-[10px] transition-all duration-300"
+        style={{ left: dark ? "calc(100% - 1.35rem)" : "0.125rem" }}
       >
         {dark ? "🌙" : "☀️"}
       </span>
@@ -44,37 +37,185 @@ function DarkModeToggle() {
   );
 }
 
-function Sidebar({ selectedCategory, setSelectedCategory }) {
+/* ─── Sign-out confirm modal ─────────────────────────────────────────────── */
+function SignOutModal({ onConfirm, onCancel }) {
   const { dark } = useTheme();
-  const [active, setActive] = useState("Home");
+  return (
+    <div
+      className="fixed inset-0 z-[9999] flex items-center justify-center px-4"
+      style={{ backgroundColor: "rgba(0,0,0,0.6)", backdropFilter: "blur(6px)" }}
+      onClick={onCancel}
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="w-full max-w-xs rounded-3xl p-7 shadow-2xl border"
+        style={{
+          background: dark ? "linear-gradient(160deg,#1a0a2e,#150d27)" : "white",
+          borderColor: dark ? "rgba(139,63,222,0.25)" : "rgba(0,0,0,0.06)",
+        }}
+      >
+        <div
+          className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5"
+          style={{ background: "linear-gradient(135deg,#8B3FDE,#C837AB)" }}
+        >
+          <FiLogOut size={22} className="text-white" />
+        </div>
+        <h2 className={`text-lg font-black text-center mb-1 ${dark ? "text-white" : "text-gray-900"}`}>
+          Sign out?
+        </h2>
+        <p className={`text-sm text-center mb-6 ${dark ? "text-purple-300/50" : "text-gray-400"}`}>
+          You'll return to the landing page.
+        </p>
+        <div className="flex gap-3">
+          <button
+            onClick={onCancel}
+            className={`flex-1 py-3 rounded-2xl text-sm font-semibold border transition-colors ${
+              dark ? "border-white/10 text-purple-300 hover:bg-white/5" : "border-gray-200 text-gray-500 hover:bg-gray-50"
+            }`}
+          >
+            Cancel
+          </button>
+          <button
+            onClick={onConfirm}
+            className="flex-1 py-3 rounded-2xl text-sm font-black text-white hover:opacity-90 active:scale-95 transition-all"
+            style={{ background: "linear-gradient(135deg,#8B3FDE,#C837AB)" }}
+          >
+            Sign Out
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
 
-  // ── notification state lifted up, passed to NotificationToast ──
+/* ─── Nav Item ───────────────────────────────────────────────────────────── */
+function NavItem({ icon, label, isActive, onClick }) {
+  const { dark } = useTheme();
+  const [hovered, setHovered] = useState(false);
+  return (
+    <button
+      onClick={onClick}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="relative w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-medium transition-all duration-200 text-left"
+      style={{
+        background: isActive
+          ? dark
+            ? "linear-gradient(135deg,rgba(139,63,222,0.22),rgba(200,55,171,0.14))"
+            : "linear-gradient(135deg,rgba(139,63,222,0.10),rgba(200,55,171,0.06))"
+          : hovered
+          ? dark ? "rgba(255,255,255,0.045)" : "rgba(0,0,0,0.035)"
+          : "transparent",
+        color: isActive ? "#c026d3" : dark ? "rgba(196,172,255,0.6)" : "rgba(60,30,80,0.55)",
+        boxShadow: isActive && dark
+          ? "inset 0 0 0 1px rgba(200,55,171,0.18), 0 2px 14px rgba(139,63,222,0.12)"
+          : isActive ? "inset 0 0 0 1px rgba(139,63,222,0.15)" : "none",
+      }}
+    >
+      {isActive && (
+        <span
+          className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-5 rounded-r-full"
+          style={{ background: "linear-gradient(180deg,#8B3FDE,#C837AB)" }}
+        />
+      )}
+      <span
+        className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 transition-all duration-200"
+        style={{
+          background: isActive
+            ? "linear-gradient(135deg,#8B3FDE22,#C837AB18)"
+            : hovered ? (dark ? "rgba(255,255,255,0.07)" : "rgba(139,63,222,0.07)") : "transparent",
+          color: isActive ? "#c026d3" : "inherit",
+        }}
+      >
+        <span className="text-base leading-none">{icon}</span>
+      </span>
+      <span className="flex-1 truncate">{label}</span>
+    </button>
+  );
+}
+
+/* ─── Map Card ───────────────────────────────────────────────────────────── */
+function MapCard({ onClick }) {
+  const { dark } = useTheme();
+  const [hovered, setHovered] = useState(false);
+  return (
+    <button
+      onClick={onClick}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-medium text-left transition-all duration-200"
+      style={{
+        background: hovered
+          ? dark ? "linear-gradient(135deg,rgba(139,63,222,0.18),rgba(255,107,53,0.12))" : "linear-gradient(135deg,rgba(139,63,222,0.09),rgba(255,107,53,0.06))"
+          : dark ? "rgba(255,255,255,0.03)" : "rgba(139,63,222,0.04)",
+        border: `1px solid ${hovered
+          ? dark ? "rgba(139,63,222,0.35)" : "rgba(139,63,222,0.2)"
+          : dark ? "rgba(255,255,255,0.06)" : "rgba(139,63,222,0.1)"}`,
+        color: dark ? "rgba(196,172,255,0.7)" : "rgba(80,40,120,0.7)",
+        transform: hovered ? "translateX(2px)" : "none",
+      }}
+    >
+      <span
+        className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0"
+        style={{
+          background: hovered ? "linear-gradient(135deg,#8B3FDE,#FF6B35)" : dark ? "rgba(139,63,222,0.15)" : "rgba(139,63,222,0.10)",
+          color: hovered ? "white" : "#8B3FDE",
+          transition: "all 0.2s",
+        }}
+      >
+        <IoMapOutline size={15} />
+      </span>
+      <span className="flex-1">Explore Map</span>
+      <span
+        className="text-[9px] font-black px-1.5 py-0.5 rounded-full"
+        style={{ background: dark ? "rgba(255,107,53,0.15)" : "rgba(255,107,53,0.1)", color: "#FF6B35", border: "1px solid rgba(255,107,53,0.25)" }}
+      >
+        NEW
+      </span>
+    </button>
+  );
+}
+
+/* ─── Section Label ──────────────────────────────────────────────────────── */
+function SectionLabel({ label }) {
+  const { dark } = useTheme();
+  return (
+    <div className="flex items-center gap-2 px-4 pt-2 pb-1">
+      <span
+        className="text-[10px] font-black uppercase tracking-[0.18em]"
+        style={{ color: dark ? "rgba(167,139,250,0.35)" : "rgba(139,63,222,0.4)" }}
+      >
+        {label}
+      </span>
+      <div
+        className="flex-1 h-px"
+        style={{ background: dark ? "linear-gradient(90deg,rgba(139,63,222,0.2),transparent)" : "linear-gradient(90deg,rgba(139,63,222,0.12),transparent)" }}
+      />
+    </div>
+  );
+}
+
+/* ─── Main Sidebar ───────────────────────────────────────────────────────── */
+function Sidebar({ selectedCategory, setSelectedCategory, onViewChange }) {
+  const { dark }  = useTheme();
+  const navigate  = useNavigate();
+  const [active,       setActive]       = useState("Home");
   const [notification, setNotification] = useState(null);
-  const [animate, setAnimate]           = useState(false);
-  const [progress, setProgress]         = useState(0);
+  const [animate,      setAnimate]      = useState(false);
+  const [progress,     setProgress]     = useState(0);
+  const [connectUser,  setConnectUser]  = useState(null);
+  const [showSignOut,  setShowSignOut]  = useState(false);
 
   const queueRef    = useRef([]);
   const intervalRef = useRef(null);
   const timeoutRef  = useRef(null);
 
-  // ── STYLES ────────────────────────────────────────────────────────────────
-  const itemStyle = `flex items-center gap-3 px-5 py-4 rounded-2xl cursor-pointer transition-all duration-300 text-[15px] relative`;
-
-  const activeStyle = dark
-    ? "bg-gradient-to-r from-purple-900/60 to-fuchsia-900/40 text-fuchsia-400 shadow-sm"
-    : "bg-gradient-to-r from-fuchsia-50 to-rose-50 text-fuchsia-600 shadow-sm";
-
-  const inactiveStyle = dark
-    ? "text-purple-300/60 hover:bg-white/5"
-    : "text-slate-500 hover:bg-slate-100";
-
-  // ── CATEGORIES ────────────────────────────────────────────────────────────
   const categories = [
-    { id: "SPORT",         icon: <MdOutlineSportsSoccer />, label: "Sport",          notificationKey: "Sport"   },
-    { id: "TRADING",       icon: <FaArrowRightArrowLeft />, label: "Trading",        notificationKey: "Trading" },
-    { id: "LOST AND FOUND",icon: <FaMagnifyingGlass />,     label: "Lost and Found", notificationKey: "Lost"    },
-    { id: "SWAP SKILLS",   icon: <BsStars />,               label: "Swap Skills",    notificationKey: "Swap"    },
-    { id: "EVENTS",        icon: <MdEvent />,               label: "Events",         notificationKey: "Events"  },
+    { id: "SPORT",          icon: <MdOutlineSportsSoccer />, label: "Sport",          notificationKey: "Sport"   },
+    { id: "TRADING",        icon: <FaArrowRightArrowLeft />, label: "Trading",        notificationKey: "Trading" },
+    { id: "LOST AND FOUND", icon: <FaMagnifyingGlass />,     label: "Lost and Found", notificationKey: "Lost"    },
+    { id: "SWAP SKILLS",    icon: <BsStars />,               label: "Swap Skills",    notificationKey: "Swap"    },
+    { id: "EVENTS",         icon: <MdEvent />,               label: "Events",         notificationKey: "Events"  },
   ];
 
   const categoryMessages = {
@@ -85,191 +226,279 @@ function Sidebar({ selectedCategory, setSelectedCategory }) {
     Events:  ["Concert f centre ville tonight", "Meetup dyal devs f 7 pm", "Workshop on photography this weekend"],
   };
 
-  const defaultUser = { name: "Anonymous", avatar: "user1", neighborhood: "Unknown", city: "Unknown", category: "General" };
-
-  // ── NOTIFICATION LOGIC ────────────────────────────────────────────────────
   const showNextNotification = () => {
-    if (queueRef.current.length === 0) return;
+    if (!queueRef.current.length) return;
     const next = queueRef.current.shift();
-    setNotification(next);
-    setAnimate(true);
-    setProgress(0);
-
+    setNotification(next); setAnimate(true); setProgress(0);
     if (intervalRef.current) clearInterval(intervalRef.current);
     intervalRef.current = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) { clearInterval(intervalRef.current); return 100; }
-        return prev + 100 / (6000 / 50);
-      });
+      setProgress(p => { if (p >= 100) { clearInterval(intervalRef.current); return 100; } return p + 100 / (6000 / 50); });
     }, 50);
-
     timeoutRef.current = setTimeout(() => {
       setAnimate(false);
-      setTimeout(() => {
-        setNotification(null);
-        setTimeout(() => showNextNotification(), 500);
-      }, 300);
+      setTimeout(() => { setNotification(null); setTimeout(showNextNotification, 500); }, 300);
     }, 6000);
   };
 
-  const handleCategoryClick = (category) => {
-    setSelectedCategory(category.id);
-    setActive(category.id);
-    if (!category.notificationKey) return;
-
-    const key = category.notificationKey;
-    const catUsers = users.filter((u) => u.category?.toLowerCase() === key.toLowerCase());
-    const messages = categoryMessages[key] || ["New activity"];
-
-    queueRef.current = messages.map((msg) => {
-      const user = catUsers.length
-        ? catUsers[Math.floor(Math.random() * catUsers.length)]
-        : defaultUser;
-      return { user, category: key, message: msg };
-    });
-
+  const handleCategoryClick = (cat) => {
+    setSelectedCategory(cat.id); setActive(cat.id);
+    if (!cat.notificationKey) return;
+    const key      = cat.notificationKey;
+    const catUsers = users.filter(u => u.category?.toLowerCase() === key.toLowerCase());
+    const msgs     = categoryMessages[key] || ["New activity"];
+    queueRef.current = msgs.map(msg => ({
+      user: catUsers.length ? catUsers[Math.floor(Math.random() * catUsers.length)] : { name: "Anonymous", avatar: "", neighborhood: "Unknown", city: "Unknown" },
+      category: key, message: msg,
+    }));
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    timeoutRef.current = setTimeout(() => showNextNotification(), 2000);
+    timeoutRef.current = setTimeout(showNextNotification, 2000);
   };
 
-  // ── MOBILE BOTTOM NAV ─────────────────────────────────────────────────────
+  const handleConnect = (user) => {
+    setNotification(null); setAnimate(false); setProgress(0);
+    clearInterval(intervalRef.current); clearTimeout(timeoutRef.current);
+    setConnectUser(user);
+  };
+
+  // ── Profile: NEVER navigate to a URL route — always use onViewChange ───────
+  // This prevents the 404. ProfilePage lives inside the feed view system,
+  // not as a separate route.
+  const handleProfileClick = () => {
+    setActive("Profile");
+    if (typeof onViewChange === "function") {
+      onViewChange("profile");
+    }
+  };
+
+  const handleSignOut = () => {
+    localStorage.removeItem("qriblikUser");
+    localStorage.removeItem("findmeUser");
+    navigate("/");
+  };
+
+  /* ── Mobile bottom nav ─────────────────────────────────────────────────── */
   const MobileBottomNav = () => (
     <div
-      className={`fixed bottom-0 left-0 right-0 z-50 border-t flex items-center md:hidden shadow-lg transition-colors duration-500 ${
-        dark ? "bg-[#0f0a1e] border-white/8" : "bg-white border-slate-100"
-      }`}
+      className="fixed bottom-0 left-0 right-0 z-50 border-t flex items-center md:hidden shadow-lg"
+      style={{
+        background: dark ? "rgba(13,7,25,0.96)" : "rgba(255,255,255,0.96)",
+        borderColor: dark ? "rgba(139,63,222,0.12)" : "rgba(139,63,222,0.08)",
+        backdropFilter: "blur(12px)",
+      }}
     >
-      {categories.map((el) => (
-        <button
-          key={el.id}
-          onClick={() => handleCategoryClick(el)}
-          className={`flex-1 flex flex-col items-center justify-center py-2 gap-0.5 transition-all duration-200 text-[10px] font-semibold ${
-            selectedCategory === el.id
-              ? "text-fuchsia-500"
-              : dark
-              ? "text-purple-300/40 hover:text-purple-300/70"
-              : "text-slate-400 hover:text-slate-600"
-          }`}
+      {categories.map(el => (
+        <button key={el.id} onClick={() => handleCategoryClick(el)}
+          className="flex-1 flex flex-col items-center justify-center py-2.5 gap-0.5 transition-all duration-200 text-[10px] font-semibold relative"
+          style={{ color: selectedCategory === el.id ? "#c026d3" : dark ? "rgba(167,139,250,0.4)" : "rgba(100,50,150,0.5)" }}
         >
+          {selectedCategory === el.id && (
+            <span className="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-[2px] rounded-b-full"
+              style={{ background: "linear-gradient(90deg,#8B3FDE,#C837AB)" }} />
+          )}
           <span className="text-base">{el.icon}</span>
           {el.label.split(" ")[0]}
-          {selectedCategory === el.id && (
-            <span className="w-1 h-1 rounded-full bg-fuchsia-500 mt-0.5" />
-          )}
         </button>
       ))}
-      <div className={`flex-1 flex flex-col items-center justify-center py-2 gap-0.5 text-[10px] font-semibold ${dark ? "text-purple-300/40" : "text-slate-400"}`}>
-        <FiMap className="text-lg" />
+      {/* Map in mobile nav */}
+      <button
+        onClick={() => navigate("/map")}
+        className="flex-1 flex flex-col items-center justify-center py-2.5 gap-0.5 text-[10px] font-semibold"
+        style={{ color: dark ? "rgba(167,139,250,0.4)" : "rgba(100,50,150,0.5)" }}
+      >
+        <IoMapOutline className="text-lg" />
         Map
-      </div>
+      </button>
     </div>
   );
 
-  // ── RENDER ────────────────────────────────────────────────────────────────
+  const sidebarBg = dark
+    ? "linear-gradient(180deg,#0d0719 0%,#0f0822 60%,#0d0719 100%)"
+    : "linear-gradient(180deg,#ffffff 0%,#faf8ff 100%)";
+
   return (
     <>
       {/* ── DESKTOP SIDEBAR ── */}
       <aside
-        className={`hidden md:flex flex-col justify-between w-64 h-screen fixed left-0 top-0 border-r py-6 px-3 overflow-y-auto z-40 transition-colors duration-500 ${
-          dark ? "bg-[#0d0719] border-white/5" : "bg-white border-slate-100"
-        }`}
+        className="hidden md:flex flex-col w-64 h-screen fixed left-0 top-0 z-40 border-r overflow-hidden"
+        style={{
+          background: sidebarBg,
+          borderColor: dark ? "rgba(139,63,222,0.12)" : "rgba(139,63,222,0.08)",
+        }}
       >
-        <div>
-          <div className="px-5 mb-6 flex flex-col gap-3">
-            <div className="w-8 h-8 bg-gradient-to-tr from-fuchsia-600 to-rose-500 rounded-xl flex items-center justify-center shadow-md shadow-fuchsia-200">
-              <TbHome className="text-white w-4 h-4" />
-            </div>
-            <h1 className="text-xl font-bold text-fuchsia-500">QribLik</h1>
-            <p className={`text-xs ${dark ? "text-purple-300/40" : "text-slate-400"}`}>
-              Community Hub
-            </p>
-          </div>
-
-          {/* Static nav links */}
-          <nav className="flex flex-col gap-1 mb-4">
-            <div
-              onClick={() => { setActive("Home"); setSelectedCategory("ALL"); }}
-              className={`${itemStyle} ${active === "Home" ? activeStyle : inactiveStyle}`}
-            >
-              <TbHome className="text-lg" /> Home Feed
-            </div>
-            <Link
-              to="/about"
-              onClick={() => setActive("About")}
-              className={`${itemStyle} ${active === "About" ? activeStyle : inactiveStyle} no-underline`}
-            >
-              <FaCircleInfo className="text-lg" /> About
-            </Link>
-            <Link
-              to="/support"
-              onClick={() => setActive("Support")}
-              className={`${itemStyle} ${active === "Support" ? activeStyle : inactiveStyle} no-underline`}
-            >
-              <MdSupportAgent className="text-lg" /> Support
-            </Link>
-          </nav>
-
-          {/* Social categories */}
-          <p className={`px-5 text-xs font-semibold uppercase tracking-wider mb-2 ${dark ? "text-purple-300/30" : "text-slate-400"}`}>
-            Social
-          </p>
-          <nav className="flex flex-col gap-1">
-            {categories.map((el) => (
-              <div
-                key={el.id}
-                onClick={() => handleCategoryClick(el)}
-                className={`${itemStyle} ${selectedCategory === el.id ? activeStyle : inactiveStyle}`}
-              >
-                {el.icon}
-                {el.label}
-                {selectedCategory === el.id && (
-                  <span className="ml-auto w-2 h-2 rounded-full bg-fuchsia-400" />
-                )}
-              </div>
-            ))}
-          </nav>
+        {/* Ambient glow blobs */}
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div className="absolute -top-20 -left-10 w-52 h-52 rounded-full opacity-[0.07]"
+            style={{ background: "radial-gradient(circle,#8B3FDE,transparent)" }} />
+          <div className="absolute bottom-40 -right-10 w-40 h-40 rounded-full opacity-[0.05]"
+            style={{ background: "radial-gradient(circle,#C837AB,transparent)" }} />
         </div>
 
-        {/* Bottom — Profile + Toggle + Map */}
-        <div className="flex flex-col gap-1">
-          <div
-            onClick={() => setActive("Profile")}
-            className={`${itemStyle} ${active === "Profile" ? activeStyle : inactiveStyle}`}
-          >
-            <FaRegUser className="text-lg" /> My Profile
+        {/* ── LOGO — your real image ── */}
+        <div className="px-5 pt-6 pb-4 shrink-0">
+          <img
+            src={logo}
+            alt="QribLik"
+            className="h-10 w-auto object-contain"
+            style={{ maxWidth: "140px" }}
+          />
+        </div>
+
+        {/* Thin gradient divider */}
+        <div className="mx-4 mb-2 h-px shrink-0"
+          style={{ background: dark ? "linear-gradient(90deg,rgba(139,63,222,0.25),rgba(200,55,171,0.15),transparent)" : "linear-gradient(90deg,rgba(139,63,222,0.12),transparent)" }} />
+
+        {/* ── SCROLLABLE NAV ── */}
+        <div
+          className="flex-1 overflow-y-auto overflow-x-hidden px-3 flex flex-col gap-0.5 pb-2"
+          style={{ scrollbarWidth: "none" }}
+        >
+          {/* Core */}
+          <NavItem
+            icon={<TbHome />} label="Home Feed"
+            isActive={active === "Home"}
+            onClick={() => { setActive("Home"); setSelectedCategory?.("ALL"); onViewChange?.("feed"); }}
+          />
+          <Link to="/about" className="no-underline" onClick={() => setActive("About")}>
+            <NavItem icon={<FaCircleInfo />} label="About" isActive={active === "About"} onClick={() => {}} />
+          </Link>
+          <Link to="/support" className="no-underline" onClick={() => setActive("Support")}>
+            <NavItem icon={<MdSupportAgent />} label="Support" isActive={active === "Support"} onClick={() => {}} />
+          </Link>
+
+          <div className="h-2" />
+          <SectionLabel label="Social" />
+
+          {/* Categories */}
+          {categories.map(cat => (
+            <NavItem
+              key={cat.id}
+              icon={cat.icon}
+              label={cat.label}
+              isActive={selectedCategory === cat.id}
+              onClick={() => handleCategoryClick(cat)}
+            />
+          ))}
+
+          {/* Map inside Social */}
+          <div className="mt-1">
+            <MapCard onClick={() => navigate("/map")} />
           </div>
 
-          <div className={`flex items-center justify-between px-5 py-4 rounded-2xl ${dark ? "bg-white/3" : "bg-slate-50"}`}>
-            <span className={`text-[15px] font-medium ${dark ? "text-purple-300/60" : "text-slate-500"}`}>
+          <div className="h-2" />
+          <SectionLabel label="Account" />
+
+          {/* Profile row — clicking uses onViewChange, never navigate() */}
+          <button
+            onClick={handleProfileClick}
+            className="w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-left transition-all duration-200"
+            style={{
+              background: active === "Profile"
+                ? dark ? "linear-gradient(135deg,rgba(139,63,222,0.22),rgba(200,55,171,0.14))" : "linear-gradient(135deg,rgba(139,63,222,0.10),rgba(200,55,171,0.06))"
+                : "transparent",
+              border: active === "Profile"
+                ? dark ? "1px solid rgba(200,55,171,0.18)" : "1px solid rgba(139,63,222,0.15)"
+                : "1px solid transparent",
+            }}
+          >
+            <div
+              className="w-8 h-8 rounded-xl overflow-hidden shrink-0"
+              style={{
+                boxShadow: active === "Profile"
+                  ? "0 0 0 2px #C837AB"
+                  : dark ? "0 0 0 1px rgba(255,255,255,0.1)" : "0 0 0 1px rgba(139,63,222,0.15)",
+              }}
+            >
+              <img src={currentUser.avatar} alt={currentUser.name} className="w-full h-full object-cover" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-semibold truncate"
+                style={{ color: active === "Profile" ? "#c026d3" : dark ? "rgba(196,172,255,0.7)" : "rgba(60,30,80,0.7)" }}>
+                {currentUser.name}
+              </p>
+              <p className="text-[10px]"
+                style={{ color: dark ? "rgba(167,139,250,0.35)" : "rgba(139,63,222,0.4)" }}>
+                View profile
+              </p>
+            </div>
+          </button>
+        </div>
+
+        {/* ── BOTTOM STRIP ── */}
+        <div className="shrink-0 px-3 pb-5 flex flex-col gap-1">
+          <div className="mx-1 mb-2 h-px"
+            style={{ background: dark ? "rgba(139,63,222,0.12)" : "rgba(139,63,222,0.08)" }} />
+
+          {/* Dark mode */}
+          <div
+            className="flex items-center justify-between px-4 py-3 rounded-2xl"
+            style={{
+              background: dark ? "rgba(255,255,255,0.03)" : "rgba(139,63,222,0.04)",
+              border: dark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(139,63,222,0.08)",
+            }}
+          >
+            <span className="text-sm font-medium" style={{ color: dark ? "rgba(196,172,255,0.55)" : "rgba(80,40,120,0.55)" }}>
               {dark ? "Dark Mode" : "Light Mode"}
             </span>
             <DarkModeToggle />
           </div>
 
-          <MapsButton />
+          {/* Sign Out */}
+          <button
+            onClick={() => setShowSignOut(true)}
+            className="w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-semibold transition-all duration-200"
+            style={{ color: dark ? "rgba(252,100,100,0.55)" : "rgba(200,50,50,0.55)" }}
+            onMouseEnter={e => { e.currentTarget.style.background = dark ? "rgba(252,100,100,0.08)" : "rgba(252,100,100,0.06)"; e.currentTarget.style.color = "#ef4444"; }}
+            onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = dark ? "rgba(252,100,100,0.55)" : "rgba(200,50,50,0.55)"; }}
+          >
+            <span className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0"
+              style={{ background: dark ? "rgba(252,100,100,0.08)" : "rgba(252,100,100,0.06)" }}>
+              <FiLogOut size={14} />
+            </span>
+            Sign Out
+          </button>
         </div>
       </aside>
 
       {/* ── MOBILE TOP HEADER ── */}
       <header
-        className={`md:hidden fixed top-0 left-0 right-0 z-50 border-b px-4 py-3 flex items-center justify-between transition-colors duration-500 ${
-          dark ? "bg-[#0d0719] border-white/5" : "bg-white border-slate-100"
-        }`}
+        className="md:hidden fixed top-0 left-0 right-0 z-50 border-b px-4 py-2.5 flex items-center justify-between"
+        style={{
+          background: dark ? "rgba(13,7,25,0.96)" : "rgba(255,255,255,0.96)",
+          borderColor: dark ? "rgba(139,63,222,0.12)" : "rgba(139,63,222,0.08)",
+          backdropFilter: "blur(12px)",
+        }}
       >
-        <h1 className="text-lg font-bold text-fuchsia-500">Qriblik</h1>
-        <DarkModeToggle />
+        {/* Real logo in mobile header too */}
+        <img src={logo} alt="QribLik" className="h-8 w-auto object-contain" />
+        <div className="flex items-center gap-2">
+          {/* Mobile profile avatar — tapping opens profile view */}
+          <button
+            onClick={handleProfileClick}
+            className="w-8 h-8 rounded-xl overflow-hidden"
+            style={{ boxShadow: "0 0 0 2px rgba(139,63,222,0.3)" }}
+          >
+            <img src={currentUser.avatar} alt={currentUser.name} className="w-full h-full object-cover" />
+          </button>
+          <DarkModeToggle />
+          <button
+            onClick={() => setShowSignOut(true)}
+            className="w-8 h-8 rounded-xl flex items-center justify-center transition-colors"
+            style={{ background: dark ? "rgba(252,100,100,0.08)" : "rgba(252,100,100,0.06)", color: "rgba(239,68,68,0.7)" }}
+          >
+            <FiLogOut size={14} />
+          </button>
+        </div>
       </header>
 
-      {/* ── MOBILE BOTTOM NAV ── */}
       <MobileBottomNav />
 
-      {/* ── NOTIFICATION TOAST — now its own component ── */}
       <NotificationToast
-        notification={notification}
-        animate={animate}
-        progress={progress}
-        onDismiss={() => setNotification(null)}
+        notification={notification} animate={animate} progress={progress}
+        onDismiss={() => setNotification(null)} onConnect={handleConnect}
       />
+
+      {connectUser && <Modale3 onClose={() => setConnectUser(null)} initialUser={connectUser} />}
+      {showSignOut  && <SignOutModal onConfirm={handleSignOut} onCancel={() => setShowSignOut(false)} />}
     </>
   );
 }
