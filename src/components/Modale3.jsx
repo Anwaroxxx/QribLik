@@ -41,7 +41,7 @@ function Modale3({ onClose, initialUser = null }) {
             sender: "them",
             time: "10:00 AM",
             timestamp: Date.now(),
-
+            
           },
         ],
       };
@@ -173,7 +173,7 @@ function Modale3({ onClose, initialUser = null }) {
                 }
                 className="w-10 h-10 rounded-full object-cover"
               />
-              <h4 className="font-semibold">{selectedUser.name}</h4>
+              <h4 className="font-semibold  text-gray-500">{selectedUser.name}</h4>
             </div>
  
             <div className="flex-1 overflow-y-auto flex flex-col gap-4 px-1">
@@ -207,7 +207,7 @@ function Modale3({ onClose, initialUser = null }) {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Type a message..."
-                className="flex-1 rounded-full px-4 py-2 border border-slate-200"
+                className="flex-1 rounded-full px-4 py-2 border border-slate-200 text-amber-50"
                 onKeyDown={(e) => {
                   if (e.key === "Enter") sendMessage();
                 }}
